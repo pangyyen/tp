@@ -11,7 +11,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Gan Pang Yen
 
-<img src="images/ganpangyen.png" width="200px">
+<img src="images/pangyyen.png" width="200px">
 
 [[GitHub](https://github.com/pangyyen)]
 [[LinkIn](https://www.linkedin.com/in/gan-pang-yen-222333227/)]
