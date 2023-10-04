@@ -19,15 +19,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### LIM JIAN HONG
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/limjh2002.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/LimJH2002)]
+[[LinkedIn](https://www.linkedin.com/in/l1mjh)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: UI, Storage, Logic, Documentation, Testing
 
 ### Johnny Doe
 
