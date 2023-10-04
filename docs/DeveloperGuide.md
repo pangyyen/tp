@@ -112,3 +112,12 @@ Streamline medical practice with CareCentral, designed for healthcare profession
 2. **Security Requirements:** All patient data must be stored securely to ensure confidentiality and privacy.
 3. **Usability Requirements:** The app should be user-friendly, with a clean and intuitive CLI interface that can be easily navigated by healthcare professionals.
 4. **Compatibility Requirements:** The app should be compatible with both iOS and Android devices, ensuring accessibility for a wide range of users.
+
+### Glossary
+
+- **App:** Refers to the CareCentral application.
+- **Healthcare Professional:** A user who is a certified medical practitioner, including doctors, nurses, 
+- and other medical staff.
+- **Patient Record:** A digital file within the app containing all relevant information about a patient, including 
+- medical history, prescriptions, and appointment records.
+- **User:** Refers to the healthcare professionals using the CareCentral app.
