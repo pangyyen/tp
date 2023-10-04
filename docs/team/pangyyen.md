@@ -5,8 +5,7 @@ title: Pang Yen's Project Portfolio Page
 
 ### Project: CareCentral
 
-CareCentral is the ultimate tool for modern healthcare providers who are comfortable with digital solutions. 
-With CareCentral, they are able to enhance working efficiency and improve patient care quality.
+CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital staff aged between 25-60 years. With a focus on streamlining patient management and appointment scheduling, CareCentral is the ultimate tool for modern healthcare providers who are comfortable with digital solutions and are looking to enhance efficiency and patient care quality.
 
 Given below are my contributions to the project.
 
@@ -32,3 +31,4 @@ Given below are my contributions to the project.
 
 * **Tools**:
 
+Details to be added soon
