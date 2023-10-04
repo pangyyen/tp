@@ -40,7 +40,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Wong Li Yuan
 
-<img src="images/wongliyuan.png" width="200px">
+<img src="images/lyuanww.png" width="200px">
 
 [[Github](https://github.com/lyuanww)]
 [[LinkedIn](https://www.linkedin.com/in/li-yuan-wong-4580a0266/)]
