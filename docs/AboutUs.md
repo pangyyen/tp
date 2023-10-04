@@ -9,15 +9,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Gan Pang Yen
 
 <img src="images/johndoe.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[GitHub](https://github.com/pangyyen)]
+[[LinkIn](https://www.linkedin.com/in/gan-pang-yen-222333227/)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: UI, Storage, Logic, Documentation, Testing
 
 ### Jane Doe
 
