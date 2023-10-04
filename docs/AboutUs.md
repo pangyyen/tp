@@ -19,24 +19,24 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### LIM JIAN HONG
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/limjh2002.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/LimJH2002)]
+[[LinkedIn](https://www.linkedin.com/in/l1mjh)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: UI, Storage, Logic, Documentation, Testing
+
+### Tan Boon Khong
+
+<img src="images/tanboonkhong.png" width="200px">
+
+[[GitHub](http://github.com/tanboonkhong)] [[LinkedIn](https://www.linkedin.com/in/boon-khong-tan-bb71491ab/)]
+
+* Role: Developer
+* Responsibilities: UI, Storage, Logic, Documentation, Testing
 
 ### Wong Li Yuan
 
