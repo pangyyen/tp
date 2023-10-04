@@ -38,22 +38,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Wong Li Yuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/wongliyuan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
-
-### James Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[Github](https://github.com/lyuanww)]
+[[LinkedIn](https://www.linkedin.com/in/li-yuan-wong-4580a0266/)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: UI, Storage, Logic, Documentation, Testing
+
