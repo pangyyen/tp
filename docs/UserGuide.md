@@ -1,5 +1,7 @@
 # User Guide
 
+<img src="images/Ui.png" >
+
 ## 1. Create Patient Record
 
 **What it does:**  
