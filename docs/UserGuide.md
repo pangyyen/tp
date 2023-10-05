@@ -28,4 +28,26 @@ Message: "Successfully added patient: [Patient Details]"
 - Message: "Invalid input. Age should be between 0 to 120"
 - Message: "Invalid input. Please enter a valid phone number."
 
+## 4. Delete Patient Record
+
+**What it does:**  
+Removes a patient record from the system.
+
+**Command Format:**  
+`delete-patient INDEX`
+
+
+**Example Commands:**  
+`delete-patient 2`
+
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**  
+Message: "Successfully deleted patient."
+
+**Expected Output (Failure):**  
+Message: "Invalid index. Please enter a valid index."
+
 ---
