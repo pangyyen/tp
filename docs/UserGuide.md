@@ -27,5 +27,15 @@ Message: "Successfully added patient: [Patient Details]"
 - Message: "Invalid input. Please enter a valid NRIC (8-16 alphanumeric characters)."
 - Message: "Invalid input. Age should be between 0 to 120"
 - Message: "Invalid input. Please enter a valid phone number."
+- 
+---
+## 2. List Patients
+
+**What it does:**  
+Finds persons whose names contain any of the given keywords.
+
+**Command Format:**  
+`list-patients`
 
 ---
+
