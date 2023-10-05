@@ -37,6 +37,30 @@ Finds persons whose names contain any of the given keywords.
 **Command Format:**  
 `list-patients`
 
+---
+## 3. Edit Patient Record
+
+**What it does:**
+Edits a patient record in the system.
+
+**Command Format:**
+`edit-patient INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER]`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **NAME:** Alphabetic characters and spaces only
+- **NRIC:** 8-16 Alphanumeric characters
+- **AGE:** Integer values between 0 and 120
+- **PHONE_NUMBER:** 8-12 digits integer
+
+**Expected Output (Success):**
+Message: "Successfully edited patient: [Patient Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
 ## 4. Delete Patient Record
 
 **What it does:**  
