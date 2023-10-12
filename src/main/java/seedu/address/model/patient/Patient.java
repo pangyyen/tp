@@ -1,11 +1,18 @@
 package seedu.address.model.patient;
 
-import seedu.address.model.person.*;
-import seedu.address.model.tag.Tag;
-
 import java.util.Set;
 
-/* Represents a Patient (WIP) */
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.tag.Tag;
+
+/**
+ * Represents a Patient in the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Patient extends Person {
     /**
      * Every field must be present and not null.
