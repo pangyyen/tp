@@ -96,4 +96,34 @@ public class PersonTest {
                 + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
+
+    @Test
+    void constructor_allFieldsNonNull_constructsSuccessfully() {
+        // Assume Name, Phone, and Email are classes with a single String argument constructor
+        Name testName = new Name("John Doe");
+        Phone testPhone = new Phone("12345678");
+        Email testEmail = new Email("john@example.com");
+
+        // Creating a Person using constructor
+        Person testPerson = new Person(testName, testPhone, testEmail);
+
+        // Check that fields are correctly initialized
+        assertEquals(testName, testPerson.getName());
+        assertEquals(testPhone, testPerson.getPhone());
+        assertEquals(testEmail, testPerson.getEmail());
+
+        // Check that default/alternative values are set
+        assertEquals("NIL", testPerson.getAddress().toString());
+        assertEquals(0, testPerson.getTags().size());
+    }
+
+    @Test
+    void constructor_nullName_throwsNullPointerException() {
+        // Assume Phone and Email are classes with a single String argument constructor
+        Phone testPhone = new Phone("12345678");
+        Email testEmail = new Email("john@example.com");
+
+        // Assert that passing a null Name triggers a NullPointerException
+        assertThrows(NullPointerException.class, () -> new Person(null, testPhone, testEmail));
+    }
 }
