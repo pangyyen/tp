@@ -21,12 +21,12 @@ public interface ClinicStorage extends ClinicBookStorage, NewUserPrefsStorage {
     void saveUserPrefs(NewReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getAddressBookFilePath();
+    Path getClinicBookFilePath();
 
     @Override
-    Optional<ReadOnlyClinicBook> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyClinicBook> readClinicBook() throws DataLoadingException;
 
     @Override
-    void saveAddressBook(ReadOnlyClinicBook addressBook) throws IOException;
+    void saveClinicBook(ReadOnlyClinicBook addressBook) throws IOException;
 
 }
