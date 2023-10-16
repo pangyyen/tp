@@ -12,7 +12,7 @@ import seedu.cc.model.NewUserPrefs;
 /**
  * API of the Storage component
  */
-public interface ClinicStorage extends AddressBookStorage, UserPrefsStorage {
+public interface ClinicStorage extends ClinicBookStorage, NewUserPrefsStorage {
 
     @Override
     Optional<NewUserPrefs> readUserPrefs() throws DataLoadingException;
@@ -24,9 +24,9 @@ public interface ClinicStorage extends AddressBookStorage, UserPrefsStorage {
     Path getAddressBookFilePath();
 
     @Override
-    Optional<ReadOnlyAddressBook> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyClinicBook> readAddressBook() throws DataLoadingException;
 
     @Override
-    void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
+    void saveAddressBook(ReadOnlyClinicBook addressBook) throws IOException;
 
 }
