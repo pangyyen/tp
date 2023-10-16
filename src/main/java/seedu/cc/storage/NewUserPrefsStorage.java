@@ -5,11 +5,11 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.cc.commons.exceptions.DataLoadingException;
-import seedu.cc.model.ReadOnlyUserPrefs;
-import seedu.cc.model.UserPrefs;
+import seedu.cc.model.NewReadOnlyUserPrefs;
+import seedu.cc.model.NewUserPrefs;
 
 /**
- * Represents a storage for {@link UserPrefs}.
+ * Represents a storage for {@link NewUserPrefs}.
  */
 public interface NewUserPrefsStorage {
 
@@ -24,13 +24,13 @@ public interface NewUserPrefsStorage {
      *
      * @throws DataLoadingException if the loading of data from preference file failed.
      */
-    Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
+    Optional<NewUserPrefs> readUserPrefs() throws DataLoadingException;
 
     /**
-     * Saves the given {@link ReadOnlyUserPrefs} to the storage.
+     * Saves the given {@link NewReadOnlyUserPrefs} to the storage.
      * @param userPrefs cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
+    void saveUserPrefs(NewReadOnlyUserPrefs userPrefs) throws IOException;
 
 }
