@@ -22,7 +22,7 @@ import seedu.cc.model.person.exceptions.PersonNotFoundException;
  *
  * @see Patient#isSamePerson(Patient)
  */
-public class UniquePersonList implements Iterable<Patient> {
+public class UniquePatientList implements Iterable<Patient> {
 
     private final ObservableList<Patient> internalList = FXCollections.observableArrayList();
     private final ObservableList<Patient> internalUnmodifiableList =
@@ -79,16 +79,16 @@ public class UniquePersonList implements Iterable<Patient> {
         }
     }
 
-    public void setPersons(UniquePersonList replacement) {
+    public void setPatients(UniquePatientList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code patients}.
+     * {@code patients} must not contain duplicate patients.
      */
-    public void setPersons(List<Patient> patients) {
+    public void setPatients(List<Patient> patients) {
         requireAllNonNull(patients);
         if (!patientsAreUnique(patients)) {
             throw new DuplicatePersonException();
@@ -116,11 +116,11 @@ public class UniquePersonList implements Iterable<Patient> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof UniquePersonList)) {
+        if (!(other instanceof UniquePatientList)) {
             return false;
         }
 
-        UniquePersonList otherUniquePersonList = (UniquePersonList) other;
+        UniquePatientList otherUniquePersonList = (UniquePatientList) other;
         return internalList.equals(otherUniquePersonList.internalList);
     }
 
