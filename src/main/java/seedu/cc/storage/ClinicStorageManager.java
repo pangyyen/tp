@@ -28,7 +28,6 @@ public class ClinicStorageManager implements ClinicStorage {
         this.clinicBookStorage = clinicBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
-
     
     // ================ UserPrefs methods ==============================
 
