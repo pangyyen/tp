@@ -14,29 +14,22 @@ import seedu.address.model.tag.Tag;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Patient extends Person {
-    private final Nric nric;
     /**
      * Every field must be present and not null.
      *
      * @param name
-     * @param nric
      * @param phone
      * @param email
      * @param address
      * @param tags
      */
-    public Patient(Name name, Nric nric, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Patient(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
         super(name, phone, email, address, tags);
-        this.nric = nric;
     }
 
     //getters and setters
     public Name getName() {
         return super.getName();
-    }
-
-    public Nric getNric() {
-        return this.nric;
     }
 
     public Phone getPhone() {

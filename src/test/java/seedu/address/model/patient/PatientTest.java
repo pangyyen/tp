@@ -23,23 +23,17 @@ public class PatientTest {
     public void setUp() {
         // Sample data for testing
         Name name = new Name("John Doe");
-        Nric nric = new Nric("M1234567A");
         Phone phone = new Phone("98765432");
         Email email = new Email("johndoe@example.com");
         Address address = new Address("123, Jurong West Ave 6, #08-111");
         Set<Tag> tags = new HashSet<>();
 
-        patient = new Patient(name, nric, phone, email, address, tags);
+        patient = new Patient(name, phone, email, address, tags);
     }
 
     @Test
     public void getName() {
         assertEquals(new Name("John Doe"), patient.getName());
-    }
-
-    @Test
-    public void getNric() {
-        assertEquals(new Nric("M1234567A"), patient.getNric());
     }
 
     @Test
