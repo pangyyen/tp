@@ -29,6 +29,7 @@ public class ClinicStorageManager implements ClinicStorage {
         this.userPrefsStorage = userPrefsStorage;
     }
 
+    
     // ================ UserPrefs methods ==============================
 
     @Override
