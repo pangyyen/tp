@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.patient.Nric;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
@@ -48,6 +49,15 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    public static Nric parseNric(String nric) throws ParseException {
+        requireNonNull(nric);
+        String trimmedNric = nric.trim();
+        if (!Nric.isValidNric(trimmedNric)) {
+            throw new ParseException(Nric.MESSAGE_CONSTRAINTS);
+        }
+        return new Nric(trimmedNric);
     }
 
     /**
