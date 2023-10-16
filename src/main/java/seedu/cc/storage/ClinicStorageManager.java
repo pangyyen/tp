@@ -7,9 +7,10 @@ import java.util.logging.Logger;
 
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.exceptions.DataLoadingException;
-import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.NewReadOnlyUserPrefs;
 import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.ReadOnlyClinicBook;
+
 
 /**
  * Manages storage of AddressBook data in local storage.
