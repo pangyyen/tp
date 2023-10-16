@@ -2,7 +2,6 @@ package seedu.cc.model;
 
 import javafx.collections.ObservableList;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Person;
 
 /**
  * Unmodifiable view of an address book

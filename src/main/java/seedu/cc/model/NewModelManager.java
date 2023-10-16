@@ -12,7 +12,6 @@ import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Person;
 
 /**
  * Represents the in-memory model of the clinic book data.

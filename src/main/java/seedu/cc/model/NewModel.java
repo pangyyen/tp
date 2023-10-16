@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Person;
 
 /**
  * The API of the Model component.
@@ -73,7 +72,8 @@ public interface NewModel {
     /**
      * Replaces the given patient {@code target} with {@code editedPatient}.
      * {@code target} must exist in the clinic book.
-     * The patient identity of {@code editedPatient} must not be the same as another existing patient in the clinic book.
+     * The patient identity of {@code editedPatient} must not be the same as another
+     *  existing patient in the clinic book.
      */
     void setPatient(Patient target, Patient editedPatient);
 

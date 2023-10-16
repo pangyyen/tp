@@ -8,8 +8,6 @@ import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
-import seedu.cc.model.person.Person;
-import seedu.cc.model.person.UniquePersonList;
 
 /**
  * Wraps all data at the address-book level
@@ -80,7 +78,8 @@ public class ClinicBook implements ReadOnlyClinicBook {
     /**
      * Replaces the given patient {@code target} in the list with {@code editedPatient}.
      * {@code target} must exist in the clinic book.
-     * The patient identity of {@code editedPatient} must not be the same as another existing patient in the clinic book.
+     * The patient identity of {@code editedPatient} must not be the same as another
+     *  existing patient in the clinic book.
      */
     public void setPatient(Patient target, Patient editedPatient) {
         requireNonNull(editedPatient);
