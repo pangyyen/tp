@@ -8,14 +8,15 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.cc.commons.exceptions.IllegalValueException;
+import seedu.cc.model.patient.Nric;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Person;
 import seedu.cc.model.person.Phone;
-import seedu.cc.model.patient.Patient;
-import seedu.cc.model.patient.Nric;
 import seedu.cc.model.tag.Tag;
 
 /**
@@ -36,8 +37,9 @@ class JsonAdaptedPatient {
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("nric") String nric, @JsonProperty("phone") String phone,
-                              @JsonProperty("email") String email, @JsonProperty("address") String address,
+    public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("nric") String nric,
+                              @JsonProperty("phone") String phone, @JsonProperty("email") String email,
+                              @JsonProperty("address") String address,
                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.nric = nric;
