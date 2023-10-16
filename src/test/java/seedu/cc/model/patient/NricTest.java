@@ -12,10 +12,12 @@ class NricTest {
     @Test
     void isValidNric() {
         // valid NRIC numbers
-        assertTrue(Nric.isValidNric("12345678"));
-        assertTrue(Nric.isValidNric("87654321"));
+        assertTrue(Nric.isValidNric("M1234567P"));
+        assertTrue(Nric.isValidNric("M8765432P"));
 
         // invalid NRIC numbers
+        assertFalse(Nric.isValidNric("12345678"));
+        assertFalse(Nric.isValidNric("87654321"));
         assertFalse(Nric.isValidNric("1234"));
         assertFalse(Nric.isValidNric("12345678901234567"));
         assertFalse(Nric.isValidNric("abcdefg"));
@@ -26,33 +28,33 @@ class NricTest {
 
     @Test
     void testToString() {
-        assertEquals("12345678", new Nric("12345678").toString());
-        assertEquals("87654321", new Nric("87654321").toString());
+        assertEquals("M1234567P", new Nric("M1234567P").toString());
+        assertEquals("M8765432P", new Nric("M8765432P").toString());
     }
 
     @Test
     void testEquals() {
         // equal Nric objects
-        assertEquals(new Nric("12345678"), new Nric("12345678"));
-        assertEquals(new Nric("87654321"), new Nric("87654321"));
+        assertEquals(new Nric("M1234567P"), new Nric("M1234567P"));
+        assertEquals(new Nric("M8765432P"), new Nric("M8765432P"));
 
         // unequal Nric objects
-        assertNotEquals(new Nric("12345678"), new Nric("87654321"));
-        assertNotEquals(new Nric("87654321"), new Nric("12345678"));
+        assertNotEquals(new Nric("M1234567P"), new Nric("M8765432P"));
+        assertNotEquals(new Nric("M8765432P"), new Nric("M1234567P"));
 
         // comparing with null
-        assertNotEquals(new Nric("12345678"), null);
+        assertNotEquals(new Nric("M8765432P"), null);
     }
 
     @Test
     void testHashCode() {
         // equal hash codes for equal objects
-        assertEquals(new Nric("12345678").hashCode(), new Nric("12345678").hashCode());
-        assertEquals(new Nric("87654321").hashCode(), new Nric("87654321").hashCode());
+        assertEquals(new Nric("M1234567P").hashCode(), new Nric("M1234567P").hashCode());
+        assertEquals(new Nric("M8765432P").hashCode(), new Nric("M8765432P").hashCode());
 
         // unequal hash codes for unequal objects
-        assertNotEquals(new Nric("12345678").hashCode(), new Nric("87654321").hashCode());
-        assertNotEquals(new Nric("87654321").hashCode(), new Nric("12345678").hashCode());
+        assertNotEquals(new Nric("M1234567P").hashCode(), new Nric("M8765432P").hashCode());
+        assertNotEquals(new Nric("M8765432P").hashCode(), new Nric("M1234567P").hashCode());
     }
 }
 

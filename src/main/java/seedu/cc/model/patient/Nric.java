@@ -11,8 +11,8 @@ public class Nric {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should only contain numbers, and it should be 8 to 16 digits long";
-    public static final String VALIDATION_REGEX = "\\d{8,16}";
+            "NRIC should contain numbers and letters, and it should be 9 digits long for Singapore";
+    public static final String VALIDATION_REGEX = "[A-Z]\\d{7}[A-Z]"; // Singapore NRIC format
     public final String value;
 
     /**
