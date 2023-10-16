@@ -15,31 +15,31 @@ public interface ClinicBookStorage {
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getClinicBookFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyClinicBook}.
+     * Returns ClinicBook data as a {@link ReadOnlyClinicBook}.
      * Returns {@code Optional.empty()} if storage file is not found.
      *
      * @throws DataLoadingException if loading the data from storage failed.
      */
-    Optional<ReadOnlyClinicBook> readAddressBook() throws DataLoadingException;
+    Optional<ReadOnlyClinicBook> readClinicBook() throws DataLoadingException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getClinicBookFilePath()
      */
-    Optional<ReadOnlyClinicBook> readAddressBook(Path filePath) throws DataLoadingException;
+    Optional<ReadOnlyClinicBook> readClinicBook(Path filePath) throws DataLoadingException;
 
     /**
      * Saves the given {@link ReadOnlyClinicBook} to the storage.
-     * @param addressBook cannot be null.
+     * @param clinicBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyClinicBook addressBook) throws IOException;
+    void saveClinicBook(ReadOnlyClinicBook clinicBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyClinicBook)
+     * @see #saveClinicBook(ReadOnlyClinicBook)
      */
-    void saveAddressBook(ReadOnlyClinicBook addressBook, Path filePath) throws IOException;
+    void saveClinicBook(ReadOnlyClinicBook clinicBook, Path filePath) throws IOException;
 
 }
