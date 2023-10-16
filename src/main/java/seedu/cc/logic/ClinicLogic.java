@@ -11,9 +11,9 @@ import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.patient.Patient;
 
 /**
- * API of the Logic component
+ * API of the NewLogic component
  */
-public interface NewLogic {
+public interface ClinicLogic {
     /**
      * Executes the command and returns the result.
      * @param commandText The command as entered by the user.
