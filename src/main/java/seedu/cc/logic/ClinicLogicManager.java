@@ -8,13 +8,14 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.logic.commands.Command;
+import seedu.cc.logic.commands.ClinicCommand;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.ClinicBookParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.NewModel;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.storage.ClinicStorage;
 
 /**
@@ -46,7 +47,7 @@ public class ClinicLogicManager implements ClinicLogic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = clinicBookParser.parseCommand(commandText);
+        ClinicCommand command = clinicBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
@@ -62,7 +63,7 @@ public class ClinicLogicManager implements ClinicLogic {
 
     @Override
     public ReadOnlyClinicBook getClinicBook() {
-        return model.getAddressBook();
+        return model.getClinicBook();
     }
 
     @Override
