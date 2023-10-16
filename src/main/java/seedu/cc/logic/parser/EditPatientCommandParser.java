@@ -22,7 +22,7 @@ import seedu.cc.model.tag.Tag;
 /**
  * Parses input arguments and creates a new EditCommand object
  */
-public class EditCommandPatientParser implements Parser<EditPatientCommand> {
+public class EditPatientCommandParser implements ParserClinic<EditPatientCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
