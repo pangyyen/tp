@@ -1,4 +1,4 @@
-package seedu.cc.model.person;
+package seedu.cc.model.patient;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.cc.commons.util.AppUtil.checkArgument;

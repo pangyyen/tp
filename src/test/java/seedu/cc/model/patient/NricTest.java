@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/test/java/seedu/cc/model/person/NricTest.java
 package seedu.cc.model.person;
+========
+package seedu.address.model.patient;
+>>>>>>>> parent of 1087b5b3 (Revert "Merge branch 'LimJH2002-branch-add-nric-field'"):src/test/java/seedu/cc/model/patient/NricTest.java
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -6,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
 
 class NricTest {
 
