@@ -1,5 +1,7 @@
 package seedu.cc.storage;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -12,7 +14,6 @@ import seedu.cc.commons.util.FileUtil;
 import seedu.cc.commons.util.JsonUtil;
 import seedu.cc.model.ReadOnlyClinicBook;
 
-import static java.util.Objects.requireNonNull;
 
 /**
  * A class to access AddressBook data stored as a json file on the hard disk.
