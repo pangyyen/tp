@@ -49,11 +49,11 @@ public class UniquePatientList implements Iterable<Patient> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the given patient {@code target} in the list with {@code editedPatient}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The patient identity of {@code editedPatient} must not be the same as another existing patient in the list.
      */
-    public void setPerson(Patient target, Patient editedPerson) {
+    public void setPatient(Patient target, Patient editedPerson) {
         requireAllNonNull(target, editedPerson);
 
         int index = internalList.indexOf(target);
