@@ -56,7 +56,7 @@ public class Patient extends Person {
     }
 
     public boolean isSamePerson(Patient otherPatient) {
-        return super.isSamePerson(otherPatient);
+        return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric());
     }
 
     public boolean equals(Object other) {
