@@ -28,9 +28,8 @@ public class ClinicStorageManager implements ClinicStorage {
         this.clinicBookStorage = clinicBookStorage;
         this.userPrefsStorage = userPrefsStorage;
     }
-    
-    // ================ UserPrefs methods ==============================
 
+    // ================ UserPrefs methods ==============================
     @Override
     public Path getUserPrefsFilePath() {
         return userPrefsStorage.getUserPrefsFilePath();
