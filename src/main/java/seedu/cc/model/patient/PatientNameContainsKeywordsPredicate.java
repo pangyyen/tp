@@ -17,9 +17,9 @@ public class PatientNameContainsKeywordsPredicate implements Predicate<Patient> 
     }
 
     @Override
-    public boolean test(Patient Patient) {
+    public boolean test(Patient patient) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(Patient.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(patient.getName().fullName, keyword));
     }
 
     @Override
@@ -33,7 +33,8 @@ public class PatientNameContainsKeywordsPredicate implements Predicate<Patient> 
             return false;
         }
 
-        PatientNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (PatientNameContainsKeywordsPredicate) other;
+        PatientNameContainsKeywordsPredicate otherNameContainsKeywordsPredicate =
+                (PatientNameContainsKeywordsPredicate) other;
         return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
     }
 

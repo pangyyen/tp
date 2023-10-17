@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import seedu.cc.logic.commands.FindPatientCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.person.NameContainsKeywordsPredicate;
+import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -27,7 +27,7 @@ public class FindPatientCommandParser implements ParserClinic<FindPatientCommand
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
 
-        return new FindPatientCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        return new FindPatientCommand(new PatientNameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
     }
 
 }

@@ -13,11 +13,11 @@ import java.util.stream.Stream;
 
 import seedu.cc.logic.commands.AddPatientCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.patient.Nric;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
-import seedu.cc.model.patient.Nric;
-import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 
@@ -33,7 +33,8 @@ public class AddPatientCommandParser implements ParserClinic<AddPatientCommand> 
      */
     public AddPatientCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_NRIC, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_NRIC, PREFIX_PHONE,
+                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_NRIC, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {

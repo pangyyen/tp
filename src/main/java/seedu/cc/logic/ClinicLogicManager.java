@@ -14,8 +14,8 @@ import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.ClinicBookParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.NewModel;
-import seedu.cc.model.patient.Patient;
 import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.storage.ClinicStorage;
 
 /**
