@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.cc.model.person.exceptions.DuplicatePersonException;
-import seedu.cc.model.person.exceptions.PersonNotFoundException;
+import seedu.cc.model.patient.exceptions.DuplicatePatientException;
+import seedu.cc.model.patient.exceptions.PatientNotFoundException;
 
 /**
  * A list of patients that enforces uniqueness between its elements and does not allow nulls.
@@ -44,7 +44,7 @@ public class UniquePatientList implements Iterable<Patient> {
     public void add(Patient toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicatePersonException();
+            throw new DuplicatePatientException();
         }
         internalList.add(toAdd);
     }
@@ -59,11 +59,11 @@ public class UniquePatientList implements Iterable<Patient> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new PersonNotFoundException();
+            throw new PatientNotFoundException();
         }
 
         if (!target.isSamePerson(editedPerson) && contains(editedPerson)) {
-            throw new DuplicatePersonException();
+            throw new DuplicatePatientException();
         }
 
         internalList.set(index, editedPerson);
@@ -76,7 +76,7 @@ public class UniquePatientList implements Iterable<Patient> {
     public void remove(Patient toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new PersonNotFoundException();
+            throw new PatientNotFoundException();
         }
     }
 
@@ -92,7 +92,7 @@ public class UniquePatientList implements Iterable<Patient> {
     public void setPatients(List<Patient> patients) {
         requireAllNonNull(patients);
         if (!patientsAreUnique(patients)) {
-            throw new DuplicatePersonException();
+            throw new DuplicatePatientException();
         }
 
         internalList.setAll(patients);
