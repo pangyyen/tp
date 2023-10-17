@@ -6,17 +6,17 @@ import java.util.List;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.ToStringBuilder;
-import seedu.cc.logic.Messages;
+import seedu.cc.logic.ClinicMessages;
 import seedu.cc.logic.commands.exceptions.CommandException;
-import seedu.cc.model.Model;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.NewModel;
+import seedu.cc.model.patient.Patient;
 
 /**
  * Deletes a person identified using it's displayed index from the address book.
  */
-public class DeleteCommand extends Command {
+public class DeletePatientCommand extends ClinicCommand {
 
-    public static final String COMMAND_WORD = "delete";
+    public static final String COMMAND_WORD = "delete-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the person identified by the index number used in the displayed person list.\n"
@@ -27,22 +27,22 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
 
-    public DeleteCommand(Index targetIndex) {
+    public DeletePatientCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(NewModel model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Patient> lastShownList = model.getFilteredPatientList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(ClinicMessages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
+        Patient personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        model.deletePatient(personToDelete);
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, ClinicMessages.format(personToDelete)));
     }
 
     @Override
@@ -52,11 +52,11 @@ public class DeleteCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof DeleteCommand)) {
+        if (!(other instanceof DeletePatientCommand)) {
             return false;
         }
 
-        DeleteCommand otherDeleteCommand = (DeleteCommand) other;
+        DeletePatientCommand otherDeleteCommand = (DeletePatientCommand) other;
         return targetIndex.equals(otherDeleteCommand.targetIndex);
     }
 
