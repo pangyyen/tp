@@ -10,25 +10,25 @@ import javafx.stage.Stage;
 import seedu.cc.MainApp;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.util.StringUtil;
-import seedu.cc.logic.Logic;
+import seedu.cc.logic.ClinicLogic;
 
 /**
  * The manager of the UI component.
  */
-public class UiManager implements Ui {
+public class NewUiManager implements Ui {
 
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
-    private static final Logger logger = LogsCenter.getLogger(UiManager.class);
+    private static final Logger logger = LogsCenter.getLogger(NewUiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
-    private Logic logic;
-    private OldMainWindow mainWindow;
+    private ClinicLogic logic;
+    private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public UiManager(Logic logic) {
+    public NewUiManager(ClinicLogic logic) {
         this.logic = logic;
     }
 
@@ -40,7 +40,7 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new OldMainWindow(primaryStage, logic);
+            mainWindow = new MainWindow(primaryStage, logic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
 

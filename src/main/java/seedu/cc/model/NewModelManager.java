@@ -20,59 +20,59 @@ public class NewModelManager implements NewModel {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final ClinicBook clinicBook;
-    private final UserPrefs userPrefs;
+    private final NewUserPrefs newUserPrefs;
     private final FilteredList<Patient> filteredPatients;
 
     /**
      * Initializes a NewModelManager with the given clinicBook and userPrefs.
      */
-    public NewModelManager(ReadOnlyClinicBook clinicBook, ReadOnlyUserPrefs userPrefs) {
+    public NewModelManager(ReadOnlyClinicBook clinicBook, NewReadOnlyUserPrefs userPrefs) {
         requireAllNonNull(clinicBook, userPrefs);
 
         logger.fine("Initializing with clinic book: " + clinicBook + " and user prefs " + userPrefs);
 
         this.clinicBook = new ClinicBook(clinicBook);
-        this.userPrefs = new UserPrefs(userPrefs);
+        this.newUserPrefs = new NewUserPrefs(userPrefs);
         this.filteredPatients = new FilteredList<>(this.clinicBook.getPatientList());
     }
 
     public NewModelManager() {
-        this(new ClinicBook(), new UserPrefs());
+        this(new ClinicBook(), new NewUserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+    public void setUserPrefs(NewReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+        this.newUserPrefs.resetData(userPrefs);
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public NewReadOnlyUserPrefs getUserPrefs() {
+        return newUserPrefs;
     }
 
     @Override
     public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
+        return newUserPrefs.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
+        newUserPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
     public Path getClinicBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+        return newUserPrefs.getClinicBookFilePath();
     }
 
     @Override
     public void setClinicBookFilePath(Path clinicBookFilePath) {
         requireNonNull(clinicBookFilePath);
-        userPrefs.setAddressBookFilePath(clinicBookFilePath);
+        newUserPrefs.setClinicBookFilePath(clinicBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
@@ -141,7 +141,7 @@ public class NewModelManager implements NewModel {
 
         NewModelManager otherModelManager = (NewModelManager) other;
         return clinicBook.equals(otherModelManager.clinicBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
+                && newUserPrefs.equals(otherModelManager.newUserPrefs)
                 && filteredPatients.equals(otherModelManager.filteredPatients);
     }
 
