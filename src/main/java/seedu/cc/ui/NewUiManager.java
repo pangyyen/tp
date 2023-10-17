@@ -11,7 +11,6 @@ import seedu.cc.MainApp;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.ClinicLogic;
-import seedu.cc.logic.Logic;
 
 /**
  * The manager of the UI component.

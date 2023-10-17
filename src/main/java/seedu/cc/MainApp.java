@@ -18,19 +18,18 @@ import seedu.cc.logic.ClinicLogicManager;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.NewModel;
 import seedu.cc.model.NewModelManager;
-import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.NewReadOnlyUserPrefs;
 import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.util.NewSampleDataUtil;
 import seedu.cc.storage.ClinicBookStorage;
-import seedu.cc.storage.JsonClinicBookStorage;
-import seedu.cc.storage.JsonNewUserPrefsStorage;
 import seedu.cc.storage.ClinicStorage;
 import seedu.cc.storage.ClinicStorageManager;
+import seedu.cc.storage.JsonClinicBookStorage;
+import seedu.cc.storage.JsonNewUserPrefsStorage;
 import seedu.cc.storage.NewUserPrefsStorage;
 import seedu.cc.ui.NewUiManager;
 import seedu.cc.ui.Ui;
-import seedu.cc.ui.UiManager;
 
 /**
  * Runs the application.
@@ -82,12 +81,12 @@ public class MainApp extends Application {
             addressBookOptional = storage.readClinicBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getClinicBookFilePath()
-                        + " populated with a sample AddressBook.");
+                    + " populated with a sample AddressBook.");
             }
             initialData = addressBookOptional.orElseGet(NewSampleDataUtil::getSampleClinicBook);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getClinicBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                + " Will be starting with an empty AddressBook.");
             initialData = new ClinicBook();
         }
 
@@ -124,7 +123,7 @@ public class MainApp extends Application {
             initializedConfig = configOptional.orElse(new Config());
         } catch (DataLoadingException e) {
             logger.warning("Config file at " + configFilePathUsed + " could not be loaded."
-                    + " Using default config properties.");
+                + " Using default config properties.");
             initializedConfig = new Config();
         }
 
@@ -155,7 +154,7 @@ public class MainApp extends Application {
             initializedPrefs = prefsOptional.orElse(new NewUserPrefs());
         } catch (DataLoadingException e) {
             logger.warning("Preference file at " + prefsFilePath + " could not be loaded."
-                    + " Using default preferences.");
+                + " Using default preferences.");
             initializedPrefs = new NewUserPrefs();
         }
 
