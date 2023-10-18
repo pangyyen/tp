@@ -11,11 +11,11 @@ import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
-import seedu.cc.logic.parser.AddressBookParser;
+import seedu.cc.logic.parser.ClinicBookParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.Model;
-import seedu.cc.model.ReadOnlyAddressBook;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.storage.Storage;
 
 /**
@@ -31,7 +31,7 @@ public class LogicManager implements Logic {
 
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final ClinicBookParser clinicBookParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -39,7 +39,7 @@ public class LogicManager implements Logic {
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        clinicBookParser = new ClinicBookParser();
     }
 
     @Override
@@ -47,11 +47,11 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command = clinicBookParser.parseCommand(commandText);
         commandResult = command.execute(model);
 
         try {
-            storage.saveAddressBook(model.getAddressBook());
+            storage.saveClinicBook(model.getClinicBook());
         } catch (AccessDeniedException e) {
             throw new CommandException(String.format(FILE_OPS_PERMISSION_ERROR_FORMAT, e.getMessage()), e);
         } catch (IOException ioe) {
@@ -62,18 +62,18 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyClinicBook getClinicBook() {
+        return model.getClinicBook();
     }
 
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return model.getFilteredPersonList();
+    public ObservableList<Patient> getFilteredPatientList() {
+        return model.getFilteredPatientList();
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getClinicBookFilePath() {
+        return model.getClinicBookFilePath();
     }
 
     @Override

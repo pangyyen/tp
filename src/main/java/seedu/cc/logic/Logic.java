@@ -7,11 +7,11 @@ import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.ReadOnlyAddressBook;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.patient.Patient;
 
 /**
- * API of the Logic component
+ * API of the NewLogic component
  */
 public interface Logic {
     /**
@@ -26,17 +26,17 @@ public interface Logic {
     /**
      * Returns the AddressBook.
      *
-     * @see seedu.cc.model.Model#getAddressBook()
+     * @see seedu.cc.model.Model#getClinicBook()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyClinicBook getClinicBook();
 
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    /** Returns an unmodifiable view of the filtered list of patients */
+    ObservableList<Patient> getFilteredPatientList();
 
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getClinicBookFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

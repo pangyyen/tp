@@ -13,8 +13,8 @@ import seedu.cc.commons.core.Version;
 import seedu.cc.commons.exceptions.DataLoadingException;
 import seedu.cc.commons.util.ConfigUtil;
 import seedu.cc.commons.util.StringUtil;
-import seedu.cc.logic.ClinicLogic;
-import seedu.cc.logic.ClinicLogicManager;
+import seedu.cc.logic.Logic;
+import seedu.cc.logic.LogicManager;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ModelManager;
@@ -23,12 +23,12 @@ import seedu.cc.model.UserPrefs;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.util.SampleDataUtil;
 import seedu.cc.storage.ClinicBookStorage;
-import seedu.cc.storage.ClinicStorage;
-import seedu.cc.storage.ClinicStorageManager;
+import seedu.cc.storage.Storage;
+import seedu.cc.storage.StorageManager;
 import seedu.cc.storage.JsonClinicBookStorage;
-import seedu.cc.storage.JsonNewUserPrefsStorage;
-import seedu.cc.storage.NewUserPrefsStorage;
-import seedu.cc.ui.NewUiManager;
+import seedu.cc.storage.JsonUserPrefsStorage;
+import seedu.cc.storage.UserPrefsStorage;
+import seedu.cc.ui.UiManager;
 import seedu.cc.ui.Ui;
 
 /**
@@ -41,8 +41,8 @@ public class MainApp extends Application {
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
-    protected ClinicLogic logic;
-    protected ClinicStorage storage;
+    protected Logic logic;
+    protected Storage storage;
     protected Model model;
     protected Config config;
 
@@ -55,16 +55,16 @@ public class MainApp extends Application {
         config = initConfig(appParameters.getConfigPath());
         initLogging(config);
 
-        NewUserPrefsStorage userPrefsStorage = new JsonNewUserPrefsStorage(config.getUserPrefsFilePath());
+        UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         ClinicBookStorage addressBookStorage = new JsonClinicBookStorage(userPrefs.getClinicBookFilePath());
-        storage = new ClinicStorageManager(addressBookStorage, userPrefsStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
 
-        logic = new ClinicLogicManager(model, storage);
+        logic = new LogicManager(model, storage);
 
-        ui = new NewUiManager(logic);
+        ui = new UiManager(logic);
     }
 
     /**
@@ -72,7 +72,7 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private Model initModelManager(ClinicStorage storage, ReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getClinicBookFilePath());
 
         Optional<ReadOnlyClinicBook> addressBookOptional;
@@ -141,7 +141,7 @@ public class MainApp extends Application {
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected UserPrefs initPrefs(NewUserPrefsStorage storage) {
+    protected UserPrefs initPrefs(UserPrefsStorage storage) {
         Path prefsFilePath = storage.getUserPrefsFilePath();
         logger.info("Using preference file : " + prefsFilePath);
 
