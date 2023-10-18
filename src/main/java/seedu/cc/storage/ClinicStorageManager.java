@@ -7,8 +7,8 @@ import java.util.logging.Logger;
 
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.exceptions.DataLoadingException;
-import seedu.cc.model.NewReadOnlyUserPrefs;
-import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.UserPrefs;
 import seedu.cc.model.ReadOnlyClinicBook;
 
 
@@ -36,12 +36,12 @@ public class ClinicStorageManager implements ClinicStorage {
     }
 
     @Override
-    public Optional<NewUserPrefs> readUserPrefs() throws DataLoadingException {
+    public Optional<UserPrefs> readUserPrefs() throws DataLoadingException {
         return userPrefsStorage.readUserPrefs();
     }
 
     @Override
-    public void saveUserPrefs(NewReadOnlyUserPrefs userPrefs) throws IOException {
+    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
         userPrefsStorage.saveUserPrefs(userPrefs);
     }
 

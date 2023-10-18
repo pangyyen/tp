@@ -3,7 +3,7 @@ package seedu.cc.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import seedu.cc.model.ClinicBook;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 
 /**
  * Clears the address book.
@@ -15,7 +15,7 @@ public class ClearPatientCommand extends ClinicCommand {
 
 
     @Override
-    public CommandResult execute(NewModel model) {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         model.setClinicBook(new ClinicBook());
         return new CommandResult(MESSAGE_SUCCESS);

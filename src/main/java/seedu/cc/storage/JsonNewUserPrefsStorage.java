@@ -6,8 +6,8 @@ import java.util.Optional;
 
 import seedu.cc.commons.exceptions.DataLoadingException;
 import seedu.cc.commons.util.JsonUtil;
-import seedu.cc.model.NewReadOnlyUserPrefs;
-import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.UserPrefs;
 
 /**
  * A class to access UserPrefs stored in the hard disk as a json file
@@ -26,7 +26,7 @@ public class JsonNewUserPrefsStorage implements NewUserPrefsStorage {
     }
 
     @Override
-    public Optional<NewUserPrefs> readUserPrefs() throws DataLoadingException {
+    public Optional<UserPrefs> readUserPrefs() throws DataLoadingException {
         return readUserPrefs(filePath);
     }
 
@@ -35,12 +35,12 @@ public class JsonNewUserPrefsStorage implements NewUserPrefsStorage {
      * @param prefsFilePath location of the data. Cannot be null.
      * @throws DataLoadingException if the file format is not as expected.
      */
-    public Optional<NewUserPrefs> readUserPrefs(Path prefsFilePath) throws DataLoadingException {
-        return JsonUtil.readJsonFile(prefsFilePath, NewUserPrefs.class);
+    public Optional<UserPrefs> readUserPrefs(Path prefsFilePath) throws DataLoadingException {
+        return JsonUtil.readJsonFile(prefsFilePath, UserPrefs.class);
     }
 
     @Override
-    public void saveUserPrefs(NewReadOnlyUserPrefs userPrefs) throws IOException {
+    public void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException {
         JsonUtil.saveJsonFile(userPrefs, filePath);
     }
 

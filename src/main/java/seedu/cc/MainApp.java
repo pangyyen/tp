@@ -16,10 +16,10 @@ import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.ClinicLogic;
 import seedu.cc.logic.ClinicLogicManager;
 import seedu.cc.model.ClinicBook;
-import seedu.cc.model.NewModel;
-import seedu.cc.model.NewModelManager;
-import seedu.cc.model.NewReadOnlyUserPrefs;
-import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.Model;
+import seedu.cc.model.ModelManager;
+import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.UserPrefs;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.util.NewSampleDataUtil;
 import seedu.cc.storage.ClinicBookStorage;
@@ -43,7 +43,7 @@ public class MainApp extends Application {
     protected Ui ui;
     protected ClinicLogic logic;
     protected ClinicStorage storage;
-    protected NewModel model;
+    protected Model model;
     protected Config config;
 
     @Override
@@ -56,7 +56,7 @@ public class MainApp extends Application {
         initLogging(config);
 
         NewUserPrefsStorage userPrefsStorage = new JsonNewUserPrefsStorage(config.getUserPrefsFilePath());
-        NewUserPrefs userPrefs = initPrefs(userPrefsStorage);
+        UserPrefs userPrefs = initPrefs(userPrefsStorage);
         ClinicBookStorage addressBookStorage = new JsonClinicBookStorage(userPrefs.getClinicBookFilePath());
         storage = new ClinicStorageManager(addressBookStorage, userPrefsStorage);
 
@@ -72,7 +72,7 @@ public class MainApp extends Application {
      * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
-    private NewModel initModelManager(ClinicStorage storage, NewReadOnlyUserPrefs userPrefs) {
+    private Model initModelManager(ClinicStorage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getClinicBookFilePath());
 
         Optional<ReadOnlyClinicBook> addressBookOptional;
@@ -90,7 +90,7 @@ public class MainApp extends Application {
             initialData = new ClinicBook();
         }
 
-        return new NewModelManager(initialData, userPrefs);
+        return new ModelManager(initialData, userPrefs);
     }
 
     private void initLogging(Config config) {
@@ -141,21 +141,21 @@ public class MainApp extends Application {
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
      */
-    protected NewUserPrefs initPrefs(NewUserPrefsStorage storage) {
+    protected UserPrefs initPrefs(NewUserPrefsStorage storage) {
         Path prefsFilePath = storage.getUserPrefsFilePath();
         logger.info("Using preference file : " + prefsFilePath);
 
-        NewUserPrefs initializedPrefs;
+        UserPrefs initializedPrefs;
         try {
-            Optional<NewUserPrefs> prefsOptional = storage.readUserPrefs();
+            Optional<UserPrefs> prefsOptional = storage.readUserPrefs();
             if (!prefsOptional.isPresent()) {
                 logger.info("Creating new preference file " + prefsFilePath);
             }
-            initializedPrefs = prefsOptional.orElse(new NewUserPrefs());
+            initializedPrefs = prefsOptional.orElse(new UserPrefs());
         } catch (DataLoadingException e) {
             logger.warning("Preference file at " + prefsFilePath + " could not be loaded."
                 + " Using default preferences.");
-            initializedPrefs = new NewUserPrefs();
+            initializedPrefs = new UserPrefs();
         }
 
         //Update prefs file in case it was missing to begin with or there are new/unused fields
