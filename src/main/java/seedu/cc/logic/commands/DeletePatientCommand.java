@@ -8,7 +8,7 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.ClinicMessages;
 import seedu.cc.logic.commands.exceptions.CommandException;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -32,7 +32,7 @@ public class DeletePatientCommand extends ClinicCommand {
     }
 
     @Override
-    public CommandResult execute(NewModel model) throws CommandException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Patient> lastShownList = model.getFilteredPatientList();
 

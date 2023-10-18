@@ -1,6 +1,6 @@
 package seedu.cc.logic.commands;
 
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 
 /**
  * Format full help instructions for every command for display.
@@ -15,7 +15,7 @@ public class HelpClinicCommand extends ClinicCommand {
     public static final String SHOWING_HELP_MESSAGE = "Opened help window.";
 
     @Override
-    public CommandResult execute(NewModel model) {
+    public CommandResult execute(Model model) {
         return new CommandResult(SHOWING_HELP_MESSAGE, true, false);
     }
 }

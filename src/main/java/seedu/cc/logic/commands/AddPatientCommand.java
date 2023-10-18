@@ -10,7 +10,7 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.exceptions.CommandException;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -49,7 +49,7 @@ public class AddPatientCommand extends ClinicCommand {
     }
 
     @Override
-    public CommandResult execute(NewModel model) throws CommandException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasPatient(toAdd)) {

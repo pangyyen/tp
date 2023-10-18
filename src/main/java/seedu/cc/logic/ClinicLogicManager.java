@@ -13,10 +13,10 @@ import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.ClinicBookParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.storage.ClinicStorage;
+import seedu.cc.storage.Storage;
 
 /**
  * The main LogicManager of the app.
@@ -29,14 +29,14 @@ public class ClinicLogicManager implements ClinicLogic {
 
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
-    private final NewModel model;
-    private final ClinicStorage storage;
+    private final Model model;
+    private final Storage storage;
     private final ClinicBookParser clinicBookParser;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
-    public ClinicLogicManager(NewModel model, ClinicStorage storage) {
+    public ClinicLogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
         clinicBookParser = new ClinicBookParser();

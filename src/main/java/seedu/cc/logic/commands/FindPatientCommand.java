@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.ClinicMessages;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 
 /**
@@ -27,7 +27,7 @@ public class FindPatientCommand extends ClinicCommand {
     }
 
     @Override
-    public CommandResult execute(NewModel model) {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPatientList(predicate);
         return new CommandResult(

@@ -6,7 +6,7 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.cc.model.NewModel.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -20,7 +20,7 @@ import seedu.cc.commons.util.CollectionUtil;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.ClinicMessages;
 import seedu.cc.logic.commands.exceptions.CommandException;
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
@@ -69,7 +69,7 @@ public class EditPatientCommand extends ClinicCommand {
     }
 
     @Override
-    public CommandResult execute(NewModel model) throws CommandException {
+    public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Patient> lastShownList = model.getFilteredPatientList();
 
