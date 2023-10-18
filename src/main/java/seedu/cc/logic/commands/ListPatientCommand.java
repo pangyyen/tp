@@ -1,9 +1,9 @@
 package seedu.cc.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.model.NewModel.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import seedu.cc.model.NewModel;
+import seedu.cc.model.Model;
 
 /**
  * Lists all persons in the address book to the user.
@@ -16,7 +16,7 @@ public class ListPatientCommand extends ClinicCommand {
 
 
     @Override
-    public CommandResult execute(NewModel model) {
+    public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(MESSAGE_SUCCESS);

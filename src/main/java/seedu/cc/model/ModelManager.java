@@ -11,33 +11,33 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.patient.Patient;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the clinic book data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
-    private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final ClinicBook clinicBook;
+    private final UserPrefs newUserPrefs;
+    private final FilteredList<Patient> filteredPatients;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a NewModelManager with the given clinicBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyClinicBook clinicBook, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(clinicBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with clinic book: " + clinicBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
-        this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        this.clinicBook = new ClinicBook(clinicBook);
+        this.newUserPrefs = new UserPrefs(userPrefs);
+        this.filteredPatients = new FilteredList<>(this.clinicBook.getPatientList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new ClinicBook(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -45,87 +45,87 @@ public class ModelManager implements Model {
     @Override
     public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+        this.newUserPrefs.resetData(userPrefs);
     }
 
     @Override
     public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+        return newUserPrefs;
     }
 
     @Override
     public GuiSettings getGuiSettings() {
-        return userPrefs.getGuiSettings();
+        return newUserPrefs.getGuiSettings();
     }
 
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
-        userPrefs.setGuiSettings(guiSettings);
+        newUserPrefs.setGuiSettings(guiSettings);
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getClinicBookFilePath() {
+        return newUserPrefs.getClinicBookFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setClinicBookFilePath(Path clinicBookFilePath) {
+        requireNonNull(clinicBookFilePath);
+        newUserPrefs.setClinicBookFilePath(clinicBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setClinicBook(ReadOnlyClinicBook clinicBook) {
+        this.clinicBook.resetData(clinicBook);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyClinicBook getClinicBook() {
+        return this.clinicBook;
     }
 
     @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
+    public boolean hasPatient(Patient patient) {
+        requireNonNull(patient);
+        return clinicBook.hasPatient(patient);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+    public void deletePatient(Patient target) {
+        clinicBook.removePatient(target);
     }
 
     @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addPatient(Patient patient) {
+        clinicBook.addPatient(patient);
+        updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setPatient(Patient target, Patient editedPatient) {
+        requireAllNonNull(target, editedPatient);
 
-        addressBook.setPerson(target, editedPerson);
+        clinicBook.setPatient(target, editedPatient);
     }
 
     //=========== Filtered Person List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * Returns an unmodifiable view of the list of {@code Patient} backed by the internal list of
      * {@code versionedAddressBook}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Patient> getFilteredPatientList() {
+        return filteredPatients;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredPatientList(Predicate<Patient> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredPatients.setPredicate(predicate);
     }
 
     @Override
@@ -140,9 +140,9 @@ public class ModelManager implements Model {
         }
 
         ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+        return clinicBook.equals(otherModelManager.clinicBook)
+                && newUserPrefs.equals(otherModelManager.newUserPrefs)
+                && filteredPatients.equals(otherModelManager.filteredPatients);
     }
 
 }
