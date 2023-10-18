@@ -9,7 +9,7 @@ import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.UserPrefs;
 
 /**
- * Represents a storage for {@link seedu.cc.model.UserPrefs}.
+ * Represents a storage for {@link UserPrefs}.
  */
 public interface UserPrefsStorage {
 
@@ -27,7 +27,7 @@ public interface UserPrefsStorage {
     Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
 
     /**
-     * Saves the given {@link seedu.cc.model.ReadOnlyUserPrefs} to the storage.
+     * Saves the given {@link ReadOnlyUserPrefs} to the storage.
      * @param userPrefs cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
