@@ -5,8 +5,8 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.cc.commons.exceptions.DataLoadingException;
-import seedu.cc.model.NewReadOnlyUserPrefs;
-import seedu.cc.model.NewUserPrefs;
+import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.UserPrefs;
 import seedu.cc.model.ReadOnlyClinicBook;
 
 
@@ -16,10 +16,10 @@ import seedu.cc.model.ReadOnlyClinicBook;
 public interface ClinicStorage extends ClinicBookStorage, NewUserPrefsStorage {
 
     @Override
-    Optional<NewUserPrefs> readUserPrefs() throws DataLoadingException;
+    Optional<UserPrefs> readUserPrefs() throws DataLoadingException;
 
     @Override
-    void saveUserPrefs(NewReadOnlyUserPrefs userPrefs) throws IOException;
+    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
     Path getClinicBookFilePath();
