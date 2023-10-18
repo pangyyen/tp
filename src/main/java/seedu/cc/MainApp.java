@@ -21,7 +21,7 @@ import seedu.cc.model.ModelManager;
 import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.UserPrefs;
 import seedu.cc.model.ReadOnlyClinicBook;
-import seedu.cc.model.util.NewSampleDataUtil;
+import seedu.cc.model.util.SampleDataUtil;
 import seedu.cc.storage.ClinicBookStorage;
 import seedu.cc.storage.ClinicStorage;
 import seedu.cc.storage.ClinicStorageManager;
@@ -83,7 +83,7 @@ public class MainApp extends Application {
                 logger.info("Creating a new data file " + storage.getClinicBookFilePath()
                     + " populated with a sample AddressBook.");
             }
-            initialData = addressBookOptional.orElseGet(NewSampleDataUtil::getSampleClinicBook);
+            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleClinicBook);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getClinicBookFilePath() + " could not be loaded."
                 + " Will be starting with an empty AddressBook.");
