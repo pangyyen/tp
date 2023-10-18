@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import seedu.cc.MainApp;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.util.StringUtil;
-import seedu.cc.logic.ClinicLogic;
+import seedu.cc.logic.Logic;
 
 /**
  * The manager of the UI component.
@@ -22,13 +22,13 @@ public class NewUiManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(NewUiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
-    private ClinicLogic logic;
+    private Logic logic;
     private MainWindow mainWindow;
 
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public NewUiManager(ClinicLogic logic) {
+    public NewUiManager(Logic logic) {
         this.logic = logic;
     }
 
