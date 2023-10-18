@@ -13,8 +13,8 @@ import seedu.cc.commons.core.Version;
 import seedu.cc.commons.exceptions.DataLoadingException;
 import seedu.cc.commons.util.ConfigUtil;
 import seedu.cc.commons.util.StringUtil;
-import seedu.cc.logic.ClinicLogic;
-import seedu.cc.logic.ClinicLogicManager;
+import seedu.cc.logic.Logic;
+import seedu.cc.logic.LogicManager;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ModelManager;
@@ -41,7 +41,7 @@ public class MainApp extends Application {
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     protected Ui ui;
-    protected ClinicLogic logic;
+    protected Logic logic;
     protected Storage storage;
     protected Model model;
     protected Config config;
@@ -62,7 +62,7 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        logic = new ClinicLogicManager(model, storage);
+        logic = new LogicManager(model, storage);
 
         ui = new NewUiManager(logic);
     }
