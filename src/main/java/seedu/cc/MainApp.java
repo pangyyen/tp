@@ -28,7 +28,7 @@ import seedu.cc.storage.StorageManager;
 import seedu.cc.storage.JsonClinicBookStorage;
 import seedu.cc.storage.JsonUserPrefsStorage;
 import seedu.cc.storage.UserPrefsStorage;
-import seedu.cc.ui.NewUiManager;
+import seedu.cc.ui.UiManager;
 import seedu.cc.ui.Ui;
 
 /**
@@ -64,7 +64,7 @@ public class MainApp extends Application {
 
         logic = new LogicManager(model, storage);
 
-        ui = new NewUiManager(logic);
+        ui = new UiManager(logic);
     }
 
     /**
