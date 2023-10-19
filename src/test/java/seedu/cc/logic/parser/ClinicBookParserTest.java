@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.cc.testutil.Assert.assertThrows;
-import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PATIENT;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,26 +17,26 @@ import seedu.cc.logic.commands.AddCommand;
 import seedu.cc.logic.commands.ClearCommand;
 import seedu.cc.logic.commands.DeleteCommand;
 import seedu.cc.logic.commands.EditCommand;
-import seedu.cc.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
 import seedu.cc.logic.commands.ExitCommand;
 import seedu.cc.logic.commands.FindCommand;
 import seedu.cc.logic.commands.HelpCommand;
 import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.person.NameContainsKeywordsPredicate;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.testutil.EditPatientDescriptorBuilder;
-import seedu.cc.testutil.PersonBuilder;
-import seedu.cc.testutil.PersonUtil;
+import seedu.cc.testutil.PatientBuilder;
+import seedu.cc.testutil.PatientUtil;
 
-public class AddressBookParserTest {
+public class ClinicBookParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final ClinicBookParser parser = new ClinicBookParser();
 
     @Test
     public void parseCommand_add() throws Exception {
-        Person person = new PersonBuilder().build();
-        AddCommand command = (AddCommand) parser.parseCommand(PersonUtil.getAddCommand(person));
+        Patient person = new PatientBuilder().build();
+        AddCommand command = (AddCommand) parser.parseCommand(PatientUtil.getAddCommand(person));
         assertEquals(new AddCommand(person), command);
     }
 
@@ -49,17 +49,17 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_delete() throws Exception {
         DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
-        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PATIENT.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_PATIENT), command);
     }
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder(person).build();
+        Patient person = new PatientBuilder().build();
+        EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder(person).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+                + INDEX_FIRST_PATIENT.getOneBased() + " " + PatientUtil.getEditPatientDescriptorDetails(descriptor));
+        assertEquals(new EditCommand(INDEX_FIRST_PATIENT, descriptor), command);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class AddressBookParserTest {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+        assertEquals(new FindCommand(new PatientNameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
