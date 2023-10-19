@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.commons.exceptions.DataLoadingException;
+import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.UserPrefs;
-import seedu.cc.model.ReadOnlyClinicBook;
 
 
 /**
