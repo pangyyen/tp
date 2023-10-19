@@ -61,6 +61,7 @@ public class EditPatientDescriptorTest {
     public void toStringMethod() {
         EditPatientDescriptor editPatientDescriptor = new EditPatientDescriptor();
         String expected = EditPatientDescriptor.class.getCanonicalName() + "{name="
+                + editPatientDescriptor.getNric().orElse(null) + ", nric="
                 + editPatientDescriptor.getName().orElse(null) + ", phone="
                 + editPatientDescriptor.getPhone().orElse(null) + ", email="
                 + editPatientDescriptor.getEmail().orElse(null) + ", address="
