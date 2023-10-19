@@ -18,18 +18,18 @@ import seedu.cc.logic.LogicManager;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ModelManager;
+import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.UserPrefs;
-import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.util.SampleDataUtil;
 import seedu.cc.storage.ClinicBookStorage;
-import seedu.cc.storage.Storage;
-import seedu.cc.storage.StorageManager;
 import seedu.cc.storage.JsonClinicBookStorage;
 import seedu.cc.storage.JsonUserPrefsStorage;
+import seedu.cc.storage.Storage;
+import seedu.cc.storage.StorageManager;
 import seedu.cc.storage.UserPrefsStorage;
-import seedu.cc.ui.UiManager;
 import seedu.cc.ui.Ui;
+import seedu.cc.ui.UiManager;
 
 /**
  * Runs the application.

@@ -14,7 +14,7 @@ import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.patient.Patient;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable ClinicBook that is serializable to JSON format.
  */
 @JsonRootName(value = "clinicbook")
 class JsonSerializableClinicBook {

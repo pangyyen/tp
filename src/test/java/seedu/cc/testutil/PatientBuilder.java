@@ -19,7 +19,7 @@ public class PatientBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
 
-    public static final String DEFAULT_NRIC = "12345678";
+    public static final String DEFAULT_NRIC = "S2345678Y";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
