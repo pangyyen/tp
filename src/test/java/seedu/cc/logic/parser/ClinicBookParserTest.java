@@ -23,8 +23,8 @@ import seedu.cc.logic.commands.FindCommand;
 import seedu.cc.logic.commands.HelpCommand;
 import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 import seedu.cc.testutil.EditPatientDescriptorBuilder;
 import seedu.cc.testutil.PatientBuilder;
 import seedu.cc.testutil.PatientUtil;
@@ -91,7 +91,7 @@ public class ClinicBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+                -> parser.parseCommand(""));
     }
 
     @Test

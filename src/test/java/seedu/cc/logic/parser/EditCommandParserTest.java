@@ -28,7 +28,9 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.cc.testutil.TypicalIndexes.*;
+import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PATIENT;
+import static seedu.cc.testutil.TypicalIndexes.INDEX_SECOND_PATIENT;
+import static seedu.cc.testutil.TypicalIndexes.INDEX_THIRD_PATIENT;
 
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +52,7 @@ public class EditCommandParserTest {
     private static final String MESSAGE_INVALID_FORMAT =
             String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE);
 
-    private EditCommandParser parser = new EditCommandParser();
+    private final EditCommandParser parser = new EditCommandParser();
 
     @Test
     public void parse_missingParts_failure() {
