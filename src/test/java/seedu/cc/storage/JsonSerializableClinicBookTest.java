@@ -16,13 +16,13 @@ import seedu.cc.testutil.TypicalPatients;
 public class JsonSerializableClinicBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableClinicBookTest");
-    private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsClinicBook.json");
-    private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonClinicBook.json");
+    private static final Path TYPICAL_PATIENT_FILE = TEST_DATA_FOLDER.resolve("typicalPatientClinicBook.json");
+    private static final Path INVALID_PATIENT_FILE = TEST_DATA_FOLDER.resolve("invalidPatientClinicBook.json");
     private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonClinicBook.json");
 
     @Test
-    public void toModelType_typicalPersonsFile_success() throws Exception {
-        JsonSerializableClinicBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
+    public void toModelType_typicalPatientFile_success() throws Exception {
+        JsonSerializableClinicBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PATIENT_FILE,
                 JsonSerializableClinicBook.class).get();
         ClinicBook addressBookFromFile = dataFromFile.toModelType();
         ClinicBook typicalPersonsClinicBook = TypicalPatients.getTypicalClinicBook();
@@ -31,7 +31,7 @@ public class JsonSerializableClinicBookTest {
 
     @Test
     public void toModelType_invalidPersonFile_throwsIllegalValueException() throws Exception {
-        JsonSerializableClinicBook dataFromFile = JsonUtil.readJsonFile(INVALID_PERSON_FILE,
+        JsonSerializableClinicBook dataFromFile = JsonUtil.readJsonFile(INVALID_PATIENT_FILE,
                 JsonSerializableClinicBook.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
