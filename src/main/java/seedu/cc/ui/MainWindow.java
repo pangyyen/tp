@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.logic.ClinicLogic;
+import seedu.cc.logic.Logic;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.exceptions.ParseException;
@@ -28,7 +28,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
-    private ClinicLogic logic;
+    private Logic logic;
 
     // Independent Ui parts residing in this Ui container
     private PatientListPanel personListPanel;
@@ -53,7 +53,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, ClinicLogic logic) {
+    public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
