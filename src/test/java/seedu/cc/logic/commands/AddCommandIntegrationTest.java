@@ -2,7 +2,7 @@ package seedu.cc.logic.commands;
 
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.cc.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.cc.testutil.TypicalPatients.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
