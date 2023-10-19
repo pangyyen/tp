@@ -6,7 +6,8 @@ import java.util.Set;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
-import seedu.cc.model.person.Person;
+import seedu.cc.model.patient.Nric;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 import seedu.cc.model.util.SampleDataUtil;
@@ -14,14 +15,17 @@ import seedu.cc.model.util.SampleDataUtil;
 /**
  * A utility class to help with building Person objects.
  */
-public class PersonBuilder {
+public class PatientBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
+
+    public static final String DEFAULT_NRIC = "12345678";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Name name;
+    private Nric nric;
     private Phone phone;
     private Email email;
     private Address address;
@@ -30,8 +34,9 @@ public class PersonBuilder {
     /**
      * Creates a {@code PersonBuilder} with the default details.
      */
-    public PersonBuilder() {
+    public PatientBuilder() {
         name = new Name(DEFAULT_NAME);
+        nric = new Nric(DEFAULT_NRIC);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
@@ -41,8 +46,9 @@ public class PersonBuilder {
     /**
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
      */
-    public PersonBuilder(Person personToCopy) {
+    public PatientBuilder(Patient personToCopy) {
         name = personToCopy.getName();
+        nric = personToCopy.getNric();
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
@@ -52,15 +58,23 @@ public class PersonBuilder {
     /**
      * Sets the {@code Name} of the {@code Person} that we are building.
      */
-    public PersonBuilder withName(String name) {
+    public PatientBuilder withName(String name) {
         this.name = new Name(name);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Nric} of the {@code Patient} that we are building.
+     */
+    public PatientBuilder withNric(String nric) {
+        this.nric = new Nric(nric);
         return this;
     }
 
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
-    public PersonBuilder withTags(String ... tags) {
+    public PatientBuilder withTags(String ... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }
@@ -68,7 +82,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Address} of the {@code Person} that we are building.
      */
-    public PersonBuilder withAddress(String address) {
+    public PatientBuilder withAddress(String address) {
         this.address = new Address(address);
         return this;
     }
@@ -76,7 +90,7 @@ public class PersonBuilder {
     /**
      * Sets the {@code Phone} of the {@code Person} that we are building.
      */
-    public PersonBuilder withPhone(String phone) {
+    public PatientBuilder withPhone(String phone) {
         this.phone = new Phone(phone);
         return this;
     }
@@ -84,13 +98,13 @@ public class PersonBuilder {
     /**
      * Sets the {@code Email} of the {@code Person} that we are building.
      */
-    public PersonBuilder withEmail(String email) {
+    public PatientBuilder withEmail(String email) {
         this.email = new Email(email);
         return this;
     }
 
-    public Person build() {
-        return new Person(name, phone, email, address, tags);
+    public Patient build() {
+        return new Patient(name, nric, phone, email, address, tags);
     }
 
 }

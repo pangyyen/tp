@@ -9,8 +9,8 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.cc.testutil.Assert.assertThrows;
-import static seedu.cc.testutil.TypicalPersons.ALICE;
-import static seedu.cc.testutil.TypicalPersons.BOB;
+import static seedu.cc.testutil.TypicalPatients.ALICE;
+import static seedu.cc.testutil.TypicalPatients.BOB;
 
 import org.junit.jupiter.api.Test;
 

@@ -30,8 +30,8 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.cc.testutil.TypicalPersons.AMY;
-import static seedu.cc.testutil.TypicalPersons.BOB;
+import static seedu.cc.testutil.TypicalPatients.AMY;
+import static seedu.cc.testutil.TypicalPatients.BOB;
 
 import org.junit.jupiter.api.Test;
 
