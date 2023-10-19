@@ -6,6 +6,7 @@ import static seedu.cc.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.cc.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.cc.logic.commands.CommandTestUtil.NRIC_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.AMY;
@@ -60,7 +61,7 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
+        String deleteCommand = "delete-patient 9";
         assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
