@@ -8,7 +8,7 @@ import static seedu.cc.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.cc.testutil.Assert.assertThrows;
-import static seedu.cc.testutil.TypicalPersons.AMY;
+import static seedu.cc.testutil.TypicalPatients.AMY;
 
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
