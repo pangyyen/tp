@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.testutil.Assert.assertThrows;
-import static seedu.cc.testutil.TypicalPersons.ALICE;
+import static seedu.cc.testutil.TypicalPatients.ALICE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

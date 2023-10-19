@@ -25,7 +25,7 @@ import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.person.NameContainsKeywordsPredicate;
 import seedu.cc.model.person.Person;
-import seedu.cc.testutil.EditPersonDescriptorBuilder;
+import seedu.cc.testutil.EditPatientDescriptorBuilder;
 import seedu.cc.testutil.PersonBuilder;
 import seedu.cc.testutil.PersonUtil;
 
@@ -56,7 +56,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
+        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder(person).build();
         EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
                 + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
