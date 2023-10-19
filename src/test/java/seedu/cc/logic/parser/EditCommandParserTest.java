@@ -28,16 +28,14 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.cc.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.cc.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.cc.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.cc.testutil.TypicalIndexes.*;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.EditCommand;
-import seedu.cc.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
@@ -105,11 +103,11 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
+        Index targetIndex = INDEX_SECOND_PATIENT;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + TAG_DESC_HUSBAND
                 + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + NAME_DESC_AMY + TAG_DESC_FRIEND;
 
-        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY)
+        EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
@@ -119,10 +117,10 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_PATIENT;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY;
 
-        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder().withPhone(VALID_PHONE_BOB)
+        EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withPhone(VALID_PHONE_BOB)
                 .withEmail(VALID_EMAIL_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
@@ -132,9 +130,9 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         // name
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_PATIENT;
         String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
@@ -169,7 +167,7 @@ public class EditCommandParserTest {
         // AddCommandParserTest#parse_repeatedNonTagValue_failure()
 
         // valid followed by invalid
-        Index targetIndex = INDEX_FIRST_PERSON;
+        Index targetIndex = INDEX_FIRST_PATIENT;
         String userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + PHONE_DESC_BOB;
 
         assertParseFailure(parser, userInput, Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE));
@@ -197,10 +195,10 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_PERSON;
+        Index targetIndex = INDEX_THIRD_PATIENT;
         String userInput = targetIndex.getOneBased() + TAG_EMPTY;
 
-        EditPersonDescriptor descriptor = new EditPatientDescriptorBuilder().withTags().build();
+        EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withTags().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -5,10 +5,9 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.cc.commons.exceptions.DataLoadingException;
+import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.UserPrefs;
-import seedu.cc.model.ReadOnlyClinicBook;
-
 
 /**
  * API of the Storage component
