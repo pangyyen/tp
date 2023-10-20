@@ -172,7 +172,7 @@ public class EditCommand extends Command {
             return Optional.ofNullable(name);
         }
         public void setNric(Nric nric) {
-            this.name = name;
+            this.nric = nric;
         }
 
         public Optional<Nric> getNric() {

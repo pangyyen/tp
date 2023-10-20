@@ -11,15 +11,16 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.cc.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+//import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
-import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
 import seedu.cc.testutil.EditPatientDescriptorBuilder;
 
 /**
@@ -66,10 +67,10 @@ public class CommandTestUtil {
     public static final EditCommand.EditPatientDescriptor DESC_BOB;
 
     static {
-        DESC_AMY = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY)
+        DESC_AMY = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY).withNric(VALID_NRIC_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
                 .withTags(VALID_TAG_FRIEND).build();
-        DESC_BOB = new EditPatientDescriptorBuilder().withName(VALID_NAME_BOB)
+        DESC_BOB = new EditPatientDescriptorBuilder().withName(VALID_NAME_BOB).withNric(VALID_NRIC_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
     }
@@ -80,7 +81,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -95,7 +96,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -116,6 +117,7 @@ public class CommandTestUtil {
         assertEquals(expectedClinicBook, actualModel.getClinicBook());
         assertEquals(expectedFilteredList, actualModel.getFilteredPatientList());
     }
+
     /**
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
@@ -125,7 +127,8 @@ public class CommandTestUtil {
 
         Patient person = model.getFilteredPatientList().get(targetIndex.getZeroBased());
         final String[] splitName = person.getName().fullName.split("\\s+");
-        model.updateFilteredPatientList(new PatientNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredPatientList(new PatientNameContainsKeywordsPredicate(Collections
+                .singletonList(splitName[0])));
 
         assertEquals(1, model.getFilteredPatientList().size());
     }

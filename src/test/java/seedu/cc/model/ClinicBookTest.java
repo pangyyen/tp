@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.testutil.PatientBuilder;

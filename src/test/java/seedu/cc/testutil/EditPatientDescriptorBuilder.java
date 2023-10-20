@@ -5,11 +5,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
+import seedu.cc.model.patient.Nric;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
-import seedu.cc.model.patient.Nric;
-import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 
@@ -18,7 +18,7 @@ import seedu.cc.model.tag.Tag;
  */
 public class EditPatientDescriptorBuilder {
 
-    private EditPatientDescriptor descriptor;
+    private final EditPatientDescriptor descriptor;
 
     public EditPatientDescriptorBuilder() {
         descriptor = new EditPatientDescriptor();
@@ -34,6 +34,7 @@ public class EditPatientDescriptorBuilder {
     public EditPatientDescriptorBuilder(Patient person) {
         descriptor = new EditPatientDescriptor();
         descriptor.setName(person.getName());
+        descriptor.setNric(person.getNric());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());

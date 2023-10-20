@@ -3,11 +3,11 @@ package seedu.cc.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.cc.model.patient.Nric;
+import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
-import seedu.cc.model.patient.Nric;
-import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 import seedu.cc.model.util.SampleDataUtil;
@@ -74,7 +74,7 @@ public class PatientBuilder {
     /**
      * Parses the {@code tags} into a {@code Set<Tag>} and set it to the {@code Person} that we are building.
      */
-    public PatientBuilder withTags(String ... tags) {
+    public PatientBuilder withTags(String... tags) {
         this.tags = SampleDataUtil.getTagSet(tags);
         return this;
     }

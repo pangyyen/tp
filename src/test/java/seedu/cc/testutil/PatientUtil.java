@@ -1,18 +1,18 @@
 package seedu.cc.testutil;
 
-import java.util.Set;
-
-import seedu.cc.logic.commands.AddCommand;
-import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
-import seedu.cc.model.patient.Patient;
-import seedu.cc.model.tag.Tag;
-
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
+
+import java.util.Set;
+
+import seedu.cc.logic.commands.AddCommand;
+import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
+import seedu.cc.model.patient.Patient;
+import seedu.cc.model.tag.Tag;
 
 /**
  * A utility class for Patient.
@@ -37,7 +37,7 @@ public class PatientUtil {
         sb.append(PREFIX_EMAIL + patient.getEmail().value + " ");
         sb.append(PREFIX_ADDRESS + patient.getAddress().value + " ");
         patient.getTags().stream().forEach(
-            s -> sb.append(PREFIX_TAG + s.tagName + " ")
+                s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }
@@ -48,6 +48,7 @@ public class PatientUtil {
     public static String getEditPatientDescriptorDetails(EditPatientDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
         descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
+        descriptor.getNric().ifPresent(nric -> sb.append(PREFIX_NRIC).append(nric.value).append(" "));
         descriptor.getPhone().ifPresent(phone -> sb.append(PREFIX_PHONE).append(phone.value).append(" "));
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getAddress().ifPresent(address -> sb.append(PREFIX_ADDRESS).append(address.value).append(" "));

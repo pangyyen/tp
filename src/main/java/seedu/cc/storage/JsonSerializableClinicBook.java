@@ -21,14 +21,14 @@ class JsonSerializableClinicBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Patient list contains duplicate person(s).";
 
-    private final List<JsonAdaptedPatient> persons = new ArrayList<>();
+    private final List<JsonAdaptedPatient> patients = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableClinicBook} with the given persons.
      */
     @JsonCreator
     public JsonSerializableClinicBook(@JsonProperty("patients") List<JsonAdaptedPatient> patients) {
-        this.persons.addAll(patients);
+        this.patients.addAll(patients);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableClinicBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableClinicBook(ReadOnlyClinicBook source) {
-        persons.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
+        patients.addAll(source.getPatientList().stream().map(JsonAdaptedPatient::new).collect(Collectors.toList()));
     }
 
     /**
@@ -46,8 +46,8 @@ class JsonSerializableClinicBook {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public ClinicBook toModelType() throws IllegalValueException {
-        ClinicBook clinicBook = new ClinicBook();
-        for (JsonAdaptedPatient jsonAdaptedPatient : persons) {
+        ClinicBook clinicBook = new ClinicBook( );
+        for (JsonAdaptedPatient jsonAdaptedPatient : patients) {
             Patient patient = jsonAdaptedPatient.toModelType();
             if (clinicBook.hasPatient(patient)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
