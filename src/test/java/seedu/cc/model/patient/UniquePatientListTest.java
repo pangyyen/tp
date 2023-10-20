@@ -16,7 +16,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
-import seedu.cc.testutil.TypicalPatients;
 
 public class UniquePatientListTest {
 
