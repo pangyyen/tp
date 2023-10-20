@@ -8,15 +8,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.logic.commands.AddPatientCommand;
-import seedu.cc.logic.commands.ClearPatientCommand;
-import seedu.cc.logic.commands.ClinicCommand;
-import seedu.cc.logic.commands.DeletePatientCommand;
-import seedu.cc.logic.commands.EditPatientCommand;
-import seedu.cc.logic.commands.ExitClinicCommand;
-import seedu.cc.logic.commands.FindPatientCommand;
-import seedu.cc.logic.commands.HelpClinicCommand;
-import seedu.cc.logic.commands.ListPatientCommand;
+import seedu.cc.logic.commands.AddCommand;
+import seedu.cc.logic.commands.ClearCommand;
+import seedu.cc.logic.commands.Command;
+import seedu.cc.logic.commands.DeleteCommand;
+import seedu.cc.logic.commands.EditCommand;
+import seedu.cc.logic.commands.ExitCommand;
+import seedu.cc.logic.commands.FindCommand;
+import seedu.cc.logic.commands.HelpCommand;
+import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
 /**
@@ -37,10 +37,10 @@ public class ClinicBookParser {
      * @return the command based on the user input
      * @throws ParseException if the user input does not conform the expected format
      */
-    public ClinicCommand parseCommand(String userInput) throws ParseException {
+    public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpClinicCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
         final String commandWord = matcher.group("commandWord");
@@ -53,29 +53,29 @@ public class ClinicBookParser {
 
         switch (commandWord) {
 
-        case AddPatientCommand.COMMAND_WORD:
-            return new AddPatientCommandParser().parse(arguments);
+        case AddCommand.COMMAND_WORD:
+            return new AddCommandParser().parse(arguments);
 
-        case EditPatientCommand.COMMAND_WORD:
-            return new EditPatientCommandParser().parse(arguments);
+        case EditCommand.COMMAND_WORD:
+            return new EditCommandParser().parse(arguments);
 
-        case DeletePatientCommand.COMMAND_WORD:
-            return new DeletePatientCommandParser().parse(arguments);
+        case DeleteCommand.COMMAND_WORD:
+            return new DeleteCommandParser().parse(arguments);
 
-        case ClearPatientCommand.COMMAND_WORD:
-            return new ClearPatientCommand();
+        case ClearCommand.COMMAND_WORD:
+            return new ClearCommand();
 
-        case FindPatientCommand.COMMAND_WORD:
-            return new FindPatientCommandParser().parse(arguments);
+        case FindCommand.COMMAND_WORD:
+            return new FindCommandParser().parse(arguments);
 
-        case ListPatientCommand.COMMAND_WORD:
-            return new ListPatientCommand();
+        case ListCommand.COMMAND_WORD:
+            return new ListCommand();
 
-        case ExitClinicCommand.COMMAND_WORD:
-            return new ExitClinicCommand();
+        case ExitCommand.COMMAND_WORD:
+            return new ExitCommand();
 
-        case HelpClinicCommand.COMMAND_WORD:
-            return new HelpClinicCommand();
+        case HelpCommand.COMMAND_WORD:
+            return new HelpCommand();
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
