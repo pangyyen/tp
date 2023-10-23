@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -109,6 +110,13 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPatient);
 
         clinicBook.setPatient(target, editedPatient);
+    }
+
+    //=========== Medical History Operations =============================================================
+    @Override
+    public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEvent);
+        clinicBook.addMedicalHistoryEvent(patient, medicalHistoryEvent);
     }
 
     //=========== Filtered Person List Accessors =============================================================

@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
 
@@ -96,6 +97,16 @@ public class UniquePatientList implements Iterable<Patient> {
         }
 
         internalList.setAll(patients);
+    }
+
+    public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEvent);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.addMedicalHistoryEvent(medicalHistoryEvent);
+        internalList.set(index, patient);
     }
 
     /**

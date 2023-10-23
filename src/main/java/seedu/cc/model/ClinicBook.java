@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
 
@@ -94,6 +95,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
     public void removePatient(Patient key) {
         patients.remove(key);
     }
+
+    public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+        patients.addMedicalHistoryEvent(patient, medicalHistoryEvent);
+    }
+
 
     //// util methods
 

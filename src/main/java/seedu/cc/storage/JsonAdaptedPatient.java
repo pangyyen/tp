@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
+import seedu.cc.model.medicalhistory.MedicalHistory;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
@@ -31,6 +33,7 @@ class JsonAdaptedPatient {
     private final String phone;
     private final String email;
     private final String address;
+    private final List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -40,12 +43,16 @@ class JsonAdaptedPatient {
     public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("nric") String nric,
                               @JsonProperty("phone") String phone, @JsonProperty("email") String email,
                               @JsonProperty("address") String address,
+                              @JsonProperty("medicalHistory") List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents,
                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.nric = nric;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        if (medicalHistoryEvents != null) {
+            this.medicalHistoryEvents.addAll(medicalHistoryEvents);
+        }
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -60,6 +67,9 @@ class JsonAdaptedPatient {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        medicalHistoryEvents.addAll(source.getMedicalHistory().getMedicalHistoryEvents().stream()
+                .map(JsonAdaptedMedicalHistoryEvent::new)
+                .collect(Collectors.toList()));
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -75,6 +85,14 @@ class JsonAdaptedPatient {
         for (JsonAdaptedTag tag : tags) {
             patientTags.add(tag.toModelType());
         }
+
+        final MedicalHistory modelMedicalHistory = new MedicalHistory();
+        for (JsonAdaptedMedicalHistoryEvent event : medicalHistoryEvents) {
+            modelMedicalHistory.addMedicalHistoryEvent(event.toModelType());
+        }
+
+
+
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -116,8 +134,10 @@ class JsonAdaptedPatient {
         }
         final Address modelAddress = new Address(address);
 
+
+
         final Set<Tag> modelTags = new HashSet<>(patientTags);
-        return new Patient(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelTags);
+        return new Patient(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelMedicalHistory, modelTags);
     }
 
 }

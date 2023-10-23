@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -85,4 +86,11 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
+
+    /**
+     * Adds a medical history event to the given patient.
+     * @param patient patient to add medical history event to.
+     * @param medicalHistoryEvent medical history event to be added.
+     */
+    void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
 }
