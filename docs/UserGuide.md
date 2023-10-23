@@ -87,3 +87,22 @@ Message: "Invalid index. Please enter a valid index."
 
 ---
 
+## 5. Add Medical History
+
+**What it does:**
+Adds a medical history to a patient record.
+
+**Command Format:**
+`add-medical-history INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**
+Message: "Successfully added medical history for patient: [Medical History Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
