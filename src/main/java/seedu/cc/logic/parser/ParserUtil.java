@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
@@ -164,5 +165,18 @@ public class ParserUtil {
         String trimmedTreatment = treatment.trim();
 
         return new Treatment(trimmedTreatment);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+
+        return new Date(trimmedDate);
     }
 }

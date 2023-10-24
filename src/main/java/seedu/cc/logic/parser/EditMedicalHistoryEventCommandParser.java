@@ -70,7 +70,7 @@ public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalH
         }
 
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            editMedicalHistoryEventDescriptor.setDate(LocalDateTime.parse(argMultimap
+            editMedicalHistoryEventDescriptor.setDate(ParserUtil.parseDate(argMultimap
                     .getValue(PREFIX_DATE).get()));
         }
 

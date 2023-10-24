@@ -6,7 +6,6 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +17,7 @@ import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
+import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
@@ -68,7 +68,7 @@ public class EditMedicalHistoryEventCommand extends Command {
         MedicalCondition updatedMedicalCondition = editMedHistEventDescriptor.getMedicalCondition()
                 .orElse(eventToEdit.getMedicalCondition());
 
-        LocalDateTime updatedDate = editMedHistEventDescriptor.getDate()
+        Date updatedDate = editMedHistEventDescriptor.getDate()
                 .orElse(eventToEdit.getDate());
 
         Treatment updatedTreatment = editMedHistEventDescriptor.getTreatment()
@@ -116,7 +116,7 @@ public class EditMedicalHistoryEventCommand extends Command {
      * corresponding field value of the medical history.
      */
     public static class EditMedicalHistoryEventDescriptor {
-        private LocalDateTime date;
+        private Date date;
         private Treatment treatment;
         private MedicalCondition medicalCondition;
 
@@ -136,11 +136,11 @@ public class EditMedicalHistoryEventCommand extends Command {
             return CollectionUtil.isAnyNonNull(date, medicalCondition, treatment);
         }
 
-        public Optional<LocalDateTime> getDate() {
+        public Optional<Date> getDate() {
             return Optional.ofNullable(date);
         }
 
-        public void setDate(LocalDateTime date) {
+        public void setDate(Date date) {
             this.date = date;
         }
 

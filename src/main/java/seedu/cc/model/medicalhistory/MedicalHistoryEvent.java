@@ -1,7 +1,5 @@
 package seedu.cc.model.medicalhistory;
 
-import java.time.LocalDateTime;
-
 /**
  * Represents a patient's medical history event.
  */
@@ -9,7 +7,7 @@ public class MedicalHistoryEvent {
 
     private final MedicalCondition medicalCondition;
     private final Treatment treatment;
-    private final LocalDateTime date;
+    private final Date date;
 
     /**
      * Creates a MedicalHistoryEvent with the specified medical condition, treatment and date.
@@ -17,7 +15,7 @@ public class MedicalHistoryEvent {
      * @param treatment
      * @param date
      */
-    public MedicalHistoryEvent(MedicalCondition medicalCondition, Treatment treatment, LocalDateTime date) {
+    public MedicalHistoryEvent(MedicalCondition medicalCondition, Treatment treatment, Date date) {
         this.medicalCondition = medicalCondition;
         this.treatment = treatment;
         this.date = date;
@@ -31,7 +29,7 @@ public class MedicalHistoryEvent {
         return treatment;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 

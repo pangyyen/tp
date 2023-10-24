@@ -1,11 +1,17 @@
 package seedu.cc.model.util;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.medicalhistory.MedicalCondition;
+import seedu.cc.model.medicalhistory.MedicalHistory;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
@@ -18,6 +24,15 @@ import seedu.cc.model.tag.Tag;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+
+    public static MedicalHistory getSampleMedicalHistory() {
+        MedicalHistory sampleMedicalHistory = new MedicalHistory();
+        sampleMedicalHistory
+                .addMedicalHistoryEvent(new MedicalHistoryEvent(new MedicalCondition("Insomia"),
+                        new Treatment("Medication"), new Date("2023-10-23T14:30:00")));
+        return sampleMedicalHistory;
+    }
+
     public static Patient[] getSamplePatients() {
         return new Patient[]{
             new Patient(new Name("Alex Yeoh"), new Nric("S5323891B"), new Phone("87438807"),

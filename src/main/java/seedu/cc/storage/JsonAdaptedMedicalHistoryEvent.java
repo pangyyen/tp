@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
+import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
@@ -64,6 +65,8 @@ public class JsonAdaptedMedicalHistoryEvent {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Date"));
         }
 
-        return new MedicalHistoryEvent(modelMedicalCondition, modelTreatment, LocalDateTime.parse(date));
+        Date modelDate = new Date(this.date);
+
+        return new MedicalHistoryEvent(modelMedicalCondition, modelTreatment, modelDate);
     }
 }
