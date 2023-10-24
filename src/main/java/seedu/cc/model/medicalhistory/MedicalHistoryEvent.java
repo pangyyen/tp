@@ -35,5 +35,22 @@ public class MedicalHistoryEvent {
                 ", date=" + date +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof MedicalHistoryEvent)) {
+            return false;
+        }
+
+        MedicalHistoryEvent otherMedicalHistoryEvent = (MedicalHistoryEvent) other;
+        return medicalCondition.equals(otherMedicalHistoryEvent.medicalCondition)
+                && treatment.equals(otherMedicalHistoryEvent.treatment)
+                && date.equals(otherMedicalHistoryEvent.date);
+    }
 }
 

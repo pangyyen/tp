@@ -2,6 +2,8 @@ package seedu.cc.model.medicalhistory;
 
 import java.util.ArrayList;
 
+import seedu.cc.model.person.Person;
+
 public class MedicalHistory {
 
     private final ArrayList<MedicalHistoryEvent> medicalHistoryEvents;
@@ -26,11 +28,22 @@ public class MedicalHistory {
         }
     }
 
+    public void deleteMedicalHistoryEvent(MedicalHistoryEvent eventToDelete) {
+        int index = medicalHistoryEvents.indexOf(eventToDelete);
+        if (index >= 0 && index < medicalHistoryEvents.size()) {
+            medicalHistoryEvents.remove(index);
+        }
+    }
+
+    public boolean hasMedicalHistoryEvent(MedicalHistoryEvent event) {
+        return medicalHistoryEvents.contains(event);
+    }
+
     public void removeMedicalHistoryEvent(int index) {
         if (index >= 0 && index < medicalHistoryEvents.size()) {
             medicalHistoryEvents.remove(index);
         }
     }
 
-    // You can add other methods as needed for your specific application
+
 }

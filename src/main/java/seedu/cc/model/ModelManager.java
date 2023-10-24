@@ -136,6 +136,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
+        requireAllNonNull(patient, medicalHistoryEventToDelete);
+        clinicBook.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
+    }
+
+    @Override
     public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
         return filteredMedicalHistoryEvents;
     }

@@ -72,14 +72,20 @@ public class MedicalHistoryEventList implements Iterable<MedicalHistoryEvent> {
     }
 
     /**
-     * Removes the equivalent medical history event from the list.
+     * Deletes the given medical history event.
      * The event must exist in the list.
      */
-    public void remove(MedicalHistoryEvent toRemove) {
-        if (!internalList.remove(toRemove)) {
+    public void delete(MedicalHistoryEvent toDelete, Patient patient) {
+        requireAllNonNull(toDelete, patient);
+
+        if (!patient.equals(currentPatient)) {
+            return;
+        }
+
+        if (!internalList.remove(toDelete)) {
             throw new MedicalHistoryEventNotFoundException();
         }
-    }
+}
 
 
     public void listMedicalHistoryEvents(Patient patient) {

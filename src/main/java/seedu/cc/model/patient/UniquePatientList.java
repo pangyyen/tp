@@ -8,7 +8,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.expections.MedicalHistoryEventNotFoundException;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
 
@@ -116,7 +118,19 @@ public class UniquePatientList implements Iterable<Patient> {
         if (index == -1) {
             throw new PatientNotFoundException();
         }
+
         patient.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        internalList.set(index, patient);
+    }
+
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete){
+        requireAllNonNull(patient, medicalHistoryEventToDelete);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+
+        patient.deleteMedicalHistoryEvent(medicalHistoryEventToDelete);
         internalList.set(index, patient);
     }
 

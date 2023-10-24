@@ -83,6 +83,10 @@ public class EditMedicalHistoryEventCommand extends Command {
         // Create a new medical history event with the updated details
         MedicalHistoryEvent editedEvent = createEditedMedicalHistoryEvent(eventToEdit, editMedHistEventDescriptor);
 
+        if (!patientToEditMedicalHistoryEvent.hasMedicalHistoryEvent(eventToEdit)) {
+            throw new CommandException("This medical history event does not exist for this patient");
+        }
+
         // Update the model with the edited event
         model.setMedicalHistoryEvent(patientToEditMedicalHistoryEvent, eventToEdit, editedEvent);
 

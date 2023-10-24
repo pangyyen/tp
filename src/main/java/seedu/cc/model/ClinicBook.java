@@ -109,6 +109,10 @@ public class ClinicBook implements ReadOnlyClinicBook {
         medicalHistoryEvents.listMedicalHistoryEvents(patient);
     }
 
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
+        patients.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
+        medicalHistoryEvents.delete(medicalHistoryEventToDelete, patient);
+    }
 
     public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
                                        MedicalHistoryEvent editedMedicalHistoryEvent) {

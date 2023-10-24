@@ -100,4 +100,6 @@ public interface Model {
 
     void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
                                  MedicalHistoryEvent editedMedicalHistoryEvent);
+
+    void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete);
 }
