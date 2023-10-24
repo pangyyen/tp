@@ -110,6 +110,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
     }
 
 
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                       MedicalHistoryEvent editedMedicalHistoryEvent) {
+        patients.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        medicalHistoryEvents.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent, patient);
+    }
     //// util methods
 
     @Override

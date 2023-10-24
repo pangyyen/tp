@@ -124,6 +124,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit, MedicalHistoryEvent editedMedicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        clinicBook.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+    }
+
+    @Override
     public void listMedicalHistoryEvents(Patient patient) {
         requireAllNonNull(patient);
         clinicBook.listMedicalHistoryEvents(patient);

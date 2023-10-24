@@ -7,7 +7,7 @@ import seedu.cc.logic.commands.DeleteCommand;
 import seedu.cc.logic.commands.medhisteventcommands.ListMedicalHistoryEventCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
-public class ListMedicalHistoryEventsCommandParser {
+public class ListMedicalHistoryEventsCommandParser implements Parser<ListMedicalHistoryEventCommand>{
 
     public ListMedicalHistoryEventCommand parse(String args) throws ParseException {
         try {

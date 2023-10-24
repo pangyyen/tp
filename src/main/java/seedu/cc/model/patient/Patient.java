@@ -72,6 +72,10 @@ public class Patient extends Person {
         this.medicalHistory.addMedicalHistoryEvent(event);
     }
 
+    public void setMedicalHistoryEvent(MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent) {
+        this.medicalHistory.setMedicalHistoryEvent(eventToEdit, editedEvent);
+    }
+
     public boolean isSamePerson(Patient otherPatient) {
         return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric());
     }

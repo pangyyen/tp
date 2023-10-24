@@ -109,6 +109,17 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.set(index, patient);
     }
 
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                       MedicalHistoryEvent editedMedicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        internalList.set(index, patient);
+    }
+
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
      */

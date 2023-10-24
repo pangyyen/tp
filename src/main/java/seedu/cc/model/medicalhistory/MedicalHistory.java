@@ -19,9 +19,10 @@ public class MedicalHistory {
         return new ArrayList<>(medicalHistoryEvents);
     }
 
-    public void updateMedicalHistoryEvent(int index, MedicalHistoryEvent updatedEvent) {
+    public void setMedicalHistoryEvent(MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent) {
+        int index = medicalHistoryEvents.indexOf(eventToEdit);
         if (index >= 0 && index < medicalHistoryEvents.size()) {
-            medicalHistoryEvents.set(index, updatedEvent);
+            medicalHistoryEvents.set(index, editedEvent);
         }
     }
 

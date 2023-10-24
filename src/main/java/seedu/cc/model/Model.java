@@ -97,4 +97,7 @@ public interface Model {
     void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
 
     void listMedicalHistoryEvents(Patient patient);
+
+    void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                 MedicalHistoryEvent editedMedicalHistoryEvent);
 }
