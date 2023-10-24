@@ -12,6 +12,7 @@ public class MedicalHistory {
 
     public void addMedicalHistoryEvent(MedicalHistoryEvent event) {
         medicalHistoryEvents.add(event);
+
     }
 
     public ArrayList<MedicalHistoryEvent> getMedicalHistoryEvents() {

@@ -8,6 +8,7 @@ import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -33,6 +34,7 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of patients */
     ObservableList<Patient> getFilteredPatientList();
 
+    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
     /**
      * Returns the user prefs' address book file path.
      */

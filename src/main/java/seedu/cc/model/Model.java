@@ -15,6 +15,7 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Patient> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -81,6 +82,7 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered patient list */
     ObservableList<Patient> getFilteredPatientList();
 
+    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
     /**
      * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
@@ -93,4 +95,6 @@ public interface Model {
      * @param medicalHistoryEvent medical history event to be added.
      */
     void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
+
+    void listMedicalHistoryEvents(Patient patient);
 }

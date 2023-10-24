@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.MedicalHistoryEventList;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
 
@@ -18,6 +19,8 @@ public class ClinicBook implements ReadOnlyClinicBook {
 
     private final UniquePatientList patients;
 
+    private final MedicalHistoryEventList medicalHistoryEvents;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -27,6 +30,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
      */
     {
         patients = new UniquePatientList();
+        medicalHistoryEvents = new MedicalHistoryEventList();
     }
 
     public ClinicBook() {}
@@ -98,6 +102,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
 
     public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
         patients.addMedicalHistoryEvent(patient, medicalHistoryEvent);
+        medicalHistoryEvents.add(medicalHistoryEvent, patient);
+    }
+
+    public void listMedicalHistoryEvents(Patient patient) {
+        medicalHistoryEvents.listMedicalHistoryEvents(patient);
     }
 
 
@@ -113,6 +122,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
     @Override
     public ObservableList<Patient> getPatientList() {
         return patients.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<MedicalHistoryEvent> getMedicalHistoryEventList() {
+        return medicalHistoryEvents.asUnmodifiableObservableList();
     }
 
     @Override

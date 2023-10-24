@@ -87,4 +87,8 @@ public class Patient extends Person {
     public MedicalHistory getMedicalHistory() {
         return this.medicalHistory;
     }
+
+    public ArrayList<MedicalHistoryEvent> getMedicalHistoryEvents() {
+        return this.medicalHistory.getMedicalHistoryEvents();
+    }
 }
