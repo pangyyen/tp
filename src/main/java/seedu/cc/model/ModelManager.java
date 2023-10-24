@@ -11,7 +11,6 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.model.medicalhistory.MedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -48,14 +47,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.newUserPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return newUserPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return newUserPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.newUserPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -83,13 +82,13 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setClinicBook(ReadOnlyClinicBook clinicBook) {
-        this.clinicBook.resetData(clinicBook);
+    public ReadOnlyClinicBook getClinicBook() {
+        return this.clinicBook;
     }
 
     @Override
-    public ReadOnlyClinicBook getClinicBook() {
-        return this.clinicBook;
+    public void setClinicBook(ReadOnlyClinicBook clinicBook) {
+        this.clinicBook.resetData(clinicBook);
     }
 
     @Override
@@ -124,7 +123,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit, MedicalHistoryEvent editedMedicalHistoryEvent) {
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                       MedicalHistoryEvent editedMedicalHistoryEvent) {
         requireAllNonNull(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
         clinicBook.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
     }

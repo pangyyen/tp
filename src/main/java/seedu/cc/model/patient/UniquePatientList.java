@@ -8,9 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
-import seedu.cc.model.medicalhistory.expections.MedicalHistoryEventNotFoundException;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
 
@@ -101,6 +99,11 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.setAll(patients);
     }
 
+    /**
+     * Adds a medical history event to the specified patient.
+     * @param patient
+     * @param medicalHistoryEvent
+     */
     public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
         requireAllNonNull(patient, medicalHistoryEvent);
         int index = internalList.indexOf(patient);
@@ -111,6 +114,12 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.set(index, patient);
     }
 
+    /**
+     * Sets the MedicalHistoryEvent at the specified index to the edited MedicalHistoryEvent.
+     * @param patient
+     * @param medicalHistoryEventToEdit
+     * @param editedMedicalHistoryEvent
+     */
     public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
                                        MedicalHistoryEvent editedMedicalHistoryEvent) {
         requireAllNonNull(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
@@ -123,7 +132,12 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.set(index, patient);
     }
 
-    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete){
+    /**
+     * Lists all medical history events associated with a specific patient.
+     *
+     * @param patient The patient for whom to list the medical history events.
+     */
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
         requireAllNonNull(patient, medicalHistoryEventToDelete);
         int index = internalList.indexOf(patient);
         if (index == -1) {

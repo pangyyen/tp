@@ -22,6 +22,14 @@ import seedu.cc.model.medicalhistory.Treatment;
 public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEventCommand> {
 
     /**
+     * Returns true if all of the prefixes contain non-empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    }
+
+    /**
      * Parses the given {@code String} of arguments in the context of the AddMedicalHistoryEventCommand
      * and returns an AddMedicalHistoryEventCommand object for execution.
      *
@@ -42,25 +50,18 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
 
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT, PREFIX_DATE)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddMedicalHistoryEventCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddMedicalHistoryEventCommand.MESSAGE_USAGE));
         }
 
-        MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap.getValue(PREFIX_MEDICAL_CONDITION).get());
+        MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap
+                .getValue(PREFIX_MEDICAL_CONDITION).get());
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
         String date = argMultimap.getValue(PREFIX_DATE).get();
-
 
 
         MedicalHistoryEvent event = new MedicalHistoryEvent(medicalCondition, treatment, LocalDateTime.parse(date));
 
         return new AddMedicalHistoryEventCommand(event, index);
-    }
-
-    /**
-     * Returns true if all of the prefixes contain non-empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

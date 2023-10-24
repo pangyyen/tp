@@ -1,5 +1,8 @@
 package seedu.cc.model.medicalhistory;
 
+/**
+ * Represents a patient's treatment.
+ */
 public class Treatment {
     public final String value;
 

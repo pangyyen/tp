@@ -12,7 +12,7 @@ import javafx.collections.ObservableList;
 import seedu.cc.model.medicalhistory.expections.DuplicateMedicalHistoryEventException;
 import seedu.cc.model.medicalhistory.expections.MedicalHistoryEventNotFoundException;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.patient.exceptions.PatientNotFoundException;
+
 
 /**
  * A list of medical history events that enforces uniqueness between its elements and does not allow nulls.
@@ -85,9 +85,13 @@ public class MedicalHistoryEventList implements Iterable<MedicalHistoryEvent> {
         if (!internalList.remove(toDelete)) {
             throw new MedicalHistoryEventNotFoundException();
         }
-}
+    }
 
-
+    /**
+     * Lists all medical history events associated with a specific patient.
+     *
+     * @param patient The patient for whom to list the medical history events.
+     */
     public void listMedicalHistoryEvents(Patient patient) {
         requireNonNull(patient);
         currentPatient = patient;

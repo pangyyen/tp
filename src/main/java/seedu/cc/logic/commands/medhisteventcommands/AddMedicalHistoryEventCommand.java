@@ -1,7 +1,6 @@
 package seedu.cc.logic.commands.medhisteventcommands;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
@@ -24,7 +23,8 @@ public class AddMedicalHistoryEventCommand extends Command {
 
     public static final String COMMAND_WORD = "add-medical-history";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a medical history event to the patient's medical history.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a medical history event to the patient's "
+            + "medical history.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_DATE + "DATE "
             + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION "

@@ -36,6 +36,17 @@ public class Patient extends Person {
         this.medicalHistory = new MedicalHistory();
     }
 
+    /**
+     * Constructor for Patient with MedicalHistory in Storage.
+     *
+     * @param name
+     * @param nric
+     * @param phone
+     * @param email
+     * @param address
+     * @param medicalHistory
+     * @param tags
+     */
     public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
                    MedicalHistory medicalHistory, Set<Tag> tags) {
         super(name, phone, email, address, tags);

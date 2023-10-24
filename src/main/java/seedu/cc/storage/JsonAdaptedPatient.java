@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.medicalhistory.MedicalHistory;
-import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;

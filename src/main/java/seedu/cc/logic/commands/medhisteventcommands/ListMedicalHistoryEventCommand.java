@@ -10,9 +10,11 @@ import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
-import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
+/**
+ * Lists all medical history events of a patient.
+ */
 public class ListMedicalHistoryEventCommand extends Command {
     public static final String COMMAND_WORD = "list-medical-history";
 

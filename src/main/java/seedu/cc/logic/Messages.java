@@ -19,8 +19,8 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
 
-    public static final String MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX = "The medical history event index "
-            + "provided is invalid";
+    public static final String MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX = "The medical history event "
+            + "index provided is invalid";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

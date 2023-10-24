@@ -9,9 +9,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
-import seedu.cc.model.patient.Patient;
 
-public class MedicalHistoryPanel extends UiPart<Region>{
+/**
+ * Panel containing the medical history.
+ */
+public class MedicalHistoryPanel extends UiPart<Region> {
     private static final String FXML = "MedicalHistoryPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PatientListPanel.class);
 
@@ -24,7 +26,8 @@ public class MedicalHistoryPanel extends UiPart<Region>{
     public MedicalHistoryPanel(ObservableList<MedicalHistoryEvent> medicalHistory) {
         super(FXML);
         medicalHistoryEventListView.setItems(medicalHistory);
-        medicalHistoryEventListView.setCellFactory(listView -> new MedicalHistoryPanel.MedicalHistoryEventListViewCell());
+        medicalHistoryEventListView.setCellFactory(listView -> new MedicalHistoryPanel
+                .MedicalHistoryEventListViewCell());
     }
 
     /**

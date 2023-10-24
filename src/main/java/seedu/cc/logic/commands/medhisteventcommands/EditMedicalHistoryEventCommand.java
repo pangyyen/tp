@@ -1,12 +1,10 @@
 package seedu.cc.logic.commands.medhisteventcommands;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
-import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -50,13 +48,33 @@ public class EditMedicalHistoryEventCommand extends Command {
     private final EditMedicalHistoryEventDescriptor editMedHistEventDescriptor;
 
     /**
-     * @param patientIndex                    of the medical history event in the filtered medical history event list to edit
+     * @param patientIndex               of the medical history event in the filtered medical history event list to edit
      * @param editMedHistEventDescriptor details to edit the medical history event with
      */
-    public EditMedicalHistoryEventCommand(Index eventIndex, Index patientIndex, EditMedicalHistoryEventDescriptor editMedHistEventDescriptor) {
+    public EditMedicalHistoryEventCommand(Index eventIndex, Index patientIndex,
+                                          EditMedicalHistoryEventDescriptor editMedHistEventDescriptor) {
         this.eventIndex = eventIndex;
         this.patientIndex = patientIndex;
         this.editMedHistEventDescriptor = editMedHistEventDescriptor;
+    }
+
+    /**
+     * Creates and returns a new MedicalHistoryEvent with the details of the eventToEdit edited with
+     * editMedHistEventDescriptor.
+     */
+    private static MedicalHistoryEvent createEditedMedicalHistoryEvent(
+            MedicalHistoryEvent eventToEdit, EditMedicalHistoryEventDescriptor editMedHistEventDescriptor) {
+
+        MedicalCondition updatedMedicalCondition = editMedHistEventDescriptor.getMedicalCondition()
+                .orElse(eventToEdit.getMedicalCondition());
+
+        LocalDateTime updatedDate = editMedHistEventDescriptor.getDate()
+                .orElse(eventToEdit.getDate());
+
+        Treatment updatedTreatment = editMedHistEventDescriptor.getTreatment()
+                .orElse(eventToEdit.getTreatment());
+
+        return new MedicalHistoryEvent(updatedMedicalCondition, updatedTreatment, updatedDate);
     }
 
     @Override
@@ -93,31 +111,17 @@ public class EditMedicalHistoryEventCommand extends Command {
         return new CommandResult(String.format(MESSAGE_EDIT_EVENT_SUCCESS, editedEvent));
 
     }
-
     /**
-     * Creates and returns a new MedicalHistoryEvent with the details of the eventToEdit edited with editMedHistEventDescriptor.
+     * Stores the details to edit the medical history with. Each non-empty field value will replace the
+     * corresponding field value of the medical history.
      */
-    private static MedicalHistoryEvent createEditedMedicalHistoryEvent(
-            MedicalHistoryEvent eventToEdit, EditMedicalHistoryEventDescriptor editMedHistEventDescriptor) {
-
-        MedicalCondition updatedMedicalCondition = editMedHistEventDescriptor.getMedicalCondition()
-                .orElse(eventToEdit.getMedicalCondition());
-
-        LocalDateTime updatedDate = editMedHistEventDescriptor.getDate()
-                .orElse(eventToEdit.getDate());
-
-        Treatment updatedTreatment = editMedHistEventDescriptor.getTreatment()
-                .orElse(eventToEdit.getTreatment());
-
-        return new MedicalHistoryEvent(updatedMedicalCondition, updatedTreatment, updatedDate);
-    }
-
     public static class EditMedicalHistoryEventDescriptor {
         private LocalDateTime date;
         private Treatment treatment;
         private MedicalCondition medicalCondition;
 
-        public EditMedicalHistoryEventDescriptor() {}
+        public EditMedicalHistoryEventDescriptor() {
+        }
 
         /**
          * Copy constructor to create a new descriptor by copying the fields from another descriptor.
@@ -132,28 +136,28 @@ public class EditMedicalHistoryEventCommand extends Command {
             return CollectionUtil.isAnyNonNull(date, medicalCondition, treatment);
         }
 
-        public void setDate(LocalDateTime date) {
-            this.date = date;
-        }
-
         public Optional<LocalDateTime> getDate() {
             return Optional.ofNullable(date);
         }
 
-        public void setTreatment(Treatment treatment) {
-            this.treatment = treatment;
+        public void setDate(LocalDateTime date) {
+            this.date = date;
         }
 
         public Optional<Treatment> getTreatment() {
             return Optional.ofNullable(treatment);
         }
 
-        public void setMedicalCondition(MedicalCondition medicalCondition) {
-            this.medicalCondition = medicalCondition;
+        public void setTreatment(Treatment treatment) {
+            this.treatment = treatment;
         }
 
         public Optional<MedicalCondition> getMedicalCondition() {
             return Optional.ofNullable(medicalCondition);
+        }
+
+        public void setMedicalCondition(MedicalCondition medicalCondition) {
+            this.medicalCondition = medicalCondition;
         }
 
         @Override

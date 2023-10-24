@@ -1,7 +1,6 @@
 package seedu.cc.logic.commands.medhisteventcommands;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 import java.util.List;
@@ -11,13 +10,14 @@ import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
-import seedu.cc.logic.commands.DeleteCommand;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
-import seedu.cc.model.medicalhistory.expections.MedicalHistoryEventNotFoundException;
 import seedu.cc.model.patient.Patient;
 
+/**
+ * Deletes a medical history event identified using it's displayed index from the address book.
+ */
 public class DeleteMedicalHistoryEventCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-medical-history";
@@ -34,6 +34,11 @@ public class DeleteMedicalHistoryEventCommand extends Command {
 
     private final Index patientIndex;
 
+    /**
+     * Deletes the medical history event at {@code eventIndex} from the patient at {@code patientIndex}.
+     * @param eventIndex of the medical history event in the filtered medical history event list to delete
+     * @param patientIndex of the patient in the filtered patient list to delete the medical history event from
+     */
     public DeleteMedicalHistoryEventCommand(Index eventIndex, Index patientIndex) {
         this.eventIndex = eventIndex;
         this.patientIndex = patientIndex;

@@ -21,6 +21,9 @@ public class JsonAdaptedMedicalHistoryEvent {
     private final String treatment;
     private final String date;
 
+    /**
+     * Constructs a {@code JsonAdaptedMedicalHistoryEvent} with the given medical history event details.
+     */
     @JsonCreator
     public JsonAdaptedMedicalHistoryEvent(@JsonProperty("medicalCondition") String medicalCondition,
                                           @JsonProperty("treatment") String treatment,
@@ -40,7 +43,8 @@ public class JsonAdaptedMedicalHistoryEvent {
     }
 
     /**
-     * Converts this Jackson-friendly adapted medical history event object into the model's {@code MedicalHistoryEvent} object.
+     * Converts this Jackson-friendly adapted medical history event object into the model's {@code MedicalHistoryEvent}
+     * object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted medical history event.
      */

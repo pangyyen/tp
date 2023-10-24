@@ -153,6 +153,12 @@ public class ParserUtil {
         return new MedicalCondition(trimmedMedicalCondition);
     }
 
+    /**
+     * Parses a {@code String treatment} into a {@code Treatment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code treatment} is invalid.
+     */
     public static Treatment parseTreatment(String treatment) throws ParseException {
         requireNonNull(treatment);
         String trimmedTreatment = treatment.trim();

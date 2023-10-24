@@ -1,7 +1,6 @@
 package seedu.cc.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
@@ -15,12 +14,21 @@ import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
-public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalHistoryEventCommand>{
+/**
+ * Parses input arguments and creates a new EditMedicalHistoryEventCommand object.
+ */
+public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalHistoryEventCommand> {
+
+    /**
+     * Parses the given {@code String} of arguments in the context of the EditMedicalHistoryEventCommand
+     * and returns a EditMedicalHistoryEventCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public EditMedicalHistoryEventCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_PATIENT_INDEX, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT
-                        , PREFIX_DATE);
+                ArgumentTokenizer.tokenize(args, PREFIX_PATIENT_INDEX, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT,
+                        PREFIX_DATE);
 
         Index index;
 
@@ -31,8 +39,8 @@ public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalH
                     EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT
-                , PREFIX_DATE);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT,
+                PREFIX_DATE);
 
         Index patientIndex;
 
