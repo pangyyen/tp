@@ -85,5 +85,90 @@ Message: "Successfully deleted patient."
 **Expected Output (Failure):**  
 Message: "Invalid index. Please enter a valid index."
 
+## 5. Add Appointment
+
+**What it does:**  
+Schedules a new appointment for a patient.
+
+**Command Format:**  
+`add-appt INDEX d/DATE t/TIME`
+
+**Example Commands:**  
+`add-appt p/1 d/2023-10-01 t/14:00`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **DATE:** YYYY-MM-DD
+- **TIME:** HH:MM (24-hour format)
+
+**Expected Output (Success):**  
+CLI: A new entry appears in the list of appointments.  
+Message: "Successfully added appointment: [Appointment Details]"
+
+**Expected Output (Failure):**  
+Message: "Invalid input. Please enter a valid patient index, date, or time."
+
+## 6. List All Appointment
+
+**What it does:**  
+Displays all appointments sorted by date.
+
+**Command Format:**  
+`list-appointments`
+
+**Example Commands:**  
+`list-appointments`
+
+**Expected Output (Success):**  
+CLI: The list of appointments is displayed.  
+Message: "Displaying X number of appointments."
+
+**Expected Output (Failure):**  
+Message: "No appointments found."
+
+## 7. Edit Appointment
+
+**What it does:**  
+Edits existing appointment details.
+
+**Command Format:**  
+`edit-appointment INDEX [d/DATE] [t/TIME]`
+
+**Example Commands:**  
+`edit-appointment 2 d/2023-10-05 t/16:00`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **DATE:** YYYY-MM-DD
+- **TIME:** HH:MM (24-hour format)
+
+**Expected Output (Success):**  
+CLI: The edited appointment entry is updated in the list.  
+Message: "Successfully edited appointment: [Appointment Details]"
+
+**Expected Output (Failure):**  
+Message: "Invalid input. Please enter a valid index or details."
+
+## 8. Delete Appointment
+
+**What it does:**  
+Removes an appointment from the system.
+
+**Command Format:**  
+`delete-appointment INDEX`
+
+**Example Commands:**  
+`delete-appointment 3`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**  
+CLI: The deleted appointment entry is removed from the list.  
+Message: "Successfully deleted appointment."
+
+**Expected Output (Failure):**  
+Message: "Invalid index. Please enter a valid appointment index."
+
 ---
 
