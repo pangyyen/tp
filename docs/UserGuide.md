@@ -97,6 +97,9 @@ Adds a medical history to a patient record.
 
 **Acceptable Values:**
 - **INDEX:** Positive integer
+- **DATE:** YYYY-MM-DD
+- **MEDICAL_CONDITION:** Alphabetic characters and spaces only
+- **TREATMENT:** Alphabetic characters and spaces only
 
 **Expected Output (Success):**
 Message: "Successfully added medical history for patient: [Medical History Details]"
@@ -136,7 +139,7 @@ Edits a medical history of a patient.
 **Acceptable Values:**
 - **INDEX:** Positive integer
 - **PATIENT_INDEX:** Positive integer
-- **DATE:** DD/MM/YYYYTHH:MM:SS
+- **DATE:** YYYY-MM-DD
 - **MEDICAL_CONDITION:** Alphabetic characters and spaces only
 - **TREATMENT:** Alphabetic characters and spaces only
 
