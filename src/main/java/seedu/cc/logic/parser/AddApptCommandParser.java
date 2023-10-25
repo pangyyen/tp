@@ -4,8 +4,11 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.AddApptCommand;
 import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.patient.Appointment;
 import seedu.cc.model.tag.Tag;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -23,25 +26,34 @@ public class AddApptCommandParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddApptCommand parse(String args) throws ParseException {
-        return new AddApptCommand();
-//        requireNonNull(args);
-//        ArgumentMultimap argMultimap =
-//                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_NRIC, PREFIX_PHONE, PREFIX_EMAIL,
-//                        PREFIX_ADDRESS, PREFIX_TAG);
-//
-//        Index index;
-//
-//        try {
-//            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-//        } catch (ParseException pe) {
-//            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-//                    EditCommand.MESSAGE_USAGE), pe);
-//        }
-//
-//        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
-//
-//        EditCommand.EditPatientDescriptor editPatientDescriptor = new EditCommand.EditPatientDescriptor();
-//
+        requireNonNull(args);
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_APPT_DATE, PREFIX_APPT_TIME);
+
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddApptCommand.MESSAGE_USAGE), pe);
+        }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_APPT_DATE, PREFIX_APPT_TIME);
+
+        if (argMultimap.getValue(PREFIX_APPT_DATE).isEmpty() || argMultimap.getValue(PREFIX_APPT_TIME).isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddApptCommand.MESSAGE_USAGE));
+        }
+
+        LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
+        LocalTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
+        Appointment appointment = new Appointment(date, time);
+
+        return new AddApptCommand(index, appointment);
+
+//        AddApptCommand.AddApptDescriptor editPatientDescriptor = new EditCommand.EditPatientDescriptor();
+
 //        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
 //            editPatientDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
 //        }
@@ -63,21 +75,21 @@ public class AddApptCommandParser {
 //            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
 //        }
 //
-//        return new EditCommand(index, editPatientDescriptor);
+//        return new AddApptCommand(index, editPatientDescriptor);
     }
 
-//    /**
-//     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
-//     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-//     * {@code Set<Tag>} containing zero tags.
-//     */
-//    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
-//        assert tags != null;
-//
-//        if (tags.isEmpty()) {
-//            return Optional.empty();
-//        }
-//        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
-//        return Optional.of(ParserUtil.parseTags(tagSet));
-//    }
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<Tag>} if {@code tags} is non-empty.
+     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
+     * {@code Set<Tag>} containing zero tags.
+     */
+    private Optional<Set<Tag>> parseTagsForEdit(Collection<String> tags) throws ParseException {
+        assert tags != null;
+
+        if (tags.isEmpty()) {
+            return Optional.empty();
+        }
+        Collection<String> tagSet = tags.size() == 1 && tags.contains("") ? Collections.emptySet() : tags;
+        return Optional.of(ParserUtil.parseTags(tagSet));
+    }
 }

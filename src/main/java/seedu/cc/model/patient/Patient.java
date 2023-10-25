@@ -88,4 +88,9 @@ public class Patient extends Person {
     public String toString() {
         return super.toString();
     }
+
+    public Patient addAppointment(Appointment appointment) {
+        return new Patient(this.getName(), this.getNric(), this.getPhone(), this.getEmail(),
+                this.getAddress(), appointment, this.getTags());
+    }
 }

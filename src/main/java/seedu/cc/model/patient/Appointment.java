@@ -24,19 +24,34 @@ public class Appointment {
     public final LocalDate date;
     public final LocalTime time;
 
+//    /**
+//     * Constructs an {@code Appointment}.
+//     *
+//     * @param date A valid date.
+//     * @param time A valid time.
+//     */
+//    public Appointment(String date, String time) {
+//        requireNonNull(date);
+//        requireNonNull(time);
+//        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+//        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+//        this.date = LocalDate.parse(date);
+//        this.time = LocalTime.parse(time);
+//    }
+
     /**
      * Constructs an {@code Appointment}.
      *
      * @param date A valid date.
      * @param time A valid time.
      */
-    public Appointment(String date, String time) {
+    public Appointment(LocalDate date, LocalTime time) {
         requireNonNull(date);
         requireNonNull(time);
-        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
-        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
-        this.date = LocalDate.parse(date);
-        this.time = LocalTime.parse(time);
+//        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+//        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+        this.date = date;
+        this.time = time;
     }
 
     /**
@@ -61,6 +76,13 @@ public class Appointment {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment Date: " +
+                date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " " +
+                time.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     @Override

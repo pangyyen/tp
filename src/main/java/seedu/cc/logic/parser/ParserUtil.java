@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -126,7 +127,7 @@ public class ParserUtil {
         if (!Appointment.isValidDate(trimmedDate)) {
             throw new ParseException(Appointment.DATE_MESSAGE_CONSTRAINTS);
         }
-        return LocalDate.parse(trimmedDate);
+        return LocalDate.parse(trimmedDate, DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     /**
@@ -141,7 +142,7 @@ public class ParserUtil {
         if (!Appointment.isValidTime(trimmedTime)) {
             throw new ParseException(Appointment.TIME_MESSAGE_CONSTRAINTS);
         }
-        return LocalTime.parse(trimmedTime);
+        return LocalTime.parse(trimmedTime, DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     /**
