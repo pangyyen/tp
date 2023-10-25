@@ -94,7 +94,7 @@ Schedules a new appointment for a patient.
 `add-appt INDEX d/DATE t/TIME`
 
 **Example Commands:**  
-`add-appt p/1 d/2023-10-01 tm/14:00`
+`add-appt 1 d/2023-10-01 tm/14:00`
 
 **Acceptable Values:**
 - **INDEX:** Positive integer

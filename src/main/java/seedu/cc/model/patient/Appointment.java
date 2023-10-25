@@ -15,6 +15,11 @@ import java.time.format.DateTimeParseException;
 public class Appointment {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
     public static final String TIME_MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
+    public static final String MESSAGE_CONSTRAINTS = "Appointments should have both a date and a time that adhere to the following constraints:\n"
+            + "1. " + DATE_MESSAGE_CONSTRAINTS + "\n"
+            + "2. " + TIME_MESSAGE_CONSTRAINTS + ".\n"
+            + "The date and time should represent a valid future appointment time.";
+
 
     public final LocalDate date;
     public final LocalTime time;

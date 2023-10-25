@@ -2,6 +2,8 @@ package seedu.cc.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +11,7 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.patient.Appointment;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
@@ -109,6 +112,36 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code LocalDate}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static LocalDate parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Appointment.isValidDate(trimmedDate)) {
+            throw new ParseException(Appointment.DATE_MESSAGE_CONSTRAINTS);
+        }
+        return LocalDate.parse(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String time} into a {@code LocalTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code time} is invalid.
+     */
+    public static LocalTime parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+        if (!Appointment.isValidTime(trimmedTime)) {
+            throw new ParseException(Appointment.TIME_MESSAGE_CONSTRAINTS);
+        }
+        return LocalTime.parse(trimmedTime);
     }
 
     /**
