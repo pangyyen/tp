@@ -27,9 +27,10 @@ public class PatientTest {
         Phone phone = new Phone("98765432");
         Email email = new Email("johndoe@example.com");
         Address address = new Address("123, Jurong West Ave 6, #08-111");
+        Appointment appointment = new Appointment("2023-12-10", "10:00");
         Set<Tag> tags = new HashSet<>();
 
-        patient = new Patient(name, nric, phone, email, address, tags);
+        patient = new Patient(name, nric, phone, email, address, appointment, tags);
     }
 
     @Test
@@ -55,6 +56,11 @@ public class PatientTest {
     @Test
     public void getAddress() {
         assertEquals(new Address("123, Jurong West Ave 6, #08-111"), patient.getAddress());
+    }
+
+    @Test
+    public void getAppointment() {
+        assertEquals(new Appointment("2023-12-10", "10:00"), patient.getAppointment());
     }
 
     @Test

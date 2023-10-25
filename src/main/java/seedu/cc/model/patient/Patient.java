@@ -15,6 +15,7 @@ import seedu.cc.model.tag.Tag;
  */
 public class Patient extends Person {
     private final Nric nric;
+    private final Appointment appointment;
     /**
      * Every field must be present and not null.
      *
@@ -23,11 +24,14 @@ public class Patient extends Person {
      * @param phone
      * @param email
      * @param address
+     * @param appointment
      * @param tags
      */
-    public Patient(Name name, Nric nric, Phone phone, Email email, Address address, Set<Tag> tags) {
+    public Patient(Name name, Nric nric, Phone phone, Email email,
+                   Address address, Appointment appointment, Set<Tag> tags) {
         super(name, phone, email, address, tags);
         this.nric = nric;
+        this.appointment = appointment;
     }
 
     //getters and setters
@@ -51,12 +55,17 @@ public class Patient extends Person {
         return super.getAddress();
     }
 
+    public Appointment getAppointment() {
+        return this.appointment;
+    }
+
     public Set<Tag> getTags() {
         return super.getTags();
     }
 
-    public boolean isSamePerson(Patient otherPatient) {
-        return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric());
+    public boolean isSamePatient(Patient otherPatient) {
+        return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric())
+                && this.appointment.equals(otherPatient.getAppointment());
     }
 
     public boolean equals(Object other) {
