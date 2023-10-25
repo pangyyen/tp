@@ -25,10 +25,12 @@ import seedu.cc.model.patient.Patient;
  */
 public class TypicalPatients {
 
+
     public static final Patient ALICE = new PatientBuilder().withName("Alice Pauline")
             .withNric("S1234567A")
             .withAddress("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
             .withPhone("94351253")
+            .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory())
             .withTags("friends").build();
     public static final Patient BENSON = new PatientBuilder().withName("Benson Meier")
             .withNric("S1234567B")
@@ -42,7 +44,8 @@ public class TypicalPatients {
     public static final Patient DANIEL = new PatientBuilder().withName("Daniel Meier")
             .withNric("S1234567D")
             .withPhone("87652533")
-            .withEmail("cornelia@example.com").withAddress("10th street").withTags("friends").build();
+            .withEmail("cornelia@example.com").withAddress("10th street")
+            .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory()).withTags("friends").build();
     public static final Patient ELLE = new PatientBuilder().withName("Elle Meyer")
             .withNric("S1234567E")
             .withPhone("9482224")
@@ -79,7 +82,8 @@ public class TypicalPatients {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalPatients() {} // prevents instantiation
+    private TypicalPatients() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.

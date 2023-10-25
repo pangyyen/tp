@@ -22,6 +22,7 @@ import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.testutil.PatientBuilder;
 
@@ -155,6 +156,31 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPatientList(Predicate<Patient> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
+            throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public void listMedicalHistoryEvents(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                           MedicalHistoryEvent editedMedicalHistoryEvent) {
             throw new AssertionError("This method should not be called.");
         }
     }

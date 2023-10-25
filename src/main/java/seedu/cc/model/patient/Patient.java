@@ -1,7 +1,10 @@
 package seedu.cc.model.patient;
 
+import java.util.ArrayList;
 import java.util.Set;
 
+import seedu.cc.model.medicalhistory.MedicalHistory;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
@@ -16,16 +19,11 @@ import seedu.cc.model.tag.Tag;
 public class Patient extends Person {
     private final Nric nric;
     private final Appointment appointment;
+    private final MedicalHistory medicalHistory;
+
     /**
      * Every field must be present and not null, except appointment.
      *
-     * @param name
-     * @param nric
-     * @param phone
-     * @param email
-     * @param address
-     * @param appointment
-     * @param tags
      */
     public Patient(Name name, Nric nric, Phone phone, Email email,
                    Address address, Appointment appointment, Set<Tag> tags) {
@@ -42,6 +40,18 @@ public class Patient extends Person {
         super(name, phone, email, address, tags);
         this.nric = nric;
         this.appointment = null;
+        this.medicalHistory = new MedicalHistory();
+    }
+
+    /**
+     * Constructor for Patient with MedicalHistory in Storage.
+     *
+     */
+    public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
+                   MedicalHistory medicalHistory, Set<Tag> tags) {
+        super(name, phone, email, address, tags);
+        this.nric = nric;
+        this.medicalHistory = medicalHistory;
     }
 
     //getters and setters
@@ -79,6 +89,25 @@ public class Patient extends Person {
     public boolean isSamePatient(Patient otherPatient) {
         return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric())
                 && this.appointment.equals(otherPatient.getAppointment());
+
+    public void addMedicalHistoryEvent(MedicalHistoryEvent event) {
+        this.medicalHistory.addMedicalHistoryEvent(event);
+    }
+
+    public void setMedicalHistoryEvent(MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent) {
+        this.medicalHistory.setMedicalHistoryEvent(eventToEdit, editedEvent);
+    }
+
+    public void deleteMedicalHistoryEvent(MedicalHistoryEvent eventToDelete) {
+        this.medicalHistory.deleteMedicalHistoryEvent(eventToDelete);
+    }
+
+    public boolean hasMedicalHistoryEvent(MedicalHistoryEvent event) {
+        return this.medicalHistory.hasMedicalHistoryEvent(event);
+    }
+
+    public boolean isSamePerson(Patient otherPatient) {
+        return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric());
     }
 
     public boolean equals(Object other) {
@@ -92,5 +121,13 @@ public class Patient extends Person {
     public Patient addAppointment(Appointment appointment) {
         return new Patient(this.getName(), this.getNric(), this.getPhone(), this.getEmail(),
                 this.getAddress(), appointment, this.getTags());
+
+    public MedicalHistory getMedicalHistory() {
+        return this.medicalHistory;
+    }
+
+    public ArrayList<MedicalHistoryEvent> getMedicalHistoryEvents() {
+        return this.medicalHistory.getMedicalHistoryEvents();
+
     }
 }

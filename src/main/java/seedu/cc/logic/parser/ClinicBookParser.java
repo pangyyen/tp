@@ -8,7 +8,20 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.cc.commons.core.LogsCenter;
-import seedu.cc.logic.commands.*;
+import seedu.cc.logic.commands.AddCommand;
+import seedu.cc.logic.commands.AddApptCommand;
+import seedu.cc.logic.commands.ClearCommand;
+import seedu.cc.logic.commands.Command;
+import seedu.cc.logic.commands.DeleteCommand;
+import seedu.cc.logic.commands.EditCommand;
+import seedu.cc.logic.commands.ExitCommand;
+import seedu.cc.logic.commands.FindCommand;
+import seedu.cc.logic.commands.HelpCommand;
+import seedu.cc.logic.commands.ListCommand;
+import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
+import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
+import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
+import seedu.cc.logic.commands.medhisteventcommands.ListMedicalHistoryEventCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
 /**
@@ -71,6 +84,18 @@ public class ClinicBookParser {
 
         case AddApptCommand.COMMAND_WORD:
             return new AddApptCommandParser().parse(arguments);
+
+        case AddMedicalHistoryEventCommand.COMMAND_WORD:
+            return new AddMedicalHistoryEventParser().parse(arguments);
+
+        case ListMedicalHistoryEventCommand.COMMAND_WORD:
+            return new ListMedicalHistoryEventsCommandParser().parse(arguments);
+
+        case EditMedicalHistoryEventCommand.COMMAND_WORD:
+            return new EditMedicalHistoryEventCommandParser().parse(arguments);
+
+        case DeleteMedicalHistoryEventCommand.COMMAND_WORD:
+            return new DeleteMedicalHistoryEventCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

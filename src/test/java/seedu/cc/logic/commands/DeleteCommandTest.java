@@ -117,4 +117,5 @@ public class DeleteCommandTest {
 
         assertTrue(model.getFilteredPatientList().isEmpty());
     }
+
 }
