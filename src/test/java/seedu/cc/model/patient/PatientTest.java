@@ -1,6 +1,7 @@
 package seedu.cc.model.patient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
@@ -15,9 +16,11 @@ import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 
+
 public class PatientTest {
 
     private Patient patient;
+    private Patient patientNullAppointment;
 
     @BeforeEach
     public void setUp() {
@@ -31,6 +34,7 @@ public class PatientTest {
         Set<Tag> tags = new HashSet<>();
 
         patient = new Patient(name, nric, phone, email, address, appointment, tags);
+        patientNullAppointment = new Patient(name, nric, phone, email, address, tags);
     }
 
     @Test
@@ -61,6 +65,7 @@ public class PatientTest {
     @Test
     public void getAppointment() {
         assertEquals(new Appointment("2023-12-10", "10:00"), patient.getAppointment());
+        assertNull(patientNullAppointment.getAppointment());
     }
 
     @Test

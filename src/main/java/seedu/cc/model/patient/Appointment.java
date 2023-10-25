@@ -1,12 +1,12 @@
 package seedu.cc.model.patient;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.cc.commons.util.AppUtil.checkArgument;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.cc.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a Patient's appointment in the clinic book.

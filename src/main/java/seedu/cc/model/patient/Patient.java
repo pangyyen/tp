@@ -17,7 +17,7 @@ public class Patient extends Person {
     private final Nric nric;
     private final Appointment appointment;
     /**
-     * Every field must be present and not null.
+     * Every field must be present and not null, except appointment.
      *
      * @param name
      * @param nric
@@ -32,6 +32,16 @@ public class Patient extends Person {
         super(name, phone, email, address, tags);
         this.nric = nric;
         this.appointment = appointment;
+    }
+
+    /**
+     * Alternate constructor for Patient class without appointment.
+     */
+    public Patient(Name name, Nric nric, Phone phone, Email email,
+                   Address address, Set<Tag> tags) {
+        super(name, phone, email, address, tags);
+        this.nric = nric;
+        this.appointment = null;
     }
 
     //getters and setters
@@ -63,6 +73,9 @@ public class Patient extends Person {
         return super.getTags();
     }
 
+    /**
+     * Returns true if both patients have the same name, nric, appointment and phone number.
+     */
     public boolean isSamePatient(Patient otherPatient) {
         return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric())
                 && this.appointment.equals(otherPatient.getAppointment());
