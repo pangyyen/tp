@@ -17,10 +17,12 @@ import java.util.List;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.exceptions.CommandException;
+import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.PatientNameContainsKeywordsPredicate;
+import seedu.cc.testutil.EditMedicalHistoryEventDescriptorBuilder;
 import seedu.cc.testutil.EditPatientDescriptorBuilder;
 
 /**
@@ -62,7 +64,11 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
+    public static final String VALID_MEDICAL_CONDITION = "Cancer";
+    public static final String VALID_TREATMENT = "Chemotherapy";
+    public static final String VALID_DATE = "2020-10-10";
 
+    public static final EditMedicalHistoryEventCommand.EditMedicalHistoryEventDescriptor MEDICAL_CONDITION_DESC;
     public static final EditCommand.EditPatientDescriptor DESC_AMY;
     public static final EditCommand.EditPatientDescriptor DESC_BOB;
 
@@ -73,6 +79,10 @@ public class CommandTestUtil {
         DESC_BOB = new EditPatientDescriptorBuilder().withName(VALID_NAME_BOB).withNric(VALID_NRIC_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        MEDICAL_CONDITION_DESC = new EditMedicalHistoryEventDescriptorBuilder()
+                .withMedicalCondition(VALID_MEDICAL_CONDITION)
+                .withTreatment(VALID_TREATMENT).withDate(VALID_DATE).build();
+
     }
 
     /**

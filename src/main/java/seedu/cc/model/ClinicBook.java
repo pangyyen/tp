@@ -6,6 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.MedicalHistoryEventList;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
 
@@ -17,6 +19,8 @@ public class ClinicBook implements ReadOnlyClinicBook {
 
     private final UniquePatientList patients;
 
+    private final MedicalHistoryEventList medicalHistoryEvents;
+
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
@@ -26,6 +30,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
      */
     {
         patients = new UniquePatientList();
+        medicalHistoryEvents = new MedicalHistoryEventList();
     }
 
     public ClinicBook() {}
@@ -95,7 +100,54 @@ public class ClinicBook implements ReadOnlyClinicBook {
         patients.remove(key);
     }
 
-    //// util methods
+    //// medical history event-level operations
+
+    /**
+     * Adds a medical history event to a patient's medical history. This method updates both the patient's
+     * medical history and the list of medical history events.
+     *
+     * @param patient The patient to whom the medical history event should be added.
+     * @param medicalHistoryEvent The medical history event to add to the patient's history.
+     */
+    public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+        patients.addMedicalHistoryEvent(patient, medicalHistoryEvent);
+        medicalHistoryEvents.add(medicalHistoryEvent, patient);
+    }
+
+    /**
+     * Lists all medical history events associated with a specific patient.
+     *
+     * @param patient The patient for whom to list the medical history events.
+     */
+    public void listMedicalHistoryEvents(Patient patient) {
+        medicalHistoryEvents.listMedicalHistoryEvents(patient);
+    }
+
+    /**
+     * Deletes a specific medical history event from a patient's medical history. This method updates both
+     * the patient's medical history and the list of medical history events.
+     *
+     * @param patient The patient from whose history the event should be deleted.
+     * @param medicalHistoryEventToDelete The medical history event to delete.
+     */
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
+        patients.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
+        medicalHistoryEvents.delete(medicalHistoryEventToDelete, patient);
+    }
+
+    /**
+     * Edits a medical history event in a patient's medical history. This method updates both the patient's
+     * medical history and the list of medical history events.
+     *
+     * @param patient The patient whose medical history should be edited.
+     * @param medicalHistoryEventToEdit The medical history event to be edited.
+     * @param editedMedicalHistoryEvent The edited version of the medical history event.
+     */
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                       MedicalHistoryEvent editedMedicalHistoryEvent) {
+        patients.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        medicalHistoryEvents.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent, patient);
+    }
 
     @Override
     public String toString() {
@@ -107,6 +159,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
     @Override
     public ObservableList<Patient> getPatientList() {
         return patients.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<MedicalHistoryEvent> getMedicalHistoryEventList() {
+        return medicalHistoryEvents.asUnmodifiableObservableList();
     }
 
     @Override
