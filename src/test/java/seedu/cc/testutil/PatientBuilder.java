@@ -3,6 +3,7 @@ package seedu.cc.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
+import seedu.cc.model.medicalhistory.MedicalHistory;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
@@ -18,7 +19,6 @@ import seedu.cc.model.util.SampleDataUtil;
 public class PatientBuilder {
 
     public static final String DEFAULT_NAME = "Amy Bee";
-
     public static final String DEFAULT_NRIC = "S2345678Y";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
@@ -29,6 +29,7 @@ public class PatientBuilder {
     private Phone phone;
     private Email email;
     private Address address;
+    private MedicalHistory medicalHistory;
     private Set<Tag> tags;
 
     /**
@@ -40,6 +41,7 @@ public class PatientBuilder {
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
+        medicalHistory = new MedicalHistory();
         tags = new HashSet<>();
     }
 
@@ -103,8 +105,16 @@ public class PatientBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code MedicalHistory} of the {@code Person} that we are building.
+     */
+    public PatientBuilder withMedicalHistory(MedicalHistory medicalHistory) {
+        this.medicalHistory = medicalHistory;
+        return this;
+    }
+
     public Patient build() {
-        return new Patient(name, nric, phone, email, address, tags);
+        return new Patient(name, nric, phone, email, address, medicalHistory, tags);
     }
 
 }

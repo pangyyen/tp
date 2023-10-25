@@ -46,7 +46,7 @@ class JsonSerializableClinicBook {
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public ClinicBook toModelType() throws IllegalValueException {
-        ClinicBook clinicBook = new ClinicBook( );
+        ClinicBook clinicBook = new ClinicBook();
         for (JsonAdaptedPatient jsonAdaptedPatient : patients) {
             Patient patient = jsonAdaptedPatient.toModelType();
             if (clinicBook.hasPatient(patient)) {

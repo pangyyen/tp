@@ -87,3 +87,85 @@ Message: "Invalid index. Please enter a valid index."
 
 ---
 
+## 5. Add Medical History
+
+**What it does:**
+Adds a medical history to a patient record.
+
+**Command Format:**
+`add-medical-history INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**
+Message: "Successfully added medical history for patient: [Medical History Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
+## 6. List Medical History
+
+**What it does:**
+Lists the medical history of a patient.
+
+**Command Format:**
+`list-medical-history INDEX`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**
+Message: "Successfully listed medical history for patient: [Medical History Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
+## 7. Edit Medical History
+
+**What it does:**
+Edits a medical history of a patient.
+
+**Command Format:**
+`edit-medical-history INDEX [pi/PATIENT_INDEX] [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **PATIENT_INDEX:** Positive integer
+- **DATE:** DD/MM/YYYYTHH:MM:SS
+- **MEDICAL_CONDITION:** Alphabetic characters and spaces only
+- **TREATMENT:** Alphabetic characters and spaces only
+
+**Expected Output (Success):**
+Message: "Successfully edited medical history for patient: [Medical History Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
+## 8. Delete Medical History
+
+**What it does:**
+Deletes a medical history of a patient.
+
+**Command Format:**
+`delete-medical-history INDEX [pi/PATIENT_INDEX]`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **PATIENT_INDEX:** Positive integer
+
+**Expected Output (Success):**
+Message: "Successfully deleted medical history for patient: [Medical History Details]"
+
+**Expected Output (Failure):**
+- Message: "Invalid input. Please enter a valid index or details."
+
+---
+
+

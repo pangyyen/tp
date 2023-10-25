@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -23,6 +24,8 @@ public class ModelManager implements Model {
     private final UserPrefs newUserPrefs;
     private final FilteredList<Patient> filteredPatients;
 
+    private final FilteredList<MedicalHistoryEvent> filteredMedicalHistoryEvents;
+
     /**
      * Initializes a NewModelManager with the given clinicBook and userPrefs.
      */
@@ -34,6 +37,7 @@ public class ModelManager implements Model {
         this.clinicBook = new ClinicBook(clinicBook);
         this.newUserPrefs = new UserPrefs(userPrefs);
         this.filteredPatients = new FilteredList<>(this.clinicBook.getPatientList());
+        this.filteredMedicalHistoryEvents = new FilteredList<>(this.clinicBook.getMedicalHistoryEventList());
     }
 
     public ModelManager() {
@@ -43,14 +47,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.newUserPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return newUserPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return newUserPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.newUserPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -78,13 +82,13 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setClinicBook(ReadOnlyClinicBook clinicBook) {
-        this.clinicBook.resetData(clinicBook);
+    public ReadOnlyClinicBook getClinicBook() {
+        return this.clinicBook;
     }
 
     @Override
-    public ReadOnlyClinicBook getClinicBook() {
-        return this.clinicBook;
+    public void setClinicBook(ReadOnlyClinicBook clinicBook) {
+        this.clinicBook.resetData(clinicBook);
     }
 
     @Override
@@ -109,6 +113,37 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPatient);
 
         clinicBook.setPatient(target, editedPatient);
+    }
+
+    //=========== Medical History Operations =============================================================
+    @Override
+    public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEvent);
+        clinicBook.addMedicalHistoryEvent(patient, medicalHistoryEvent);
+    }
+
+    @Override
+    public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                       MedicalHistoryEvent editedMedicalHistoryEvent) {
+        requireAllNonNull(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+        clinicBook.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
+    }
+
+    @Override
+    public void listMedicalHistoryEvents(Patient patient) {
+        requireAllNonNull(patient);
+        clinicBook.listMedicalHistoryEvents(patient);
+    }
+
+    @Override
+    public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
+        requireAllNonNull(patient, medicalHistoryEventToDelete);
+        clinicBook.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
+    }
+
+    @Override
+    public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
+        return filteredMedicalHistoryEvents;
     }
 
     //=========== Filtered Person List Accessors =============================================================

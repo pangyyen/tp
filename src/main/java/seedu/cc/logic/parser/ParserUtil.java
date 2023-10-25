@@ -9,6 +9,9 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.medicalhistory.MedicalCondition;
+import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
@@ -26,6 +29,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -136,5 +140,44 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String medicalCondition} into a {@code MedicalCondition}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code medicalCondition} is invalid.
+     */
+    public static MedicalCondition parseMedicalCondition(String medicalCondition) throws ParseException {
+        requireNonNull(medicalCondition);
+        String trimmedMedicalCondition = medicalCondition.trim();
+
+        return new MedicalCondition(trimmedMedicalCondition);
+    }
+
+    /**
+     * Parses a {@code String treatment} into a {@code Treatment}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code treatment} is invalid.
+     */
+    public static Treatment parseTreatment(String treatment) throws ParseException {
+        requireNonNull(treatment);
+        String trimmedTreatment = treatment.trim();
+
+        return new Treatment(trimmedTreatment);
+    }
+
+    /**
+     * Parses a {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+
+        return new Date(trimmedDate);
     }
 }

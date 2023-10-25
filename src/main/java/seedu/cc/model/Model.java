@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -13,6 +14,7 @@ import seedu.cc.model.patient.Patient;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Patient> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -80,9 +82,24 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered patient list */
     ObservableList<Patient> getFilteredPatientList();
 
+    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
     /**
      * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
+
+    /**
+     * Adds a medical history event to the given patient.
+     * @param patient patient to add medical history event to.
+     * @param medicalHistoryEvent medical history event to be added.
+     */
+    void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
+
+    void listMedicalHistoryEvents(Patient patient);
+
+    void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
+                                 MedicalHistoryEvent editedMedicalHistoryEvent);
+
+    void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete);
 }
