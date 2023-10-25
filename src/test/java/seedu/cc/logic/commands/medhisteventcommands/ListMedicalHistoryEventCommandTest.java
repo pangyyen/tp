@@ -2,7 +2,6 @@ package seedu.cc.logic.commands.medhisteventcommands;
 
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.cc.logic.commands.CommandTestUtil.showPatientAtIndex;
 import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PATIENT;
 import static seedu.cc.testutil.TypicalPatients.getTypicalClinicBook;
 
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
-import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.model.Model;
 import seedu.cc.model.ModelManager;
 import seedu.cc.model.UserPrefs;
@@ -40,7 +38,8 @@ public class ListMedicalHistoryEventCommandTest {
     public void execute_invalidIndex_throwsCommandException() {
 
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPatientList().size() + 1);
-        ListMedicalHistoryEventCommand listMedicalHistoryEventCommand = new ListMedicalHistoryEventCommand(outOfBoundIndex);
+        ListMedicalHistoryEventCommand listMedicalHistoryEventCommand =
+                new ListMedicalHistoryEventCommand(outOfBoundIndex);
 
         assertCommandFailure(listMedicalHistoryEventCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }

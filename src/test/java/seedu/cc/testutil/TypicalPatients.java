@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.cc.model.ClinicBook;
-import seedu.cc.model.medicalhistory.MedicalHistory;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -83,7 +82,8 @@ public class TypicalPatients {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalPatients() {} // prevents instantiation
+    private TypicalPatients() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.
