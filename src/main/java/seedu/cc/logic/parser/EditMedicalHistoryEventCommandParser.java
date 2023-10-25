@@ -7,8 +7,6 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
-import java.time.LocalDateTime;
-
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
@@ -22,6 +20,7 @@ public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalH
     /**
      * Parses the given {@code String} of arguments in the context of the EditMedicalHistoryEventCommand
      * and returns a EditMedicalHistoryEventCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public EditMedicalHistoryEventCommand parse(String args) throws ParseException {

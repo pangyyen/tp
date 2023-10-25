@@ -15,6 +15,7 @@ public class ListMedicalHistoryEventsCommandParser implements Parser<ListMedical
     /**
      * Parses the given {@code String} of arguments in the context of the ListMedicalHistoryEventCommand
      * and returns a ListMedicalHistoryEventCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public ListMedicalHistoryEventCommand parse(String args) throws ParseException {

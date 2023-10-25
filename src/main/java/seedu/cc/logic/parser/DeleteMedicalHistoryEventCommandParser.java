@@ -17,6 +17,7 @@ public class DeleteMedicalHistoryEventCommandParser implements Parser<DeleteMedi
     /**
      * Parses the given {@code String} of arguments in the context of the DeleteMedicalHistoryEventCommand
      * and returns a DeleteMedicalHistoryEventCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public DeleteMedicalHistoryEventCommand parse(String args) throws ParseException {

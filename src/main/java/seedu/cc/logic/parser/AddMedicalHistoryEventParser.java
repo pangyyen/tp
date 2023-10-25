@@ -5,7 +5,6 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import seedu.cc.commons.core.index.Index;
@@ -59,7 +58,6 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
                 .getValue(PREFIX_MEDICAL_CONDITION).get());
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
-
 
 
         MedicalHistoryEvent event = new MedicalHistoryEvent(medicalCondition, treatment, date);

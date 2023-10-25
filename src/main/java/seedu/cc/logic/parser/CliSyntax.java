@@ -18,5 +18,4 @@ public class CliSyntax {
     public static final Prefix PREFIX_PATIENT_INDEX = new Prefix("pi/");
 
 
-
 }
