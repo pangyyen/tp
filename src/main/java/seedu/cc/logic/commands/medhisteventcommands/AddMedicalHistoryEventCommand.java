@@ -40,6 +40,8 @@ public class AddMedicalHistoryEventCommand extends Command {
      * Creates an AddMedicalHistoryEventCommand to add the specified {@code MedicalHistoryEvent}.
      */
     public AddMedicalHistoryEventCommand(MedicalHistoryEvent eventToAdd, Index patientIndex) {
+        requireNonNull(eventToAdd);
+        requireNonNull(patientIndex);
         this.eventToAdd = eventToAdd;
         this.patientIndex = patientIndex;
     }

@@ -18,4 +18,19 @@ public class Treatment {
     public String toString() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof Treatment)) {
+            return false;
+        }
+
+        Treatment otherTreatment = (Treatment) other;
+        return value.equals(otherTreatment.value);
+    }
 }

@@ -58,6 +58,8 @@ public class MedicalHistory {
      * @return
      */
     public boolean hasMedicalHistoryEvent(MedicalHistoryEvent event) {
+        int s = 1;
+        boolean as = medicalHistoryEvents.get(0).equals(event);
         return medicalHistoryEvents.contains(event);
     }
 

@@ -29,7 +29,7 @@ public class SampleDataUtil {
         MedicalHistory sampleMedicalHistory = new MedicalHistory();
         sampleMedicalHistory
                 .addMedicalHistoryEvent(new MedicalHistoryEvent(new MedicalCondition("Insomia"),
-                        new Treatment("Medication"), new Date("2023-10-23T14:30:00")));
+                        new Treatment("Medication"), new Date("2023-10-23")));
         return sampleMedicalHistory;
     }
 

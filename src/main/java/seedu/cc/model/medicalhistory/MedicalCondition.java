@@ -18,4 +18,19 @@ public class MedicalCondition {
     public String toString() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof MedicalCondition)) {
+            return false;
+        }
+
+        MedicalCondition otherMedicalCondition = (MedicalCondition) other;
+        return value.equals(otherMedicalCondition.value);
+    }
 }

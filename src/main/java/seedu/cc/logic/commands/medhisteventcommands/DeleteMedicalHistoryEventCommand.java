@@ -58,7 +58,7 @@ public class DeleteMedicalHistoryEventCommand extends Command {
         List<MedicalHistoryEvent> lastShownList = model.getFilteredMedicalHistoryEventList();
 
         if (eventIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX);
         }
 
         MedicalHistoryEvent medicalHistoryEventToDelete = lastShownList.get(eventIndex.getZeroBased());
