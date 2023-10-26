@@ -8,7 +8,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.model.appointment.AppointmentEvent;
-import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 
 /**
  * Panel containing the appointments.
@@ -18,22 +17,22 @@ public class AppointmentsPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(AppointmentsPanel.class);
 
     @javafx.fxml.FXML
-    private ListView<AppointmentEvent> medicalHistoryEventListView;
+    private ListView<AppointmentEvent> appointmentEventListView;
 
     /**
      * Creates a {@code AppointmentsPanel} with the given {@code ObservableList}.
      */
     public AppointmentsPanel(ObservableList<AppointmentEvent> appointments) {
         super(FXML);
-        medicalHistoryEventListView.setItems(appointments);
-        medicalHistoryEventListView.setCellFactory(listView -> new AppointmentsPanel
-                .AppointmentsEventListViewCell());
+        appointmentEventListView.setItems(appointments);
+        appointmentEventListView.setCellFactory(listView -> new AppointmentsPanel
+                .AppointmentEventListViewCell());
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Patient} using a {@code PatientCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Appointment} using a {@code AppointmentEventCard}.
      */
-    class AppointmentsEventListViewCell extends ListCell<AppointmentEvent> {
+    class AppointmentEventListViewCell extends ListCell<AppointmentEvent> {
         @Override
         protected void updateItem(AppointmentEvent appointment, boolean empty) {
             super.updateItem(appointment, empty);
@@ -42,7 +41,7 @@ public class AppointmentsPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new AppointmentsEventCard(appointment, getIndex() + 1).getRoot());
+                setGraphic(new AppointmentEventCard(appointment, getIndex() + 1).getRoot());
             }
         }
     }

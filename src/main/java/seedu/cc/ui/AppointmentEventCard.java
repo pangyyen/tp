@@ -5,13 +5,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.cc.model.appointment.AppointmentEvent;
-import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 
 /**
  * An UI component that displays information of a {@code Appointment Event}.
  */
-public class AppointmentsEventCard extends UiPart<Region> {
-    private static final String FXML = "MedicalHistoryEventCard.fxml";
+public class AppointmentEventCard extends UiPart<Region> {
+    private static final String FXML = "AppointmentEventCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -33,7 +32,7 @@ public class AppointmentsEventCard extends UiPart<Region> {
     /**
      * Creates a {@code PatientCode} with the given {@code Patient} and index to display.
      */
-    public AppointmentsEventCard(AppointmentEvent appointmentEvent, int displayedIndex) {
+    public AppointmentEventCard(AppointmentEvent appointmentEvent, int displayedIndex) {
         super(FXML);
         this.appointmentEvent = appointmentEvent;
         date.setText(appointmentEvent.getLocalDate().toString());

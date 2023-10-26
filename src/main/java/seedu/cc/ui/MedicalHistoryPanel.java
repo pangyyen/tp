@@ -21,7 +21,7 @@ public class MedicalHistoryPanel extends UiPart<Region> {
     private ListView<MedicalHistoryEvent> medicalHistoryEventListView;
 
     /**
-     * Creates a {@code PatientListPanel} with the given {@code ObservableList}.
+     * Creates a {@code MedicalHistoryPanel} with the given {@code ObservableList}.
      */
     public MedicalHistoryPanel(ObservableList<MedicalHistoryEvent> medicalHistory) {
         super(FXML);
