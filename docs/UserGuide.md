@@ -29,7 +29,7 @@ Message: "Successfully added patient: [Patient Details]"
 - Message: "Invalid input. Please enter a valid NRIC (8-16 alphanumeric characters)."
 - Message: "Invalid input. Age should be between 0 to 120"
 - Message: "Invalid input. Please enter a valid phone number."
-- 
+-
 ---
 ## 2. List Patients
 
@@ -255,5 +255,3 @@ Message: "Successfully deleted medical history for patient: [Medical History Det
 - Message: "Invalid input. Please enter a valid index or details."
 
 ---
-
-
