@@ -160,56 +160,56 @@
     -fx-max-height: 0;
 }
 
-/* Sidebar styling */
+/* Sidebar Styles */
+
 .sidebar {
-    -fx-background-color: white;
+    -fx-background-color: #E0F0FF;
 }
 
-/* Button styling for the sidebar */
 .sidebar-button {
-    -fx-background-color: lightblue;
-    -fx-text-fill: black; /* Text color */
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 0 0 1 0;
-    -fx-padding: 10px 20px;
+    -fx-background-color: #D0E6FF;
+    -fx-text-fill: #004080;
+    -fx-border-color: #d8d8d8;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-alignment: LEFT;
 }
 
 .sidebar-button:hover {
-    -fx-background-color: #B0E0E6;
+    -fx-background-color: #BFD8E9;
 }
 
 .sidebar-button:pressed, .sidebar-button:focused {
-    -fx-background-color: #4682B4;
-    -fx-text-fill: white; /* Text color when button is pressed or focused */
+    -fx-background-color: #002750;
+    -fx-text-fill: #D0E6FF;
 }
-
-.sidebar-button {
-    -fx-alignment: CENTER_LEFT; /* Aligns content of the button to the left */
-    -fx-text-alignment: LEFT;  /* Aligns text within the button to the left */
-}
-
 
 .sidebar-button .graphic {
     -fx-padding: 0 10 0 0; /* Top, Right, Bottom, Left */
 }
 
+/* Icons (assuming you have images as resources in your project) */
 
-/*Icons*/
 #patientsIcon {
     -fx-image: url('../images/patient_icon.png');
 }
+
 #historyIcon {
     -fx-image: url('../images/history_icon.png');
 }
+
 #appointmentsIcon {
     -fx-image: url('../images/appointment_icon.png');
 }
+
 #exitIcon {
     -fx-image: url('../images/exit_icon.png');
 }
+
 #helpIcon {
-    -fx-image: url('../images/helpp_icon.png');
+    -fx-image: url('../images/help_icon.png');
 }
+
+/* Hide Tabs */
 
 .tab-pane .tab-header-background,
 .tab-pane .tab-header-area .headers-region {
@@ -218,5 +218,3 @@
     -fx-pref-height: 0;
     -fx-max-height: 0;
 }
-
-
