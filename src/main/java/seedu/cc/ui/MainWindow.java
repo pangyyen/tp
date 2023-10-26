@@ -4,7 +4,10 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -70,11 +73,10 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.tab = logic.getCurrentTab();
 
-
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-//        setAccelerators();
+        //setAccelerators();
 
         helpWindow = new HelpWindow();
     }
@@ -82,10 +84,9 @@ public class MainWindow extends UiPart<Stage> {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-
-//    private void setAccelerators() {
-//        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-//    }
+    //    private void setAccelerators() {
+    //        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+    //    }
 
     /**
      * Sets the accelerator of a MenuItem.
@@ -212,24 +213,37 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Switches to the Patients tab.
+     */
     @FXML
     public void showPatientsTab() {
         mainTabPane.getSelectionModel().select(0);
         tabInfoLabel.setText("Patients");
     }
 
+    /**
+     * Switches to the Medical History tab.
+     */
     @FXML
     public void showMedicalHistoryTab() {
         mainTabPane.getSelectionModel().select(1);
         tabInfoLabel.setText("Medical History");
     }
 
+    /**
+     * Switches to the Appointments tab.
+     */
     @FXML
     public void showAppointmentsTab() {
         mainTabPane.getSelectionModel().select(2);
         tabInfoLabel.setText("Appointments");
     }
 
+    /**
+     * Changes the tab to the specified tab index.
+     * @param tabIndex the index of the tab to change to
+     */
     public void changeTabs(int tabIndex) {
         mainTabPane.getSelectionModel().select(tabIndex);
         switch (tabIndex) {
@@ -241,6 +255,9 @@ public class MainWindow extends UiPart<Stage> {
             break;
         case 2:
             tabInfoLabel.setText(Tabs.APPOINTMENTS.toString());
+            break;
+        default:
+            tabInfoLabel.setText("Unknown Tab");
             break;
         }
     }

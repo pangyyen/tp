@@ -7,7 +7,10 @@ import seedu.cc.commons.core.tabs.Tabs;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 
-public class SwitchCommand  extends Command {
+/**
+ * Switches to the tab specified by the index number used in the navigating sidebar.
+ */
+public class SwitchCommand extends Command {
 
     public static final String COMMAND_WORD = "switch";
     public static final String MESSAGE_SUCCESS = "Switched to ";
@@ -19,6 +22,9 @@ public class SwitchCommand  extends Command {
 
     private final Index tabIndex;
 
+    /**
+     * Creates an SwitchCommand to switch to the tab specified by the index number.
+     */
     public SwitchCommand(Index tabIndex) {
         requireNonNull(tabIndex);
         this.tabIndex = tabIndex;

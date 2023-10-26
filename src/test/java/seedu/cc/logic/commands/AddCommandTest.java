@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.logic.Messages;
@@ -167,6 +168,16 @@ public class AddCommandTest {
         @Override
         public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setCurrentTab(int tabIndex) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public IntegerProperty currentTabProperty() {
+            return null;
         }
 
         @Override

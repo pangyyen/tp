@@ -3,7 +3,6 @@ package seedu.cc.model;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 
-import javafx.beans.Observable;
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;

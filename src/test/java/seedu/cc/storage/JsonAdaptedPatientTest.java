@@ -66,7 +66,8 @@ public class JsonAdaptedPatientTest {
     @Test
     public void toModelType_invalidNric_throwsIllegalValueException() {
         JsonAdaptedPatient person =
-                new JsonAdaptedPatient(VALID_NAME, INVALID_NRIC, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedPatient(VALID_NAME, INVALID_NRIC, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS,
+                        VALID_MEDICAL_HISTORY_EVENTS, VALID_TAGS);
         String expectedMessage = Nric.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
@@ -74,7 +75,8 @@ public class JsonAdaptedPatientTest {
     @Test
     public void toModelType_nullNric_throwsIllegalValueException() {
         JsonAdaptedPatient person =
-                new JsonAdaptedPatient(VALID_NAME, null, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_TAGS);
+                new JsonAdaptedPatient(VALID_NAME, null, VALID_PHONE, VALID_EMAIL,
+                        VALID_ADDRESS, VALID_MEDICAL_HISTORY_EVENTS, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Nric.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
