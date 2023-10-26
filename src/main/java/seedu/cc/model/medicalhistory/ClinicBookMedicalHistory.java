@@ -18,7 +18,7 @@ import seedu.cc.model.patient.Patient;
  * A list of medical history events that enforces uniqueness between its elements and does not allow nulls.
  * A medical history event is considered unique by comparing using {@code MedicalHistoryEvent#equals(Object)}.
  */
-public class MedicalHistoryEventList implements Iterable<MedicalHistoryEvent> {
+public class ClinicBookMedicalHistory implements Iterable<MedicalHistoryEvent> {
 
     private final ObservableList<MedicalHistoryEvent> internalList = FXCollections.observableArrayList();
     private final ObservableList<MedicalHistoryEvent> internalUnmodifiableList =
@@ -95,7 +95,7 @@ public class MedicalHistoryEventList implements Iterable<MedicalHistoryEvent> {
     public void listMedicalHistoryEvents(Patient patient) {
         requireNonNull(patient);
         currentPatient = patient;
-        internalList.setAll(patient.getMedicalHistoryEvents());
+        internalList.setAll(patient.getClinicBookMedicalHistory());
     }
 
     /**

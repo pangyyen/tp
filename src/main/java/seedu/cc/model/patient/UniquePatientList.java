@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
@@ -99,6 +100,8 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.setAll(patients);
     }
 
+    //=========== Medical History Operations =============================================================
+
     /**
      * Adds a medical history event to the specified patient.
      * @param patient
@@ -147,6 +150,56 @@ public class UniquePatientList implements Iterable<Patient> {
         patient.deleteMedicalHistoryEvent(medicalHistoryEventToDelete);
         internalList.set(index, patient);
     }
+
+    //=============AppointmentEvent Operations=============================================================
+    /**
+     * Adds an appointmentEvent to the specified patient.
+     * @param patient
+     * @param appointmentEvent
+     */
+    public void addAppointment(Patient patient, AppointmentEvent appointmentEvent) {
+        requireAllNonNull(patient, appointmentEvent);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.addAppointmentEvent(appointmentEvent);
+        internalList.set(index, patient);
+    }
+
+    /**
+     * Sets the AppointmentEvent at the specified index to the edited AppointmentEvent.
+     * @param patient
+     * @param appointmentEventToEdit
+     * @param editedAppointmentEvent
+     */
+    public void setAppointment(Patient patient, AppointmentEvent appointmentEventToEdit,
+                               AppointmentEvent editedAppointmentEvent) {
+        requireAllNonNull(patient, appointmentEventToEdit, editedAppointmentEvent);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.setAppointmentEvent(appointmentEventToEdit, editedAppointmentEvent);
+        internalList.set(index, patient);
+    }
+
+    /**
+     * Deletes the specified AppointmentEvent from the Appointments.
+     * @param patient
+     * @param appointmentEventToDelete
+     */
+    public void deleteAppointment(Patient patient, AppointmentEvent appointmentEventToDelete) {
+        requireAllNonNull(patient, appointmentEventToDelete);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.deleteAppointmentEvent(appointmentEventToDelete);
+        internalList.set(index, patient);
+    }
+
+    //================================================================================================
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.

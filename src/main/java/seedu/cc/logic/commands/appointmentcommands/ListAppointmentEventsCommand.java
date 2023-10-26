@@ -1,4 +1,4 @@
-package seedu.cc.logic.commands.medhisteventcommands;
+package seedu.cc.logic.commands.appointmentcommands;
 
 import static java.util.Objects.requireNonNull;
 
@@ -13,22 +13,24 @@ import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
 
 /**
- * Lists all medical history events of a patient.
+ * Lists all appointments of a patient.
  */
-public class ListMedicalHistoryEventCommand extends Command {
-    public static final String COMMAND_WORD = "list-medical-history";
+public class ListAppointmentEventsCommand extends Command {
+    public static final String COMMAND_WORD = "list-appointments";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Lists all medical history events of a patient identified by the index number used in the displayed "
-            + "patient list.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Lists all appointments of a patient identified by"
+            + "the index number used in the displayed patient list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
-    public static final String MESSAGE_SUCCESS = "Listed all medical history for: \n%1$s";
+    public static final String MESSAGE_SUCCESS = "Listed all appointments for: \n%1$s";
 
     private final Index patientIndex;
 
-    public ListMedicalHistoryEventCommand(Index patientIndex) {
+    /**
+     * Creates a ListAppointmentEventsCommand to list the appointments of the specified {@code Patient}.
+     */
+    public ListAppointmentEventsCommand(Index patientIndex) {
         this.patientIndex = patientIndex;
     }
 
@@ -42,7 +44,7 @@ public class ListMedicalHistoryEventCommand extends Command {
         }
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
-        model.listMedicalHistoryEvents(patient);
+        model.listAppointmentsEventForPatient(patient);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
     }

@@ -2,8 +2,8 @@ package seedu.cc.testutil;
 
 import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
-import seedu.cc.model.medicalhistory.MedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.medicalhistory.Treatment;
 
 /**
@@ -57,11 +57,11 @@ public class MedicalHistoryEventBuilder {
     }
 
     /**
-     * Builds a {@code MedicalHistory} with the {@code MedicalHistoryEvent} that we are building.
+     * Builds a {@code PatientMedicalHistory} with the {@code MedicalHistoryEvent} that we are building.
      */
-    public MedicalHistory buildMedicalHistory() {
-        MedicalHistory medicalHistory = new MedicalHistory();
-        medicalHistory.addMedicalHistoryEvent(new MedicalHistoryEvent(medicalCondition, treatment, date));
-        return medicalHistory;
+    public PatientMedicalHistory buildMedicalHistory() {
+        PatientMedicalHistory patientMedicalHistory = new PatientMedicalHistory();
+        patientMedicalHistory.addMedicalHistoryEvent(new MedicalHistoryEvent(medicalCondition, treatment, date));
+        return patientMedicalHistory;
     }
 }

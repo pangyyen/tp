@@ -85,9 +85,94 @@ Message: "Successfully deleted patient."
 **Expected Output (Failure):**  
 Message: "Invalid index. Please enter a valid index."
 
+## 5. Add Appointment
+
+**What it does:**  
+Schedules a new appointmentEvent for a patient.
+
+**Command Format:**  
+`add-appt INDEX d/DATE t/TIME`
+
+**Example Commands:**  
+`add-appt 1 d/2023-10-01 tm/14:00`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **DATE:** YYYY-MM-DD
+- **TIME:** HH:MM (24-hour format)
+
+**Expected Output (Success):**  
+CLI: A new entry appears in the list of appointments.  
+Message: "Successfully added appointmentEvent: [Appointment Details]"
+
+**Expected Output (Failure):**  
+Message: "Invalid input. Please enter a valid patient index, date, or time."
+
+## 6. List All Appointment
+
+**What it does:**  
+Displays all appointments sorted by date.
+
+**Command Format:**  
+`list-appointments INDEX`
+
+**Example Commands:**  
+`list-appointments 1`
+
+**Expected Output (Success):**  
+CLI: The list of appointments is displayed.  
+Message: "Displaying X number of appointments."
+
+**Expected Output (Failure):**  
+Message: "No appointments found."
+
+## 7. Edit Appointment
+
+**What it does:**  
+Edits existing appointmentEvent details.
+
+**Command Format:**  
+`edit-appointmentEvent INDEX [pi/patient-index] [d/DATE] [t/TIME]`
+
+**Example Commands:**  
+`edit-appointmentEvent 2 pi/7 d/2023-10-05 t/16:00`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+- **DATE:** YYYY-MM-DD
+- **TIME:** HH:MM (24-hour format)
+
+**Expected Output (Success):**  
+CLI: The edited appointmentEvent entry is updated in the list.  
+Message: "Successfully edited appointmentEvent: [Appointment Details]"
+
+**Expected Output (Failure):**  
+Message: "Invalid input. Please enter a valid index or details."
+
+## 8. Delete Appointment
+
+**What it does:**  
+Removes an appointmentEvent from the system.
+
+**Command Format:**  
+`delete-appointmentEvent INDEX`
+
+**Example Commands:**  
+`delete-appointmentEvent 3`
+
+**Acceptable Values:**
+- **INDEX:** Positive integer
+
+**Expected Output (Success):**  
+CLI: The deleted appointmentEvent entry is removed from the list.  
+Message: "Successfully deleted appointmentEvent."
+
+**Expected Output (Failure):**  
+Message: "Invalid index. Please enter a valid appointmentEvent index."
+
 ---
 
-## 5. Add Medical History
+## 9. Add Medical History
 
 **What it does:**
 Adds a medical history to a patient record.
@@ -109,7 +194,7 @@ Message: "Successfully added medical history for patient: [Medical History Detai
 
 ---
 
-## 6. List Medical History
+## 10. List Medical History
 
 **What it does:**
 Lists the medical history of a patient.
@@ -128,7 +213,7 @@ Message: "Successfully listed medical history for patient: [Medical History Deta
 
 ---
 
-## 7. Edit Medical History
+## 11. Edit Medical History
 
 **What it does:**
 Edits a medical history of a patient.
@@ -151,7 +236,7 @@ Message: "Successfully edited medical history for patient: [Medical History Deta
 
 ---
 
-## 8. Delete Medical History
+## 12. Delete Medical History
 
 **What it does:**
 Deletes a medical history of a patient.

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -25,6 +26,7 @@ public class ModelManager implements Model {
     private final FilteredList<Patient> filteredPatients;
 
     private final FilteredList<MedicalHistoryEvent> filteredMedicalHistoryEvents;
+    private final FilteredList<AppointmentEvent> filteredAppointmentEvents;
 
     /**
      * Initializes a NewModelManager with the given clinicBook and userPrefs.
@@ -37,7 +39,8 @@ public class ModelManager implements Model {
         this.clinicBook = new ClinicBook(clinicBook);
         this.newUserPrefs = new UserPrefs(userPrefs);
         this.filteredPatients = new FilteredList<>(this.clinicBook.getPatientList());
-        this.filteredMedicalHistoryEvents = new FilteredList<>(this.clinicBook.getMedicalHistoryEventList());
+        this.filteredMedicalHistoryEvents = new FilteredList<>(this.clinicBook.getClinicBookMedicalHistory());
+        this.filteredAppointmentEvents = new FilteredList<>(this.clinicBook.getClinicBookAppointments());
     }
 
     public ModelManager() {
@@ -79,7 +82,7 @@ public class ModelManager implements Model {
         newUserPrefs.setClinicBookFilePath(clinicBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ClinicBook ================================================================================
 
     @Override
     public ReadOnlyClinicBook getClinicBook() {
@@ -144,6 +147,37 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
         return filteredMedicalHistoryEvents;
+    }
+
+    @Override
+    public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
+        return filteredAppointmentEvents;
+    }
+
+    //=========== AppointmentEvent Operations =============================================================
+    @Override
+    public void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent) {
+        requireAllNonNull(patient, appointmentEvent);
+        clinicBook.addAppointment(patient, appointmentEvent);
+    }
+
+    @Override
+    public void listAppointmentsEventForPatient(Patient patient) {
+        requireAllNonNull(patient);
+        clinicBook.listAppointments(patient);
+    }
+
+    @Override
+    public void setAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToEdit,
+                                              AppointmentEvent editedAppointmentEvent) {
+        requireAllNonNull(patient, appointmentEventToEdit, editedAppointmentEvent);
+        clinicBook.setAppointment(patient, appointmentEventToEdit, editedAppointmentEvent);
+    }
+
+    @Override
+    public void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete) {
+        requireAllNonNull(patient, appointmentEventToDelete);
+        clinicBook.deleteAppointment(patient, appointmentEventToDelete);
     }
 
     //=========== Filtered Person List Accessors =============================================================

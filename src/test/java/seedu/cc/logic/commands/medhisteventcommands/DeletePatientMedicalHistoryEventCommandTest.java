@@ -19,7 +19,7 @@ import seedu.cc.model.UserPrefs;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
-class DeleteMedicalHistoryEventCommandTest {
+class DeletePatientMedicalHistoryEventCommandTest {
 
     private final Model model = new ModelManager(getTypicalClinicBook(), new UserPrefs());
 
@@ -33,7 +33,7 @@ class DeleteMedicalHistoryEventCommandTest {
                 INDEX_FIRST_PATIENT);
 
         String expectedMessage = String.format(DeleteMedicalHistoryEventCommand.MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS,
-                eventToDelete);
+                Messages.format(eventToDelete, patient));
 
         ModelManager expectedModel = new ModelManager(model.getClinicBook(), new UserPrefs());
         Patient expectedPatient = expectedModel.getFilteredPatientList().get(INDEX_FIRST_PATIENT.getZeroBased());
