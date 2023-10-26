@@ -40,7 +40,36 @@ The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a n
 The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of 
 `MedicalHistoryEvent` while `MedicalHistoryEvent` is a list of `MedicalHistoryEvent` that is currently being displayed.
 
----
+### \[Proposed\] Undo/redo feature
+
+#### Proposed Implementation
+
+The proposed undo/redo mechanism is facilitated by the `VersionedClinicBook` class. The `VersionedClinicBook` class extends `ClinicBook` with an undo/redo history, stored internally as `clinicBookStateList` and `currentStatePointer`. Additionally, it implementes the following operations:
+
+* `VersionedClinicBook#commit()` — Saves the current address book state in its history.
+* `VersionedClinicBook#undo()` — Restores the previous address book state from its history.
+* `VersionedClinicBook#redo()` — Restores a previously undone address book state from its history.
+
+These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+
+### \[Proposed\] Pharmacy Integration
+
+#### Proposed Implementation
+
+The proposed pharmacy integration is facilitated by the `Pharmacy` class. The `Pharmacy` class extends `ClinicBook` with a list of `Medicine` and `Prescription` that is stored internally as `medicineList` and `prescriptionList`. Additionally, it implementes the following operations:
+
+* `Pharmacy#addMedicine()` — Adds a `Medicine` to the `medicineList`.
+* `Pharmacy#deleteMedicine()` — Deletes a `Medicine` from the `medicineList`.
+* `Pharmacy#addPrescription()` — Adds a `Prescription` to the `prescriptionList`.
+* `Pharmacy#deletePrescription()` — Deletes a `Prescription` from the `prescriptionList`.
+* `Pharmacy#findMedicine()` — Finds a `Medicine` from the `medicineList`.
+* `Pharmacy#listMedicine()` — Lists all `Medicine` from the `medicineList`.
+* `Pharmacy#listPrescription()` — Lists all `Prescription` from the `prescriptionList`.
+* `Pharmacy#updateMedicine()` — Updates a `Medicine` from the `medicineList`.
+* `Pharmacy#updatePrescription()` — Updates a `Prescription` from the `prescriptionList`.
+
+Given below is the UML diagram for the `Pharmacy` class.
+
 
 ## User Stories
 
