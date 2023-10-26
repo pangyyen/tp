@@ -1,6 +1,6 @@
 package seedu.cc.model.patient;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+//import static org.junit.jupiter.api.Assertions.assertEquals;x
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -43,7 +43,8 @@ public class PatientTest {
     @Test
     public void isSamePatient_sameNric_returnsTrue() {
         Patient anotherPatient = new Patient(patient.getName(), patient.getNric(), patient.getPhone(),
-                patient.getEmail(), patient.getAddress(),  patientAppointmentList, patientMedicalHistory, patient.getTags());
+                patient.getEmail(), patient.getAddress(),
+                patientAppointmentList, patientMedicalHistory, patient.getTags());
         assertTrue(patient.isSamePatient(anotherPatient));
     }
 
@@ -54,14 +55,13 @@ public class PatientTest {
                 patient.getEmail(), patient.getAddress(), patient.getTags());
         assertFalse(patient.isSamePatient(anotherPatient));
     }
-
-//    @Test
-//    public void getMedicalHistory_returnsCorrectMedicalHistory() {
-//        assertEquals(patientAppointmentList, patientEmptyMedicalHistory.getPatientMedicalHistory());
-//    }
-//
-//    @Test
-//    public void getAppointmentList_returnsCorrectAppointmentList() {
-//        assertEquals(patientMedicalHistory, patientEmptyAppointment.getPatientAppointmentList());
-//    }
+    //    @Test
+    //    public void getMedicalHistory_returnsCorrectMedicalHistory() {
+    //        assertEquals(patientAppointmentList, patientEmptyMedicalHistory.getPatientMedicalHistory());
+    //    }
+    //
+    //    @Test
+    //    public void getAppointmentList_returnsCorrectAppointmentList() {
+    //        assertEquals(patientMedicalHistory, patientEmptyAppointment.getPatientAppointmentList());
+    //    }
 }
