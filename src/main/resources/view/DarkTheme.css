@@ -402,3 +402,12 @@
     -fx-image: url('../images/helpp_icon.png');
 }
 
+.tab-pane .tab-header-background,
+.tab-pane .tab-header-area .headers-region {
+    -fx-opacity: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+
