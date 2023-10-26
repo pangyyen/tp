@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
@@ -50,6 +51,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label tabInfoLabel;
 
     @FXML
     private TabPane mainTabPane;
@@ -201,16 +205,19 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void showPatientsTab() {
         mainTabPane.getSelectionModel().select(0);
+        tabInfoLabel.setText("Patients");
     }
 
     @FXML
     public void showMedicalHistoryTab() {
         mainTabPane.getSelectionModel().select(1);
+        tabInfoLabel.setText("Medical History");
     }
 
     @FXML
     public void showAppointmentsTab() {
         mainTabPane.getSelectionModel().select(2);
+        tabInfoLabel.setText("Appointments");
     }
 
 }
