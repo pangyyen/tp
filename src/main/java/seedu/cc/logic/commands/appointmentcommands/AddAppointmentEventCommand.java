@@ -18,7 +18,7 @@ import seedu.cc.model.patient.Patient;
 /**
  * Edits the details of an existing person in the address book.
  */
-public class AddAppointmentCommand extends Command {
+public class AddAppointmentEventCommand extends Command {
 
     public static final String COMMAND_WORD = "add-appt";
 
@@ -43,7 +43,7 @@ public class AddAppointmentCommand extends Command {
      * @param index of the patient in the filtered patient list to edit
      * @param appointmentEvent details to edit the patient with
      */
-    public AddAppointmentCommand(Index index, AppointmentEvent appointmentEvent) {
+    public AddAppointmentEventCommand(Index index, AppointmentEvent appointmentEvent) {
         requireNonNull(index);
         requireNonNull(appointmentEvent);
         this.index = index;
@@ -73,11 +73,11 @@ public class AddAppointmentCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddAppointmentCommand)) {
+        if (!(other instanceof AddAppointmentEventCommand)) {
             return false;
         }
 
-        AddAppointmentCommand otherEditCommand = (AddAppointmentCommand) other;
+        AddAppointmentEventCommand otherEditCommand = (AddAppointmentEventCommand) other;
         return index.equals(otherEditCommand.index)
                 && appointmentEvent.equals(otherEditCommand.appointmentEvent);
     }

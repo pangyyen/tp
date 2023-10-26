@@ -1,7 +1,10 @@
-package seedu.cc.logic.parser;
+package seedu.cc.logic.parser.appointment;
 
 import seedu.cc.commons.core.index.Index;
-import seedu.cc.logic.commands.appointmentcommands.AddAppointmentCommand;
+import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
+import seedu.cc.logic.parser.ArgumentMultimap;
+import seedu.cc.logic.parser.ArgumentTokenizer;
+import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.tag.Tag;
@@ -17,14 +20,14 @@ import static java.util.Objects.requireNonNull;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.*;
 
-public class AddApptCommandParser {
+public class AddAppointmentCommandParser {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddAppointmentCommand parse(String args) throws ParseException {
+    public AddAppointmentEventCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_APPT_DATE, PREFIX_APPT_TIME);
@@ -35,21 +38,21 @@ public class AddApptCommandParser {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAppointmentCommand.MESSAGE_USAGE), pe);
+                    AddAppointmentEventCommand.MESSAGE_USAGE), pe);
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_APPT_DATE, PREFIX_APPT_TIME);
 
         if (argMultimap.getValue(PREFIX_APPT_DATE).isEmpty() || argMultimap.getValue(PREFIX_APPT_TIME).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAppointmentCommand.MESSAGE_USAGE));
+                    AddAppointmentEventCommand.MESSAGE_USAGE));
         }
 
-        LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
-        LocalTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
+        LocalDate date = ParserUtil.parseLocalDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
+        LocalTime time = ParserUtil.parseLocalTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
         AppointmentEvent appointmentEvent = new AppointmentEvent(date, time);
 
-        return new AddAppointmentCommand(index, appointmentEvent);
+        return new AddAppointmentEventCommand(index, appointmentEvent);
 
 //        AddApptCommand.AddApptDescriptor editPatientDescriptor = new EditCommand.EditPatientDescriptor();
 

@@ -1,4 +1,4 @@
-package seedu.cc.logic.parser;
+package seedu.cc.logic.parser.medical_history;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -7,6 +7,10 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
+import seedu.cc.logic.parser.ArgumentMultimap;
+import seedu.cc.logic.parser.ArgumentTokenizer;
+import seedu.cc.logic.parser.Parser;
+import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
 /**
@@ -39,7 +43,7 @@ public class DeleteMedicalHistoryEventCommandParser implements Parser<DeleteMedi
 
         Index patientIndex;
 
-        if (!argMultimap.getValue(PREFIX_PATIENT_INDEX).isPresent()) {
+        if (argMultimap.getValue(PREFIX_PATIENT_INDEX).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
 

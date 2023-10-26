@@ -125,7 +125,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code date} is invalid.
      */
-    public static LocalDate parseDate(String date) throws ParseException {
+    public static LocalDate parseLocalDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
         if (!AppointmentEvent.isValidDate(trimmedDate)) {
@@ -140,7 +140,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code time} is invalid.
      */
-    public static LocalTime parseTime(String time) throws ParseException {
+    public static LocalTime parseLocalTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
         if (!AppointmentEvent.isValidTime(trimmedTime)) {

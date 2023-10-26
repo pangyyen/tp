@@ -18,7 +18,13 @@ import seedu.cc.model.patient.Patient;
 public class ListMedicalHistoryEventCommand extends Command {
     public static final String COMMAND_WORD = "list-medical-history";
 
-    public static final String MESSAGE_SUCCESS = "Listed all medical history";
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Lists all medical history events of a patient identified by the index number used in the displayed "
+            + "patient list.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1 ";
+
+    public static final String MESSAGE_SUCCESS = "Listed all medical history for a patient";
 
     private final Index patientIndex;
 

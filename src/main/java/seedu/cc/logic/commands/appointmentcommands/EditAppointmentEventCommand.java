@@ -22,7 +22,7 @@ import seedu.cc.model.patient.Patient;
 /**
  * Edits the details of an existing appointment event in the address book.
  */
-public class EditAppointmentCommand extends Command {
+public class EditAppointmentEventCommand extends Command {
 
     public static final String COMMAND_WORD = "edit-appt";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the appointment "
@@ -45,8 +45,8 @@ public class EditAppointmentCommand extends Command {
      * @param patientIndex               of the appointment event in the filtered appointment event list to edit
      * @param editAppointmentEventDescriptor details to edit the appointment event with
      */
-    public EditAppointmentCommand(Index eventIndex, Index patientIndex,
-                                  EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
+    public EditAppointmentEventCommand(Index eventIndex, Index patientIndex,
+                                       EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
         this.eventIndex = eventIndex;
         this.patientIndex = patientIndex;
         this.editAppointmentEventDescriptor = editAppointmentEventDescriptor;

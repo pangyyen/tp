@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.logic.commands.AddCommand;
-import seedu.cc.logic.commands.appointmentcommands.AddAppointmentCommand;
-import seedu.cc.logic.commands.appointmentcommands.DeleteAppointmentCommand;
-import seedu.cc.logic.commands.appointmentcommands.EditAppointmentCommand;
-import seedu.cc.logic.commands.appointmentcommands.ListAppointmentsCommand;
+import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.DeleteAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.ListAppointmentEventsCommand;
 import seedu.cc.logic.commands.ClearCommand;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.DeleteCommand;
@@ -25,7 +25,15 @@ import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventComman
 import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.ListMedicalHistoryEventCommand;
+import seedu.cc.logic.parser.appointment.AddAppointmentCommandParser;
+import seedu.cc.logic.parser.appointment.DeleteAppointmentEventCommandParser;
+import seedu.cc.logic.parser.appointment.EditAppointmentEventCommandParser;
+import seedu.cc.logic.parser.appointment.ListAppointmentEventsCommandParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.logic.parser.medical_history.AddMedicalHistoryEventParser;
+import seedu.cc.logic.parser.medical_history.DeleteMedicalHistoryEventCommandParser;
+import seedu.cc.logic.parser.medical_history.EditMedicalHistoryEventCommandParser;
+import seedu.cc.logic.parser.medical_history.ListMedicalHistoryEventsCommandParser;
 
 /**
  * Parses user input.
@@ -86,17 +94,17 @@ public class ClinicBookParser {
             return new HelpCommand();
 
         // AppointmentEvent commands
-        case AddAppointmentCommand.COMMAND_WORD:
-            return new AddApptCommandParser().parse(arguments);
+        case AddAppointmentEventCommand.COMMAND_WORD:
+            return new AddAppointmentCommandParser().parse(arguments);
 
-        case ListAppointmentsCommand.COMMAND_WORD:
-            return new ListAppointmentsCommand();
+        case ListAppointmentEventsCommand.COMMAND_WORD:
+            return new ListAppointmentEventsCommandParser().parse(arguments);
 
-        case EditAppointmentCommand.COMMAND_WORD:
-            return new EditAppointmentCommandParser().parse(arguments);
+        case EditAppointmentEventCommand.COMMAND_WORD:
+            return new EditAppointmentEventCommandParser().parse(arguments);
 
-        case DeleteAppointmentCommand.COMMAND_WORD:
-            return new DeleteAppointmentCommandParser().parse(arguments);
+        case DeleteAppointmentEventCommand.COMMAND_WORD:
+            return new DeleteAppointmentEventCommandParser().parse(arguments);
 
         // Medical History Event commands
         case AddMedicalHistoryEventCommand.COMMAND_WORD:
