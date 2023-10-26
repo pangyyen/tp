@@ -120,4 +120,12 @@ public class JsonUserPrefsStorageTest {
         assertEquals(original, readBack);
     }
 
+    @Test
+    public void getUserPrefsFilePath_checkFilePath_correctFilePathReturned() {
+        Path expectedFilePath = Paths.get("test", "path", "to", "userprefs.json");
+        JsonUserPrefsStorage jsonUserPrefsStorage = new JsonUserPrefsStorage(expectedFilePath);
+        Path actualFilePath = jsonUserPrefsStorage.getUserPrefsFilePath();
+        assertEquals(expectedFilePath, actualFilePath, "File paths should be the same.");
+    }
+
 }
