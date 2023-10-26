@@ -122,6 +122,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         logic.currentTabProperty().addListener((observable, oldValue, newValue) -> {
+            changeTabs(newValue.intValue());
         });
 
         patientListPanel = new PatientListPanel(logic.getFilteredPatientList());

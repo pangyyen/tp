@@ -149,6 +149,7 @@ public class ModelManager implements Model {
     }
 
     public void setCurrentTab(int tab) {
+        this.currentTab.set(tab);
     }
 
     @Override
