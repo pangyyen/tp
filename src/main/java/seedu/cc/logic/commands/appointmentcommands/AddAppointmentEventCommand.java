@@ -32,7 +32,7 @@ public class AddAppointmentEventCommand extends Command {
             + PREFIX_APPT_DATE + "2023-10-01 "
             + PREFIX_APPT_TIME + "14:00";
 
-    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added appointmentEvent: %1$s";
+    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added an appointment event: \n%1$s";
     public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid patient "
         + "index, date, or time.";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the address book.";
@@ -65,7 +65,8 @@ public class AddAppointmentEventCommand extends Command {
         model.addAppointmentEventToPatient(patientToAddAppt, appointmentEvent);
 
 
-        return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS, Messages.format(patientToAddAppt)));
+        return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
+                Messages.format(appointmentEvent, patientToAddAppt)));
     }
 
     @Override

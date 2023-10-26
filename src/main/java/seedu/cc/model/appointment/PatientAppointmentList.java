@@ -20,7 +20,7 @@ public class PatientAppointmentList {
     /**
      * Creates an Appointments using the Appointments in the {@code toBeCopied}
      */
-    public void addAppointment(AppointmentEvent appt) {
+    public void addAppointmentList(AppointmentEvent appt) {
         appointmentEventList.add(appt);
     }
 

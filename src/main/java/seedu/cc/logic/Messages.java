@@ -60,13 +60,15 @@ public class Messages {
     /**
      * Formats the {@code event} for display to the user.
      */
-    public static String format(MedicalHistoryEvent event) {
+    public static String format(MedicalHistoryEvent event, Patient patient) {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Date: ")
+        builder.append("Patient: ")
+                .append(patient.getName())
+                .append("\nDate: ")
                 .append(event.getDate())
-                .append("; Medical Condition: ")
+                .append("\nMedical Condition: ")
                 .append(event.getMedicalCondition())
-                .append("; Treatment: ")
+                .append("\nTreatment: ")
                 .append(event.getTreatment());
         return builder.toString();
     }
@@ -74,11 +76,13 @@ public class Messages {
     /**
      * Formats the {@code event} for display to the user.
      */
-    public static String format(AppointmentEvent event) {
+    public static String format(AppointmentEvent event, Patient patient) {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Date: ")
+        builder.append("Patient: ")
+                .append(patient.getName())
+                .append("\nDate: ")
                 .append(event.getLocalDate())
-                .append("; Time: ")
+                .append("\nTime: ")
                 .append(event.getLocalTime());
         return builder.toString();
     }

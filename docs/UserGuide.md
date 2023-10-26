@@ -114,10 +114,10 @@ Message: "Invalid input. Please enter a valid patient index, date, or time."
 Displays all appointments sorted by date.
 
 **Command Format:**  
-`list-appointments`
+`list-appointments INDEX`
 
 **Example Commands:**  
-`list-appointments`
+`list-appointments 1`
 
 **Expected Output (Success):**  
 CLI: The list of appointments is displayed.  
@@ -132,10 +132,10 @@ Message: "No appointments found."
 Edits existing appointmentEvent details.
 
 **Command Format:**  
-`edit-appointmentEvent INDEX [d/DATE] [t/TIME]`
+`edit-appointmentEvent INDEX [pi/patient-index] [d/DATE] [t/TIME]`
 
 **Example Commands:**  
-`edit-appointmentEvent 2 d/2023-10-05 t/16:00`
+`edit-appointmentEvent 2 pi/7 d/2023-10-05 t/16:00`
 
 **Acceptable Values:**
 - **INDEX:** Positive integer

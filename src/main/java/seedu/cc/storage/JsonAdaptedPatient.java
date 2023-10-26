@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
+import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
@@ -33,6 +34,7 @@ class JsonAdaptedPatient {
     private final String email;
     private final String address;
     private final List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents = new ArrayList<>();
+    private final List<JsonAdaptedAppointmentEvent> appointmentEvents = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -43,6 +45,7 @@ class JsonAdaptedPatient {
                               @JsonProperty("phone") String phone, @JsonProperty("email") String email,
                               @JsonProperty("address") String address,
                               @JsonProperty("medicalHistory") List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents,
+                              @JsonProperty("appointment") List<JsonAdaptedAppointmentEvent> appointmentEvents,
                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.nric = nric;
@@ -51,6 +54,9 @@ class JsonAdaptedPatient {
         this.address = address;
         if (medicalHistoryEvents != null) {
             this.medicalHistoryEvents.addAll(medicalHistoryEvents);
+        }
+        if (appointmentEvents != null) {
+            this.appointmentEvents.addAll(appointmentEvents);
         }
         if (tags != null) {
             this.tags.addAll(tags);
@@ -68,6 +74,9 @@ class JsonAdaptedPatient {
         address = source.getAddress().value;
         medicalHistoryEvents.addAll(source.getMedicalHistory().getMedicalHistoryEvents().stream()
                 .map(JsonAdaptedMedicalHistoryEvent::new)
+                .collect(Collectors.toList()));
+        appointmentEvents.addAll(source.getAppointmentList().getAppointmentList().stream()
+                .map(JsonAdaptedAppointmentEvent::new)
                 .collect(Collectors.toList()));
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -88,6 +97,11 @@ class JsonAdaptedPatient {
         final PatientMedicalHistory modelPatientMedicalHistory = new PatientMedicalHistory();
         for (JsonAdaptedMedicalHistoryEvent event : medicalHistoryEvents) {
             modelPatientMedicalHistory.addMedicalHistoryEvent(event.toModelType());
+        }
+
+        final PatientAppointmentList modelPatientAppointmentList = new PatientAppointmentList();
+        for (JsonAdaptedAppointmentEvent event : appointmentEvents) {
+            modelPatientAppointmentList.addAppointmentList(event.toModelType());
         }
 
         if (name == null) {

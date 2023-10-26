@@ -165,7 +165,7 @@ public class Patient extends Person {
     }
 
     public void addAppointmentEvent(AppointmentEvent appointmentEvent) {
-        this.patientAppointmentList.addAppointment(appointmentEvent);
+        this.patientAppointmentList.addAppointmentList(appointmentEvent);
     }
 
     public void setAppointmentEvent(AppointmentEvent appointmentEventToEdit, AppointmentEvent editedAppointmentEvent) {

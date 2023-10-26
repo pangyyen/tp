@@ -23,7 +23,7 @@ public class ListAppointmentEventsCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1 ";
 
-    public static final String MESSAGE_SUCCESS = "Listed all appointments for a patient";
+    public static final String MESSAGE_SUCCESS = "Listed all appointments for: \n%1$s";
 
     private final Index patientIndex;
 
@@ -45,7 +45,8 @@ public class ListAppointmentEventsCommand extends Command {
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listAppointmentsEventForPatient(patient);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(String.format(MESSAGE_SUCCESS,
+                Messages.format(patient)));
     }
 
 }

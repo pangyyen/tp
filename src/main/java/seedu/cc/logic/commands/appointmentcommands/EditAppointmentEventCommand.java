@@ -102,7 +102,8 @@ public class EditAppointmentEventCommand extends Command {
         // Update the model with the edited event
         model.setAppointmentEventForPatient(patientToEditAppointmentEvent, eventToEdit, editedEvent);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_EVENT_SUCCESS, editedEvent));
+        return new CommandResult(String.format(MESSAGE_EDIT_EVENT_SUCCESS,
+                Messages.format(editedEvent, patientToEditAppointmentEvent)));
 
     }
     /**

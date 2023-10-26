@@ -31,7 +31,7 @@ public class AddMedicalHistoryEventCommand extends Command {
             + PREFIX_TREATMENT + "TREATMENT ";
 
 
-    public static final String MESSAGE_SUCCESS = "New medical history event added: %1$s";
+    public static final String MESSAGE_SUCCESS = "New medical history event added: \n%1$s";
 
     private final MedicalHistoryEvent eventToAdd;
     private final Index patientIndex;
@@ -58,6 +58,7 @@ public class AddMedicalHistoryEventCommand extends Command {
         Patient patientToAddMedicalHistoryEvent = lastShownList.get(patientIndex.getZeroBased());
         model.addMedicalHistoryEvent(patientToAddMedicalHistoryEvent, eventToAdd);
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(eventToAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS,
+                Messages.format(eventToAdd, patientToAddMedicalHistoryEvent)));
     }
 }

@@ -53,7 +53,7 @@ public class DeleteMedicalHistoryEventCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Patient personToDeleteMedicalHistoryEvent = lastPatientShownList.get(patientIndex.getZeroBased());
+        Patient patientToDeleteMedicalHistoryEvent = lastPatientShownList.get(patientIndex.getZeroBased());
 
         List<MedicalHistoryEvent> lastShownList = model.getFilteredMedicalHistoryEventList();
 
@@ -63,13 +63,14 @@ public class DeleteMedicalHistoryEventCommand extends Command {
 
         MedicalHistoryEvent medicalHistoryEventToDelete = lastShownList.get(eventIndex.getZeroBased());
 
-        if (!personToDeleteMedicalHistoryEvent.hasMedicalHistoryEvent(medicalHistoryEventToDelete)) {
+        if (!patientToDeleteMedicalHistoryEvent.hasMedicalHistoryEvent(medicalHistoryEventToDelete)) {
             throw new CommandException("This medical history event does not exist for this patient");
         }
 
-        model.deleteMedicalHistoryEvent(personToDeleteMedicalHistoryEvent, medicalHistoryEventToDelete);
+        model.deleteMedicalHistoryEvent(patientToDeleteMedicalHistoryEvent, medicalHistoryEventToDelete);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS, medicalHistoryEventToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS,
+                Messages.format(medicalHistoryEventToDelete, patientToDeleteMedicalHistoryEvent)));
     }
 
     @Override

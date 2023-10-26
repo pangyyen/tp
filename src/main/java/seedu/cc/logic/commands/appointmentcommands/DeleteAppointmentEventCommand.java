@@ -69,7 +69,8 @@ public class DeleteAppointmentEventCommand extends Command {
 
         model.deleteAppointmentEventForPatient(personToDeleteAppointment, appointmentEventToDelete);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS, appointmentEventToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS,
+                Messages.format(appointmentEventToDelete, personToDeleteAppointment)));
     }
 
     @Override
