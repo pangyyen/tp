@@ -187,7 +187,7 @@
     -fx-padding: 0 10 0 0; /* Top, Right, Bottom, Left */
 }
 
-/* Icons (assuming you have images as resources in your project) */
+/* Icons */
 
 #patientsIcon {
     -fx-image: url('../images/patient_icon.png');
@@ -206,7 +206,7 @@
 }
 
 #helpIcon {
-    -fx-image: url('../images/help_icon.png');
+    -fx-image: url('../images/helpp_icon.png');
 }
 
 /* Hide Tabs */
