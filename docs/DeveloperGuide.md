@@ -17,6 +17,31 @@ CareCentral tackles the complexities healthcare professionals face in organizing
 
 Streamline medical practice with CareCentral, designed for healthcare professionals. Seamlessly manage patient records, ensure punctual appointments, and coordinate referrals. Elevate patient care while reducing administrative tasks, all in one intuitive platform.
 
+---
+## Implementation
+
+### Medical History
+CareCentral also allows users to store and access patient medical history, including past diagnoses, allergies, 
+and medications. This enables healthcare professionals to provide more accurate and efficient care during patient 
+visits, ensuring continuity of care. User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD, 
+the `MedicalCondition` and the `Treatment` received by the patient.
+
+The `MedicalHistoryEvent` will then be shown as a list of `MedicalHistoryEvent` in the `Patient`'s `Medical History`. 
+The MedicalHistory will be facilitated using the FilteredList, although the current implementation does not allow 
+filtering.
+
+When the user starts an application, there will be an empty `CurrentMedicalHistoryEventList`. It will be populated when the 
+user executes `list-medical-history` command. 
+
+The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
+
+#### Note:
+
+The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of 
+`MedicalHistoryEvent` while `MedicalHistoryEvent` is a list of `MedicalHistoryEvent` that is currently being displayed.
+
+---
+
 ## User Stories
 
 ### Doctor
@@ -56,6 +81,8 @@ Streamline medical practice with CareCentral, designed for healthcare profession
         1. Doctor selects a patient record to delete.
         2. App deletes the selected record.
         3. Doctor views the updated list of patient records.
+
+
 
 ### Nice to Have
 
