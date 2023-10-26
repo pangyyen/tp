@@ -40,10 +40,26 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
+### UI component
+
+The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+
+![Structure of the UI Component](images/UiClassDiagram.png)
+
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+
+The `UI` component,
+
+* executes user commands using the `Logic` component.
+* listens for changes to `Model` data so that the UI can be updated with the modified data.
+* keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
+* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+
 ## Product Scope
 
 ### Target User Profile
-
 - **Age:** 25-60 years
 - **Occupation:** Healthcare professionals including doctors, nurses, and medical practitioners
 - **Tech Comfort:** Regular smartphone and app user, seeks digital solutions to streamline work
@@ -61,23 +77,23 @@ Streamline medical practice with CareCentral, designed for healthcare profession
 ## Implementation
 
 ### Medical History
-CareCentral also allows users to store and access patient medical history, including past diagnoses, allergies, 
-and medications. This enables healthcare professionals to provide more accurate and efficient care during patient 
-visits, ensuring continuity of care. User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD, 
+CareCentral also allows users to store and access patient medical history, including past diagnoses, allergies,
+and medications. This enables healthcare professionals to provide more accurate and efficient care during patient
+visits, ensuring continuity of care. User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD,
 the `MedicalCondition` and the `Treatment` received by the patient.
 
-The `MedicalHistoryEvent` will then be shown as a list of `MedicalHistoryEvent` in the `Patient`'s `Medical History`. 
-The MedicalHistory will be facilitated using the FilteredList, although the current implementation does not allow 
+The `MedicalHistoryEvent` will then be shown as a list of `MedicalHistoryEvent` in the `Patient`'s `Medical History`.
+The MedicalHistory will be facilitated using the FilteredList, although the current implementation does not allow
 filtering.
 
-When the user starts an application, there will be an empty `CurrentMedicalHistoryEventList`. It will be populated when the 
-user executes `list-medical-history` command. 
+When the user starts an application, there will be an empty `CurrentMedicalHistoryEventList`. It will be populated when the
+user executes `list-medical-history` command.
 
 The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
 
 #### Note:
 
-The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of 
+The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of
 `MedicalHistoryEvent` while `MedicalHistoryEvent` is a list of `MedicalHistoryEvent` that is currently being displayed.
 
 ---
@@ -99,79 +115,78 @@ The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventLis
 ### Must Have
 
 1. **Create New Patient Records**
-    - **MSS (Main Success Scenario):**
-        1. Doctor chooses to create a new patient record.
-        2. App prompts for the patient's details.
-        3. Doctor enters the required information.
-        4. App saves the new patient record.
-        5. Doctor views the updated list of patient records.
+   - **MSS (Main Success Scenario):**
+      1. Doctor chooses to create a new patient record.
+      2. App prompts for the patient's details.
+      3. Doctor enters the required information.
+      4. App saves the new patient record.
+      5. Doctor views the updated list of patient records.
 
 2. **View All Existing Patient Records**
-    - **MSS:**
-        1. Doctor chooses to view all patient records.
-        2. App displays the list of all patient records.
-
+   - **MSS:**
+      1. Doctor chooses to view all patient records.
+      2. App displays the list of all patient records.
 3. **View One Patient Record**
-    - **MSS:**
-        1. Doctor searches for a specific patient record.
-        2. App displays the patient's record.
+   - **MSS:**
+      1. Doctor searches for a specific patient record.
+      2. App displays the patient's record.
 
 4. **Delete Patient Record**
-    - **MSS:**
-        1. Doctor selects a patient record to delete.
-        2. App deletes the selected record.
-        3. Doctor views the updated list of patient records.
+   - **MSS:**
+      1. Doctor selects a patient record to delete.
+      2. App deletes the selected record.
+      3. Doctor views the updated list of patient records.
 
 
 
 ### Nice to Have
 
 1. **Delete Confirmation**
-    - **MSS:**
-        1. Doctor selects a patient record to delete.
-        2. App prompts for confirmation.
-        3. Doctor confirms the deletion.
-        4. App deletes the selected record.
+   - **MSS:**
+      1. Doctor selects a patient record to delete.
+      2. App prompts for confirmation.
+      3. Doctor confirms the deletion.
+      4. App deletes the selected record.
 
 2. **View All Appointments**
-    - **MSS:**
-        1. Doctor chooses to view all appointments.
-        2. App displays the list of all appointments.
+   - **MSS:**
+      1. Doctor chooses to view all appointments.
+      2. App displays the list of all appointments.
 
 3. **Edit Patient Record/Appointment**
-    - **MSS:**
-        1. Doctor selects a patient record or appointmentEvent to edit.
-        2. App prompts for the new information.
-        3. Doctor enters the updated information.
-        4. App saves the changes.
+   - **MSS:**
+      1. Doctor selects a patient record or appointmentEvent to edit.
+      2. App prompts for the new information.
+      3. Doctor enters the updated information.
+      4. App saves the changes.
 
 ### Luxury to Have
 
 1. **Share Patient Record**
-    - **MSS:**
-        1. Doctor selects a patient record to share.
-        2. App prompts for the recipient's details.
-        3. Doctor enters the recipient's information.
-        4. App shares the selected record with the recipient.
+   - **MSS:**
+      1. Doctor selects a patient record to share.
+      2. App prompts for the recipient's details.
+      3. Doctor enters the recipient's information.
+      4. App shares the selected record with the recipient.
 
 2. **Prescribe Medications**
-    - **MSS:**
-        1. Doctor selects a patient to prescribe medication.
-        2. App prompts for the medication details.
-        3. Doctor enters the required information.
-        4. App sends the prescription to the pharmacy and notifies the patient.
+   - **MSS:**
+      1. Doctor selects a patient to prescribe medication.
+      2. App prompts for the medication details.
+      3. Doctor enters the required information.
+      4. App sends the prescription to the pharmacy and notifies the patient.
 
 3. **Refer to Specialist**
-    - **MSS:**
-        1. Doctor selects a patient to refer to a specialist.
-        2. App prompts for the specialist's and patient's details.
-        3. Doctor enters the required information.
-        4. App sends the referral to the specialist.
+   - **MSS:**
+      1. Doctor selects a patient to refer to a specialist.
+      2. App prompts for the specialist's and patient's details.
+      3. Doctor enters the required information.
+      4. App sends the referral to the specialist.
 
 4. **View Feedback and Reviews**
-    - **MSS:**
-        1. Doctor chooses to view feedback and reviews.
-        2. App displays the list of all feedback and reviews.
+   - **MSS:**
+      1. Doctor chooses to view feedback and reviews.
+      2. App displays the list of all feedback and reviews.
 
 ## Non-Functional Requirements
 
@@ -183,8 +198,8 @@ The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventLis
 ### Glossary
 
 - **App:** Refers to the CareCentral application.
-- **Healthcare Professional:** A user who is a certified medical practitioner, including doctors, nurses, 
+- **Healthcare Professional:** A user who is a certified medical practitioner, including doctors, nurses,
 - and other medical staff.
-- **Patient Record:** A digital file within the app containing all relevant information about a patient, including 
+- **Patient Record:** A digital file within the app containing all relevant information about a patient, including
 - medical history, prescriptions, and appointmentEvent records.
 - **User:** Refers to the healthcare professionals using the CareCentral app.
