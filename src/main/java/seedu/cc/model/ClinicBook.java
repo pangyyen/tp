@@ -6,8 +6,10 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
+import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.ClinicBookAppointmentList;
+import seedu.cc.model.medicalhistory.ClinicBookMedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
-import seedu.cc.model.medicalhistory.MedicalHistoryEventList;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
 
@@ -18,6 +20,8 @@ import seedu.cc.model.patient.UniquePatientList;
 public class ClinicBook implements ReadOnlyClinicBook {
 
     private final UniquePatientList patients;
+    private final ClinicBookMedicalHistory clinicBookMedicalHistory;
+    private final ClinicBookAppointmentList appointmentsUniqueListClinicBook;
     private final MedicalHistoryEventList medicalHistoryEvents;
 
     /*
@@ -29,7 +33,8 @@ public class ClinicBook implements ReadOnlyClinicBook {
      */
     {
         patients = new UniquePatientList();
-        medicalHistoryEvents = new MedicalHistoryEventList();
+        clinicBookMedicalHistory = new ClinicBookMedicalHistory();
+        appointmentsUniqueListClinicBook = new ClinicBookAppointmentList();
     }
 
     public ClinicBook() {}
@@ -99,7 +104,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
         patients.remove(key);
     }
 
-    //// medical history event-level operations
+    //===============Medical History Operations=========================================================
 
     /**
      * Adds a medical history event to a patient's medical history. This method updates both the patient's
@@ -110,7 +115,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
      */
     public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
         patients.addMedicalHistoryEvent(patient, medicalHistoryEvent);
-        medicalHistoryEvents.add(medicalHistoryEvent, patient);
+        clinicBookMedicalHistory.add(medicalHistoryEvent, patient);
     }
 
     /**
@@ -119,7 +124,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
      * @param patient The patient for whom to list the medical history events.
      */
     public void listMedicalHistoryEvents(Patient patient) {
-        medicalHistoryEvents.listMedicalHistoryEvents(patient);
+        clinicBookMedicalHistory.listMedicalHistoryEvents(patient);
     }
 
     /**
@@ -131,7 +136,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
      */
     public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
         patients.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
-        medicalHistoryEvents.delete(medicalHistoryEventToDelete, patient);
+        clinicBookMedicalHistory.delete(medicalHistoryEventToDelete, patient);
     }
 
     /**
@@ -145,24 +150,78 @@ public class ClinicBook implements ReadOnlyClinicBook {
     public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
                                        MedicalHistoryEvent editedMedicalHistoryEvent) {
         patients.setMedicalHistoryEvent(patient, medicalHistoryEventToEdit, editedMedicalHistoryEvent);
-        medicalHistoryEvents.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent, patient);
+        clinicBookMedicalHistory.setMedicalHistoryEvent(medicalHistoryEventToEdit, editedMedicalHistoryEvent, patient);
     }
 
     @Override
-    public String toString() {
-        return new ToStringBuilder(this)
-                .add("patients", patients)
-                .toString();
+    public ObservableList<MedicalHistoryEvent> getClinicBookMedicalHistory() {
+        return clinicBookMedicalHistory.asUnmodifiableObservableList();
+    }
+
+    //=============AppointmentEvent Operations=============================================================
+    /**
+     * Adds an appointment event to a patient's appointment list. This method updates both the patient's
+     * appointment list and the list of appointment events.
+     *
+     * @param patient The patient to whom the appointment event should be added.
+     * @param appointmentEvent The appointment event to add to the patient's appointment list.
+     */
+    public void addAppointment(Patient patient, AppointmentEvent appointmentEvent) {
+        patients.addAppointment(patient, appointmentEvent);
+        appointmentsUniqueListClinicBook.add(appointmentEvent, patient);
+    }
+
+    /**
+     * Edits an appointment event in a patient's appointment list. This method updates both the patient's
+     * appointment list and the list of appointment events.
+     *
+     * @param patient The patient whose appointment list should be edited.
+     * @param appointmentEventToEdit The appointment event to be edited.
+     * @param editedAppointmentEvent The edited version of the appointment event.
+     */
+    public void setAppointment(Patient patient, AppointmentEvent appointmentEventToEdit,
+                               AppointmentEvent editedAppointmentEvent) {
+        patients.setAppointment(patient, appointmentEventToEdit, editedAppointmentEvent);
+        appointmentsUniqueListClinicBook.setAppointment(appointmentEventToEdit, editedAppointmentEvent, patient);
+    }
+
+    /**
+     * Deletes a specific appointment event from a patient's appointment list. This method updates both
+     * the patient's appointment list and the list of appointment events.
+     *
+     * @param patient The patient from whose appointment list the event should be deleted.
+     * @param appointmentEventToDelete The appointment event to delete.
+     */
+    public void deleteAppointment(Patient patient, AppointmentEvent appointmentEventToDelete) {
+        patients.deleteAppointment(patient, appointmentEventToDelete);
+        appointmentsUniqueListClinicBook.delete(appointmentEventToDelete, patient);
+    }
+
+    /**
+     * Lists all appointment events associated with a specific patient.
+     *
+     * @param patient The patient for whom to list the appointment events.
+     */
+    public void listAppointments(Patient patient) {
+        appointmentsUniqueListClinicBook.listAppointments(patient);
+    }
+
+    @Override
+    public ObservableList<AppointmentEvent> getClinicBookAppointments() {
+        return appointmentsUniqueListClinicBook.asUnmodifiableObservableList();
     }
 
     @Override
     public ObservableList<Patient> getPatientList() {
         return patients.asUnmodifiableObservableList();
     }
+    //=====================================================================================================
 
     @Override
-    public ObservableList<MedicalHistoryEvent> getMedicalHistoryEventList() {
-        return medicalHistoryEvents.asUnmodifiableObservableList();
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("patients", patients)
+                .toString();
     }
 
     @Override

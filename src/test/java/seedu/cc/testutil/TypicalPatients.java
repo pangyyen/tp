@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//import seedu.cc.commons.core.index.Index;
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.patient.Patient;
 

@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.cc.logic.parser.Prefix;
+import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -22,6 +24,8 @@ public class Messages {
             "Multiple values specified for the following single-valued field(s): ";
 
     public static final String MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX = "The medical history event "
+            + "index provided is invalid";
+    public static final String MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX = "The appointment event "
             + "index provided is invalid";
 
     /**
@@ -53,4 +57,33 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code event} for display to the user.
+     */
+    public static String format(MedicalHistoryEvent event, Patient patient) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Patient: ")
+                .append(patient.getName())
+                .append("\nDate: ")
+                .append(event.getDate())
+                .append("\nMedical Condition: ")
+                .append(event.getMedicalCondition())
+                .append("\nTreatment: ")
+                .append(event.getTreatment());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code event} for display to the user.
+     */
+    public static String format(AppointmentEvent event, Patient patient) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Patient: ")
+                .append(patient.getName())
+                .append("\nDate: ")
+                .append(event.getLocalDate())
+                .append("\nTime: ")
+                .append(event.getLocalTime());
+        return builder.toString();
+    }
 }

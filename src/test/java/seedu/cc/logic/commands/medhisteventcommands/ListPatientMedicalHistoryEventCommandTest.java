@@ -15,7 +15,7 @@ import seedu.cc.model.ModelManager;
 import seedu.cc.model.UserPrefs;
 import seedu.cc.model.patient.Patient;
 
-public class ListMedicalHistoryEventCommandTest {
+public class ListPatientMedicalHistoryEventCommandTest {
 
     private Model model;
     private Model expectedModel;
@@ -30,8 +30,11 @@ public class ListMedicalHistoryEventCommandTest {
     public void execute_showsEverything() {
         Patient patient = model.getFilteredPatientList().get(INDEX_FIRST_PATIENT.getZeroBased());
         model.listMedicalHistoryEvents(patient);
+
+        String expectedMessage = String.format(ListMedicalHistoryEventCommand.MESSAGE_SUCCESS,
+                Messages.format(patient));
         assertCommandSuccess(new ListMedicalHistoryEventCommand(INDEX_FIRST_PATIENT), model,
-                ListMedicalHistoryEventCommand.MESSAGE_SUCCESS, expectedModel);
+                expectedMessage, expectedModel);
     }
 
     @Test

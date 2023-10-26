@@ -8,8 +8,8 @@ import seedu.cc.model.ClinicBook;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
-import seedu.cc.model.medicalhistory.MedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
+import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
@@ -24,12 +24,12 @@ import seedu.cc.model.tag.Tag;
  */
 public class SampleDataUtil {
 
-    public static MedicalHistory getSampleMedicalHistory() {
-        MedicalHistory sampleMedicalHistory = new MedicalHistory();
-        sampleMedicalHistory
+    public static PatientMedicalHistory getSampleMedicalHistory() {
+        PatientMedicalHistory samplePatientMedicalHistory = new PatientMedicalHistory();
+        samplePatientMedicalHistory
                 .addMedicalHistoryEvent(new MedicalHistoryEvent(new MedicalCondition("Insomia"),
                         new Treatment("Medication"), new Date("2023-10-23")));
-        return sampleMedicalHistory;
+        return samplePatientMedicalHistory;
     }
 
     public static Patient[] getSamplePatients() {

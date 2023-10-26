@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -83,18 +84,16 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered patient list */
     ObservableList<Patient> getFilteredPatientList();
 
-    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
     /**
      * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
 
-    /**
-     * Adds a medical history event to the given patient.
-     * @param patient patient to add medical history event to.
-     * @param medicalHistoryEvent medical history event to be added.
-     */
+    //=========== Medical History Events =============================================================
+
+    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
+
     void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
 
     void listMedicalHistoryEvents(Patient patient);
@@ -103,6 +102,19 @@ public interface Model {
                                  MedicalHistoryEvent editedMedicalHistoryEvent);
 
     void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete);
+
+    //=========== AppointmentEvent Operations =============================================================
+
+    ObservableList<AppointmentEvent> getFilteredAppointmentList();
+
+    void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent);
+
+    void listAppointmentsEventForPatient(Patient patient);
+
+    void setAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToEdit,
+                                       AppointmentEvent editedAppointmentEvent);
+
+    void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete);
 
     void setCurrentTab(int tabIndex);
 

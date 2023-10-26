@@ -11,7 +11,8 @@ public class Nric {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "NRIC should contain numbers and letters, and it should be 9 digits long for Singapore";
+            "NRIC should contain numbers and letters, and it should be 9 digits long for Singapore \n"
+            + "Example: S1234567A";
     public static final String VALIDATION_REGEX = "[A-Z]\\d{7}[A-Z]"; // Singapore NRIC format
     public final String value;
 

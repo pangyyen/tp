@@ -23,6 +23,7 @@ import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.testutil.PatientBuilder;
@@ -160,17 +161,22 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        //=========== Medical History Events =============================================================
+
+        @Override
+        public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
-            throw new AssertionError("This method should not be called.");
-        }
 
-        @Override
+        public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
+
         public void setCurrentTab(int tabIndex) {
             throw new AssertionError("This method should not be called.");
         }
@@ -182,8 +188,10 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
+
             throw new AssertionError("This method should not be called.");
         }
+
         @Override
         public void listMedicalHistoryEvents(Patient patient) {
             throw new AssertionError("This method should not be called.");
@@ -192,6 +200,28 @@ public class AddCommandTest {
         @Override
         public void setMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToEdit,
                                            MedicalHistoryEvent editedMedicalHistoryEvent) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //=========== AppointmentEvent Operations =============================================================
+        public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void listAppointmentsEventForPatient(Patient patient) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void setAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToEdit,
+                                           AppointmentEvent editedAppointmentEvent) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        public void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete) {
             throw new AssertionError("This method should not be called.");
         }
     }
