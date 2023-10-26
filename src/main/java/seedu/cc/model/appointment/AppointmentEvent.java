@@ -15,7 +15,8 @@ import java.time.format.DateTimeParseException;
 public class AppointmentEvent {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
     public static final String TIME_MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
-    public static final String MESSAGE_CONSTRAINTS = "Appointments should have both a date and a time that adhere to the following constraints:\n"
+    public static final String MESSAGE_CONSTRAINTS = "Appointments should have both a date and a time that "
+            + "adhere to the following constraints:\n"
             + "1. " + DATE_MESSAGE_CONSTRAINTS + "\n"
             + "2. " + TIME_MESSAGE_CONSTRAINTS + ".\n"
             + "The date and time should represent a valid future appointment time.";
@@ -67,11 +68,11 @@ public class AppointmentEvent {
     }
 
     /**
-     * Returns true if a given string is a valid time.
+     * Returns true if a given string is a valid date.
      */
-    public static boolean isValidTime(LocalTime testTime) {
+    public static boolean isValidDate(String testDate) {
         try {
-            LocalTime.parse(testTime.toString(), DateTimeFormatter.ofPattern("HH:mm"));
+            LocalDate.parse(testDate, DateTimeFormatter.ISO_LOCAL_DATE);
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -79,11 +80,11 @@ public class AppointmentEvent {
     }
 
     /**
-     * Returns true if a given string is a valid date.
+     * Returns true if a given string is a valid time.
      */
-    public static boolean isValidDate(String testDate) {
+    public static boolean isValidTime(LocalTime testTime) {
         try {
-            LocalDate.parse(testDate, DateTimeFormatter.ISO_LOCAL_DATE);
+            LocalTime.parse(testTime.toString(), DateTimeFormatter.ofPattern("HH:mm"));
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -112,9 +113,9 @@ public class AppointmentEvent {
 
     @Override
     public String toString() {
-        return "AppointmentEvent Date: " +
-                date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " " +
-                time.format(DateTimeFormatter.ofPattern("HH:mm"));
+        return "AppointmentEvent Date: "
+                + date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " "
+                + time.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     @Override

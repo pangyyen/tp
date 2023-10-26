@@ -1,4 +1,4 @@
-package seedu.cc.logic.parser.medical_history;
+package seedu.cc.logic.parser.medicalhistory;
 
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
@@ -10,7 +10,11 @@ import java.util.stream.Stream;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
-import seedu.cc.logic.parser.*;
+import seedu.cc.logic.parser.ArgumentMultimap;
+import seedu.cc.logic.parser.ArgumentTokenizer;
+import seedu.cc.logic.parser.Parser;
+import seedu.cc.logic.parser.ParserUtil;
+import seedu.cc.logic.parser.Prefix;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;

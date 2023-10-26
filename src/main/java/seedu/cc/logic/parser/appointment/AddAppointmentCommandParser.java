@@ -1,5 +1,17 @@
 package seedu.cc.logic.parser.appointment;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
 import seedu.cc.logic.parser.ArgumentMultimap;
@@ -9,17 +21,9 @@ import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.tag.Tag;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.*;
-
+/**
+ * Parses input arguments and creates a new AddAppointmentEventCommand object.
+ */
 public class AddAppointmentCommandParser {
 
     /**
@@ -53,31 +57,6 @@ public class AddAppointmentCommandParser {
         AppointmentEvent appointmentEvent = new AppointmentEvent(date, time);
 
         return new AddAppointmentEventCommand(index, appointmentEvent);
-
-//        AddApptCommand.AddApptDescriptor editPatientDescriptor = new EditCommand.EditPatientDescriptor();
-
-//        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-//            editPatientDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_NRIC).isPresent()) {
-//            editPatientDescriptor.setNric(ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-//            editPatientDescriptor.setPhone(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_EMAIL).isPresent()) {
-//            editPatientDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
-//        }
-//        if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
-//            editPatientDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
-//        }
-//        parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPatientDescriptor::setTags);
-//
-//        if (!editPatientDescriptor.isAnyFieldEdited()) {
-//            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
-//        }
-//
-//        return new AddApptCommand(index, editPatientDescriptor);
     }
 
     /**

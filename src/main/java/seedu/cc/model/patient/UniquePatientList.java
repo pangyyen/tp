@@ -173,7 +173,8 @@ public class UniquePatientList implements Iterable<Patient> {
      * @param appointmentEventToEdit
      * @param editedAppointmentEvent
      */
-    public void setAppointment(Patient patient, AppointmentEvent appointmentEventToEdit, AppointmentEvent editedAppointmentEvent) {
+    public void setAppointment(Patient patient, AppointmentEvent appointmentEventToEdit,
+                               AppointmentEvent editedAppointmentEvent) {
         requireAllNonNull(patient, appointmentEventToEdit, editedAppointmentEvent);
         int index = internalList.indexOf(patient);
         if (index == -1) {

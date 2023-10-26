@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.cc.logic.parser.Prefix;
+import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
@@ -55,4 +57,29 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code event} for display to the user.
+     */
+    public static String format(MedicalHistoryEvent event) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Date: ")
+                .append(event.getDate())
+                .append("; Medical Condition: ")
+                .append(event.getMedicalCondition())
+                .append("; Treatment: ")
+                .append(event.getTreatment());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code event} for display to the user.
+     */
+    public static String format(AppointmentEvent event) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Date: ")
+                .append(event.getLocalDate())
+                .append("; Time: ")
+                .append(event.getLocalTime());
+        return builder.toString();
+    }
 }

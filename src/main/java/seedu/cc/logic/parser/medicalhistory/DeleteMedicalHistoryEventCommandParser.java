@@ -1,4 +1,4 @@
-package seedu.cc.logic.parser.medical_history;
+package seedu.cc.logic.parser.medicalhistory;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;

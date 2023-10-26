@@ -44,7 +44,8 @@ public class EditAppointmentEventCommandParser implements Parser<EditAppointment
         Index patientIndex;
 
         if (argMultimap.getValue(PREFIX_PATIENT_INDEX).isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditAppointmentEventCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    EditAppointmentEventCommand.MESSAGE_USAGE));
         }
 
         try {

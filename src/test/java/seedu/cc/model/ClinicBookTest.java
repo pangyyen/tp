@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
@@ -96,6 +97,7 @@ public class ClinicBookTest {
     private static class ClinicBookStub implements ReadOnlyClinicBook {
         private final ObservableList<Patient> persons = FXCollections.observableArrayList();
         private final ObservableList<MedicalHistoryEvent> medicalHistoryEvents = FXCollections.observableArrayList();
+        private final ObservableList<AppointmentEvent> appointmentEvents = FXCollections.observableArrayList();
 
         ClinicBookStub(Collection<Patient> persons) {
             this.persons.setAll(persons);
@@ -107,8 +109,13 @@ public class ClinicBookTest {
         }
 
         @Override
-        public ObservableList<MedicalHistoryEvent> getMedicalHistoryEventList() {
+        public ObservableList<MedicalHistoryEvent> getClinicBookMedicalHistory() {
             return medicalHistoryEvents;
+        }
+
+        @Override
+        public ObservableList<AppointmentEvent> getClinicBookAppointments() {
+            return appointmentEvents;
         }
     }
 

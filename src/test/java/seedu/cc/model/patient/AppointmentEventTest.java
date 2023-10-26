@@ -6,16 +6,21 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.testutil.Assert.assertThrows;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.junit.jupiter.api.Test;
+
 import seedu.cc.model.appointment.AppointmentEvent;
 
-class AppointmentTest {
+class AppointmentEventTest {
 
     @Test
-    public void constructor_null_throwsNullPointerEXception() {
-        assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, null));
+    public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, "12:00"));
         assertThrows(NullPointerException.class, () -> new AppointmentEvent("2023-12-01", null));
+        assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, LocalTime.NOON));
+        assertThrows(NullPointerException.class, () -> new AppointmentEvent(LocalDate.now(), null));
     }
 
     @Test
@@ -24,12 +29,13 @@ class AppointmentTest {
         String invalidTime = "25:00";
         assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent("2023-12-01", invalidTime));
         assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent(invalidDate, "12:00"));
+
     }
 
     @Test
     void isValidDate() {
         // null date
-        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidDate(null));
+        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidDate((LocalDate) null));
 
         // invalid dates
         assertFalse(AppointmentEvent.isValidDate("")); // empty string
@@ -46,7 +52,7 @@ class AppointmentTest {
     @Test
     void isValidTime() {
         // null time
-        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidTime(null));
+        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidTime((LocalTime) null));
 
         // invalid times
         assertFalse(AppointmentEvent.isValidTime("")); // empty string

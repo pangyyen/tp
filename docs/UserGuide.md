@@ -172,7 +172,7 @@ Message: "Invalid index. Please enter a valid appointmentEvent index."
 
 ---
 
-## 5. Add Medical History
+## 9. Add Medical History
 
 **What it does:**
 Adds a medical history to a patient record.
@@ -191,7 +191,7 @@ Message: "Successfully added medical history for patient: [Medical History Detai
 
 ---
 
-## 6. List Medical History
+## 10. List Medical History
 
 **What it does:**
 Lists the medical history of a patient.
@@ -210,7 +210,7 @@ Message: "Successfully listed medical history for patient: [Medical History Deta
 
 ---
 
-## 7. Edit Medical History
+## 11. Edit Medical History
 
 **What it does:**
 Edits a medical history of a patient.
@@ -233,7 +233,7 @@ Message: "Successfully edited medical history for patient: [Medical History Deta
 
 ---
 
-## 8. Delete Medical History
+## 12. Delete Medical History
 
 **What it does:**
 Deletes a medical history of a patient.

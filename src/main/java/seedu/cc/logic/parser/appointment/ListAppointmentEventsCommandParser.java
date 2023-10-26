@@ -8,9 +8,17 @@ import seedu.cc.logic.parser.Parser;
 import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 
-
+/**
+ * Parses input arguments and creates a new ListAppointmentEventsCommand object.
+ */
 public class ListAppointmentEventsCommandParser implements Parser<ListAppointmentEventsCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the ListAppointmentEventsCommand
+     * and returns a ListAppointmentEventsCommand object for execution.
+     *
+     * @throws ParseException if the user input does not conform the expected format
+     */
     public ListAppointmentEventsCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);

@@ -1,7 +1,9 @@
 package seedu.cc.logic.commands.appointmentcommands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.parser.CliSyntax.*;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

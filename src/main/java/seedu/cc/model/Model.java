@@ -83,10 +83,6 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered patient list */
     ObservableList<Patient> getFilteredPatientList();
 
-    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
-
-    ObservableList<AppointmentEvent> getFilteredAppointmentList();
-
     /**
      * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
@@ -95,11 +91,8 @@ public interface Model {
 
     //=========== Medical History Events =============================================================
 
-    /**
-     * Adds a medical history event to the given patient.
-     * @param patient patient to add medical history event to.
-     * @param medicalHistoryEvent medical history event to be added.
-     */
+    ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
+
     void addMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent);
 
     void listMedicalHistoryEvents(Patient patient);
@@ -110,6 +103,8 @@ public interface Model {
     void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete);
 
     //=========== AppointmentEvent Operations =============================================================
+
+    ObservableList<AppointmentEvent> getFilteredAppointmentList();
 
     void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent);
 

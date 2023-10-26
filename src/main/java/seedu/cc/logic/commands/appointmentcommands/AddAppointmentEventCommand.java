@@ -1,7 +1,8 @@
 package seedu.cc.logic.commands.appointmentcommands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.parser.CliSyntax.*;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 
 import java.util.List;
 
@@ -32,7 +33,8 @@ public class AddAppointmentEventCommand extends Command {
             + PREFIX_APPT_TIME + "14:00";
 
     public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added appointmentEvent: %1$s";
-    public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid patient index, date, or time.";
+    public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid patient "
+        + "index, date, or time.";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the address book.";
 
     private final Index index;

@@ -90,9 +90,6 @@ class JsonAdaptedPatient {
             modelPatientMedicalHistory.addMedicalHistoryEvent(event.toModelType());
         }
 
-
-
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -131,12 +128,11 @@ class JsonAdaptedPatient {
         if (!Address.isValidAddress(address)) {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
+
         final Address modelAddress = new Address(address);
-
-
-
         final Set<Tag> modelTags = new HashSet<>(patientTags);
-        return new Patient(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelPatientMedicalHistory, modelTags);
+        return new Patient(modelName, modelNric, modelPhone, modelEmail,
+                modelAddress, modelPatientMedicalHistory, modelTags);
     }
 
 }

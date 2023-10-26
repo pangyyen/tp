@@ -2,6 +2,9 @@ package seedu.cc.model.appointment;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a patient's appointment list.
+ */
 public class PatientAppointmentList {
 
     private final ArrayList<AppointmentEvent> appointmentEventList;
