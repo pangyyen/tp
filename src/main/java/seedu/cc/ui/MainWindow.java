@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -49,6 +50,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane mainTabPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -193,4 +197,20 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
     }
+
+    @FXML
+    public void showPatientsTab() {
+        mainTabPane.getSelectionModel().select(0);
+    }
+
+    @FXML
+    public void showMedicalHistoryTab() {
+        mainTabPane.getSelectionModel().select(1);
+    }
+
+    @FXML
+    public void showAppointmentsTab() {
+        mainTabPane.getSelectionModel().select(2);
+    }
+
 }

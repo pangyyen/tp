@@ -14,7 +14,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
+<?import javafx.scene.control.TabPane?>
 
+<?import javafx.scene.control.Tab?>
 <fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="CareCentral" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
@@ -36,20 +38,20 @@
           </padding>
 
           <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true">
-            <Image url="@/images/logo.png" />
+            <Image url="@/images/HospitalLogo.png" />
           </ImageView>
 
-          <Button graphicTextGap="10.0" maxWidth="Infinity" styleClass="sidebar-button" text="Patients">
+          <Button graphicTextGap="10.0" onAction="#showPatientsTab" maxWidth="Infinity" styleClass="sidebar-button" text="Patients">
             <graphic>
               <ImageView fx:id="patientsIcon" fitHeight="20" fitWidth="20" />
             </graphic>
           </Button>
-          <Button maxWidth="Infinity" styleClass="sidebar-button" text="Medical History">
+          <Button maxWidth="Infinity" onAction="#showMedicalHistoryTab" styleClass="sidebar-button" text="Medical History">
             <graphic>
               <ImageView fx:id="historyIcon" fitHeight="20" fitWidth="20" />
             </graphic>
           </Button>
-          <Button maxWidth="Infinity" styleClass="sidebar-button" text="Appointments">
+          <Button maxWidth="Infinity" onAction="#showAppointmentsTab" styleClass="sidebar-button" text="Appointments">
             <graphic>
               <ImageView fx:id="appointmentsIcon" fitHeight="20" fitWidth="20" />
             </graphic>
@@ -83,18 +85,42 @@
             </padding>
           </StackPane>
 
-          <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
-            <padding>
-              <Insets bottom="5" left="10" right="10" top="5" />
-            </padding>
-          </StackPane>
+          <TabPane VBox.vgrow="ALWAYS" fx:id="mainTabPane">
+            <Tab text="Patients">
+              <content>
+                <StackPane fx:id="patientsContentPlaceholder" styleClass="pane-with-border">
+                  <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
+                    <padding>
+                      <Insets bottom="5" left="10" right="10" top="5" />
+                    </padding>
+                  </StackPane>
 
-          <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-            <padding>
-              <Insets bottom="10" left="10" right="10" top="10" />
-            </padding>
-            <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-          </VBox>
+                  <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                    <padding>
+                      <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                    <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                  </VBox>
+                </StackPane>
+              </content>
+            </Tab>
+
+            <Tab text="Medical History">
+              <content>
+                <StackPane fx:id="medicalHistoryContentPlaceholder" styleClass="pane-with-border">
+                  <!-- Medical History content here -->
+                </StackPane>
+              </content>
+            </Tab>
+
+            <Tab text="Appointments">
+              <content>
+                <StackPane fx:id="appointmentsContentPlaceholder" styleClass="pane-with-border">
+                  <!-- Appointments content here -->
+                </StackPane>
+              </content>
+            </Tab>
+          </TabPane>
 
           <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
         </VBox>
