@@ -127,5 +127,4 @@ public class JsonAdaptedPatientTest {
                         VALID_MEDICAL_HISTORY_EVENTS, VALID_APPOINTMENT_EVENTS, invalidTags);
         assertThrows(IllegalValueException.class, person::toModelType);
     }
-
 }
