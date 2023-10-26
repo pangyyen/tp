@@ -22,7 +22,6 @@ public class ClinicBook implements ReadOnlyClinicBook {
     private final UniquePatientList patients;
     private final ClinicBookMedicalHistory clinicBookMedicalHistory;
     private final ClinicBookAppointmentList appointmentsUniqueListClinicBook;
-    private final MedicalHistoryEventList medicalHistoryEvents;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
