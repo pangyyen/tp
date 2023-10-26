@@ -18,7 +18,6 @@ import seedu.cc.model.patient.UniquePatientList;
 public class ClinicBook implements ReadOnlyClinicBook {
 
     private final UniquePatientList patients;
-
     private final MedicalHistoryEventList medicalHistoryEvents;
 
     /*

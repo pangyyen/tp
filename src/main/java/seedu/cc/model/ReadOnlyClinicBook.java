@@ -14,7 +14,6 @@ public interface ReadOnlyClinicBook {
      * This list will not contain any duplicate patients.
      */
     ObservableList<Patient> getPatientList();
-
     ObservableList<MedicalHistoryEvent> getMedicalHistoryEventList();
 
 }

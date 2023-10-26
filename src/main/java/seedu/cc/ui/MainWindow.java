@@ -4,16 +4,14 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.commons.core.tabs.Tabs;
 import seedu.cc.logic.Logic;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
@@ -37,6 +35,8 @@ public class MainWindow extends UiPart<Stage> {
     private MedicalHistoryPanel medicalHistoryPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    private int tab;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -68,6 +68,8 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
+        this.tab = logic.getCurrentTab();
+
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
@@ -119,6 +121,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        logic.currentTabProperty().addListener((observable, oldValue, newValue) -> {
+        });
+
         patientListPanel = new PatientListPanel(logic.getFilteredPatientList());
         personListPanelPlaceholder.getChildren().add(patientListPanel.getRoot());
 
@@ -222,6 +227,21 @@ public class MainWindow extends UiPart<Stage> {
     public void showAppointmentsTab() {
         mainTabPane.getSelectionModel().select(2);
         tabInfoLabel.setText("Appointments");
+    }
+
+    public void changeTabs(int tabIndex) {
+        mainTabPane.getSelectionModel().select(tabIndex);
+        switch (tabIndex) {
+        case 0:
+            tabInfoLabel.setText(Tabs.PATIENTS.toString());
+            break;
+        case 1:
+            tabInfoLabel.setText(Tabs.MEDICAL_HISTORY.toString());
+            break;
+        case 2:
+            tabInfoLabel.setText(Tabs.APPOINTMENTS.toString());
+            break;
+        }
     }
 
 }
