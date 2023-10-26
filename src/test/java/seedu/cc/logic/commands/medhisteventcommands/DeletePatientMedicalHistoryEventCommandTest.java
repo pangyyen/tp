@@ -33,7 +33,7 @@ class DeletePatientMedicalHistoryEventCommandTest {
                 INDEX_FIRST_PATIENT);
 
         String expectedMessage = String.format(DeleteMedicalHistoryEventCommand.MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS,
-                eventToDelete);
+                Messages.format(eventToDelete, patient));
 
         ModelManager expectedModel = new ModelManager(model.getClinicBook(), new UserPrefs());
         Patient expectedPatient = expectedModel.getFilteredPatientList().get(INDEX_FIRST_PATIENT.getZeroBased());

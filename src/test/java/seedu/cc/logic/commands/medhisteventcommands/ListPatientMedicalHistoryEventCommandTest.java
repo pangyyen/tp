@@ -30,8 +30,11 @@ public class ListPatientMedicalHistoryEventCommandTest {
     public void execute_showsEverything() {
         Patient patient = model.getFilteredPatientList().get(INDEX_FIRST_PATIENT.getZeroBased());
         model.listMedicalHistoryEvents(patient);
+
+        String expectedMessage = String.format(ListMedicalHistoryEventCommand.MESSAGE_SUCCESS,
+                Messages.format(patient));
         assertCommandSuccess(new ListMedicalHistoryEventCommand(INDEX_FIRST_PATIENT), model,
-                ListMedicalHistoryEventCommand.MESSAGE_SUCCESS, expectedModel);
+                expectedMessage, expectedModel);
     }
 
     @Test
