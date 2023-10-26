@@ -7,6 +7,8 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
@@ -24,9 +26,10 @@ public class ModelManager implements Model {
     private final ClinicBook clinicBook;
     private final UserPrefs newUserPrefs;
     private final FilteredList<Patient> filteredPatients;
-
     private final FilteredList<MedicalHistoryEvent> filteredMedicalHistoryEvents;
     private final FilteredList<AppointmentEvent> filteredAppointmentEvents;
+
+    private final IntegerProperty currentTab = new SimpleIntegerProperty(this, "currentTab", 0);
 
     /**
      * Initializes a NewModelManager with the given clinicBook and userPrefs.
@@ -142,6 +145,14 @@ public class ModelManager implements Model {
     public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete) {
         requireAllNonNull(patient, medicalHistoryEventToDelete);
         clinicBook.deleteMedicalHistoryEvent(patient, medicalHistoryEventToDelete);
+    }
+
+    public IntegerProperty currentTabProperty() {
+        return currentTab;
+    }
+
+    public void setCurrentTab(int tab) {
+        this.currentTab.set(tab);
     }
 
     @Override

@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.commons.core.GuiSettings;
 
-
 public class UserPrefsTest {
 
     @Test

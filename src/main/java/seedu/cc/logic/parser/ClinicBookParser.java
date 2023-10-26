@@ -21,6 +21,7 @@ import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
 import seedu.cc.logic.commands.appointmentcommands.DeleteAppointmentEventCommand;
 import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
 import seedu.cc.logic.commands.appointmentcommands.ListAppointmentEventsCommand;
+import seedu.cc.logic.commands.SwitchCommand;
 import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
@@ -118,6 +119,9 @@ public class ClinicBookParser {
 
         case DeleteMedicalHistoryEventCommand.COMMAND_WORD:
             return new DeleteMedicalHistoryEventCommandParser().parse(arguments);
+
+        case SwitchCommand.COMMAND_WORD:
+            return new SwitchCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);

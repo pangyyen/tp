@@ -2,6 +2,7 @@ package seedu.cc.logic;
 
 import java.nio.file.Path;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.logic.commands.CommandResult;
@@ -49,4 +50,10 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    void setCurrentTab(int tabIndex);
+
+    IntegerProperty currentTabProperty();
+
+    int getCurrentTab();
 }
