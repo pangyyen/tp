@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="Address App" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="CareCentral" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -29,11 +29,16 @@
       <!-- Main SplitPane -->
       <SplitPane dividerPositions="0.3" orientation="HORIZONTAL">
 
-        <!-- Sidebar content -->
-        <VBox spacing="10" styleClass="sidebar">
+        <!-- Sidebar -->
+        <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar" minWidth="200" spacing="10">
           <padding>
             <Insets bottom="20" left="20" right="20" top="20" />
           </padding>
+
+          <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true">
+            <Image url="@/images/logo.png" />
+          </ImageView>
+
           <Button graphicTextGap="10.0" maxWidth="Infinity" styleClass="sidebar-button" text="Patients">
             <graphic>
               <ImageView fx:id="patientsIcon" fitHeight="20" fitWidth="20" />
