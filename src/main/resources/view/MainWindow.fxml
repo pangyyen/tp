@@ -30,14 +30,17 @@
       <SplitPane dividerPositions="0" orientation="HORIZONTAL">
 
         <!-- Sidebar -->
-        <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar" spacing="15"> <!-- Increase spacing -->
+        <VBox styleClass="sidebar" spacing="15" minWidth="350" maxWidth="350">
           <padding>
-            <Insets bottom="25" left="25" right="25" top="25" /> <!-- Increase padding -->
+            <Insets bottom="25" left="25" right="25" top="25" />
           </padding>
 
-          <ImageView fx:id="logoImage" fitHeight="70" fitWidth="70" preserveRatio="true"> <!-- Increase logo size -->
-            <Image url="@/images/HospitalLogo.png" />
-          </ImageView>
+          <StackPane maxWidth="Infinity">
+            <ImageView fx:id="logoImage" fitHeight="125" fitWidth="125" preserveRatio="true">
+              <Image url="@/images/HospitalLogo.png" />
+            </ImageView>
+          </StackPane>
+
 
           <!-- Adjustments for each button below -->
           <Button graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
