@@ -179,7 +179,7 @@
 }
 
 .sidebar-button:pressed, .sidebar-button:focused {
-    -fx-background-color: #002750;
+    -fx-background-color: #4fa8ff;
     -fx-text-fill: #D0E6FF;
 }
 
