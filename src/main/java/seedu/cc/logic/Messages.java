@@ -23,6 +23,8 @@ public class Messages {
 
     public static final String MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX = "The medical history event "
             + "index provided is invalid";
+    public static final String MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX = "The appointment event "
+            + "index provided is invalid";
 
     /**
      * Returns an error message indicating the duplicate prefixes.

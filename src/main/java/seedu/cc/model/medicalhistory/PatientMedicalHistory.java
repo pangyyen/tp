@@ -5,16 +5,16 @@ import java.util.ArrayList;
 /**
  * Represents a patient's medical history.
  */
-public class MedicalHistory {
+public class PatientMedicalHistory {
 
     private final ArrayList<MedicalHistoryEvent> medicalHistoryEvents;
 
-    public MedicalHistory() {
+    public PatientMedicalHistory() {
         this.medicalHistoryEvents = new ArrayList<>();
     }
 
     /**
-     * Creates a MedicalHistory using the MedicalHistoryEvents in the {@code toBeCopied}
+     * Creates a PatientMedicalHistory using the MedicalHistoryEvents in the {@code toBeCopied}
      */
     public void addMedicalHistoryEvent(MedicalHistoryEvent event) {
         medicalHistoryEvents.add(event);
@@ -31,8 +31,6 @@ public class MedicalHistory {
 
     /**
      * Sets the MedicalHistoryEvent at the specified index to the edited MedicalHistoryEvent.
-     * @param eventToEdit
-     * @param editedEvent
      */
     public void setMedicalHistoryEvent(MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent) {
         int index = medicalHistoryEvents.indexOf(eventToEdit);
@@ -42,8 +40,7 @@ public class MedicalHistory {
     }
 
     /**
-     * Deletes the specified MedicalHistoryEvent from the MedicalHistory.
-     * @param eventToDelete
+     * Deletes the specified MedicalHistoryEvent from the PatientMedicalHistory.
      */
     public void deleteMedicalHistoryEvent(MedicalHistoryEvent eventToDelete) {
         int index = medicalHistoryEvents.indexOf(eventToDelete);
@@ -53,9 +50,7 @@ public class MedicalHistory {
     }
 
     /**
-     * Returns true if the MedicalHistory contains the specified MedicalHistoryEvent.
-     * @param event
-     * @return
+     * Returns true if the PatientMedicalHistory contains the specified MedicalHistoryEvent.
      */
     public boolean hasMedicalHistoryEvent(MedicalHistoryEvent event) {
         int s = 1;

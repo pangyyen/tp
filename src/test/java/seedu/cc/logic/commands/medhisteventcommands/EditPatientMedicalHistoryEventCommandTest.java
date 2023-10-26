@@ -26,7 +26,7 @@ import seedu.cc.testutil.PatientBuilder;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.
  */
-public class EditMedicalHistoryEventCommandTest {
+public class EditPatientMedicalHistoryEventCommandTest {
 
     private final Model model = new ModelManager(getTypicalClinicBook(), new UserPrefs());
 

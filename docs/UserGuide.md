@@ -88,7 +88,7 @@ Message: "Invalid index. Please enter a valid index."
 ## 5. Add Appointment
 
 **What it does:**  
-Schedules a new appointment for a patient.
+Schedules a new appointmentEvent for a patient.
 
 **Command Format:**  
 `add-appt INDEX d/DATE t/TIME`
@@ -103,7 +103,7 @@ Schedules a new appointment for a patient.
 
 **Expected Output (Success):**  
 CLI: A new entry appears in the list of appointments.  
-Message: "Successfully added appointment: [Appointment Details]"
+Message: "Successfully added appointmentEvent: [Appointment Details]"
 
 **Expected Output (Failure):**  
 Message: "Invalid input. Please enter a valid patient index, date, or time."
@@ -129,13 +129,13 @@ Message: "No appointments found."
 ## 7. Edit Appointment
 
 **What it does:**  
-Edits existing appointment details.
+Edits existing appointmentEvent details.
 
 **Command Format:**  
-`edit-appointment INDEX [d/DATE] [t/TIME]`
+`edit-appointmentEvent INDEX [d/DATE] [t/TIME]`
 
 **Example Commands:**  
-`edit-appointment 2 d/2023-10-05 t/16:00`
+`edit-appointmentEvent 2 d/2023-10-05 t/16:00`
 
 **Acceptable Values:**
 - **INDEX:** Positive integer
@@ -143,8 +143,8 @@ Edits existing appointment details.
 - **TIME:** HH:MM (24-hour format)
 
 **Expected Output (Success):**  
-CLI: The edited appointment entry is updated in the list.  
-Message: "Successfully edited appointment: [Appointment Details]"
+CLI: The edited appointmentEvent entry is updated in the list.  
+Message: "Successfully edited appointmentEvent: [Appointment Details]"
 
 **Expected Output (Failure):**  
 Message: "Invalid input. Please enter a valid index or details."
@@ -152,23 +152,23 @@ Message: "Invalid input. Please enter a valid index or details."
 ## 8. Delete Appointment
 
 **What it does:**  
-Removes an appointment from the system.
+Removes an appointmentEvent from the system.
 
 **Command Format:**  
-`delete-appointment INDEX`
+`delete-appointmentEvent INDEX`
 
 **Example Commands:**  
-`delete-appointment 3`
+`delete-appointmentEvent 3`
 
 **Acceptable Values:**
 - **INDEX:** Positive integer
 
 **Expected Output (Success):**  
-CLI: The deleted appointment entry is removed from the list.  
-Message: "Successfully deleted appointment."
+CLI: The deleted appointmentEvent entry is removed from the list.  
+Message: "Successfully deleted appointmentEvent."
 
 **Expected Output (Failure):**  
-Message: "Invalid index. Please enter a valid appointment index."
+Message: "Invalid index. Please enter a valid appointmentEvent index."
 
 ---
 

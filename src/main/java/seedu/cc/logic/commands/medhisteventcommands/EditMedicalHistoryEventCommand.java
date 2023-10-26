@@ -43,7 +43,6 @@ public class EditMedicalHistoryEventCommand extends Command {
     public static final String MESSAGE_EDIT_EVENT_SUCCESS = "Edited Medical History Event: %1$s";
 
     private final Index patientIndex;
-
     private final Index eventIndex;
     private final EditMedicalHistoryEventDescriptor editMedHistEventDescriptor;
 
@@ -96,6 +95,7 @@ public class EditMedicalHistoryEventCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX);
         }
         // Retrieve the medical history event from the model based on the index
+        // TODO: fix the violation of Talk to Stranger principle
         MedicalHistoryEvent eventToEdit = model.getFilteredMedicalHistoryEventList().get(eventIndex.getZeroBased());
 
         // Create a new medical history event with the updated details

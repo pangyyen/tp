@@ -10,6 +10,7 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
@@ -30,10 +31,10 @@ public class PatientTest {
         Phone phone = new Phone("98765432");
         Email email = new Email("johndoe@example.com");
         Address address = new Address("123, Jurong West Ave 6, #08-111");
-        Appointment appointment = new Appointment("2023-12-10", "10:00");
+        AppointmentEvent appointmentEvent = new AppointmentEvent("2023-12-10", "10:00");
         Set<Tag> tags = new HashSet<>();
 
-        patient = new Patient(name, nric, phone, email, address, appointment, tags);
+        patient = new Patient(name, nric, phone, email, address, appointmentEvent, tags);
         patientNullAppointment = new Patient(name, nric, phone, email, address, tags);
     }
 
@@ -64,7 +65,7 @@ public class PatientTest {
 
     @Test
     public void getAppointment() {
-        assertEquals(new Appointment("2023-12-10", "10:00"), patient.getAppointment());
+        assertEquals(new AppointmentEvent("2023-12-10", "10:00"), patient.getAppointment());
         assertNull(patientNullAppointment.getAppointment());
     }
 

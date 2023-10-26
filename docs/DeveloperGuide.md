@@ -7,7 +7,7 @@
 - **Age:** 25-60 years
 - **Occupation:** Healthcare professionals including doctors, nurses, and medical practitioners
 - **Tech Comfort:** Regular smartphone and app user, seeks digital solutions to streamline work
-- **Needs:** Efficiently manage patient records, timely appointment reminders, and a seamless referral process
+- **Needs:** Efficiently manage patient records, timely appointmentEvent reminders, and a seamless referral process
 
 ### Problem Addressed
 
@@ -73,7 +73,7 @@ Streamline medical practice with CareCentral, designed for healthcare profession
 
 3. **Edit Patient Record/Appointment**
     - **MSS:**
-        1. Doctor selects a patient record or appointment to edit.
+        1. Doctor selects a patient record or appointmentEvent to edit.
         2. App prompts for the new information.
         3. Doctor enters the updated information.
         4. App saves the changes.
@@ -119,5 +119,5 @@ Streamline medical practice with CareCentral, designed for healthcare profession
 - **Healthcare Professional:** A user who is a certified medical practitioner, including doctors, nurses, 
 - and other medical staff.
 - **Patient Record:** A digital file within the app containing all relevant information about a patient, including 
-- medical history, prescriptions, and appointment records.
+- medical history, prescriptions, and appointmentEvent records.
 - **User:** Refers to the healthcare professionals using the CareCentral app.

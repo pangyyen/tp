@@ -19,7 +19,7 @@ import seedu.cc.model.UserPrefs;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
-class DeleteMedicalHistoryEventCommandTest {
+class DeletePatientMedicalHistoryEventCommandTest {
 
     private final Model model = new ModelManager(getTypicalClinicBook(), new UserPrefs());
 

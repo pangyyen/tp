@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
-import seedu.cc.model.medicalhistory.MedicalHistory;
+import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.person.Address;
@@ -85,9 +85,9 @@ class JsonAdaptedPatient {
             patientTags.add(tag.toModelType());
         }
 
-        final MedicalHistory modelMedicalHistory = new MedicalHistory();
+        final PatientMedicalHistory modelPatientMedicalHistory = new PatientMedicalHistory();
         for (JsonAdaptedMedicalHistoryEvent event : medicalHistoryEvents) {
-            modelMedicalHistory.addMedicalHistoryEvent(event.toModelType());
+            modelPatientMedicalHistory.addMedicalHistoryEvent(event.toModelType());
         }
 
 
@@ -136,7 +136,7 @@ class JsonAdaptedPatient {
 
 
         final Set<Tag> modelTags = new HashSet<>(patientTags);
-        return new Patient(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelMedicalHistory, modelTags);
+        return new Patient(modelName, modelNric, modelPhone, modelEmail, modelAddress, modelPatientMedicalHistory, modelTags);
     }
 
 }

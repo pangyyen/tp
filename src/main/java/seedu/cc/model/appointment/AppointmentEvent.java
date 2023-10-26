@@ -1,4 +1,4 @@
-package seedu.cc.model.patient;
+package seedu.cc.model.appointment;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.cc.commons.util.AppUtil.checkArgument;
@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
  * Represents a Patient's appointment in the clinic book.
  * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)} and {@link #isValidTime(String)}
  */
-public class Appointment {
+public class AppointmentEvent {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
     public static final String TIME_MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
     public static final String MESSAGE_CONSTRAINTS = "Appointments should have both a date and a time that adhere to the following constraints:\n"
@@ -24,34 +24,58 @@ public class Appointment {
     public final LocalDate date;
     public final LocalTime time;
 
-//    /**
-//     * Constructs an {@code Appointment}.
-//     *
-//     * @param date A valid date.
-//     * @param time A valid time.
-//     */
-//    public Appointment(String date, String time) {
-//        requireNonNull(date);
-//        requireNonNull(time);
-//        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
-//        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
-//        this.date = LocalDate.parse(date);
-//        this.time = LocalTime.parse(time);
-//    }
-
     /**
-     * Constructs an {@code Appointment}.
+     * Constructs an {@code AppointmentEvent} with String.
      *
-     * @param date A valid date.
-     * @param time A valid time.
+     * @param date A valid date String.
+     * @param time A valid time String.
      */
-    public Appointment(LocalDate date, LocalTime time) {
+    public AppointmentEvent(String date, String time) {
         requireNonNull(date);
         requireNonNull(time);
-//        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
-//        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+        this.date = LocalDate.parse(date);
+        this.time = LocalTime.parse(time);
+    }
+
+    /**
+     * Constructs an {@code AppointmentEvent} with LocalDate and LocalTime.
+     *
+     * @param date A valid LocalDate.
+     * @param time A valid LocalTime.
+     */
+    public AppointmentEvent(LocalDate date, LocalTime time) {
+        requireNonNull(date);
+        requireNonNull(time);
+        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
         this.date = date;
         this.time = time;
+    }
+
+    /**
+     * Returns true if a given LocalDate is in valid format
+     */
+    public static boolean isValidDate(LocalDate testDate) {
+        try {
+            LocalDate.parse(testDate.toString(), DateTimeFormatter.ISO_LOCAL_DATE);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if a given string is a valid time.
+     */
+    public static boolean isValidTime(LocalTime testTime) {
+        try {
+            LocalTime.parse(testTime.toString(), DateTimeFormatter.ofPattern("HH:mm"));
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 
     /**
@@ -78,9 +102,17 @@ public class Appointment {
         }
     }
 
+    public LocalDate getLocalDate() {
+        return date;
+    }
+
+    public LocalTime getLocalTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
-        return "Appointment Date: " +
+        return "AppointmentEvent Date: " +
                 date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " " +
                 time.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
@@ -91,12 +123,12 @@ public class Appointment {
             return true;
         }
 
-        if (!(other instanceof Appointment)) {
+        if (!(other instanceof AppointmentEvent)) {
             return false;
         }
 
-        Appointment otherAppointment = (Appointment) other;
-        return date.equals(otherAppointment.date) && time.equals(otherAppointment.time);
+        AppointmentEvent otherAppointmentEvent = (AppointmentEvent) other;
+        return date.equals(otherAppointmentEvent.date) && time.equals(otherAppointmentEvent.time);
     }
 
     @Override

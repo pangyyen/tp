@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -83,11 +84,16 @@ public interface Model {
     ObservableList<Patient> getFilteredPatientList();
 
     ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
+
+    ObservableList<AppointmentEvent> getFilteredAppointmentList();
+
     /**
      * Updates the filter of the filtered patient list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPatientList(Predicate<Patient> predicate);
+
+    //=========== Medical History Events =============================================================
 
     /**
      * Adds a medical history event to the given patient.
@@ -102,4 +108,15 @@ public interface Model {
                                  MedicalHistoryEvent editedMedicalHistoryEvent);
 
     void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEventToDelete);
+
+    //=========== AppointmentEvent Operations =============================================================
+
+    void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent);
+
+    void listAppointmentsEventForPatient(Patient patient);
+
+    void setAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToEdit,
+                                       AppointmentEvent editedAppointmentEvent);
+
+    void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete);
 }

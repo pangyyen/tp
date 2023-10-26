@@ -1,10 +1,9 @@
 package seedu.cc.logic.parser;
 
 import seedu.cc.commons.core.index.Index;
-import seedu.cc.logic.commands.AddApptCommand;
-import seedu.cc.logic.commands.EditCommand;
+import seedu.cc.logic.commands.appointmentcommands.AddAppointmentCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.patient.Appointment;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.tag.Tag;
 
 import java.time.LocalDate;
@@ -25,7 +24,7 @@ public class AddApptCommandParser {
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddApptCommand parse(String args) throws ParseException {
+    public AddAppointmentCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_APPT_DATE, PREFIX_APPT_TIME);
@@ -36,21 +35,21 @@ public class AddApptCommandParser {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddApptCommand.MESSAGE_USAGE), pe);
+                    AddAppointmentCommand.MESSAGE_USAGE), pe);
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_APPT_DATE, PREFIX_APPT_TIME);
 
         if (argMultimap.getValue(PREFIX_APPT_DATE).isEmpty() || argMultimap.getValue(PREFIX_APPT_TIME).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddApptCommand.MESSAGE_USAGE));
+                    AddAppointmentCommand.MESSAGE_USAGE));
         }
 
         LocalDate date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
         LocalTime time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
-        Appointment appointment = new Appointment(date, time);
+        AppointmentEvent appointmentEvent = new AppointmentEvent(date, time);
 
-        return new AddApptCommand(index, appointment);
+        return new AddAppointmentCommand(index, appointmentEvent);
 
 //        AddApptCommand.AddApptDescriptor editPatientDescriptor = new EditCommand.EditPatientDescriptor();
 

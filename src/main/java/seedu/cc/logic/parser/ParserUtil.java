@@ -12,7 +12,7 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.patient.Appointment;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
@@ -128,8 +128,8 @@ public class ParserUtil {
     public static LocalDate parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
-        if (!Appointment.isValidDate(trimmedDate)) {
-            throw new ParseException(Appointment.DATE_MESSAGE_CONSTRAINTS);
+        if (!AppointmentEvent.isValidDate(trimmedDate)) {
+            throw new ParseException(AppointmentEvent.DATE_MESSAGE_CONSTRAINTS);
         }
         return LocalDate.parse(trimmedDate, DateTimeFormatter.ISO_LOCAL_DATE);
     }
@@ -143,8 +143,8 @@ public class ParserUtil {
     public static LocalTime parseTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
-        if (!Appointment.isValidTime(trimmedTime)) {
-            throw new ParseException(Appointment.TIME_MESSAGE_CONSTRAINTS);
+        if (!AppointmentEvent.isValidTime(trimmedTime)) {
+            throw new ParseException(AppointmentEvent.TIME_MESSAGE_CONSTRAINTS);
         }
         return LocalTime.parse(trimmedTime, DateTimeFormatter.ofPattern("HH:mm"));
     }
@@ -202,16 +202,16 @@ public class ParserUtil {
         return new Treatment(trimmedTreatment);
     }
 
-//    /**
-//     * Parses a {@code String date} into a {@code Date}.
-//     * Leading and trailing whitespaces will be trimmed.
-//     *
-//     * @throws ParseException if the given {@code date} is invalid.
-//     */
-//    public static Date parseDate(String date) throws ParseException {
-//        requireNonNull(date);
-//        String trimmedDate = date.trim();
-//
-//        return new Date(trimmedDate);
-//    }
+    /**
+     * Parses a {@code String date} into a {@code Date}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code date} is invalid.
+     */
+    public static Date parseMedHisDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+
+        return new Date(trimmedDate);
+    }
 }

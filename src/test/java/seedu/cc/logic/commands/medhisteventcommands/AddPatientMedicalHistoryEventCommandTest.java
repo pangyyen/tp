@@ -15,7 +15,7 @@ import seedu.cc.model.UserPrefs;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.testutil.MedicalHistoryEventBuilder;
 
-public class AddMedicalHistoryEventCommandTest {
+public class AddPatientMedicalHistoryEventCommandTest {
 
     private final Model model = new ModelManager(getTypicalClinicBook(), new UserPrefs());
 

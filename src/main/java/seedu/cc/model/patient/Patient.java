@@ -3,7 +3,9 @@ package seedu.cc.model.patient;
 import java.util.ArrayList;
 import java.util.Set;
 
-import seedu.cc.model.medicalhistory.MedicalHistory;
+import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.PatientAppointmentList;
+import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.person.Address;
 import seedu.cc.model.person.Email;
@@ -18,40 +20,31 @@ import seedu.cc.model.tag.Tag;
  */
 public class Patient extends Person {
     private final Nric nric;
-    private final Appointment appointment;
-    private final MedicalHistory medicalHistory;
+    private final PatientAppointmentList patientAppointmentList;
+    private final PatientMedicalHistory patientMedicalHistory;
 
     /**
-     * Every field must be present and not null, except appointment.
+     * Every field must be present and not null, except appointment and medical history.
      *
-     */
-    public Patient(Name name, Nric nric, Phone phone, Email email,
-                   Address address, Appointment appointment, Set<Tag> tags) {
-        super(name, phone, email, address, tags);
-        this.nric = nric;
-        this.appointment = appointment;
-    }
-
-    /**
-     * Alternate constructor for Patient class without appointment.
      */
     public Patient(Name name, Nric nric, Phone phone, Email email,
                    Address address, Set<Tag> tags) {
         super(name, phone, email, address, tags);
         this.nric = nric;
-        this.appointment = null;
-        this.medicalHistory = new MedicalHistory();
+        this.patientAppointmentList = new PatientAppointmentList();
+        this.patientMedicalHistory = new PatientMedicalHistory();
     }
 
     /**
-     * Constructor for Patient with MedicalHistory in Storage.
+     * Constructor for Patient with PatientMedicalHistory in Storage.
      *
      */
     public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
-                   MedicalHistory medicalHistory, Set<Tag> tags) {
+                   PatientMedicalHistory patientMedicalHistory, Set<Tag> tags) {
         super(name, phone, email, address, tags);
         this.nric = nric;
-        this.medicalHistory = medicalHistory;
+        this.patientAppointmentList = new PatientAppointmentList();
+        this.patientMedicalHistory = patientMedicalHistory;
     }
 
     //getters and setters
@@ -75,59 +68,82 @@ public class Patient extends Person {
         return super.getAddress();
     }
 
-    public Appointment getAppointment() {
-        return this.appointment;
-    }
-
     public Set<Tag> getTags() {
         return super.getTags();
     }
 
-    /**
-     * Returns true if both patients have the same name, nric, appointment and phone number.
-     */
     public boolean isSamePatient(Patient otherPatient) {
         return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric())
-                && this.appointment.equals(otherPatient.getAppointment());
-
-    public void addMedicalHistoryEvent(MedicalHistoryEvent event) {
-        this.medicalHistory.addMedicalHistoryEvent(event);
+                && this.patientAppointmentList.equals(otherPatient.getAppointmentList())
+                && this.patientMedicalHistory.equals(otherPatient.getMedicalHistory());
     }
 
-    public void setMedicalHistoryEvent(MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent) {
-        this.medicalHistory.setMedicalHistoryEvent(eventToEdit, editedEvent);
-    }
 
-    public void deleteMedicalHistoryEvent(MedicalHistoryEvent eventToDelete) {
-        this.medicalHistory.deleteMedicalHistoryEvent(eventToDelete);
-    }
-
-    public boolean hasMedicalHistoryEvent(MedicalHistoryEvent event) {
-        return this.medicalHistory.hasMedicalHistoryEvent(event);
-    }
-
-    public boolean isSamePerson(Patient otherPatient) {
-        return super.isSamePerson(otherPatient) && this.nric.equals(otherPatient.getNric());
-    }
-
-    public boolean equals(Object other) {
+    public boolean equals (Object other){
         return super.equals(other);
     }
 
-    public String toString() {
+    public String toString () {
         return super.toString();
     }
 
-    public Patient addAppointment(Appointment appointment) {
-        return new Patient(this.getName(), this.getNric(), this.getPhone(), this.getEmail(),
-                this.getAddress(), appointment, this.getTags());
+    /**
+     * ==================================
+     * Methods for Medical History Events
+     * ==================================
+     */
 
-    public MedicalHistory getMedicalHistory() {
-        return this.medicalHistory;
+    public PatientMedicalHistory getMedicalHistory () {
+        return this.patientMedicalHistory;
     }
 
-    public ArrayList<MedicalHistoryEvent> getMedicalHistoryEvents() {
-        return this.medicalHistory.getMedicalHistoryEvents();
+    public ArrayList<MedicalHistoryEvent> getClinicBookMedicalHistory() {
+        return this.patientMedicalHistory.getMedicalHistoryEvents();
+    }
 
+    public void addMedicalHistoryEvent (MedicalHistoryEvent event){
+        this.patientMedicalHistory.addMedicalHistoryEvent(event);
+    }
+
+    public void setMedicalHistoryEvent (MedicalHistoryEvent eventToEdit, MedicalHistoryEvent editedEvent){
+        this.patientMedicalHistory.setMedicalHistoryEvent(eventToEdit, editedEvent);
+    }
+
+    public void deleteMedicalHistoryEvent (MedicalHistoryEvent eventToDelete){
+        this.patientMedicalHistory.deleteMedicalHistoryEvent(eventToDelete);
+    }
+
+    public boolean hasMedicalHistoryEvent (MedicalHistoryEvent event){
+        return this.patientMedicalHistory.hasMedicalHistoryEvent(event);
+    }
+
+    /**
+     * ==================================
+     * Methods for AppointmentEvent
+     * ==================================
+     */
+
+    public PatientAppointmentList getAppointmentList () {
+        return this.patientAppointmentList;
+    }
+
+    public ArrayList<AppointmentEvent> getClinicBookAppointmentList() {
+        return this.patientAppointmentList.getAppointmentList();
+    }
+
+    public boolean hasAppointmentEvent(AppointmentEvent appointmentEvent){
+        return this.patientAppointmentList.hasAppointment(appointmentEvent);
+    }
+
+    public void addAppointmentEvent(AppointmentEvent appointmentEvent){
+        this.patientAppointmentList.addAppointment(appointmentEvent);
+    }
+
+    public void setAppointmentEvent(AppointmentEvent appointmentEventToEdit, AppointmentEvent editedAppointmentEvent){
+        this.patientAppointmentList.setAppointment(appointmentEventToEdit, editedAppointmentEvent);
+    }
+
+    public void deleteAppointmentEvent(AppointmentEvent appointmentEventToDelete){
+        this.patientAppointmentList.deleteAppointment(appointmentEventToDelete);
     }
 }

@@ -15,7 +15,7 @@ import seedu.cc.model.ModelManager;
 import seedu.cc.model.UserPrefs;
 import seedu.cc.model.patient.Patient;
 
-public class ListMedicalHistoryEventCommandTest {
+public class ListPatientMedicalHistoryEventCommandTest {
 
     private Model model;
     private Model expectedModel;

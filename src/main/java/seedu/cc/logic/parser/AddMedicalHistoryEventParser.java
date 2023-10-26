@@ -57,7 +57,7 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
         MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap
                 .getValue(PREFIX_MEDICAL_CONDITION).get());
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
+        Date date = ParserUtil.parseMedHisDate(argMultimap.getValue(PREFIX_DATE).get());
 
 
         MedicalHistoryEvent event = new MedicalHistoryEvent(medicalCondition, treatment, date);
