@@ -92,7 +92,6 @@
             <Tab text="Patients">
               <content>
                 <StackPane fx:id="patientsContentPlaceholder" styleClass="pane-with-border">
-
                   <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                     <padding>
                       <Insets bottom="10" left="10" right="10" top="10" />
@@ -106,7 +105,12 @@
             <Tab text="Medical History">
               <content>
                 <StackPane fx:id="medicalHistoryContentPlaceholder" styleClass="pane-with-border">
-                  <!-- Medical History content here -->
+                  <VBox fx:id="medicalHistoryList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                    <padding>
+                      <Insets bottom="10" left="10" right="10" top="10" />
+                    </padding>
+                    <StackPane fx:id="medicalHistoryListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                  </VBox>
                 </StackPane>
               </content>
             </Tab>
