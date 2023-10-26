@@ -7,21 +7,25 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 
+/**
+ * Panel containing the appointments.
+ */
 public class AppointmentsPanel extends UiPart<Region> {
     private static final String FXML = "AppointmentsPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AppointmentsPanel.class);
 
     @javafx.fxml.FXML
-    private ListView<MedicalHistoryEvent> medicalHistoryEventListView;
+    private ListView<AppointmentEvent> medicalHistoryEventListView;
 
     /**
-     * Creates a {@code PatientListPanel} with the given {@code ObservableList}.
+     * Creates a {@code AppointmentsPanel} with the given {@code ObservableList}.
      */
-    public AppointmentsPanel(ObservableList<MedicalHistoryEvent> medicalHistory) {
+    public AppointmentsPanel(ObservableList<AppointmentEvent> appointments) {
         super(FXML);
-        medicalHistoryEventListView.setItems(medicalHistory);
+        medicalHistoryEventListView.setItems(appointments);
         medicalHistoryEventListView.setCellFactory(listView -> new AppointmentsPanel
                 .AppointmentsEventListViewCell());
     }
@@ -29,16 +33,16 @@ public class AppointmentsPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Patient} using a {@code PatientCard}.
      */
-    class AppointmentsEventListViewCell extends ListCell<MedicalHistoryEvent> {
+    class AppointmentsEventListViewCell extends ListCell<AppointmentEvent> {
         @Override
-        protected void updateItem(MedicalHistoryEvent person, boolean empty) {
-            super.updateItem(person, empty);
+        protected void updateItem(AppointmentEvent appointment, boolean empty) {
+            super.updateItem(appointment, empty);
 
-            if (empty || person == null) {
+            if (empty || appointment == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new MedicalHistoryEventCard(person, getIndex() + 1).getRoot());
+                setGraphic(new AppointmentsEventCard(appointment, getIndex() + 1).getRoot());
             }
         }
     }
