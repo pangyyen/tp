@@ -17,7 +17,7 @@
 <?import javafx.scene.control.Label?>
 <fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="CareCentral" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
-    <Image url="@/images/address_book_32.png" />
+    <Image url="@/images/HospitalLogo.png" />
   </icons>
   <scene>
     <Scene>
@@ -48,23 +48,23 @@
               <ImageView fx:id="patientsIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button maxWidth="Infinity" minHeight="70" onAction="#showMedicalHistoryTab" styleClass="sidebar-button" text="Medical History">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showMedicalHistoryTab" styleClass="sidebar-button" text="Medical History">
             <graphic>
               <ImageView fx:id="historyIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button maxWidth="Infinity" minHeight="70" onAction="#showAppointmentsTab" styleClass="sidebar-button" text="Appointments">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showAppointmentsTab" styleClass="sidebar-button" text="Appointments">
             <graphic>
               <ImageView fx:id="appointmentsIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
           <Separator />
-          <Button maxWidth="Infinity" minHeight="70" onAction="#handleHelp" styleClass="sidebar-button" text="Help">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#handleHelp" styleClass="sidebar-button" text="Help">
             <graphic>
               <ImageView fx:id="helpIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button maxWidth="Infinity" minHeight="70" onAction="#handleExit" styleClass="sidebar-button" text="Exit">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#handleExit" styleClass="sidebar-button" text="Exit">
             <graphic>
               <ImageView fx:id="exitIcon" fitHeight="40" fitWidth="40" />
             </graphic>
