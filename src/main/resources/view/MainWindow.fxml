@@ -30,13 +30,13 @@
       </stylesheets>
 
       <!-- Main SplitPane -->
-      <SplitPane dividerPositions="0.3" orientation="HORIZONTAL">
+      <SplitPane dividerPositions="0" orientation="HORIZONTAL">
 
         <!-- Sidebar -->
-        <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar" minWidth="200" spacing="10">
-          <padding>
-            <Insets bottom="20" left="20" right="20" top="20" />
-          </padding>
+        <VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="sidebar" spacing="10">
+            <padding>
+              <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
 
           <ImageView fx:id="logoImage" fitHeight="50" fitWidth="50" preserveRatio="true">
             <Image url="@/images/HospitalLogo.png" />
@@ -71,7 +71,7 @@
         </VBox>
 
         <VBox>
-          <VBox alignment="CENTER" fillWidth="true" spacing="10">
+          <VBox alignment="CENTER" spacing="10">
             <Label fx:id="tabInfoLabel" style="-fx-font-size: 24px; -fx-padding: 10px; -fx-font-weight: bold;" text="Patients" />
           </VBox>
 
