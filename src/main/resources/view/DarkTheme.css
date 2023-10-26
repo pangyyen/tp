@@ -159,3 +159,55 @@
     -fx-pref-height: 0;
     -fx-max-height: 0;
 }
+
+/* Sidebar styling */
+.sidebar {
+    -fx-background-color: white;
+}
+
+/* Button styling for the sidebar */
+.sidebar-button {
+    -fx-background-color: lightblue;
+    -fx-text-fill: black; /* Text color */
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10px 20px;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #B0E0E6;
+}
+
+.sidebar-button:pressed, .sidebar-button:focused {
+    -fx-background-color: #4682B4;
+    -fx-text-fill: white; /* Text color when button is pressed or focused */
+}
+
+.sidebar-button {
+    -fx-alignment: CENTER_LEFT; /* Aligns content of the button to the left */
+    -fx-text-alignment: LEFT;  /* Aligns text within the button to the left */
+}
+
+
+.sidebar-button .graphic {
+    -fx-padding: 0 10 0 0; /* Top, Right, Bottom, Left */
+}
+
+
+/*Icons*/
+#patientsIcon {
+    -fx-image: url('../images/patient_icon.png');
+}
+#historyIcon {
+    -fx-image: url('../images/history_icon.png');
+}
+#appointmentsIcon {
+    -fx-image: url('../images/appointment_icon.png');
+}
+#exitIcon {
+    -fx-image: url('../images/exit_icon.png');
+}
+#helpIcon {
+    -fx-image: url('../images/helpp_icon.png');
+}
+
