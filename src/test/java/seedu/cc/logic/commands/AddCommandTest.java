@@ -177,6 +177,8 @@ public class AddCommandTest {
 
         public void deleteMedicalHistoryEvent(Patient patient, MedicalHistoryEvent medicalHistoryEvent) {
 
+        }
+
         public void setCurrentTab(int tabIndex) {
             throw new AssertionError("This method should not be called.");
         }
@@ -184,12 +186,6 @@ public class AddCommandTest {
         @Override
         public IntegerProperty currentTabProperty() {
             return null;
-        }
-
-        @Override
-        public ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList() {
-
-            throw new AssertionError("This method should not be called.");
         }
 
         @Override
