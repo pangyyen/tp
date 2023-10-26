@@ -15,9 +15,6 @@ import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.patient.Patient;
 
-/**
- * Deletes a medical history event identified using it's displayed index from the address book.
- */
 public class DeleteAppointmentCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-appt";
@@ -28,17 +25,12 @@ public class DeleteAppointmentCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "PATIENT INDEX ";
 
-    public static final String MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS = "Deleted Medical History: %1$s";
+    public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
 
     private final Index eventIndex;
 
     private final Index patientIndex;
 
-    /**
-     * Deletes the medical history event at {@code eventIndex} from the patient at {@code patientIndex}.
-     * @param eventIndex of the medical history event in the filtered medical history event list to delete
-     * @param patientIndex of the patient in the filtered patient list to delete the medical history event from
-     */
     public DeleteAppointmentCommand(Index eventIndex, Index patientIndex) {
         this.eventIndex = eventIndex;
         this.patientIndex = patientIndex;
@@ -58,18 +50,18 @@ public class DeleteAppointmentCommand extends Command {
         List<AppointmentEvent> lastShownList = model.getFilteredAppointmentList();
 
         if (eventIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
 
         AppointmentEvent appointmentEventToDelete = lastShownList.get(eventIndex.getZeroBased());
 
         if (!personToDeleteAppointment.hasAppointmentEvent(appointmentEventToDelete)) {
-            throw new CommandException("This medical history event does not exist for this patient");
+            throw new CommandException("This Appointment event does not exist for this patient");
         }
 
         model.deleteAppointmentEventForPatient(personToDeleteAppointment, appointmentEventToDelete);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS, appointmentEventToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS, appointmentEventToDelete));
     }
 
     @Override
@@ -79,7 +71,7 @@ public class DeleteAppointmentCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand)) {
+        if (!(other instanceof DeleteAppointmentCommand)) {
             return false;
         }
 
