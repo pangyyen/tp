@@ -12,9 +12,9 @@ import seedu.cc.model.appointment.AppointmentEvent;
 /**
  * Panel containing the appointments.
  */
-public class AppointmentsPanel extends UiPart<Region> {
+public class AppointmentPanel extends UiPart<Region> {
     private static final String FXML = "AppointmentsPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(AppointmentsPanel.class);
+    private final Logger logger = LogsCenter.getLogger(AppointmentPanel.class);
 
     @javafx.fxml.FXML
     private ListView<AppointmentEvent> appointmentEventListView;
@@ -22,10 +22,10 @@ public class AppointmentsPanel extends UiPart<Region> {
     /**
      * Creates a {@code AppointmentsPanel} with the given {@code ObservableList}.
      */
-    public AppointmentsPanel(ObservableList<AppointmentEvent> appointments) {
+    public AppointmentPanel(ObservableList<AppointmentEvent> appointments) {
         super(FXML);
         appointmentEventListView.setItems(appointments);
-        appointmentEventListView.setCellFactory(listView -> new AppointmentsPanel
+        appointmentEventListView.setCellFactory(listView -> new AppointmentPanel
                 .AppointmentEventListViewCell());
     }
 

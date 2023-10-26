@@ -118,11 +118,11 @@
             <Tab text="Appointments">
               <content>
                 <StackPane fx:id="appointmentsContentPlaceholder" styleClass="pane-with-border">
-                  <VBox fx:id="appointmentsList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                  <VBox fx:id="appointmentList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                     <padding>
                       <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
-                    <StackPane fx:id="appointmentsListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+                    <StackPane fx:id="appointmentListPanelPlaceholder" VBox.vgrow="ALWAYS" />
                   </VBox>
                 </StackPane>
               </content>
