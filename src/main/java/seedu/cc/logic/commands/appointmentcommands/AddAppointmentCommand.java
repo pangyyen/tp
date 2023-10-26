@@ -38,6 +38,11 @@ public class AddAppointmentCommand extends Command {
     private final Index index;
     private final AppointmentEvent appointmentEvent;
 
+    /**
+     * Adds an appointment event to the patient at {@code index}.
+     * @param index of the patient in the filtered patient list to edit
+     * @param appointmentEvent details to edit the patient with
+     */
     public AddAppointmentCommand(Index index, AppointmentEvent appointmentEvent) {
         requireNonNull(index);
         requireNonNull(appointmentEvent);

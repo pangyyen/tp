@@ -22,6 +22,9 @@ public class ListAppointmentsCommand extends Command {
 
     private final Index patientIndex;
 
+    /**
+     * Creates a ListAppointmentsCommand to list the appointments of the specified {@code Patient}.
+     */
     public ListAppointmentsCommand(Index patientIndex) {
         this.patientIndex = patientIndex;
     }

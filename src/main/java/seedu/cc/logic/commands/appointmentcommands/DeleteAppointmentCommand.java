@@ -15,6 +15,9 @@ import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.patient.Patient;
 
+/**
+ * Deletes an appointment event identified using it's displayed index from the address book.
+ */
 public class DeleteAppointmentCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-appt";
@@ -31,6 +34,11 @@ public class DeleteAppointmentCommand extends Command {
 
     private final Index patientIndex;
 
+    /**
+     * Deletes the appointment event at {@code eventIndex} from the patient at {@code patientIndex}.
+     * @param eventIndex of the appointment event in the filtered appointment event list to delete
+     * @param patientIndex of the patient in the filtered patient list to delete the appointment event from
+     */
     public DeleteAppointmentCommand(Index eventIndex, Index patientIndex) {
         this.eventIndex = eventIndex;
         this.patientIndex = patientIndex;

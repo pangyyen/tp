@@ -17,13 +17,10 @@ import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
-import seedu.cc.model.medicalhistory.Date;
-import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
- * Edits the details of a medical history event identified by the index number used in the displayed
- * medical history event list.
+ * Edits the details of an existing appointment event in the address book.
  */
 public class EditAppointmentCommand extends Command {
 
@@ -43,6 +40,11 @@ public class EditAppointmentCommand extends Command {
     private final Index eventIndex;
     private final EditAppointmentEventDescriptor editAppointmentEventDescriptor;
 
+    /**
+     * Edit the appointment event at {@code eventIndex} from the patient at {@code patientIndex}.
+     * @param patientIndex               of the appointment event in the filtered appointment event list to edit
+     * @param editAppointmentEventDescriptor details to edit the appointment event with
+     */
     public EditAppointmentCommand(Index eventIndex, Index patientIndex,
                                   EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
         this.eventIndex = eventIndex;
@@ -50,6 +52,10 @@ public class EditAppointmentCommand extends Command {
         this.editAppointmentEventDescriptor = editAppointmentEventDescriptor;
     }
 
+    /**
+     * Creates and returns a {@code AppointmentEvent} with the details of {@code eventToEdit}
+     * edited with {@code editAppointmentEventDescriptor}.
+     */
     private static AppointmentEvent createEditedAppointmentEvent(
             AppointmentEvent eventToEdit, EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
 
@@ -80,15 +86,15 @@ public class EditAppointmentCommand extends Command {
         if (eventIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
-        // Retrieve the medical history event from the model based on the index
+        // Retrieve the appointment event from the model based on the index
         // TODO: fix the violation of Talk to Stranger principle
         AppointmentEvent eventToEdit = model.getFilteredAppointmentList().get(eventIndex.getZeroBased());
 
-        // Create a new medical history event with the updated details
+        // Create a new appointment event with the updated details
         AppointmentEvent editedEvent = createEditedAppointmentEvent(eventToEdit, editAppointmentEventDescriptor);
 
         if (!patientToEditAppointmentEvent.hasAppointmentEvent(eventToEdit)) {
-            throw new CommandException("This medical history event does not exist for this patient");
+            throw new CommandException("This appointment event does not exist for this patient");
         }
 
         // Update the model with the edited event
@@ -98,8 +104,8 @@ public class EditAppointmentCommand extends Command {
 
     }
     /**
-     * Stores the details to edit the medical history with. Each non-empty field value will replace the
-     * corresponding field value of the medical history.
+     * Stores the details to edit the appointment with. Each non-empty field value will replace the
+     * corresponding field value of the appointment.
      */
     public static class EditAppointmentEventDescriptor {
         private LocalDate localDate;
