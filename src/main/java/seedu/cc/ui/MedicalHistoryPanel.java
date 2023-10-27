@@ -42,6 +42,7 @@ public class MedicalHistoryPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
+                System.out.println("MedicalHistoryEventListViewCell");
                 setGraphic(new MedicalHistoryEventCard(medicalHistory, getIndex() + 1).getRoot());
             }
         }

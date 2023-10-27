@@ -13,14 +13,14 @@ import seedu.cc.model.appointment.AppointmentEvent;
  * Panel containing the appointments.
  */
 public class AppointmentPanel extends UiPart<Region> {
-    private static final String FXML = "AppointmentsPanel.fxml";
+    private static final String FXML = "AppointmentPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AppointmentPanel.class);
 
     @javafx.fxml.FXML
     private ListView<AppointmentEvent> appointmentEventListView;
 
     /**
-     * Creates a {@code AppointmentsPanel} with the given {@code ObservableList}.
+     * Creates a {@code AppointmentPanel} with the given {@code ObservableList}.
      */
     public AppointmentPanel(ObservableList<AppointmentEvent> appointments) {
         super(FXML);
@@ -41,6 +41,7 @@ public class AppointmentPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
+                System.out.println("AppointmentEventListViewCell");
                 setGraphic(new AppointmentEventCard(appointment, getIndex() + 1).getRoot());
             }
         }
