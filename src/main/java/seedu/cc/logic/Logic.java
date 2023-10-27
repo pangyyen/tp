@@ -2,12 +2,14 @@ package seedu.cc.logic;
 
 import java.nio.file.Path;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -38,6 +40,8 @@ public interface Logic {
     /**
      * Returns the user prefs' address book file path.
      */
+
+    ObservableList<AppointmentEvent> getFilteredAppointmentEventList();
     Path getClinicBookFilePath();
 
     /**
@@ -49,4 +53,10 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    void setCurrentTab(int tabIndex);
+
+    IntegerProperty currentTabProperty();
+
+    int getCurrentTab();
 }

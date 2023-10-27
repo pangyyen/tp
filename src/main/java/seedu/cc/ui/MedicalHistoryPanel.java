@@ -15,13 +15,13 @@ import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
  */
 public class MedicalHistoryPanel extends UiPart<Region> {
     private static final String FXML = "MedicalHistoryPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(PatientListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(MedicalHistoryPanel.class);
 
     @javafx.fxml.FXML
     private ListView<MedicalHistoryEvent> medicalHistoryEventListView;
 
     /**
-     * Creates a {@code PatientListPanel} with the given {@code ObservableList}.
+     * Creates a {@code MedicalHistoryPanel} with the given {@code ObservableList}.
      */
     public MedicalHistoryPanel(ObservableList<MedicalHistoryEvent> medicalHistory) {
         super(FXML);
@@ -35,14 +35,15 @@ public class MedicalHistoryPanel extends UiPart<Region> {
      */
     class MedicalHistoryEventListViewCell extends ListCell<MedicalHistoryEvent> {
         @Override
-        protected void updateItem(MedicalHistoryEvent person, boolean empty) {
-            super.updateItem(person, empty);
+        protected void updateItem(MedicalHistoryEvent medicalHistory, boolean empty) {
+            super.updateItem(medicalHistory, empty);
 
-            if (empty || person == null) {
+            if (empty || medicalHistory == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new MedicalHistoryEventCard(person, getIndex() + 1).getRoot());
+                System.out.println("MedicalHistoryEventListViewCell");
+                setGraphic(new MedicalHistoryEventCard(medicalHistory, getIndex() + 1).getRoot());
             }
         }
     }

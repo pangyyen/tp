@@ -84,5 +84,4 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         sb.append("\nLocal data file location : " + clinicBookFilePath);
         return sb.toString();
     }
-
 }

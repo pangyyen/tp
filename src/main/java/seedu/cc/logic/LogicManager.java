@@ -5,6 +5,8 @@ import java.nio.file.AccessDeniedException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
@@ -15,6 +17,7 @@ import seedu.cc.logic.parser.ClinicBookParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.Model;
 import seedu.cc.model.ReadOnlyClinicBook;
+import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.storage.Storage;
@@ -33,6 +36,7 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final ClinicBookParser clinicBookParser;
+    private final IntegerProperty currentTab = new SimpleIntegerProperty(this, "currentTab", 0);
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -41,6 +45,11 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         clinicBookParser = new ClinicBookParser();
+        this.model.currentTabProperty().addListener((observable, oldValue, newValue) -> {
+            // Update LogicManager's currentTab property with the new value
+            this.currentTab.set(newValue.intValue());
+        });
+
     }
 
     @Override
@@ -78,6 +87,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<AppointmentEvent> getFilteredAppointmentEventList() {
+        return model.getFilteredAppointmentList();
+    }
+
+    @Override
     public Path getClinicBookFilePath() {
         return model.getClinicBookFilePath();
     }
@@ -90,5 +104,18 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+    @Override
+    public IntegerProperty currentTabProperty() {
+        return currentTab;
+    }
+
+    public int getCurrentTab() {
+        return currentTab.get();
+    }
+
+    public void setCurrentTab(int tab) {
+        model.setCurrentTab(tab);
+        this.currentTab.set(tab);
     }
 }

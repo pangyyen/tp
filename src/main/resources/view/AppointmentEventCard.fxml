@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="cardPane" fx:id="" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
@@ -15,15 +15,14 @@
                 <Insets bottom="5" left="15" right="5" top="5" />
             </padding>
 
-            <Label fx:id="date" text="\$first" underline="true">
+            <Label fx:id="appointmentDate" text="\$first" underline="true">
                 <font>
                     <Font name="System Bold" size="16.0" />
                 </font></Label>
-            <Label fx:id="treatment" styleClass="cell_small_label" text="\$treatment" />
-            <Label fx:id="medicalCondition" styleClass="cell_small_label" text="\$medicalCondition" />
+            <Label fx:id="time" styleClass="cell_small_label" text="\$time" />
         </VBox>
-      <rowConstraints>
-         <RowConstraints />
-      </rowConstraints>
+        <rowConstraints>
+            <RowConstraints />
+        </rowConstraints>
     </GridPane>
 </HBox>

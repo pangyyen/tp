@@ -4,7 +4,9 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -12,6 +14,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
+import seedu.cc.commons.core.tabs.Tabs;
 import seedu.cc.logic.Logic;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
@@ -31,24 +34,37 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PatientListPanel personListPanel;
+    private PatientListPanel patientListPanel;
+    private MedicalHistoryPanel medicalHistoryPanel;
+    private AppointmentPanel appointmentPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    private int tab;
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private MenuItem helpMenuItem;
+    private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane medicalHistoryListPanelPlaceholder;
+
+    @FXML
+    private StackPane appointmentListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label tabInfoLabel;
+
+    @FXML
+    private TabPane mainTabPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -59,11 +75,12 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
+        this.tab = logic.getCurrentTab();
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-        setAccelerators();
+        //setAccelerators();
 
         helpWindow = new HelpWindow();
     }
@@ -71,10 +88,9 @@ public class MainWindow extends UiPart<Stage> {
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    }
+    //    private void setAccelerators() {
+    //        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+    //    }
 
     /**
      * Sets the accelerator of a MenuItem.
@@ -110,8 +126,18 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PatientListPanel(logic.getFilteredPatientList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        logic.currentTabProperty().addListener((observable, oldValue, newValue) -> {
+            changeTabs(newValue.intValue());
+        });
+
+        patientListPanel = new PatientListPanel(logic.getFilteredPatientList());
+        personListPanelPlaceholder.getChildren().add(patientListPanel.getRoot());
+
+        medicalHistoryPanel = new MedicalHistoryPanel(logic.getFilteredMedicalHistoryEventList());
+        medicalHistoryListPanelPlaceholder.getChildren().add(medicalHistoryPanel.getRoot());
+
+        appointmentPanel = new AppointmentPanel(logic.getFilteredAppointmentEventList());
+        appointmentListPanelPlaceholder.getChildren().add(appointmentPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -164,7 +190,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public PatientListPanel getPatientListPanel() {
-        return personListPanel;
+        return patientListPanel;
     }
 
     /**
@@ -193,4 +219,54 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
     }
+
+    /**
+     * Switches to the Patients tab.
+     */
+    @FXML
+    public void showPatientsTab() {
+        mainTabPane.getSelectionModel().select(0);
+        tabInfoLabel.setText("Patients");
+    }
+
+    /**
+     * Switches to the Medical History tab.
+     */
+    @FXML
+    public void showMedicalHistoryTab() {
+        mainTabPane.getSelectionModel().select(1);
+        tabInfoLabel.setText("Medical History");
+    }
+
+    /**
+     * Switches to the Appointments tab.
+     */
+    @FXML
+    public void showAppointmentsTab() {
+        mainTabPane.getSelectionModel().select(2);
+        tabInfoLabel.setText("Appointments");
+    }
+
+    /**
+     * Changes the tab to the specified tab index.
+     * @param tabIndex the index of the tab to change to
+     */
+    public void changeTabs(int tabIndex) {
+        mainTabPane.getSelectionModel().select(tabIndex);
+        switch (tabIndex) {
+        case 0:
+            tabInfoLabel.setText(Tabs.PATIENTS.toString());
+            break;
+        case 1:
+            tabInfoLabel.setText(Tabs.MEDICAL_HISTORY.toString());
+            break;
+        case 2:
+            tabInfoLabel.setText(Tabs.APPOINTMENTS.toString());
+            break;
+        default:
+            tabInfoLabel.setText("Unknown Tab");
+            break;
+        }
+    }
+
 }
