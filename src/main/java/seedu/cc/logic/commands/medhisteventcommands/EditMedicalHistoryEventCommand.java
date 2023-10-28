@@ -83,7 +83,7 @@ public class EditMedicalHistoryEventCommand extends Command {
         List<Patient> lastShownPatientList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastShownPatientList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient patientToEditMedicalHistoryEvent = lastShownPatientList.get(patientIndex.getZeroBased());
@@ -98,14 +98,12 @@ public class EditMedicalHistoryEventCommand extends Command {
         // TODO: fix the violation of Talk to Stranger principle
         MedicalHistoryEvent eventToEdit = model.getFilteredMedicalHistoryEventList().get(eventIndex.getZeroBased());
 
-        // Create a new medical history event with the updated details
         MedicalHistoryEvent editedEvent = createEditedMedicalHistoryEvent(eventToEdit, editMedHistEventDescriptor);
 
         if (!patientToEditMedicalHistoryEvent.hasMedicalHistoryEvent(eventToEdit)) {
             throw new CommandException("This medical history event does not exist for this patient");
         }
 
-        // Update the model with the edited event
         model.setMedicalHistoryEvent(patientToEditMedicalHistoryEvent, eventToEdit, editedEvent);
 
         return new CommandResult(String.format(MESSAGE_EDIT_EVENT_SUCCESS,
