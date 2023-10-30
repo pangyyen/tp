@@ -160,11 +160,6 @@ public class ModelManager implements Model {
         return filteredMedicalHistoryEvents;
     }
 
-    @Override
-    public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
-        return filteredAppointmentEvents;
-    }
-
     //=========== AppointmentEvent Operations =============================================================
     @Override
     public void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent) {
@@ -189,6 +184,11 @@ public class ModelManager implements Model {
     public void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete) {
         requireAllNonNull(patient, appointmentEventToDelete);
         clinicBook.deleteAppointment(patient, appointmentEventToDelete);
+    }
+
+    @Override
+    public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
+        return filteredAppointmentEvents;
     }
 
     //=========== Filtered Person List Accessors =============================================================

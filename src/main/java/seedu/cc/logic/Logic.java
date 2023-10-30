@@ -41,7 +41,7 @@ public interface Logic {
      * Returns the user prefs' address book file path.
      */
 
-    ObservableList<AppointmentEvent> getFilteredAppointmentEventList();
+    ObservableList<AppointmentEvent> getFilteredAppointmentList();
     Path getClinicBookFilePath();
 
     /**
