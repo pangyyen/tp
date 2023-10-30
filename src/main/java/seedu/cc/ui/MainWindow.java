@@ -46,7 +46,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane patientListPanelPlaceholder;
 
     @FXML
     private StackPane medicalHistoryListPanelPlaceholder;
@@ -131,7 +131,7 @@ public class MainWindow extends UiPart<Stage> {
         });
 
         patientListPanel = new PatientListPanel(logic.getFilteredPatientList());
-        personListPanelPlaceholder.getChildren().add(patientListPanel.getRoot());
+        patientListPanelPlaceholder.getChildren().add(patientListPanel.getRoot());
 
         medicalHistoryPanel = new MedicalHistoryPanel(logic.getFilteredMedicalHistoryEventList());
         medicalHistoryListPanelPlaceholder.getChildren().add(medicalHistoryPanel.getRoot());

@@ -95,17 +95,17 @@ public class ClinicBookTest {
      * A stub ReadOnlyClinicBook whose persons list can violate interface constraints.
      */
     private static class ClinicBookStub implements ReadOnlyClinicBook {
-        private final ObservableList<Patient> persons = FXCollections.observableArrayList();
+        private final ObservableList<Patient> patients = FXCollections.observableArrayList();
         private final ObservableList<MedicalHistoryEvent> medicalHistoryEvents = FXCollections.observableArrayList();
         private final ObservableList<AppointmentEvent> appointmentEvents = FXCollections.observableArrayList();
 
-        ClinicBookStub(Collection<Patient> persons) {
-            this.persons.setAll(persons);
+        ClinicBookStub(Collection<Patient> patients) {
+            this.patients.setAll(patients);
         }
 
         @Override
         public ObservableList<Patient> getPatientList() {
-            return persons;
+            return patients;
         }
 
         @Override

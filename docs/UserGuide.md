@@ -2,24 +2,80 @@
 
 <img src="images/Ui.png" >
 
-## 1. Create Patient Record
+# Introduction
+
+CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital 
+staff aged between 25-60 years. It is a desktop app optimised for fast-typers and is designed to help healthcare
+professionals manage their patients' medical journey.
+
+# Table of Contents
+
+* Table of Contents
+  {:toc}
+<!--- TODO: add release link --->
+# 1. Quick Start
+1. Ensure you have Java 11 installed in your Computer.
+2. Download the latest `carecentral.jar` from [here]() 
+3. Copy the file to the folder you want to use as the home folder for CareCentral.
+4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.  
+   ![Ui](images/Ui.png)
+5. For Mac users encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu).
+   <img width="275" height="280" src="images/mac_issue.png">
+6. Type the command in the command box and press Enter to execute it.  
+   e.g. typing `help` and pressing Enter will open the help window.
+   Some example commands you can try:
+   * `add-patient n/John Doe ic/S1234567A a/45 p/91234567`
+   * `list-patients`
+   * `delete-patient 1`
+   * `exit`
+
+# 2. Features
+
+Notes about the command format:
+
+- Words in UPPER_CASE are the parameters to be supplied by the user.
+e.g. in add n/NAME, NAME is a parameter which can be used as add n/John Doe.
+
+- Items in square brackets are optional.
+e.g n/NAME [tag/TAG] can be used as n/John Doe tag/friend or as n/John Doe.
+
+- Items with …​ after them can be used multiple times including zero times.
+e.g. [tag/TAG]…​ can be used as   (i.e. 0 times), tag/friend, tag/friend tag/family etc.
+
+- Parameters can be in any order.
+e.g. if the command specifies n/NAME p/PHONE_NUMBER, p/PHONE_NUMBER n/NAME is also acceptable.
+
+- If a parameter is expected only once in the command but you specified it multiple times, only the last occurrence of the parameter will be taken.
+e.g. if you specify p/12341234 p/56785678, only p/56785678 will be taken.
+
+- Extraneous parameters for commands that do not take in parameters (such as help, list, exit and clear) will be ignored.
+e.g. if the command specifies help 123, it will be interpreted as help.
+
+## 2.1. Patients Related Features
+
+### 2.1.1. Create Patient Record
 
 **What it does:**  
 Adds a new patient record to the system.
 
 **Command Format:**  
-`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER`
-
+`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`
 
 **Example Commands:**  
-`add-patient n/Jane Doe ic/0123456A a/45 e/janedoe@example.com`
+`add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com`
 
-**Acceptable Values:**
-- **NAME:** Alphabetic characters and spaces only
-- **NRIC:** 8-16 Alphanumeric characters
-- **AGE:** Integer values between 0 and 120
-- **PHONE_NUMBER:** 8-12 digits integer
+**Parameters:**
 
+| Parameters       | Explanation                 | Constraints                                                                                                                                                 |            
+|------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | full name of the patient    | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| `p/PHONE_NUMBER` | phone number of the patient | must be **entirely numeric** and exactly 8 digits long                                                                                                      |
+| `ic/NRIC`        | NRIC of the patient         | must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
+| `a/AGE`          | age of the patient          | must be a positive integer                                                                                                                                  |
+| `e/email`        | email of the patient        | must be a valid email address                                                                                                                               |
+| `[t/TAG]…`       | tags of the patient         | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+
+<!--- TODO: verify all of these --->
 **Expected Output (Success):**  
 CLI: A new entry appears in the list of patients.  
 Message: "Successfully added patient: [Patient Details]"
@@ -29,9 +85,9 @@ Message: "Successfully added patient: [Patient Details]"
 - Message: "Invalid input. Please enter a valid NRIC (8-16 alphanumeric characters)."
 - Message: "Invalid input. Age should be between 0 to 120"
 - Message: "Invalid input. Please enter a valid phone number."
--
+
 ---
-## 2. List Patients
+## 2.1.2. List Patients
 
 **What it does:**  
 Finds persons whose names contain any of the given keywords.
@@ -40,30 +96,39 @@ Finds persons whose names contain any of the given keywords.
 `list-patients`
 
 ---
-## 3. Edit Patient Record
+## 2.1.3. Edit Patient Record
 
 **What it does:**
-Edits a patient record in the system.
+Edits a patient record at the specified `INDEX` in the system.
 
 **Command Format:**
-`edit-patient INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER]`
+`edit-patient INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`
 
-**Acceptable Values:**
-- **INDEX:** Positive integer
-- **NAME:** Alphabetic characters and spaces only
-- **NRIC:** 8-16 Alphanumeric characters
-- **AGE:** Integer values between 0 and 120
-- **PHONE_NUMBER:** 8-12 digits integer
+**Example Commands:**
+`edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
 
+**Parameters:**
+
+| Parameters       | Explanation                                        | Constraints                                                                                                                                                 |            
+|------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `INDEX`          | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
+| `n/NAME`         | full name of the patient                           | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| `p/PHONE_NUMBER` | phone number of the patient                        | must be **entirely numeric** and exactly 8 digits long                                                                                                      |
+| `ic/NRIC`        | NRIC of the patient                                | must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
+| `a/AGE`          | age of the patient                                 | must be a positive integer                                                                                                                                  |
+| `e/email`        | email of the patient                               | must be a valid email address                                                                                                                               |
+| `[t/TAG]…`       | tags of the patient                                | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+
+<!--- TODO: verify all of these --->
 **Expected Output (Success):**
-Message: "Successfully edited patient: [Patient Details]"
+- Message: "Successfully edited patient: [Patient Details]"
 
 **Expected Output (Failure):**
 - Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
-## 4. Delete Patient Record
+## 2.1.4. Delete Patient Record
 
 **What it does:**  
 Removes a patient record from the system.
@@ -71,19 +136,18 @@ Removes a patient record from the system.
 **Command Format:**  
 `delete-patient INDEX`
 
-
 **Example Commands:**  
 `delete-patient 2`
-
 
 **Acceptable Values:**
 - **INDEX:** Positive integer
 
+<!--- TODO: verify all of these --->
 **Expected Output (Success):**  
-Message: "Successfully deleted patient."
+- Message: "Successfully deleted patient."
 
 **Expected Output (Failure):**  
-Message: "Invalid index. Please enter a valid index."
+- Message: "Invalid index. Please enter a valid index."
 
 ## 5. Add Appointment
 

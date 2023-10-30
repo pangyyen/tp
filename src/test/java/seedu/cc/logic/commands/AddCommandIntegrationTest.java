@@ -42,7 +42,7 @@ public class AddCommandIntegrationTest {
     public void execute_duplicatePatient_throwsCommandException() {
         Patient patientInList = model.getClinicBook().getPatientList().get(0);
         assertCommandFailure(new AddCommand(patientInList), model,
-                AddCommand.MESSAGE_DUPLICATE_PERSON);
+                AddCommand.MESSAGE_DUPLICATE_PATIENT);
     }
 
 }

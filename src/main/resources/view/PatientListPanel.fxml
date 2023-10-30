@@ -3,6 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
-  <ListView fx:id="personListView" VBox.vgrow="ALWAYS" />
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+  <ListView fx:id="patientListView" VBox.vgrow="ALWAYS" />
+
 </VBox>
