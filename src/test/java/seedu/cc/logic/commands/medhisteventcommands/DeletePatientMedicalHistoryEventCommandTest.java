@@ -48,7 +48,7 @@ class DeletePatientMedicalHistoryEventCommandTest {
         DeleteMedicalHistoryEventCommand deleteCommand = new DeleteMedicalHistoryEventCommand(INDEX_FIRST_MEDHISTEVENT,
                 outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
     }
 
     @Test

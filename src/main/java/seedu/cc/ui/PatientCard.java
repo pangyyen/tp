@@ -24,7 +24,7 @@ public class PatientCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Patient person;
+    public final Patient patient;
 
     @FXML
     private HBox cardPane;
@@ -44,15 +44,15 @@ public class PatientCard extends UiPart<Region> {
     /**
      * Creates a {@code PatientCode} with the given {@code Patient} and index to display.
      */
-    public PatientCard(Patient person, int displayedIndex) {
+    public PatientCard(Patient patient, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.patient = patient;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
-        email.setText(person.getEmail().value);
-        person.getTags().stream()
+        name.setText(patient.getName().fullName);
+        phone.setText(patient.getPhone().value);
+        address.setText(patient.getAddress().value);
+        email.setText(patient.getEmail().value);
+        patient.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }

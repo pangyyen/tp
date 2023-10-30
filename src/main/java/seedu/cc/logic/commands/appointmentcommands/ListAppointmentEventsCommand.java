@@ -40,7 +40,7 @@ public class ListAppointmentEventsCommand extends Command {
         List<Patient> lastShownList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());

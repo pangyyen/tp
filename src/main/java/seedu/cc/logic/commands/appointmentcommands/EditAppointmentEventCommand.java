@@ -77,7 +77,7 @@ public class EditAppointmentEventCommand extends Command {
         List<Patient> lastShownPatientList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastShownPatientList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient patientToEditAppointmentEvent = lastShownPatientList.get(patientIndex.getZeroBased());
