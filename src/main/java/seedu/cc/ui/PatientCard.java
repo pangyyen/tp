@@ -58,7 +58,6 @@ public class PatientCard extends UiPart<Region> {
         email.setText(patient.getEmail().value);
         nric.setText(patient.getNric().value);
         patient.getTags().stream()
-          
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
