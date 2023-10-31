@@ -110,6 +110,23 @@ public class EditMedicalHistoryEventCommand extends Command {
                 Messages.format(editedEvent, patientToEditMedicalHistoryEvent)));
 
     }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        } else if (!(other instanceof EditMedicalHistoryEventCommand)) {
+            return false;
+        }
+
+        // state check
+        EditMedicalHistoryEventCommand e = (EditMedicalHistoryEventCommand) other;
+        return patientIndex.equals(e.patientIndex)
+                && eventIndex.equals(e.eventIndex)
+                && editMedHistEventDescriptor.equals(e.editMedHistEventDescriptor);
+    }
+
     /**
      * Stores the details to edit the medical history with. Each non-empty field value will replace the
      * corresponding field value of the medical history.
