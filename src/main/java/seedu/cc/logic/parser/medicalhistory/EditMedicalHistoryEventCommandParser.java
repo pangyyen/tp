@@ -1,7 +1,6 @@
 package seedu.cc.logic.parser.medicalhistory;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
