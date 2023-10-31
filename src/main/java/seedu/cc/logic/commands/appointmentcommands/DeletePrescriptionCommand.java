@@ -1,5 +1,9 @@
 package seedu.cc.logic.commands.appointmentcommands;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand.createEditedAppointmentEvent;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
+
 import java.util.List;
 
 import seedu.cc.commons.core.index.Index;
@@ -12,10 +16,6 @@ import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.patient.Patient;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand.createEditedAppointmentEvent;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICINE_NAME;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -43,7 +43,9 @@ public class DeletePrescriptionCommand extends Command {
      * @param patientIndex of the patient in the filtered patient list to edit
      * @param editAppointmentEventDescriptor details to edit the appointment with
      */
-    public DeletePrescriptionCommand(Index eventIndex, Index patientIndex, EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
+    public DeletePrescriptionCommand(Index eventIndex, Index patientIndex,
+                                     EditAppointmentEventCommand
+                                             .EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
         requireNonNull(eventIndex);
         requireNonNull(eventIndex);
         this.patientIndex = patientIndex;

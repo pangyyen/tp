@@ -1,5 +1,10 @@
 package seedu.cc.logic.parser.appointment;
 
+import static java.util.Objects.requireNonNull;
+import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICINE_NAME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -14,11 +19,6 @@ import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.tag.Tag;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICINE_NAME;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 
 /**
@@ -64,7 +64,6 @@ public class DeletePrescriptionCommandParser {
 
         Set<Prescription> prescriptions = ParserUtil.parsePrescriptions(argMultimap.getAllValues(PREFIX_MEDICINE_NAME));
         editAppointmentEventDescriptor.setPrescriptions(prescriptions);
-//        return new AddPrescriptionCommand(eventIndex, patientIndex, prescriptions);
         return new DeletePrescriptionCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
     }
 

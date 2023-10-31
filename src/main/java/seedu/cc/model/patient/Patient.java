@@ -1,7 +1,6 @@
 package seedu.cc.model.patient;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Set;
 
 import seedu.cc.model.appointment.AppointmentEvent;

@@ -27,7 +27,7 @@ public class AppointmentEvent {
 
     private final LocalDate date;
     private final LocalTime time;
-    private Set<Prescription> prescriptions = new HashSet<>();;
+    private Set<Prescription> prescriptions;
     private boolean isDone;
 
     /**
@@ -61,6 +61,7 @@ public class AppointmentEvent {
         this.date = date;
         this.time = time;
         this.isDone = false;
+        this.prescriptions = new HashSet<>();
     }
 
     /**
@@ -129,14 +130,7 @@ public class AppointmentEvent {
         }
     }
 
-    /**
-     * Set the appointment's prescriptions.
-     * @param prescriptions
-     *
-     */
-    public void Prescription(Set<Prescription> prescriptions) {
-        this.prescriptions.addAll(prescriptions);
-    }
+
 
 
     /**
@@ -146,10 +140,6 @@ public class AppointmentEvent {
     public void addPrescriptions(Set<Prescription> prescriptions) {
         this.prescriptions.addAll(prescriptions);
     }
-//    public void addPrescription(Prescription prescription) {
-//        this.prescription = prescription;
-//    }
-
 
     /**
      * Returns the prescriptions of the appointment.

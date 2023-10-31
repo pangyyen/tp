@@ -1,8 +1,8 @@
 package seedu.cc.model;
 
 import java.nio.file.Path;
-import java.util.function.Predicate;
 import java.util.Set;
+import java.util.function.Predicate;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;

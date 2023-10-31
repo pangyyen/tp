@@ -203,6 +203,12 @@ public class UniquePatientList implements Iterable<Patient> {
 
     //=========== Prescription Operations =============================================================
 
+    /**
+     * Adds a set of prescriptions to the specified appointment event.
+     * @param patient
+     * @param appointmentEvent
+     * @param prescriptions
+     */
     public void addPrescriptions(Patient patient, AppointmentEvent appointmentEvent, Set<Prescription> prescriptions) {
         requireAllNonNull(patient, appointmentEvent, prescriptions);
         int index = internalList.indexOf(patient);

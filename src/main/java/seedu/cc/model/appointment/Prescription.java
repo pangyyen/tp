@@ -7,9 +7,10 @@ import static seedu.cc.commons.util.AppUtil.checkArgument;
  * Represents a patient's prescription.
  */
 public class Prescription {
-    public final String value;
+
     public static final String MESSAGE_CONSTRAINTS = "Prescriptions should be alphanumeric";
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
+    public final String value;
 
     /**
      * Constructs a {@code Prescription}.

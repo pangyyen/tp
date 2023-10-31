@@ -2,6 +2,7 @@ package seedu.cc.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.Prescription;
 
@@ -13,7 +14,6 @@ public class JsonAdaptedPrescription {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appointment event's %s field is missing!";
 
 
-//    private final List<JsonAdaptedPrescription> prescriptions = new ArrayList<>();
     private final String prescription;
 
     /**
