@@ -3,7 +3,9 @@ package seedu.cc.storage;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -11,6 +13,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
+import seedu.cc.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
@@ -56,6 +60,7 @@ public class JsonAdaptedAppointmentEvent {
      * @throws IllegalValueException if there were any data constraints violated in the adapted medical history event.
      */
     public AppointmentEvent toModelType() throws IllegalValueException {
+
         if (localDate == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Date"));
         }
@@ -64,6 +69,15 @@ public class JsonAdaptedAppointmentEvent {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Time"));
         }
 
-        return new AppointmentEvent(localDate, localTime);
+        if (prescriptions.isEmpty()) {
+            return new AppointmentEvent(localDate, localTime);
+        }
+
+        final List<Prescription> patientPrescriptions = new ArrayList<>();
+        for (JsonAdaptedPrescription prescription : prescriptions) {
+            patientPrescriptions.add(prescription.toModelType());
+        }
+        final Set<Prescription> prescriptionSet = new HashSet<>(patientPrescriptions);
+        return new AppointmentEvent(localDate, localTime, prescriptionSet);
     }
 }

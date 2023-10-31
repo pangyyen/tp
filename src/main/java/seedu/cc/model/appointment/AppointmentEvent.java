@@ -79,7 +79,7 @@ public class AppointmentEvent {
         this.date = date;
         this.time = time;
         this.isDone = false;
-        this.prescriptions.addAll(prescriptions);
+        this.prescriptions = prescriptions;
     }
 
     /**
