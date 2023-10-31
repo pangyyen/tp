@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Represents a Patient's appointment in the clinic book.
@@ -22,8 +25,10 @@ public class AppointmentEvent {
             + "The date and time should represent a valid future appointment time.";
 
 
-    public final LocalDate date;
-    public final LocalTime time;
+    private final LocalDate date;
+    private final LocalTime time;
+    private Set<Prescription> prescriptions = new HashSet<>();;
+    private boolean isDone;
 
     /**
      * Constructs an {@code AppointmentEvent} with String.
@@ -38,6 +43,8 @@ public class AppointmentEvent {
         checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
         this.date = LocalDate.parse(date);
         this.time = LocalTime.parse(time);
+        this.isDone = false;
+        this.prescriptions = new HashSet<>();
     }
 
     /**
@@ -53,6 +60,25 @@ public class AppointmentEvent {
         checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
         this.date = date;
         this.time = time;
+        this.isDone = false;
+    }
+
+    /**
+     * Constructs an {@code AppointmentEvent} with LocalDate, LocalTime and Set of Prescriptions.
+     *
+     * @param date A valid LocalDate.
+     * @param time A valid LocalTime.
+     * @param prescriptions A valid Set of Prescriptions.
+     */
+    public AppointmentEvent(LocalDate date, LocalTime time, Set<Prescription> prescriptions) {
+        requireNonNull(date);
+        requireNonNull(time);
+        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+        this.date = date;
+        this.time = time;
+        this.isDone = false;
+        this.prescriptions.addAll(prescriptions);
     }
 
     /**
@@ -101,6 +127,36 @@ public class AppointmentEvent {
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Set the appointment's prescriptions.
+     * @param prescriptions
+     *
+     */
+    public void Prescription(Set<Prescription> prescriptions) {
+        this.prescriptions.addAll(prescriptions);
+    }
+
+
+    /**
+     * Add the appointment's prescriptions.
+     * @param prescriptions
+     */
+    public void addPrescriptions(Set<Prescription> prescriptions) {
+        this.prescriptions.addAll(prescriptions);
+    }
+//    public void addPrescription(Prescription prescription) {
+//        this.prescription = prescription;
+//    }
+
+
+    /**
+     * Returns the prescriptions of the appointment.
+     *
+     */
+    public Set<Prescription> getPrescriptions() {
+        return this.prescriptions;
     }
 
     public LocalDate getLocalDate() {

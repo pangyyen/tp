@@ -2,12 +2,16 @@ package seedu.cc.storage;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
@@ -19,15 +23,20 @@ public class JsonAdaptedAppointmentEvent {
 
     private final LocalDate localDate;
     private final LocalTime localTime;
+    private final List<JsonAdaptedPrescription> prescriptions = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedAppointmentEvent} with the given medical history event details.
      */
     @JsonCreator
     public JsonAdaptedAppointmentEvent(@JsonProperty("localDate") LocalDate localDate,
-                                           @JsonProperty("localTime") LocalTime localTime) {
+                                       @JsonProperty("localTime") LocalTime localTime,
+                                       @JsonProperty("prescription") List<JsonAdaptedPrescription> prescriptions) {
         this.localDate = localDate;
         this.localTime = localTime;
+        if (prescriptions != null) {
+            this.prescriptions.addAll(prescriptions);
+        }
     }
 
     /**
@@ -36,6 +45,9 @@ public class JsonAdaptedAppointmentEvent {
     public JsonAdaptedAppointmentEvent(AppointmentEvent source) {
         localDate = source.getLocalDate();
         localTime = source.getLocalTime();
+        this.prescriptions.addAll(source.getPrescriptions().stream()
+                .map(JsonAdaptedPrescription::new)
+                .collect(Collectors.toList()));
     }
 
     /**

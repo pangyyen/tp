@@ -6,6 +6,7 @@ import static seedu.cc.commons.util.CollectionUtil.requireAllNonNull;
 import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.Set;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -14,6 +15,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -160,6 +162,11 @@ public class ModelManager implements Model {
         return filteredMedicalHistoryEvents;
     }
 
+    @Override
+    public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
+        return filteredAppointmentEvents;
+    }
+
     //=========== AppointmentEvent Operations =============================================================
     @Override
     public void addAppointmentEventToPatient(Patient patient, AppointmentEvent appointmentEvent) {
@@ -186,9 +193,13 @@ public class ModelManager implements Model {
         clinicBook.deleteAppointment(patient, appointmentEventToDelete);
     }
 
+
+    //=========== Prescription Operations =============================================================
     @Override
-    public ObservableList<AppointmentEvent> getFilteredAppointmentList() {
-        return filteredAppointmentEvents;
+    public void addPrescriptionsToAppointmentEvent(Patient patient, AppointmentEvent appointmentEvent,
+                                                Set<Prescription> prescriptions) {
+        requireAllNonNull(patient, appointmentEvent, prescriptions);
+        clinicBook.addPrescriptions(patient, appointmentEvent, prescriptions);
     }
 
     //=========== Filtered Person List Accessors =============================================================
