@@ -69,6 +69,7 @@ public class JsonAdaptedAppointmentEvent {
         }
 
         if (prescriptions.isEmpty()) {
+            System.out.println("No prescriptions");
             return new AppointmentEvent(localDate, localTime);
         }
 
