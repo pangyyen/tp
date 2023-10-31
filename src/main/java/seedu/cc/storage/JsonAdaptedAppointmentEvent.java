@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.Prescription;
-import seedu.cc.model.tag.Tag;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
