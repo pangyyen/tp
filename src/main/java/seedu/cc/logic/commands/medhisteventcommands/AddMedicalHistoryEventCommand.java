@@ -60,6 +60,7 @@ public class AddMedicalHistoryEventCommand extends Command {
 
         Patient patientToAddMedicalHistoryEvent = lastShownList.get(patientIndex.getZeroBased());
         model.addMedicalHistoryEvent(patientToAddMedicalHistoryEvent, eventToAdd);
+        model.listMedicalHistoryEvents(patientToAddMedicalHistoryEvent);
         switchCommand.execute(model);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
