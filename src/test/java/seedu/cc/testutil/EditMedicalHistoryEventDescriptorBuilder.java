@@ -1,7 +1,7 @@
 package seedu.cc.testutil;
 
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand.EditMedicalHistoryEventDescriptor;
-import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;

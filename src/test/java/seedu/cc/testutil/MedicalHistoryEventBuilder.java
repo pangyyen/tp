@@ -1,6 +1,6 @@
 package seedu.cc.testutil;
 
-import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;

@@ -20,6 +20,8 @@ import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 /**
  * Edits the details of an existing appointment event in the address book.
@@ -61,13 +63,13 @@ public class EditAppointmentEventCommand extends Command {
     private static AppointmentEvent createEditedAppointmentEvent(
             AppointmentEvent eventToEdit, EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
 
-        LocalDate updatedLocalDate = editAppointmentEventDescriptor.getLocalDate()
-                .orElse(eventToEdit.getLocalDate());
+        Date updatedDate = editAppointmentEventDescriptor.getDate()
+                .orElse(eventToEdit.getDate());
 
-        LocalTime updatedLocalTime = editAppointmentEventDescriptor.getLocalTime()
-                .orElse(eventToEdit.getLocalTime());
+        Time updatedTime = editAppointmentEventDescriptor.getTime()
+                .orElse(eventToEdit.getTime());
 
-        return new AppointmentEvent(updatedLocalDate, updatedLocalTime);
+        return new AppointmentEvent(updatedDate, updatedTime);
     }
 
     @Override
@@ -111,8 +113,8 @@ public class EditAppointmentEventCommand extends Command {
      * corresponding field value of the appointment.
      */
     public static class EditAppointmentEventDescriptor {
-        private LocalDate localDate;
-        private LocalTime localTime;
+        private Date date;
+        private Time time;
 
         public EditAppointmentEventDescriptor() {
         }
@@ -121,28 +123,28 @@ public class EditAppointmentEventCommand extends Command {
          * Copy constructor to create a new descriptor by copying the fields from another descriptor.
          */
         public EditAppointmentEventDescriptor(EditAppointmentEventDescriptor toCopy) {
-            setLocalDate(toCopy.localDate);
-            setLocalTime(toCopy.localTime);
+            setDate(toCopy.date);
+            setTime(toCopy.time);
         }
 
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(localDate, localTime);
+            return CollectionUtil.isAnyNonNull(date, time);
         }
 
-        public Optional<LocalDate> getLocalDate() {
-            return Optional.ofNullable(localDate);
+        public Optional<Date> getDate() {
+            return Optional.ofNullable(date);
         }
 
-        public void setLocalDate(LocalDate localDate) {
-            this.localDate = localDate;
+        public void setDate(Date date) {
+            this.date = date;
         }
 
-        public Optional<LocalTime> getLocalTime() {
-            return Optional.ofNullable(localTime);
+        public Optional<Time> getTime() {
+            return Optional.ofNullable(time);
         }
 
-        public void setLocalTime(LocalTime localTime) {
-            this.localTime = localTime;
+        public void setTime(Time time) {
+            this.time = time;
         }
 
         @Override
@@ -157,13 +159,13 @@ public class EditAppointmentEventCommand extends Command {
             }
 
             EditAppointmentEventDescriptor otherDescriptor = (EditAppointmentEventDescriptor) other;
-            return Objects.equals(localDate, otherDescriptor.localDate)
-                    && Objects.equals(localTime, otherDescriptor.localTime);
+            return Objects.equals(date, otherDescriptor.date)
+                    && Objects.equals(time, otherDescriptor.time);
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(localDate, localTime);
+            return Objects.hash(date, time);
         }
     }
 }

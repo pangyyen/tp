@@ -12,65 +12,35 @@ import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
 
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 class AppointmentEventTest {
 
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, "12:00"));
-        assertThrows(NullPointerException.class, () -> new AppointmentEvent("2023-12-01", null));
-        assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, LocalTime.NOON));
-        assertThrows(NullPointerException.class, () -> new AppointmentEvent(LocalDate.now(), null));
+        assertThrows(NullPointerException.class, () -> new AppointmentEvent(null, new Time("12:00")));
+        assertThrows(NullPointerException.class, () -> new AppointmentEvent(new Date("2023-12-01"), null));
+
     }
 
     @Test
     public void constructor_invalidDate_throwsIllegalArgumentException() {
         String invalidDate = "";
         String invalidTime = "25:00";
-        assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent("2023-12-01", invalidTime));
-        assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent(invalidDate, "12:00"));
+        assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent(new Date("2023-12-01"),
+                new Time(invalidTime)));
+        assertThrows(IllegalArgumentException.class, () -> new AppointmentEvent(new Date(invalidDate),
+                new Time("12:00")));
 
-    }
-
-    @Test
-    void isValidDate() {
-        // null date
-        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidDate((LocalDate) null));
-
-        // invalid dates
-        assertFalse(AppointmentEvent.isValidDate("")); // empty string
-        assertFalse(AppointmentEvent.isValidDate("20231001")); // missing hyphens
-        assertFalse(AppointmentEvent.isValidDate("01-10-2023")); // missing wrong format
-        assertFalse(AppointmentEvent.isValidDate("2023-10-1")); // missing leading zeros
-
-        // valid dates
-        assertTrue(AppointmentEvent.isValidDate("2023-10-01"));
-        assertTrue(AppointmentEvent.isValidDate("2023-12-31"));
-        assertTrue(AppointmentEvent.isValidDate("2020-02-29")); // leap year
-    }
-
-    @Test
-    void isValidTime() {
-        // null time
-        assertThrows(NullPointerException.class, () -> AppointmentEvent.isValidTime((LocalTime) null));
-
-        // invalid times
-        assertFalse(AppointmentEvent.isValidTime("")); // empty string
-        assertFalse(AppointmentEvent.isValidTime("1200")); // missing colon
-        assertFalse(AppointmentEvent.isValidTime("25:00")); // invalid hour
-        assertFalse(AppointmentEvent.isValidTime("12:60")); // invalid minutes
-
-        // valid times
-        assertTrue(AppointmentEvent.isValidTime("00:00"));
-        assertTrue(AppointmentEvent.isValidTime("23:59"));
     }
 
     @Test
     void testEquals() {
-        AppointmentEvent appointmentEvent = new AppointmentEvent("2023-10-01", "12:00");
+        AppointmentEvent appointmentEvent = new AppointmentEvent(new Date("2023-10-01"),  new Time("12:00"));
 
         // same values -> returns true
-        assertEquals(appointmentEvent, new AppointmentEvent("2023-10-01", "12:00"));
+        assertEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"),  new Time("12:00")));
 
         // same object -> returns true
         assertEquals(appointmentEvent, appointmentEvent);
@@ -82,7 +52,7 @@ class AppointmentEventTest {
         assertFalse(appointmentEvent.equals(5.0f));
 
         // different values -> returns false
-        assertNotEquals(appointmentEvent, new AppointmentEvent("2023-10-02", "12:00"));
-        assertNotEquals(appointmentEvent, new AppointmentEvent("2023-10-01", "13:00"));
+        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-02"),  new Time("12:00")));
+        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"),  new Time("13:00")));
     }
 }

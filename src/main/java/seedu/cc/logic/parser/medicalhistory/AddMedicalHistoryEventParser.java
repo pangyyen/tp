@@ -16,7 +16,7 @@ import seedu.cc.logic.parser.Parser;
 import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.Prefix;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
@@ -62,7 +62,7 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
         MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap
                 .getValue(PREFIX_MEDICAL_CONDITION).get());
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
-        Date date = ParserUtil.parseMedHisDate(argMultimap.getValue(PREFIX_DATE).get());
+        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
 
 
         MedicalHistoryEvent event = new MedicalHistoryEvent(medicalCondition, treatment, date);

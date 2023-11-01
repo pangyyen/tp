@@ -13,7 +13,7 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.AppointmentEvent;
-import seedu.cc.model.medicalhistory.Date;
+import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
@@ -22,6 +22,7 @@ import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
+import seedu.cc.model.util.Time;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -120,36 +121,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String date} into a {@code LocalDate}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code date} is invalid.
-     */
-    public static LocalDate parseLocalDate(String date) throws ParseException {
-        requireNonNull(date);
-        String trimmedDate = date.trim();
-        if (!AppointmentEvent.isValidDate(trimmedDate)) {
-            throw new ParseException(AppointmentEvent.DATE_MESSAGE_CONSTRAINTS);
-        }
-        return LocalDate.parse(trimmedDate, DateTimeFormatter.ISO_LOCAL_DATE);
-    }
-
-    /**
-     * Parses a {@code String time} into a {@code LocalTime}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @throws ParseException if the given {@code time} is invalid.
-     */
-    public static LocalTime parseLocalTime(String time) throws ParseException {
-        requireNonNull(time);
-        String trimmedTime = time.trim();
-        if (!AppointmentEvent.isValidTime(trimmedTime)) {
-            throw new ParseException(AppointmentEvent.TIME_MESSAGE_CONSTRAINTS);
-        }
-        return LocalTime.parse(trimmedTime, DateTimeFormatter.ofPattern("HH:mm"));
-    }
-
-    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -208,10 +179,23 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code date} is invalid.
      */
-    public static Date parseMedHisDate(String date) throws ParseException {
+    public static Date parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
 
         return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses a {@code String time} into a {@code Time}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code time} is invalid.
+     */
+    public static Time parseTime(String time) throws ParseException {
+        requireNonNull(time);
+        String trimmedTime = time.trim();
+
+        return new Time(trimmedTime);
     }
 }
