@@ -31,7 +31,7 @@ public class JsonAdaptedPatientTest {
     private static final String VALID_NRIC = BENSON.getNric().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
     private static final String VALID_EMAIL = BENSON.getEmail().toString();
-    private static final String VALID_ADDRESS = BENSON.getAddress().toString();
+    private static final String VALID_ADDRESS = BENSON.getAge().toString();
     private static final List<JsonAdaptedMedicalHistoryEvent> VALID_MEDICAL_HISTORY_EVENTS =
             BENSON.getMedicalHistory().getMedicalHistoryEvents().stream()
                     .map(JsonAdaptedMedicalHistoryEvent::new)
@@ -119,7 +119,7 @@ public class JsonAdaptedPatientTest {
     }
 
     @Test
-    public void toModelType_invalidAddress_throwsIllegalValueException() {
+    public void toModelType_invalidAge_throwsIllegalValueException() {
         JsonAdaptedPatient person =
                 new JsonAdaptedPatient(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS,
                         VALID_MEDICAL_HISTORY_EVENTS, VALID_APPOINTMENT_EVENTS, VALID_TAGS);
@@ -128,7 +128,7 @@ public class JsonAdaptedPatientTest {
     }
 
     @Test
-    public void toModelType_nullAddress_throwsIllegalValueException() {
+    public void toModelType_nullAge_throwsIllegalValueException() {
         JsonAdaptedPatient person = new JsonAdaptedPatient(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL,
             null, VALID_MEDICAL_HISTORY_EVENTS, VALID_APPOINTMENT_EVENTS, VALID_TAGS);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Age.class.getSimpleName());

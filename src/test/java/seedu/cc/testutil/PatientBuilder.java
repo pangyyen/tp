@@ -53,7 +53,7 @@ public class PatientBuilder {
         nric = personToCopy.getNric();
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
-        age = personToCopy.getAddress();
+        age = personToCopy.getAge();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -82,10 +82,10 @@ public class PatientBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Person} that we are building.
+     * Sets the {@code Age} of the {@code Person} that we are building.
      */
-    public PatientBuilder withAddress(String address) {
-        this.age = new Age(address);
+    public PatientBuilder withAge(String age) {
+        this.age = new Age(age);
         return this;
     }
 

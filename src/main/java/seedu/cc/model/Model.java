@@ -41,21 +41,21 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' clinic book file path.
      */
     Path getClinicBookFilePath();
 
     /**
-     * Sets the user prefs' address book file path.
+     * Sets the user prefs' clinic book file path.
      */
     void setClinicBookFilePath(Path clinicBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces clinic book data with the data in {@code clinicBook}.
      */
     void setClinicBook(ReadOnlyClinicBook clinicBook);
 
-    /** Returns the AddressBook */
+    /** Returns the ClinicBook */
     ReadOnlyClinicBook getClinicBook();
 
     /**

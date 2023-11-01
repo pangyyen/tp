@@ -88,14 +88,14 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String address} into an {@code Age}.
+     * Parses a {@code String age} into an {@code Age}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code address} is invalid.
+     * @throws ParseException if the given {@code age} is invalid.
      */
-    public static Age parseAge(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAge = address.trim();
+    public static Age parseAge(String age) throws ParseException {
+        requireNonNull(age);
+        String trimmedAge = age.trim();
         if (!Age.isValidAge(trimmedAge)) {
             throw new ParseException(Age.MESSAGE_CONSTRAINTS);
         }

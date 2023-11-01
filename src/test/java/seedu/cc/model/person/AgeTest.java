@@ -14,32 +14,31 @@ public class AgeTest {
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
-        String invalidAddress = "";
-        assertThrows(IllegalArgumentException.class, () -> new Age(invalidAddress));
+    public void constructor_invalidAge_throwsIllegalArgumentException() {
+        String invalidAge = "";
+        assertThrows(IllegalArgumentException.class, () -> new Age(invalidAge));
     }
 
     @Test
-    public void isValidAddress() {
+    public void isValidAge() {
         // null address
-        assertThrows(NullPointerException.class, () -> Age.isValidAddress(null));
+        assertThrows(NullPointerException.class, () -> Age.isValidAge(null));
 
         // invalid addresses
-        assertFalse(Age.isValidAddress("")); // empty string
-        assertFalse(Age.isValidAddress(" ")); // spaces only
+        assertFalse(Age.isValidAge("")); // empty string
+        assertFalse(Age.isValidAge(" ")); // spaces only
 
         // valid addresses
-        assertTrue(Age.isValidAddress("Blk 456, Den Road, #01-355"));
-        assertTrue(Age.isValidAddress("-")); // one character
-        assertTrue(Age.isValidAddress("Leng Inc; 1234 Market St; San Francisco CA 2349879; USA")); // long address
+        assertTrue(Age.isValidAge("120"));
+        assertTrue(Age.isValidAge("9")); // one character
     }
 
     @Test
     public void equals() {
-        Age age = new Age("Valid Address");
+        Age age = new Age("Valid Age");
 
         // same values -> returns true
-        assertTrue(age.equals(new Age("Valid Address")));
+        assertTrue(age.equals(new Age("Valid Age")));
 
         // same object -> returns true
         assertTrue(age.equals(age));
@@ -51,6 +50,6 @@ public class AgeTest {
         assertFalse(age.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(age.equals(new Age("Other Valid Address")));
+        assertFalse(age.equals(new Age("Other Valid Age")));
     }
 }

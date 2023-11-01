@@ -3,7 +3,7 @@ package seedu.cc.model.person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_AGE_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
@@ -35,7 +35,7 @@ public class PersonTest {
 
         // same name, all other attributes different -> returns true
         Person editedAlice = new PatientBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -82,8 +82,8 @@ public class PersonTest {
         editedAlice = new PatientBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different address -> returns false
-        editedAlice = new PatientBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
+        // different age -> returns false
+        editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
         // different tags -> returns false
@@ -94,7 +94,7 @@ public class PersonTest {
     @Test
     public void toStringMethod() {
         String expected = Patient.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
-                + ", email=" + ALICE.getEmail() + ", address=" + ALICE.getAddress() + ", tags=" + ALICE.getTags() + "}";
+                + ", email=" + ALICE.getEmail() + ", age=" + ALICE.getAge() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
 
@@ -114,7 +114,7 @@ public class PersonTest {
         assertEquals(testEmail, testPerson.getEmail());
 
         // Check that default/alternative values are set
-        assertEquals("NIL", testPerson.getAddress().toString());
+        assertEquals("NIL", testPerson.getAge().toString());
         assertEquals(0, testPerson.getTags().size());
     }
 

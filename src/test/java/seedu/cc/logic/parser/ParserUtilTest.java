@@ -103,26 +103,26 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseAddress_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseAddress((String) null));
+    public void parseAge_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseAge((String) null));
     }
 
     @Test
-    public void parseAddress_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAddress(INVALID_ADDRESS));
+    public void parseAge_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge(INVALID_ADDRESS));
     }
 
     @Test
-    public void parseAddress_validValueWithoutWhitespace_returnsAddress() throws Exception {
+    public void parseAge_validValueWithoutWhitespace_returnsAge() throws Exception {
         Age expectedAge = new Age(VALID_ADDRESS);
-        assertEquals(expectedAge, ParserUtil.parseAddress(VALID_ADDRESS));
+        assertEquals(expectedAge, ParserUtil.parseAge(VALID_ADDRESS));
     }
 
     @Test
-    public void parseAddress_validValueWithWhitespace_returnsTrimmedAddress() throws Exception {
+    public void parseAge_validValueWithWhitespace_returnsTrimmedAge() throws Exception {
         String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
         Age expectedAge = new Age(VALID_ADDRESS);
-        assertEquals(expectedAge, ParserUtil.parseAddress(addressWithWhitespace));
+        assertEquals(expectedAge, ParserUtil.parseAge(addressWithWhitespace));
     }
 
     @Test

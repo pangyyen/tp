@@ -37,7 +37,7 @@ public class EditPatientDescriptorBuilder {
         descriptor.setNric(person.getNric());
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
-        descriptor.setAddress(person.getAddress());
+        descriptor.setAge(person.getAge());
         descriptor.setTags(person.getTags());
     }
 
@@ -76,8 +76,8 @@ public class EditPatientDescriptorBuilder {
     /**
      * Sets the {@code Address} of the {@code EditPatientDescriptor} that we are building.
      */
-    public EditPatientDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Age(address));
+    public EditPatientDescriptorBuilder withAge(String age) {
+        descriptor.setAge(new Age(age));
         return this;
     }
 

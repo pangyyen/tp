@@ -43,7 +43,7 @@ public class PatientTest {
     @Test
     public void isSamePatient_sameNric_returnsTrue() {
         Patient anotherPatient = new Patient(patient.getName(), patient.getNric(), patient.getPhone(),
-                patient.getEmail(), patient.getAddress(),
+                patient.getEmail(), patient.getAge(),
                 patientAppointmentList, patientMedicalHistory, patient.getTags());
         assertTrue(patient.isSamePatient(anotherPatient));
     }
@@ -52,7 +52,7 @@ public class PatientTest {
     public void isSamePatient_differentNric_returnsFalse() {
         Nric diffNric = new Nric("M7654321B");
         Patient anotherPatient = new Patient(patient.getName(), diffNric, patient.getPhone(),
-                patient.getEmail(), patient.getAddress(), patient.getTags());
+                patient.getEmail(), patient.getAge(), patient.getTags());
         assertFalse(patient.isSamePatient(anotherPatient));
     }
     //    @Test
