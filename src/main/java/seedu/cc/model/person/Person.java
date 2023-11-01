@@ -22,18 +22,18 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Address address;
+    private final Age age;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Age age, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, age, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.age = age;
         this.tags.addAll(tags);
     }
 
@@ -46,7 +46,7 @@ public class Person {
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = new Address("NIL");
+        this.age = new Age("NIL");
         this.tags.addAll(Collections.emptySet());
     }
 
@@ -62,8 +62,8 @@ public class Person {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+    public Age getAge() {
+        return age;
     }
 
     /**
@@ -106,14 +106,14 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && age.equals(otherPerson.age)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, age, tags);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
+                .add("address", age)
                 .add("tags", tags)
                 .toString();
     }

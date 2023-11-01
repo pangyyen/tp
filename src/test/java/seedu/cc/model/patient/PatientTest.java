@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
@@ -31,13 +31,13 @@ public class PatientTest {
         Nric nric = new Nric("M1234567A");
         Phone phone = new Phone("98765432");
         Email email = new Email("johndoe@example.com");
-        Address address = new Address("123, Jurong West Ave 6, #08-111");
+        Age age = new Age("123, Jurong West Ave 6, #08-111");
         Set<Tag> tags = new HashSet<>();
 
         // TODO: Add appointment and medical history
-        patient = new Patient(name, nric, phone, email, address, patientAppointmentList, patientMedicalHistory, tags);
-        patientEmptyAppointment = new Patient(name, nric, phone, email, address, patientAppointmentList, tags);
-        patientEmptyMedicalHistory = new Patient(name, nric, phone, email, address, patientMedicalHistory, tags);
+        patient = new Patient(name, nric, phone, email, age, patientAppointmentList, patientMedicalHistory, tags);
+        patientEmptyAppointment = new Patient(name, nric, phone, email, age, patientAppointmentList, tags);
+        patientEmptyMedicalHistory = new Patient(name, nric, phone, email, age, patientMedicalHistory, tags);
     }
 
     @Test

@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import seedu.cc.logic.commands.EditCommand.EditPatientDescriptor;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
@@ -77,7 +77,7 @@ public class EditPatientDescriptorBuilder {
      * Sets the {@code Address} of the {@code EditPatientDescriptor} that we are building.
      */
     public EditPatientDescriptorBuilder withAddress(String address) {
-        descriptor.setAddress(new Address(address));
+        descriptor.setAddress(new Age(address));
         return this;
     }
 

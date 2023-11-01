@@ -6,7 +6,7 @@ import java.util.Set;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
@@ -28,7 +28,7 @@ public class PatientBuilder {
     private Nric nric;
     private Phone phone;
     private Email email;
-    private Address address;
+    private Age age;
     private PatientMedicalHistory patientMedicalHistory;
     private Set<Tag> tags;
 
@@ -40,7 +40,7 @@ public class PatientBuilder {
         nric = new Nric(DEFAULT_NRIC);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        age = new Age(DEFAULT_ADDRESS);
         patientMedicalHistory = new PatientMedicalHistory();
         tags = new HashSet<>();
     }
@@ -53,7 +53,7 @@ public class PatientBuilder {
         nric = personToCopy.getNric();
         phone = personToCopy.getPhone();
         email = personToCopy.getEmail();
-        address = personToCopy.getAddress();
+        age = personToCopy.getAddress();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -85,7 +85,7 @@ public class PatientBuilder {
      * Sets the {@code Address} of the {@code Person} that we are building.
      */
     public PatientBuilder withAddress(String address) {
-        this.address = new Address(address);
+        this.age = new Age(address);
         return this;
     }
 
@@ -114,7 +114,7 @@ public class PatientBuilder {
     }
 
     public Patient build() {
-        return new Patient(name, nric, phone, email, address, patientMedicalHistory, tags);
+        return new Patient(name, nric, phone, email, age, patientMedicalHistory, tags);
     }
 
 }

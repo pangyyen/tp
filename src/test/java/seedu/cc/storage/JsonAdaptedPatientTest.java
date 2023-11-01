@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.patient.Nric;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
@@ -123,7 +123,7 @@ public class JsonAdaptedPatientTest {
         JsonAdaptedPatient person =
                 new JsonAdaptedPatient(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL, INVALID_ADDRESS,
                         VALID_MEDICAL_HISTORY_EVENTS, VALID_APPOINTMENT_EVENTS, VALID_TAGS);
-        String expectedMessage = Address.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Age.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
@@ -131,7 +131,7 @@ public class JsonAdaptedPatientTest {
     public void toModelType_nullAddress_throwsIllegalValueException() {
         JsonAdaptedPatient person = new JsonAdaptedPatient(VALID_NAME, VALID_NRIC, VALID_PHONE, VALID_EMAIL,
             null, VALID_MEDICAL_HISTORY_EVENTS, VALID_APPOINTMENT_EVENTS, VALID_TAGS);
-        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName());
+        String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Age.class.getSimpleName());
         assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
