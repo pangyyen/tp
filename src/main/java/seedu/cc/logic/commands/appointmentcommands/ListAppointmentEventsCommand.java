@@ -28,11 +28,14 @@ public class ListAppointmentEventsCommand extends Command {
 
     private final Index patientIndex;
 
+    private final SwitchCommand switchCommand;
+
     /**
      * Creates a ListAppointmentEventsCommand to list the appointments of the specified {@code Patient}.
      */
     public ListAppointmentEventsCommand(Index patientIndex) {
         this.patientIndex = patientIndex;
+        this.switchCommand = new SwitchCommand(Index.fromZeroBased(2));
     }
 
     @Override
@@ -46,7 +49,7 @@ public class ListAppointmentEventsCommand extends Command {
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listAppointmentsEventForPatient(patient);
-        model.setCurrentTab(2);
+        switchCommand.execute(model);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
     }
