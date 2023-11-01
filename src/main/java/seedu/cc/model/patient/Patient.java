@@ -5,6 +5,7 @@ import java.util.Set;
 
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.PatientAppointmentList;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.person.Address;
@@ -175,4 +176,16 @@ public class Patient extends Person {
     public void deleteAppointmentEvent(AppointmentEvent appointmentEventToDelete) {
         this.patientAppointmentList.deleteAppointment(appointmentEventToDelete);
     }
+
+    /**
+     * ==================================
+     * Methods for Prescription
+     * ==================================
+     */
+
+    public void addPrescriptions(AppointmentEvent appointmentEvent, Set<Prescription> prescriptions) {
+        appointmentEvent.addPrescriptions(prescriptions);
+    }
+
+
 }

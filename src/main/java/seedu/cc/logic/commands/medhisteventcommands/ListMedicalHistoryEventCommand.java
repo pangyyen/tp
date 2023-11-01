@@ -52,4 +52,18 @@ public class ListMedicalHistoryEventCommand extends Command {
                 Messages.format(patient)));
     }
 
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        } else if (!(other instanceof ListMedicalHistoryEventCommand)) {
+            return false;
+        }
+
+        // state check
+        ListMedicalHistoryEventCommand e = (ListMedicalHistoryEventCommand) other;
+        return patientIndex.equals(e.patientIndex);
+    }
+
 }

@@ -160,7 +160,7 @@ public class MainWindow extends UiPart<Stage> {
         medicalHistoryPanel = new MedicalHistoryPanel(logic.getFilteredMedicalHistoryEventList());
         medicalHistoryListPanelPlaceholder.getChildren().add(medicalHistoryPanel.getRoot());
 
-        appointmentPanel = new AppointmentPanel(logic.getFilteredAppointmentEventList());
+        appointmentPanel = new AppointmentPanel(logic.getFilteredAppointmentList());
         appointmentListPanelPlaceholder.getChildren().add(appointmentPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

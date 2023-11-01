@@ -66,4 +66,21 @@ public class AddMedicalHistoryEventCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(eventToAdd, patientToAddMedicalHistoryEvent)));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddMedicalHistoryEventCommand)) {
+            return false;
+        }
+
+        // state check
+        AddMedicalHistoryEventCommand e = (AddMedicalHistoryEventCommand) other;
+        return eventToAdd.equals(e.eventToAdd)
+                && patientIndex.equals(e.patientIndex);
+    }
 }

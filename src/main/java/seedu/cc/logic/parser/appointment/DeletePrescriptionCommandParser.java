@@ -2,8 +2,8 @@ package seedu.cc.logic.parser.appointment;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICINE_NAME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -11,53 +11,60 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.cc.commons.core.index.Index;
-import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.DeletePrescriptionCommand;
+import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
 import seedu.cc.logic.parser.ArgumentMultimap;
 import seedu.cc.logic.parser.ArgumentTokenizer;
 import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.tag.Tag;
-import seedu.cc.model.util.Date;
-import seedu.cc.model.util.Time;
+
 
 /**
  * Parses input arguments and creates a new AddAppointmentEventCommand object.
  */
-public class AddAppointmentCommandParser {
+public class DeletePrescriptionCommandParser {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
-     *
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddAppointmentEventCommand parse(String args) throws ParseException {
+    public DeletePrescriptionCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_APPT_DATE, PREFIX_APPT_TIME);
+                ArgumentTokenizer.tokenize(args, PREFIX_PATIENT_INDEX, PREFIX_MEDICINE_NAME);
 
-        Index index;
+        Index eventIndex;
+        Index patientIndex;
 
         try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+            eventIndex = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAppointmentEventCommand.MESSAGE_USAGE), pe);
+                    DeletePrescriptionCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_APPT_DATE, PREFIX_APPT_TIME);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX, PREFIX_MEDICINE_NAME);
 
-        if (argMultimap.getValue(PREFIX_APPT_DATE).isEmpty() || argMultimap.getValue(PREFIX_APPT_TIME).isEmpty()) {
+        EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor =
+                new EditAppointmentEventCommand.EditAppointmentEventDescriptor();
+        if (argMultimap.getValue(PREFIX_PATIENT_INDEX).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAppointmentEventCommand.MESSAGE_USAGE));
+                    DeletePrescriptionCommand.MESSAGE_USAGE));
         }
 
-        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
-        Time time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
-        AppointmentEvent appointmentEvent = new AppointmentEvent(date, time);
+        try {
+            patientIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_PATIENT_INDEX).get());
+        } catch (ParseException pe) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    DeletePrescriptionCommand.MESSAGE_USAGE), pe);
+        }
 
-        return new AddAppointmentEventCommand(index, appointmentEvent);
+        Set<Prescription> prescriptions = ParserUtil.parsePrescriptions(argMultimap.getAllValues(PREFIX_MEDICINE_NAME));
+        editAppointmentEventDescriptor.setPrescriptions(prescriptions);
+        return new DeletePrescriptionCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
     }
 
     /**

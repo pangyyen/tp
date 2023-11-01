@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 import seedu.cc.model.ClinicBook;
 import seedu.cc.model.ReadOnlyClinicBook;
-import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
