@@ -47,7 +47,7 @@
         <ImageView fx:id="addressIcon" fitHeight="14" fitWidth="14">
             <Image url="@../images/PatientCardIcons/Address.png"/>
         </ImageView>
-        <Label fx:id="address" styleClass="cell_small_label" text="\$address" style="-fx-font-size: 14;"/>
+        <Label fx:id="age" styleClass="cell_small_label" text="\$age" style="-fx-font-size: 14;"/>
       </HBox>
       <HBox spacing="5">
         <ImageView fx:id="emailIcon" fitHeight="14" fitWidth="14">

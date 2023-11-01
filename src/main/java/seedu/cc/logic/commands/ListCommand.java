@@ -8,7 +8,7 @@ import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all persons in the clinic book to the user.
  */
 public class ListCommand extends Command {
 
