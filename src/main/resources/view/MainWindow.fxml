@@ -41,6 +41,9 @@
             </ImageView>
           </StackPane>
 
+          <!-- Text box under the logo -->
+          <Label text="Shortcut: Alt + Tab (Windows) / Option + Tab (Mac) to navigate between tabs!" wrapText="true" />
+
           <!-- Adjustments for each button below -->
           <Button fx:id="sidebarButton1" graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
             <graphic>
