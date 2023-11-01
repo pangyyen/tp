@@ -75,9 +75,7 @@ public class AddPrescriptionCommand extends Command {
                 .get(eventIndex.getZeroBased());
 
         AppointmentEvent editedEvent = createEditedAppointmentEvent(appointmentEvent, editAppointmentEventDescriptor);
-
         model.setAppointmentEventForPatient(patientToAddPrescription, appointmentEvent, editedEvent);
-
         return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
                 Messages.format(appointmentEvent, patientToAddPrescription)));
     }

@@ -55,6 +55,7 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
      * The medical history event must not be the same as another existing event in the list.
      */
     public void setAppointment(AppointmentEvent target, AppointmentEvent editedEvent, Patient patient) {
+        listAppointments(patient);
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new AppointmentNotFoundException();
