@@ -5,10 +5,12 @@ import static seedu.cc.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.exceptions.DuplicatePatientException;
 import seedu.cc.model.patient.exceptions.PatientNotFoundException;
@@ -23,7 +25,7 @@ import seedu.cc.model.patient.exceptions.PatientNotFoundException;
  *
  * Supports a minimal set of list operations.
  *
- * @see Patient#isSamePerson(Patient)
+ * @see Patient#isSamePatient(Patient)
  */
 public class UniquePatientList implements Iterable<Patient> {
 
@@ -199,6 +201,24 @@ public class UniquePatientList implements Iterable<Patient> {
         internalList.set(index, patient);
     }
 
+    //=========== Prescription Operations =============================================================
+
+    /**
+     * Adds a set of prescriptions to the specified appointment event.
+     * @param patient
+     * @param appointmentEvent
+     * @param prescriptions
+     */
+    public void addPrescriptions(Patient patient, AppointmentEvent appointmentEvent, Set<Prescription> prescriptions) {
+        requireAllNonNull(patient, appointmentEvent, prescriptions);
+        int index = internalList.indexOf(patient);
+        if (index == -1) {
+            throw new PatientNotFoundException();
+        }
+        patient.addPrescriptions(appointmentEvent, prescriptions);
+        internalList.set(index, patient);
+    }
+
     //================================================================================================
 
     /**
@@ -251,4 +271,6 @@ public class UniquePatientList implements Iterable<Patient> {
         }
         return true;
     }
+
+
 }

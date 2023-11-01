@@ -2,6 +2,9 @@ package seedu.cc.model.appointment;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import seedu.cc.model.util.Date;
 import seedu.cc.model.util.Time;
 
@@ -20,6 +23,8 @@ public class AppointmentEvent {
 
     public final Date date;
     public final Time time;
+    private Set<Prescription> prescriptions;
+    private boolean isDone;
 
     /**
      * Constructs an {@code AppointmentEvent} with String.
@@ -32,7 +37,44 @@ public class AppointmentEvent {
         requireNonNull(time);
         this.date = date;
         this.time = time;
+        this.isDone = false;
+        this.prescriptions = new HashSet<>();
     }
+
+    /**
+     * Constructs an {@code AppointmentEvent} with LocalDate, LocalTime and Set of Prescriptions.
+     *
+     * @param date A valid LocalDate.
+     * @param time A valid LocalTime.
+     * @param prescriptions A valid Set of Prescriptions.
+     */
+    public AppointmentEvent(Date date, Time time, Set<Prescription> prescriptions) {
+        requireNonNull(date);
+        requireNonNull(time);
+        this.date = date;
+        this.time = time;
+        this.isDone = false;
+        this.prescriptions = prescriptions;
+    }
+
+
+
+    /**
+     * Add the appointment's prescriptions.
+     * @param prescriptions
+     */
+    public void addPrescriptions(Set<Prescription> prescriptions) {
+        this.prescriptions.addAll(prescriptions);
+    }
+
+    /**
+     * Returns the prescriptions of the appointment.
+     *
+     */
+    public Set<Prescription> getPrescriptions() {
+        return this.prescriptions;
+    }
+
 
     public Date getDate() {
         return date;

@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
@@ -141,6 +142,33 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String prescription} into a {@code Prescription}.
+     * Leading and trailing whitespaces will be trimmed
+     *
+     * @throws ParseException if the given {@code prescription} is invalid.
+     */
+    public static Prescription parsePrescription(String prescription) throws ParseException {
+        requireNonNull(prescription);
+        String trimmedPrescription = prescription.trim();
+        if (!Prescription.isValidPrescription(trimmedPrescription)) {
+            throw new ParseException(Prescription.MESSAGE_CONSTRAINTS);
+        }
+        return new Prescription(trimmedPrescription);
+    }
+
+    /**
+     * Parses {@code Collection<String> prescriptions} into a {@code Set<Prescription>}.
+     */
+    public static Set<Prescription> parsePrescriptions(Collection<String> prescriptions) throws ParseException {
+        requireNonNull(prescriptions);
+        final Set<Prescription> prescriptionSet = new HashSet<>();
+        for (String prescriptionName : prescriptions) {
+            prescriptionSet.add(parsePrescription(prescriptionName));
+        }
+        return prescriptionSet;
     }
 
     /**

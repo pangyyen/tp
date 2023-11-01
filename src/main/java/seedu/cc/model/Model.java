@@ -1,12 +1,14 @@
 package seedu.cc.model;
 
 import java.nio.file.Path;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.cc.commons.core.GuiSettings;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 
@@ -116,6 +118,8 @@ public interface Model {
 
     void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete);
 
+    void addPrescriptionsToAppointmentEvent(Patient patient, AppointmentEvent appointmentEvent,
+                                           Set<Prescription> prescriptions);
     void setCurrentTab(int tabIndex);
 
     IntegerProperty currentTabProperty();
