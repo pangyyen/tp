@@ -21,11 +21,10 @@ public class AppointmentEvent {
             + "The date and time should represent a valid future appointment time.";
 
 
-
-    private Set<Prescription> prescriptions;
-    private boolean isDone;
     public final Date date;
     public final Time time;
+    private Set<Prescription> prescriptions;
+    private boolean isDone;
 
     /**
      * Constructs an {@code AppointmentEvent} with String.

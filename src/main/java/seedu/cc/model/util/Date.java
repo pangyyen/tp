@@ -24,6 +24,8 @@ public class Date {
         this.date = LocalDate.parse(date);
     }
 
+
+
     /**
      * Returns true if a given string is a valid date.
      */
@@ -35,6 +37,7 @@ public class Date {
             return false;
         }
     }
+
 
     public LocalDate getDate() {
         return date;

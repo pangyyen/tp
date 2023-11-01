@@ -10,7 +10,6 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.Prescription;
-
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
