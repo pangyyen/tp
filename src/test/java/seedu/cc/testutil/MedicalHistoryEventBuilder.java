@@ -1,10 +1,10 @@
 package seedu.cc.testutil;
 
-import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.medicalhistory.Treatment;
+import seedu.cc.model.util.Date;
 
 /**
  * A utility class to help with building MedicalHistoryEvent objects.

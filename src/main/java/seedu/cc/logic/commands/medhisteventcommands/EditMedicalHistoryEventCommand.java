@@ -17,11 +17,11 @@ import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
-import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.util.Date;
 
 /**
  * Edits the details of a medical history event identified by the index number used in the displayed
@@ -110,6 +110,7 @@ public class EditMedicalHistoryEventCommand extends Command {
                 Messages.format(editedEvent, patientToEditMedicalHistoryEvent)));
 
     }
+
     /**
      * Stores the details to edit the medical history with. Each non-empty field value will replace the
      * corresponding field value of the medical history.

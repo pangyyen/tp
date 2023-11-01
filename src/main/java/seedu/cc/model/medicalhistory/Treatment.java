@@ -1,14 +1,12 @@
 package seedu.cc.model.medicalhistory;
 
 import static java.util.Objects.requireNonNull;
-
 import static seedu.cc.commons.util.AppUtil.checkArgument;
 
 /**
  * Represents a patient's treatment.
  */
 public class Treatment {
-    public final String value;
     public static final String MESSAGE_CONSTRAINTS =
             "Treatment should only contain alphanumeric characters and spaces, and it should not be blank";
     /*
@@ -16,7 +14,13 @@ public class Treatment {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public final String value;
 
+    /**
+     * Constructs a {@code Treatment}.
+     *
+     * @param treatment A valid treatment.
+     */
     public Treatment(String treatment) {
         requireNonNull(treatment);
         checkArgument(isValidTreatment(treatment), MESSAGE_CONSTRAINTS);

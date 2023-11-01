@@ -1,8 +1,5 @@
 package seedu.cc.storage;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -27,7 +24,7 @@ public class JsonAdaptedAppointmentEvent {
      */
     @JsonCreator
     public JsonAdaptedAppointmentEvent(@JsonProperty("date") Date date,
-                                           @JsonProperty("localTime") Time time) {
+                                       @JsonProperty("localTime") Time time) {
         this.date = date;
         this.time = time;
     }

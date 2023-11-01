@@ -16,10 +16,10 @@ import seedu.cc.logic.parser.Parser;
 import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.Prefix;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
+import seedu.cc.model.util.Date;
 
 /**
  * Parses input arguments and creates a new AddMedicalHistoryEventCommand object.

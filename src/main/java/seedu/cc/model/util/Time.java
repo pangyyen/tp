@@ -5,23 +5,27 @@ import static seedu.cc.commons.util.AppUtil.checkArgument;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A utility class for time.
+ */
 public class Time {
 
-    private LocalTime time;
     public static final String TIME_MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
+    private final LocalTime time;
+
+    /**
+     * Constructs a {@code Time}.
+     *
+     * @param time A valid time.
+     */
     public Time(String time) {
         checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
         this.time = LocalTime.parse(time);
     }
 
-    public LocalTime getTime() {
-        return time;
-    }
-
     /**
      * Returns true if a given string is a valid time.
      */
-
     public static boolean isValidTime(String testTime) {
         try {
             LocalTime.parse(testTime);
@@ -29,6 +33,10 @@ public class Time {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public LocalTime getTime() {
+        return time;
     }
 
     @Override

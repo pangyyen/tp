@@ -1,13 +1,6 @@
 package seedu.cc.model.appointment;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.commons.util.AppUtil.checkArgument;
-import static seedu.cc.model.util.Date.isValidDate;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 import seedu.cc.model.util.Date;
 import seedu.cc.model.util.Time;

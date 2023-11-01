@@ -5,7 +5,6 @@ import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 
-import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -30,6 +29,7 @@ public class AddAppointmentCommandParser {
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddAppointmentEventCommand parse(String args) throws ParseException {

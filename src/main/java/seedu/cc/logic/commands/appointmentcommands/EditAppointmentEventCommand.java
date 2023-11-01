@@ -5,8 +5,6 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,7 +44,8 @@ public class EditAppointmentEventCommand extends Command {
 
     /**
      * Edit the appointment event at {@code eventIndex} from the patient at {@code patientIndex}.
-     * @param patientIndex               of the appointment event in the filtered appointment event list to edit
+     *
+     * @param patientIndex                   of the appointment event in the filtered appointment event list to edit
      * @param editAppointmentEventDescriptor details to edit the appointment event with
      */
     public EditAppointmentEventCommand(Index eventIndex, Index patientIndex,
@@ -108,6 +107,7 @@ public class EditAppointmentEventCommand extends Command {
                 Messages.format(editedEvent, patientToEditAppointmentEvent)));
 
     }
+
     /**
      * Stores the details to edit the appointment with. Each non-empty field value will replace the
      * corresponding field value of the appointment.

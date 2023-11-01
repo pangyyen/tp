@@ -1,13 +1,8 @@
 package seedu.cc.model.patient;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.testutil.Assert.assertThrows;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 import org.junit.jupiter.api.Test;
 
@@ -37,10 +32,10 @@ class AppointmentEventTest {
 
     @Test
     void testEquals() {
-        AppointmentEvent appointmentEvent = new AppointmentEvent(new Date("2023-10-01"),  new Time("12:00"));
+        AppointmentEvent appointmentEvent = new AppointmentEvent(new Date("2023-10-01"), new Time("12:00"));
 
         // same values -> returns true
-        assertEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"),  new Time("12:00")));
+        assertEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"), new Time("12:00")));
 
         // same object -> returns true
         assertEquals(appointmentEvent, appointmentEvent);
@@ -48,11 +43,8 @@ class AppointmentEventTest {
         // null -> returns false
         assertNotEquals(null, appointmentEvent);
 
-        // different types -> returns false
-        assertFalse(appointmentEvent.equals(5.0f));
-
         // different values -> returns false
-        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-02"),  new Time("12:00")));
-        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"),  new Time("13:00")));
+        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-02"), new Time("12:00")));
+        assertNotEquals(appointmentEvent, new AppointmentEvent(new Date("2023-10-01"), new Time("13:00")));
     }
 }

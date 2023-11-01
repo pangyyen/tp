@@ -2,9 +2,6 @@ package seedu.cc.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,8 +9,6 @@ import java.util.Set;
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.StringUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.model.appointment.AppointmentEvent;
-import seedu.cc.model.util.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.Treatment;
 import seedu.cc.model.patient.Nric;
@@ -22,6 +17,7 @@ import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
+import seedu.cc.model.util.Date;
 import seedu.cc.model.util.Time;
 
 /**
