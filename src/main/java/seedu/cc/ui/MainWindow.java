@@ -7,7 +7,11 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -302,7 +306,7 @@ public class MainWindow extends UiPart<Stage> {
     private void switchTab() {
         int currentTabIndex = logic.getCurrentTab();
         int numberOfTabs = mainTabPane.getTabs().size();
-        int nextTabIndex = (currentTabIndex + 1) % numberOfTabs;  // This wraps around to the first tab when you're at the last tab
+        int nextTabIndex = (currentTabIndex + 1) % numberOfTabs;
         changeTabs(nextTabIndex);
     }
 

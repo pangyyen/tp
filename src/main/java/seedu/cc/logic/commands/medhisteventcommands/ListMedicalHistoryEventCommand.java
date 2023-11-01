@@ -31,6 +31,9 @@ public class ListMedicalHistoryEventCommand extends Command {
 
     private final SwitchCommand switchCommand;
 
+    /**
+     * Creates a ListMedicalHistoryEventCommand to list the {@code MedicalHistoryEvent} of the specified {@code Patient}
+     */
     public ListMedicalHistoryEventCommand(Index patientIndex) {
         this.patientIndex = patientIndex;
         this.switchCommand = new SwitchCommand(Index.fromZeroBased(1));
