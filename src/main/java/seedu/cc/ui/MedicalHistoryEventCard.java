@@ -37,7 +37,6 @@ public class MedicalHistoryEventCard extends UiPart<Region> {
      */
     public MedicalHistoryEventCard(MedicalHistoryEvent medicalHistoryEvent, int displayedIndex) {
         super(FXML);
-        System.out.println("MedicalHistoryEventCard");
         this.medicalHistoryEvent = medicalHistoryEvent;
         date.setText(medicalHistoryEvent.getDate().toString());
         medicalCondition.setText(medicalHistoryEvent.getMedicalCondition().toString());

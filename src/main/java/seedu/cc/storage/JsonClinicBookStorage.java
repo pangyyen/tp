@@ -45,7 +45,7 @@ public class JsonClinicBookStorage implements ClinicBookStorage {
      */
     public Optional<ReadOnlyClinicBook> readClinicBook(Path filePath) throws DataLoadingException {
         requireNonNull(filePath);
-
+        System.out.println();
         Optional<JsonSerializableClinicBook> jsonClinicBook = JsonUtil.readJsonFile(
                 filePath, JsonSerializableClinicBook.class);
         if (!jsonClinicBook.isPresent()) {

@@ -41,7 +41,6 @@ public class AppointmentPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                System.out.println("AppointmentEventListViewCell");
                 setGraphic(new AppointmentEventCard(appointment, getIndex() + 1).getRoot());
             }
         }

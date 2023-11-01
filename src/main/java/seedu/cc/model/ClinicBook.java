@@ -3,11 +3,13 @@ package seedu.cc.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.ObservableList;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.ClinicBookAppointmentList;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.ClinicBookMedicalHistory;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
@@ -213,6 +215,11 @@ public class ClinicBook implements ReadOnlyClinicBook {
     @Override
     public ObservableList<Patient> getPatientList() {
         return patients.asUnmodifiableObservableList();
+    }
+
+    //=========== Prescription Operations =============================================================
+    public void addPrescriptions(Patient patient, AppointmentEvent appointmentEvent, Set<Prescription> prescriptions) {
+        patients.addPrescriptions(patient, appointmentEvent, prescriptions);
     }
     //=====================================================================================================
 
