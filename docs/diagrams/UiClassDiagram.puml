@@ -12,14 +12,10 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
-Class PatientListPanel
-Class PatientCard
+Class XYZPanel
+Class XYZCard
 Class StatusBarFooter
 Class CommandBox
-Class MedicalHistoryPanel
-Class MedicalHistoryCard
-Class AppointmentPanel
-Class AppointmentCard
 }
 
 package Model <<Rectangle>> {
@@ -37,41 +33,34 @@ UiManager .left.|> Ui
 UiManager -down-> "1" MainWindow
 MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
-MainWindow *-down-> "1" PatientListPanel
-MainWindow *-down-> "1" AppointmentPanel
-MainWindow *-down-> "1" MedicalHistoryPanel
+MainWindow *-down-> "1" XYZPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
-PatientListPanel -down-> "*" PatientCard
-AppointmentPanel -down-> "*" AppointmentCard
-MedicalHistoryPanel -down-> "*" MedicalHistoryCard
+XYZPanel -down-> "*" XYZCard
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PatientListPanel --|> UiPart
-PatientCard --|> UiPart
-AppointmentPanel --|> UiPart
-AppointmentCard --|> UiPart
-MedicalHistoryPanel --|> UiPart
-MedicalHistoryCard --|> UiPart
+XYZPanel --|> UiPart
+XYZCard --|> UiPart
 
 
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
-PatientCard ..> Model
-AppointmentCard ..> Model
-MedicalHistoryCard ..> Model
+XYZCard ..> Model
 
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PatientListPanel -[hidden]left- HelpWindow
-AppointmentPanel -[hidden]left- HelpWindow
-MedicalHistoryPanel -[hidden]left- HelpWindow
+XYZPanel -[hidden]left- HelpWindow
+note "XYZPanel = PatientListPanel,\n AppointmentListPanel etc." as N2
+note "XYZCard = PatientCard,\nAppointmentEventCard" as N3
+
+XYZPanel ....right> N2
+XYZCard ..right> N3
 
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
