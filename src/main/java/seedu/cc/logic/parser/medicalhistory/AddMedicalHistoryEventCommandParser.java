@@ -8,7 +8,6 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 import java.util.stream.Stream;
 
 import seedu.cc.commons.core.index.Index;
-import seedu.cc.logic.commands.EditCommand;
 import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
 import seedu.cc.logic.parser.ArgumentMultimap;
 import seedu.cc.logic.parser.ArgumentTokenizer;
@@ -24,7 +23,7 @@ import seedu.cc.model.util.Date;
 /**
  * Parses input arguments and creates a new AddMedicalHistoryEventCommand object.
  */
-public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEventCommand> {
+public class AddMedicalHistoryEventCommandParser implements Parser<AddMedicalHistoryEventCommand> {
 
     /**
      * Returns true if all of the prefixes contain non-empty {@code Optional} values in the given
@@ -50,7 +49,7 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    EditCommand.MESSAGE_USAGE), pe);
+                    AddMedicalHistoryEventCommand.MESSAGE_USAGE), pe);
         }
 
 
@@ -64,7 +63,7 @@ public class AddMedicalHistoryEventParser implements Parser<AddMedicalHistoryEve
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
 
-
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT, PREFIX_DATE);
         MedicalHistoryEvent event = new MedicalHistoryEvent(medicalCondition, treatment, date);
 
         return new AddMedicalHistoryEventCommand(event, index);
