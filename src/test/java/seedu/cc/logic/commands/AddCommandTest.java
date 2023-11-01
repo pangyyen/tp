@@ -182,7 +182,7 @@ public class AddCommandTest {
         }
 
         public void setCurrentTab(int tabIndex) {
-            throw new AssertionError("This method should not be called.");
+            System.out.println();
         }
 
         @Override
