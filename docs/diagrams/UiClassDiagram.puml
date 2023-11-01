@@ -1,5 +1,6 @@
 @startuml
 !include style.puml
+!pragma layout smetana
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
@@ -11,10 +12,14 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
+Class PatientListPanel
+Class PatientCard
 Class StatusBarFooter
 Class CommandBox
+Class MedicalHistoryPanel
+Class MedicalHistoryCard
+Class AppointmentPanel
+Class AppointmentCard
 }
 
 package Model <<Rectangle>> {
@@ -32,29 +37,46 @@ UiManager .left.|> Ui
 UiManager -down-> "1" MainWindow
 MainWindow *-down->  "1" CommandBox
 MainWindow *-down-> "1" ResultDisplay
-MainWindow *-down-> "1" PersonListPanel
+MainWindow *-down-> "1" PatientListPanel
+MainWindow *-down-> "1" AppointmentPanel
+MainWindow *-down-> "1" MedicalHistoryPanel
 MainWindow *-down-> "1" StatusBarFooter
 MainWindow --> "0..1" HelpWindow
 
-PersonListPanel -down-> "*" PersonCard
+PatientListPanel -down-> "*" PatientCard
+AppointmentPanel -down-> "*" AppointmentCard
+MedicalHistoryPanel -down-> "*" MedicalHistoryCard
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
+PatientListPanel --|> UiPart
+PatientCard --|> UiPart
+AppointmentPanel --|> UiPart
+AppointmentCard --|> UiPart
+MedicalHistoryPanel --|> UiPart
+MedicalHistoryCard --|> UiPart
+
+
 StatusBarFooter --|> UiPart
 HelpWindow --|> UiPart
 
-PersonCard ..> Model
+PatientCard ..> Model
+AppointmentCard ..> Model
+MedicalHistoryCard ..> Model
+
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
+PatientListPanel -[hidden]left- HelpWindow
+AppointmentPanel -[hidden]left- HelpWindow
+MedicalHistoryPanel -[hidden]left- HelpWindow
+
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
+
 
 MainWindow -[hidden]-|> UiPart
 @enduml

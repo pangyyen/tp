@@ -91,10 +91,16 @@ user executes `list-medical-history` command.
 
 The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
 
-#### Note:
+### Appointment-related features
 
-The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of
-`MedicalHistoryEvent` while `MedicalHistoryEvent` is a list of `MedicalHistoryEvent` that is currently being displayed.
+#### Proposed Implementation
+
+The appointment-related features are facilitated by the `appointment` package. The `appointment` package includes `AppointmentEvent`, `PatientAppointmentList` and `ClinicBookAppointmentList`.
+The `PatientAppointmentList` a an attribute for each `Patient` and stores a list of `AppointmentEvent`. The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for display purposes.
+
+The sequence diagram below shows the interaction between the `Logic` component and the `Model` component when the user issues the `add-appointment` command.
+
+
 
 ### \[Proposed\] Undo/redo feature
 
