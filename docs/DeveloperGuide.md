@@ -120,19 +120,38 @@ Classes used by multiple components are in the `seedu.cc.commons` package.]
 ## Implementation
 
 ### Medical History
-CareCentral also allows users to store and access patient medical history, including past diagnoses, allergies,
-and medications. This enables healthcare professionals to provide more accurate and efficient care during patient
-visits, ensuring continuity of care. User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD,
+User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD,
 the `MedicalCondition` and the `Treatment` received by the patient.
 
-The `MedicalHistoryEvent` will then be shown as a list of `MedicalHistoryEvent` in the `Patient`'s `Medical History`.
+The `MedicalHistoryEvent` will then be shown as a list of `MedicalHistoryEvent` in the `Patient`'s `PatientMedicalHistory`.
 The MedicalHistory will be facilitated using the FilteredList, although the current implementation does not allow
 filtering.
 
-When the user starts an application, there will be an empty `CurrentMedicalHistoryEventList`. It will be populated when the
+When the user starts an application, there will be an empty `ClinicBookMedicalHistory`. It will be populated when the
 user executes `list-medical-history` command.
 
-The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
+The `PatientMedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
+
+The difference between `PatientMedicalHistory` class and `ClinicBookMedicalHistory` class is that `PatientMedicalHistory` is a list of
+`MedicalHistoryEvent` while `ClinicBookMedicalHistory` is a list of `MedicalHistoryEvent` that is currently being displayed.
+
+#### An example usage scenario and how the medical history mechanism behaves at each step is shown below.
+
+Step 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list of `MedicalHistoryEvent`.
+
+Step 2. The user inputs `list-md` to list all diaries. `Ui` passes the input to `Logic`. `Logic` then uses a few `Parser` classes to extract layers of information out as seen from steps 3 to 5.
+
+Step 3. `Logic` passes the user input to `ClinicBookParser`. `ClinicBookParser` identifies that this is a `ListMedicalHistoryEventCommand` through the word "list-md". It then creates a `ListMedicalHistoryEventCommandParser` to parse it into a `ListMedicalHistoryEventCommand` and return.
+
+Step 4. Logic finally gets the `ListMedicalHistoryEventCommand` and execute it. The execution firstly calls `Model#getFilteredPatientList()` to get the patients that are currently being displayed. It then gets the `Patient` from the list using the index provided by the user. 
+It then calls `Model#listMedicalHistoryEvents(Patient patient)` to set `ClinicBookMedicalHistory` as the list of `MedicalHistoryEvent` that belongs to the patient. 
+This execution then returns a `CommandResult` to `Ui`, containing the response to the user.
+
+Step 5. UI displays the response in the CommandResult. In addition, UI will change to display the list of `MedicalHistoryEvent` after model updates `filteredMedicalHistoryEvents`, since `Ui` is constantly listening for the change in `Model`.
+
+The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario
+
+<img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
 
 ### Appointment-related features
 
@@ -142,9 +161,6 @@ The appointment-related features are facilitated by the `appointment` package. T
 The `PatientAppointmentList` a an attribute for each `Patient` and stores a list of `AppointmentEvent`. The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for display purposes.
 
 The sequence diagram below shows the interaction between the `Logic` component and the `Model` component when the user issues the `add-appointment` command.
-
-
-
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation

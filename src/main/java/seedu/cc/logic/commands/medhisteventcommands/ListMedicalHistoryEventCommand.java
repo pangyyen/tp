@@ -42,13 +42,13 @@ public class ListMedicalHistoryEventCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Patient> lastShownList = model.getFilteredPatientList();
+        List<Patient> patientList = model.getFilteredPatientList();
 
-        if (patientIndex.getZeroBased() >= lastShownList.size()) {
+        if (patientIndex.getZeroBased() >= patientList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
-        Patient patient = lastShownList.get(patientIndex.getZeroBased());
+        Patient patient = patientList.get(patientIndex.getZeroBased());
         model.listMedicalHistoryEvents(patient);
         switchCommand.execute(model);
         return new CommandResult(String.format(MESSAGE_SUCCESS,

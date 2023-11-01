@@ -11,7 +11,7 @@ import seedu.cc.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new ListMedicalHistoryEventCommand object.
  */
-public class ListMedicalHistoryEventsCommandParser implements Parser<ListMedicalHistoryEventCommand> {
+public class ListMedicalHistoryEventCommandParser implements Parser<ListMedicalHistoryEventCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the ListMedicalHistoryEventCommand
