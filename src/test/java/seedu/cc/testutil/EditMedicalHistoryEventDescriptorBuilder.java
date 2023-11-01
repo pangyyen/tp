@@ -1,10 +1,10 @@
 package seedu.cc.testutil;
 
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand.EditMedicalHistoryEventDescriptor;
-import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.Treatment;
+import seedu.cc.model.util.Date;
 
 /**
  * A utility class to help with building EditMedicalHistoryEventDescriptor objects.
