@@ -66,6 +66,7 @@ public class AddAppointmentEventCommand extends Command {
 
         Patient patientToAddAppt = lastShownList.get(index.getZeroBased());
         model.addAppointmentEventToPatient(patientToAddAppt, appointmentEvent);
+        model.listAppointmentsEventForPatient(patientToAddAppt);
         switchCommand.execute(model);
 
         return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
