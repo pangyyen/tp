@@ -10,7 +10,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/Main.java) and [`MainApp`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -42,13 +42,13 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PatientListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -91,10 +91,16 @@ user executes `list-medical-history` command.
 
 The `MedicalHistory` for each `Patient` will be stored in clinicbook.json as a nested attribute.
 
-#### Note:
+### Appointment-related features
 
-The difference between `MedicalHistory` class and `CurrentMedicalHistoryEventList` class is that 'MedicalHistory' is a list of
-`MedicalHistoryEvent` while `MedicalHistoryEvent` is a list of `MedicalHistoryEvent` that is currently being displayed.
+#### Proposed Implementation
+
+The appointment-related features are facilitated by the `appointment` package. The `appointment` package includes `AppointmentEvent`, `PatientAppointmentList` and `ClinicBookAppointmentList`.
+The `PatientAppointmentList` a an attribute for each `Patient` and stores a list of `AppointmentEvent`. The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for display purposes.
+
+The sequence diagram below shows the interaction between the `Logic` component and the `Model` component when the user issues the `add-appointment` command.
+
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -189,35 +195,255 @@ Given below is the UML diagram for the `Pharmacy` class.
       3. Doctor enters the updated information.
       4. App saves the changes.
 
-### Luxury to Have
 
-1. **Share Patient Record**
-   - **MSS:**
-      1. Doctor selects a patient record to share.
-      2. App prompts for the recipient's details.
-      3. Doctor enters the recipient's information.
-      4. App shares the selected record with the recipient.
 
-2. **Prescribe Medications**
-   - **MSS:**
-      1. Doctor selects a patient to prescribe medication.
-      2. App prompts for the medication details.
-      3. Doctor enters the required information.
-      4. App sends the prescription to the pharmacy and notifies the patient.
+### Use Cases
 
-3. **Refer to Specialist**
-   - **MSS:**
-      1. Doctor selects a patient to refer to a specialist.
-      2. App prompts for the specialist's and patient's details.
-      3. Doctor enters the required information.
-      4. App sends the referral to the specialist.
+#### Use case: UG01 - Create Patient Record
 
-4. **View Feedback and Reviews**
-   - **MSS:**
-      1. Doctor chooses to view feedback and reviews.
-      2. App displays the list of all feedback and reviews.
+**Actor:** Doctor, Receptionist, Nurse
 
-## Non-Functional Requirements
+**MSS**
+1. User issues the command to add a new patient record with the required details.
+2. System adds the new patient record.
+3. System displays a success message along with the details of the added patient.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The input details are invalid.
+    * 2a1. System shows an error message.
+  
+      Use case ends.
+
+#### Use case: UG02 - List Patients
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to list all patients.
+2. System retrieves and shows a list of patients.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. System informs the user that the list is empty.
+
+      Use case ends.
+
+#### Use case: UG03 - Edit Patient Record
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to edit a specific patient record using the patient's index in the list and provides the new details.
+2. System validates the input details.
+3. System updates the patient record with the new details.
+4. System displays a success message along with the updated details of the patient.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The given index or details is invalid.
+    * 2a1. System shows an error message with the correct input format.
+
+      Use case ends.
+
+#### Use case: UG04 - Delete Patient Record
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to delete a specific patient record using the patient's index in the list.
+2. System deletes the patient record.
+3. System displays a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given index is invalid.
+    * 1a1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG05 - Add Appointment
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User issues the command to schedule a new appointment for a patient using the patient's index and provides the appointment details.
+2. System validates the input details.
+3. System adds the new appointment.
+4. System displays a success message along with the details of the added appointment.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The input details are invalid.
+    * 2a1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG06 - List All Appointments
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to list all appointments.
+2. System retrieves and shows a list of appointments.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+    * 2a1. System informs the user that there are no appointments.
+
+      Use case ends.
+
+#### Use case: UG07 - Edit Appointment
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to edit a specific appointment using the appointment's index in the list and provides the new details.
+2. System validates the input details.
+3. System updates the appointment with the new details.
+4. System displays a success message along with the updated details of the appointment.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+    * 2a1. System shows an error message.
+
+      Use case ends.
+
+* 2b. The input details are invalid.
+    * 2b1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG08 - Delete Appointment
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to delete a specific appointment using the appointment's index in the list.
+2. System deletes the appointment.
+3. System displays a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given index is invalid.
+    * 1a1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG09 - Add Medical History
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User issues the command to add a medical history for a patient using the patient's index and provides the medical history details.
+2. System validates the input details.
+3. System adds the medical history to the patient's record.
+4. System displays a success message along with the details of the added medical history.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The input details are invalid.
+    * 2a1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG10 - List Medical History
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to list the medical history of a specific patient using the patient's index.
+2. System retrieves and shows the medical history of the patient.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The given index is invalid.
+    * 2a1. System shows an error message.
+
+      Use case ends.
+
+* 2b. There is no medical history for the selected patient.
+    * 2b1. System informs the user that there is no medical history for the selected patient.
+
+      Use case ends.
+
+#### Use case: UG11 - Edit Medical History
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to edit a specific medical history record using the medical history's index and the patient's index, and provides the new details.
+2. System validates the input details.
+3. System updates the medical history record with the new details.
+4. System displays a success message along with the updated details of the medical history.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. The given indexes are invalid.
+    * 2a1. System shows an error message.
+
+      Use case ends.
+
+* 2b. The input details are invalid.
+    * 2b1. System shows an error message.
+
+      Use case ends.
+
+#### Use case: UG12 - Delete Medical History
+
+**Actor:** Doctor, Receptionist, Nurse
+
+**MSS**
+
+1. User requests to delete a specific medical history record using the medical history's index and the patient's index.
+2. System deletes the medical history record.
+3. System displays a success message.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. The given indexes are invalid.
+    * 1a1. System shows an error message.
+
+      Use case ends.
+
+### Non-Functional Requirements
 
 1. **Performance Requirements:** The app should be able to handle up to 500 patient records without significant performance degradation.
 2. **Security Requirements:** All patient data must be stored securely to ensure confidentiality and privacy.
