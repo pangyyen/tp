@@ -42,17 +42,17 @@
           </StackPane>
 
           <!-- Adjustments for each button below -->
-          <Button graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
+          <Button fx:id="sidebarButton1" graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
             <graphic>
               <ImageView fx:id="patientsIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showMedicalHistoryTab" styleClass="sidebar-button" text="Medical History">
+          <Button fx:id="sidebarButton2" graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showMedicalHistoryTab" styleClass="sidebar-button" text="Medical History">
             <graphic>
               <ImageView fx:id="historyIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showAppointmentsTab" styleClass="sidebar-button" text="Appointments">
+          <Button fx:id="sidebarButton3" graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#showAppointmentsTab" styleClass="sidebar-button" text="Appointments">
             <graphic>
               <ImageView fx:id="appointmentsIcon" fitHeight="40" fitWidth="40" />
             </graphic>

@@ -1,14 +1,14 @@
 package seedu.cc.ui;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextInputControl;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
@@ -66,6 +66,15 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private TabPane mainTabPane;
+    @FXML
+    private Button sidebarButton1;
+    @FXML
+    private Button sidebarButton2;
+    @FXML
+    private Button sidebarButton3;
+
+    private List<Button> buttons;
+
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -83,18 +92,26 @@ public class MainWindow extends UiPart<Stage> {
 
         //setAccelerators();
         Scene mainScene = primaryStage.getScene();
-        mainScene.getAccelerators().put(KeyCombination.keyCombination("Ctrl+Tab"), this::switchTab);
-
+        mainScene.getAccelerators().put(KeyCombination.keyCombination("Alt+Tab"), this::switchTab);
+        mainScene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.isControlDown() && event.getCode() == KeyCode.TAB) {
+                event.consume();
+            }
+        });
 
         helpWindow = new HelpWindow();
     }
 
+    @FXML
+    private void initialize() {
+        sidebarButton1.getStyleClass().add("sidebar-active-button");
+        this.buttons = Arrays.asList(sidebarButton1, sidebarButton2, sidebarButton3);
+    }
+
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-    //    private void setAccelerators() {
-    //        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    //    }
 
     /**
      * Sets the accelerator of a MenuItem.
@@ -258,14 +275,17 @@ public class MainWindow extends UiPart<Stage> {
         case 0:
             logic.setCurrentTab(0);
             tabInfoLabel.setText(Tabs.PATIENTS.toString());
+            setActiveButton(sidebarButton1);
             break;
         case 1:
             logic.setCurrentTab(1);
             tabInfoLabel.setText(Tabs.MEDICAL_HISTORY.toString());
+            setActiveButton(sidebarButton2);
             break;
         case 2:
             logic.setCurrentTab(2);
             tabInfoLabel.setText(Tabs.APPOINTMENTS.toString());
+            setActiveButton(sidebarButton3);
             break;
         default:
             tabInfoLabel.setText("Unknown Tab");
@@ -277,10 +297,23 @@ public class MainWindow extends UiPart<Stage> {
      * Switches to the next tab, used for shortcuts.
      */
     private void switchTab() {
-        int currentTabIndex = mainTabPane.getSelectionModel().getSelectedIndex();
+        int currentTabIndex = logic.getCurrentTab();
         int numberOfTabs = mainTabPane.getTabs().size();
         int nextTabIndex = (currentTabIndex + 1) % numberOfTabs;  // This wraps around to the first tab when you're at the last tab
         changeTabs(nextTabIndex);
     }
 
+    /**
+     * Sets the active button to the specified button.
+     * @param activeButton the button to set as active
+     */
+    public void setActiveButton(Button activeButton) {
+        for (Button button : buttons) {
+            if (button == activeButton) {
+                button.getStyleClass().add("sidebar-active-button");
+            } else {
+                button.getStyleClass().remove("sidebar-active-button");
+            }
+        }
+    }
 }
