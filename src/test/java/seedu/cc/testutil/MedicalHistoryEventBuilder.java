@@ -1,10 +1,10 @@
 package seedu.cc.testutil;
 
-import seedu.cc.model.medicalhistory.Date;
 import seedu.cc.model.medicalhistory.MedicalCondition;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.medicalhistory.Treatment;
+import seedu.cc.model.util.Date;
 
 /**
  * A utility class to help with building MedicalHistoryEvent objects.
@@ -26,6 +26,15 @@ public class MedicalHistoryEventBuilder {
         date = new Date(DEFAULT_DATE);
         medicalCondition = new MedicalCondition(DEFAULT_MEDICAL_CONDITION);
         treatment = new Treatment(DEFAULT_TREATMENT);
+    }
+
+    /**
+     * Initializes the MedicalHistoryEventBuilder with the data of {@code medicalHistoryEventToCopy}.
+     */
+    public MedicalHistoryEventBuilder(MedicalHistoryEvent medicalHistoryEventToCopy) {
+        date = medicalHistoryEventToCopy.getDate();
+        medicalCondition = medicalHistoryEventToCopy.getMedicalCondition();
+        treatment = medicalHistoryEventToCopy.getTreatment();
     }
 
     /**

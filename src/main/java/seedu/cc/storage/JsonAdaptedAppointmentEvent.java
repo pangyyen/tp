@@ -1,13 +1,12 @@
 package seedu.cc.storage;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
@@ -17,25 +16,25 @@ public class JsonAdaptedAppointmentEvent {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appointment event's %s field is missing!";
 
-    private final LocalDate localDate;
-    private final LocalTime localTime;
+    private final Date date;
+    private final Time time;
 
     /**
      * Constructs a {@code JsonAdaptedAppointmentEvent} with the given medical history event details.
      */
     @JsonCreator
-    public JsonAdaptedAppointmentEvent(@JsonProperty("localDate") LocalDate localDate,
-                                           @JsonProperty("localTime") LocalTime localTime) {
-        this.localDate = localDate;
-        this.localTime = localTime;
+    public JsonAdaptedAppointmentEvent(@JsonProperty("date") Date date,
+                                       @JsonProperty("localTime") Time time) {
+        this.date = date;
+        this.time = time;
     }
 
     /**
      * Converts a given {@code AppointmentEvent} into this class for Jackson use.
      */
     public JsonAdaptedAppointmentEvent(AppointmentEvent source) {
-        localDate = source.getLocalDate();
-        localTime = source.getLocalTime();
+        date = source.getDate();
+        time = source.getTime();
     }
 
     /**
@@ -45,14 +44,14 @@ public class JsonAdaptedAppointmentEvent {
      * @throws IllegalValueException if there were any data constraints violated in the adapted medical history event.
      */
     public AppointmentEvent toModelType() throws IllegalValueException {
-        if (localDate == null) {
+        if (date == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Date"));
         }
 
-        if (localTime == null) {
+        if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Time"));
         }
 
-        return new AppointmentEvent(localDate, localTime);
+        return new AppointmentEvent(date, time);
     }
 }
