@@ -5,49 +5,49 @@
     "nric" : "S1234567A",
     "phone" : "94351253",
     "email" : "alice@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
+    "age" : "32",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "nric" : "S1234567B",
     "phone" : "98765432",
     "email" : "johnd@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
+    "age" : "46",
     "tags" : [ "owesMoney", "friends" ]
   }, {
     "name" : "Carl Kurz",
     "nric" : "S1234567C",
     "phone" : "95352563",
     "email" : "heinz@example.com",
-    "address" : "wall street",
+    "age" : "77",
     "tags" : [ ]
   }, {
     "name" : "Daniel Meier",
     "nric" : "S1234567D",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
-    "address" : "10th street",
+    "age" : "50",
     "tags" : [ "friends" ]
   }, {
     "name" : "Elle Meyer",
     "nric" : "S1234567E",
     "phone" : "9482224",
     "email" : "werner@example.com",
-    "address" : "michegan ave",
+    "age" : "96",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "nric" : "S1234567F",
     "phone" : "9482427",
     "email" : "lydia@example.com",
-    "address" : "little tokyo",
+    "age" : "69",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "nric" : "S1234567G",
     "phone" : "9482442",
     "email" : "anna@example.com",
-    "address" : "4th street",
+    "age" : "52",
     "tags" : [ ]
   } ]
 }

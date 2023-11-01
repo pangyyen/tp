@@ -8,7 +8,7 @@ import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Person;
@@ -29,8 +29,8 @@ public class Patient extends Person {
      *
      */
     public Patient(Name name, Nric nric, Phone phone, Email email,
-                   Address address, Set<Tag> tags) {
-        super(name, phone, email, address, tags);
+                   Age age, Set<Tag> tags) {
+        super(name, phone, email, age, tags);
         this.nric = nric;
         this.patientAppointmentList = new PatientAppointmentList();
         this.patientMedicalHistory = new PatientMedicalHistory();
@@ -40,28 +40,28 @@ public class Patient extends Person {
      * Constructor for Patient with PatientMedicalHistory in Storage.
      *
      */
-    public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
+    public Patient(Name name, Nric nric, Phone phone, Email email, Age age,
                    PatientMedicalHistory patientMedicalHistory, Set<Tag> tags) {
-        this(name, nric, phone, email, address, tags);
+        this(name, nric, phone, email, age, tags);
         this.patientMedicalHistory = patientMedicalHistory;
     }
 
     /**
      * Constructor for Patient with PatientAppointmentList in Storage.
      */
-    public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
+    public Patient(Name name, Nric nric, Phone phone, Email email, Age age,
                    PatientAppointmentList patientAppointmentList, Set<Tag> tags) {
-        this(name, nric, phone, email, address, tags);
+        this(name, nric, phone, email, age, tags);
         this.patientAppointmentList = patientAppointmentList;
     }
 
     /**
      * Constructor for Patient with PatientAppointmentList and PatientMedicalHistory in Storage.
      */
-    public Patient(Name name, Nric nric, Phone phone, Email email, Address address,
+    public Patient(Name name, Nric nric, Phone phone, Email email, Age age,
                    PatientAppointmentList patientAppointmentList, PatientMedicalHistory patientMedicalHistory,
                    Set<Tag> tags) {
-        this(name, nric, phone, email, address, tags);
+        this(name, nric, phone, email, age, tags);
         this.patientAppointmentList = patientAppointmentList;
         this.patientMedicalHistory = patientMedicalHistory;
     }
@@ -83,8 +83,8 @@ public class Patient extends Person {
         return super.getEmail();
     }
 
-    public Address getAddress() {
-        return super.getAddress();
+    public Age getAge() {
+        return super.getAge();
     }
 
     public Set<Tag> getTags() {

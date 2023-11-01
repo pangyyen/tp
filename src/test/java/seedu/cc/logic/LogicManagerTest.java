@@ -3,7 +3,7 @@ package seedu.cc.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX;
 import static seedu.cc.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.cc.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
+import static seedu.cc.logic.commands.CommandTestUtil.AGE_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 //import static seedu.cc.logic.commands.CommandTestUtil.NRIC_DESC_AMY;
@@ -152,9 +152,9 @@ public class LogicManagerTest {
         Path prefPath = temporaryFolder.resolve("ExceptionUserPrefs.json");
 
         // Inject LogicManager with an ClinicBookStorage that throws the IOException e when saving
-        JsonClinicBookStorage addressBookStorage = new JsonClinicBookStorage(prefPath) {
+        JsonClinicBookStorage clinicBookStorage = new JsonClinicBookStorage(prefPath) {
             @Override
-            public void saveClinicBook(ReadOnlyClinicBook addressBook, Path filePath)
+            public void saveClinicBook(ReadOnlyClinicBook clinicBook, Path filePath)
                     throws IOException {
                 throw e;
             }
@@ -162,13 +162,13 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        StorageManager storage = new StorageManager(clinicBookStorage, userPrefsStorage);
 
         logic = new LogicManager(model, storage);
 
         // Triggers the saveClinicBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + NRIC_DESC_AMY + PHONE_DESC_AMY
-                + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
+                + EMAIL_DESC_AMY + AGE_DESC_AMY;
         Patient expectedPatient = new PatientBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPatient(expectedPatient);

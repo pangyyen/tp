@@ -1,7 +1,7 @@
 package seedu.cc.logic.parser;
 
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NRIC;
@@ -15,7 +15,7 @@ import seedu.cc.logic.commands.AddCommand;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Phone;
@@ -43,22 +43,22 @@ public class AddCommandParser implements Parser<AddCommand> {
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_NRIC, PREFIX_PHONE,
-                        PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                        PREFIX_EMAIL, PREFIX_AGE, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_NRIC, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_NRIC, PREFIX_AGE, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_AGE);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Nric nric = ParserUtil.parseNric(argMultimap.getValue(PREFIX_NRIC).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
-        Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());
+        Age age = ParserUtil.parseAge(argMultimap.getValue(PREFIX_AGE).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Patient person = new Patient(name, nric, phone, email, address, tagList);
+        Patient person = new Patient(name, nric, phone, email, age, tagList);
 
         return new AddCommand(person);
     }
