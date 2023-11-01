@@ -3,11 +3,15 @@ package seedu.cc.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NRIC;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 import static seedu.cc.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -64,9 +68,24 @@ public class CommandTestUtil {
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
-    public static final String VALID_MEDICAL_CONDITION = "Cancer";
-    public static final String VALID_TREATMENT = "Chemotherapy";
-    public static final String VALID_DATE = "2020-10-10";
+    public static final String VALID_MEDICAL_CONDITION_CANCER = "Cancer";
+    public static final String VALID_TREATMENT_CANCER = "Chemotherapy";
+    public static final String VALID_DATE_CANCER = "2020-10-10";
+    public static final String VALID_MEDICAL_CONDITION_DIABETES = "Diabetes";
+    public static final String VALID_TREATMENT_DIABETES = "Insulin";
+    public static final String VALID_DATE_DIABETES = "2020-10-11";
+    public static final String VALID_PATIENT_INDEX = "1";
+    public static final String MEDICAL_CONDITION_DESC_CANCER = " " + PREFIX_MEDICAL_CONDITION
+            + VALID_MEDICAL_CONDITION_CANCER;
+    public static final String TREATMENT_DESC_CANCER = " " + PREFIX_TREATMENT + VALID_TREATMENT_CANCER;
+    public static final String DATE_DESC_CANCER = " " + PREFIX_DATE + VALID_DATE_CANCER;
+    public static final String MEDICAL_CONDITION_DESC_DIABETES = " " + PREFIX_MEDICAL_CONDITION
+            + VALID_MEDICAL_CONDITION_DIABETES;
+    public static final String TREATMENT_DESC_DIABETES = " " + PREFIX_TREATMENT + VALID_TREATMENT_DIABETES;
+    public static final String DATE_DESC_DIABETES = " " + PREFIX_DATE + VALID_DATE_DIABETES;
+    public static final String PATIENT_INDEX_DESC = " " + PREFIX_PATIENT_INDEX + VALID_PATIENT_INDEX;
+
+
 
     public static final EditMedicalHistoryEventCommand.EditMedicalHistoryEventDescriptor MEDICAL_CONDITION_DESC;
     public static final EditCommand.EditPatientDescriptor DESC_AMY;
@@ -80,8 +99,8 @@ public class CommandTestUtil {
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
         MEDICAL_CONDITION_DESC = new EditMedicalHistoryEventDescriptorBuilder()
-                .withMedicalCondition(VALID_MEDICAL_CONDITION)
-                .withTreatment(VALID_TREATMENT).withDate(VALID_DATE).build();
+                .withMedicalCondition(VALID_MEDICAL_CONDITION_CANCER)
+                .withTreatment(VALID_TREATMENT_CANCER).withDate(VALID_DATE_CANCER).build();
 
     }
 
