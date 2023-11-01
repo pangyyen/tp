@@ -79,9 +79,9 @@ public class Messages {
         builder.append("Patient: ")
                 .append(patient.getName())
                 .append("\nDate: ")
-                .append(event.getLocalDate())
+                .append(event.getDate())
                 .append("\nTime: ")
-                .append(event.getLocalTime());
+                .append(event.getTime());
         return builder.toString();
     }
 }
