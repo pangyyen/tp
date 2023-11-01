@@ -5,9 +5,11 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.CollectionUtil;
@@ -17,6 +19,7 @@ import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.model.util.Date;
 import seedu.cc.model.util.Time;
@@ -40,6 +43,7 @@ public class EditAppointmentEventCommand extends Command {
 
     private final Index patientIndex;
     private final Index eventIndex;
+
     private final EditAppointmentEventDescriptor editAppointmentEventDescriptor;
 
     /**
@@ -59,7 +63,7 @@ public class EditAppointmentEventCommand extends Command {
      * Creates and returns a {@code AppointmentEvent} with the details of {@code eventToEdit}
      * edited with {@code editAppointmentEventDescriptor}.
      */
-    private static AppointmentEvent createEditedAppointmentEvent(
+    public static AppointmentEvent createEditedAppointmentEvent(
             AppointmentEvent eventToEdit, EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
 
         Date updatedDate = editAppointmentEventDescriptor.getDate()
@@ -68,7 +72,11 @@ public class EditAppointmentEventCommand extends Command {
         Time updatedTime = editAppointmentEventDescriptor.getTime()
                 .orElse(eventToEdit.getTime());
 
-        return new AppointmentEvent(updatedDate, updatedTime);
+        Set<Prescription> prescriptions = editAppointmentEventDescriptor.getPrescriptions()
+                .orElse(eventToEdit.getPrescriptions());
+
+        return new AppointmentEvent(updatedDate, updatedTime, prescriptions);
+
     }
 
     @Override
@@ -115,6 +123,8 @@ public class EditAppointmentEventCommand extends Command {
     public static class EditAppointmentEventDescriptor {
         private Date date;
         private Time time;
+        private Set<Prescription> prescriptions = new HashSet<>();
+
 
         public EditAppointmentEventDescriptor() {
         }
@@ -125,6 +135,7 @@ public class EditAppointmentEventCommand extends Command {
         public EditAppointmentEventDescriptor(EditAppointmentEventDescriptor toCopy) {
             setDate(toCopy.date);
             setTime(toCopy.time);
+            setPrescriptions(toCopy.prescriptions);
         }
 
         public boolean isAnyFieldEdited() {
@@ -145,6 +156,17 @@ public class EditAppointmentEventCommand extends Command {
 
         public void setTime(Time time) {
             this.time = time;
+        }
+
+        public Optional<Set<Prescription>> getPrescriptions() {
+            return Optional.ofNullable(prescriptions);
+        }
+
+        public void setPrescriptions(Set<Prescription> prescriptions) {
+            if (prescriptions == null) {
+                throw new IllegalArgumentException("Provided prescriptions set cannot be null.");
+            }
+            this.prescriptions.addAll(prescriptions);
         }
 
         @Override

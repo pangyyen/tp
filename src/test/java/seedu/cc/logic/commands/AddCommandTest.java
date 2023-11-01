@@ -10,6 +10,7 @@ import static seedu.cc.testutil.TypicalPatients.ALICE;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,7 @@ import seedu.cc.model.Model;
 import seedu.cc.model.ReadOnlyClinicBook;
 import seedu.cc.model.ReadOnlyUserPrefs;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.testutil.PatientBuilder;
@@ -218,6 +220,12 @@ public class AddCommandTest {
         }
 
         public void deleteAppointmentEventForPatient(Patient patient, AppointmentEvent appointmentEventToDelete) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        //=========== Prescription Operations =============================================================
+        public void addPrescriptionsToAppointmentEvent(Patient patient, AppointmentEvent appointmentEvent,
+                                                       Set<Prescription> prescriptions) {
             throw new AssertionError("This method should not be called.");
         }
     }

@@ -22,7 +22,7 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code ClinicBookStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(ClinicBookStorage clinicBookStorage, UserPrefsStorage userPrefsStorage) {
         this.clinicBookStorage = clinicBookStorage;
@@ -70,9 +70,9 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveClinicBook(ReadOnlyClinicBook addressBook, Path filePath) throws IOException {
+    public void saveClinicBook(ReadOnlyClinicBook clinicBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        clinicBookStorage.saveClinicBook(addressBook, filePath);
+        clinicBookStorage.saveClinicBook(clinicBook, filePath);
     }
 
 }
