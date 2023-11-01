@@ -310,6 +310,7 @@ public class MainWindow extends UiPart<Stage> {
     public void setActiveButton(Button activeButton) {
         for (Button button : buttons) {
             if (button == activeButton) {
+                button.getStyleClass().remove("sidebar-active-button");
                 button.getStyleClass().add("sidebar-active-button");
             } else {
                 button.getStyleClass().remove("sidebar-active-button");
