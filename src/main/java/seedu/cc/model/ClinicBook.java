@@ -16,7 +16,7 @@ import seedu.cc.model.patient.Patient;
 import seedu.cc.model.patient.UniquePatientList;
 
 /**
- * Wraps all data at the address-book level
+ * Wraps all data at the clinic-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class ClinicBook implements ReadOnlyClinicBook {
@@ -99,7 +99,7 @@ public class ClinicBook implements ReadOnlyClinicBook {
 
     /**
      * Removes {@code key} from this {@code ClinicBook}.
-     * {@code key} must exist in the address book.
+     * {@code key} must exist in the clinic book.
      */
     public void removePatient(Patient key) {
         patients.remove(key);
@@ -241,8 +241,8 @@ public class ClinicBook implements ReadOnlyClinicBook {
             return false;
         }
 
-        ClinicBook otherAddressBook = (ClinicBook) other;
-        return patients.equals(otherAddressBook.patients);
+        ClinicBook otherClinicBook = (ClinicBook) other;
+        return patients.equals(otherClinicBook.patients);
     }
 
     @Override

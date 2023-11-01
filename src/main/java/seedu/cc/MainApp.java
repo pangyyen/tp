@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing AddressBook ]===========================");
+        logger.info("=============================[ Initializing ClinicBook ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -57,8 +57,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        ClinicBookStorage addressBookStorage = new JsonClinicBookStorage(userPrefs.getClinicBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ClinicBookStorage clinicBookStorage = new JsonClinicBookStorage(userPrefs.getClinicBookFilePath());
+        storage = new StorageManager(clinicBookStorage, userPrefsStorage);
 
         model = initModelManager(storage, userPrefs);
 
@@ -68,25 +68,25 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s clinic book and {@code userPrefs}. <br>
+     * The data from the sample clinic book will be used instead if {@code storage}'s clinic book is not found,
+     * or an empty clinic book will be used instead if errors occur when reading {@code storage}'s clinic book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getClinicBookFilePath());
 
-        Optional<ReadOnlyClinicBook> addressBookOptional;
+        Optional<ReadOnlyClinicBook> clinicBookOptional;
         ReadOnlyClinicBook initialData;
         try {
-            addressBookOptional = storage.readClinicBook();
-            if (!addressBookOptional.isPresent()) {
+            clinicBookOptional = storage.readClinicBook();
+            if (!clinicBookOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getClinicBookFilePath()
-                    + " populated with a sample AddressBook.");
+                    + " populated with a sample ClinicBook.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleClinicBook);
+            initialData = clinicBookOptional.orElseGet(SampleDataUtil::getSampleClinicBook);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getClinicBookFilePath() + " could not be loaded."
-                + " Will be starting with an empty AddressBook.");
+                + " Will be starting with an empty ClinicBook.");
             initialData = new ClinicBook();
         }
 
@@ -170,13 +170,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting AddressBook " + MainApp.VERSION);
+        logger.info("Starting ClinicBook " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping Clinic Book ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

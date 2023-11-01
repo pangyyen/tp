@@ -27,7 +27,7 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the ClinicBook.
      *
      * @see seedu.cc.model.Model#getClinicBook()
      */
@@ -38,7 +38,7 @@ public interface Logic {
 
     ObservableList<MedicalHistoryEvent> getFilteredMedicalHistoryEventList();
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' clinic book file path.
      */
 
     ObservableList<AppointmentEvent> getFilteredAppointmentList();

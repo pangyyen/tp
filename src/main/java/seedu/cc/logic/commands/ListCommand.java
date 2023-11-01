@@ -6,7 +6,7 @@ import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import seedu.cc.model.Model;
 
 /**
- * Lists all persons in the address book to the user.
+ * Lists all persons in the clinic book to the user.
  */
 public class ListCommand extends Command {
 

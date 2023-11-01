@@ -17,7 +17,7 @@ import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.patient.Patient;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing person in the clinic book.
  */
 public class AddAppointmentEventCommand extends Command {
 
@@ -35,7 +35,7 @@ public class AddAppointmentEventCommand extends Command {
     public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added an appointment event: \n%1$s";
     public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid patient "
         + "index, date, or time.";
-    public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the clinic book.";
 
     private final Index index;
     private final AppointmentEvent appointmentEvent;
