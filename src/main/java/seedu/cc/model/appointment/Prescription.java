@@ -30,6 +30,7 @@ public class Prescription {
         return test.matches(VALIDATION_REGEX);
     }
 
+
     public String getPrescription() {
         return value;
     }

@@ -60,12 +60,12 @@ public class EditAppointmentEventCommandParser implements Parser<EditAppointment
 
 
         if (argMultimap.getValue(PREFIX_APPT_DATE).isPresent()) {
-            editAppointmentEventDescriptor.setLocalDate(ParserUtil.parseLocalDate(argMultimap
+            editAppointmentEventDescriptor.setDate(ParserUtil.parseDate(argMultimap
                     .getValue(PREFIX_APPT_DATE).get()));
         }
 
         if (argMultimap.getValue(PREFIX_APPT_TIME).isPresent()) {
-            editAppointmentEventDescriptor.setLocalTime(ParserUtil.parseLocalTime(argMultimap
+            editAppointmentEventDescriptor.setTime(ParserUtil.parseTime(argMultimap
                     .getValue(PREFIX_APPT_TIME).get()));
         }
 

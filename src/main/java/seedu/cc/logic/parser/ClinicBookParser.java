@@ -35,7 +35,7 @@ import seedu.cc.logic.parser.appointment.DeletePrescriptionCommandParser;
 import seedu.cc.logic.parser.appointment.EditAppointmentEventCommandParser;
 import seedu.cc.logic.parser.appointment.ListAppointmentEventsCommandParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
-import seedu.cc.logic.parser.medicalhistory.AddMedicalHistoryEventParser;
+import seedu.cc.logic.parser.medicalhistory.AddMedicalHistoryEventCommandParser;
 import seedu.cc.logic.parser.medicalhistory.DeleteMedicalHistoryEventCommandParser;
 import seedu.cc.logic.parser.medicalhistory.EditMedicalHistoryEventCommandParser;
 import seedu.cc.logic.parser.medicalhistory.ListMedicalHistoryEventsCommandParser;
@@ -120,7 +120,7 @@ public class ClinicBookParser {
 
         // Medical History Event commands
         case AddMedicalHistoryEventCommand.COMMAND_WORD:
-            return new AddMedicalHistoryEventParser().parse(arguments);
+            return new AddMedicalHistoryEventCommandParser().parse(arguments);
 
         case ListMedicalHistoryEventCommand.COMMAND_WORD:
             return new ListMedicalHistoryEventsCommandParser().parse(arguments);

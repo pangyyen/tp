@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.cc.commons.exceptions.IllegalValueException;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.Prescription;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
@@ -23,30 +25,32 @@ public class JsonAdaptedAppointmentEvent {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Appointment event's %s field is missing!";
 
-    private final LocalDate localDate;
-    private final LocalTime localTime;
+
     private final List<JsonAdaptedPrescription> prescriptions = new ArrayList<>();
+    private final Date date;
+    private final Time time;
 
     /**
      * Constructs a {@code JsonAdaptedAppointmentEvent} with the given medical history event details.
      */
     @JsonCreator
-    public JsonAdaptedAppointmentEvent(@JsonProperty("localDate") LocalDate localDate,
-                                       @JsonProperty("localTime") LocalTime localTime,
+    public JsonAdaptedAppointmentEvent(@JsonProperty("date") Date date,
+                                       @JsonProperty("localTime") Time time,
                                        @JsonProperty("prescription") List<JsonAdaptedPrescription> prescriptions) {
-        this.localDate = localDate;
-        this.localTime = localTime;
+        this.date = date;
+        this.time = time;
         if (prescriptions != null) {
             this.prescriptions.addAll(prescriptions);
         }
+
     }
 
     /**
      * Converts a given {@code AppointmentEvent} into this class for Jackson use.
      */
     public JsonAdaptedAppointmentEvent(AppointmentEvent source) {
-        localDate = source.getLocalDate();
-        localTime = source.getLocalTime();
+        date = source.getDate();
+        time = source.getTime();
         this.prescriptions.addAll(source.getPrescriptions().stream()
                 .map(JsonAdaptedPrescription::new)
                 .collect(Collectors.toList()));
@@ -60,17 +64,17 @@ public class JsonAdaptedAppointmentEvent {
      */
     public AppointmentEvent toModelType() throws IllegalValueException {
 
-        if (localDate == null) {
+        if (date == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Date"));
         }
 
-        if (localTime == null) {
+        if (time == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Time"));
         }
 
         if (prescriptions.isEmpty()) {
             System.out.println("No prescriptions");
-            return new AppointmentEvent(localDate, localTime);
+            return new AppointmentEvent(date, time);
         }
 
         final List<Prescription> patientPrescriptions = new ArrayList<>();
@@ -78,6 +82,7 @@ public class JsonAdaptedAppointmentEvent {
             patientPrescriptions.add(prescription.toModelType());
         }
         final Set<Prescription> prescriptionSet = new HashSet<>(patientPrescriptions);
-        return new AppointmentEvent(localDate, localTime, prescriptionSet);
+        return new AppointmentEvent(date, time, prescriptionSet);
+
     }
 }

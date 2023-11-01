@@ -67,7 +67,7 @@ public interface Model {
      * Deletes the given patient.
      * The patient must exist in the clinic book.
      */
-    void deletePatient(Patient target);
+    void deletePatient(Patient patient);
 
     /**
      * Adds the given patient.
