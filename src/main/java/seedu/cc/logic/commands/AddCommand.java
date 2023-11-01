@@ -8,6 +8,7 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_NRIC;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 
+import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.exceptions.CommandException;
@@ -41,6 +42,8 @@ public class AddCommand extends Command {
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the clinic book";
 
     private final Patient toAdd;
+    private final SwitchCommand switchCommand;
+
 
     /**
      * Creates an AddCommand to add the specified {@code Person}
@@ -48,6 +51,7 @@ public class AddCommand extends Command {
     public AddCommand(Patient patient) {
         requireNonNull(patient);
         toAdd = patient;
+        this.switchCommand = new SwitchCommand(Index.fromZeroBased(0));
     }
 
     @Override
@@ -59,6 +63,7 @@ public class AddCommand extends Command {
         }
 
         model.addPatient(toAdd);
+        switchCommand.execute(model);
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 
