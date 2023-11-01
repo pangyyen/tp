@@ -1,17 +1,37 @@
 package seedu.cc.model.medicalhistory;
 
+import static java.util.Objects.requireNonNull;
+
+import static seedu.cc.commons.util.AppUtil.checkArgument;
+
 /**
  * Represents a patient's medical condition.
  */
 public class MedicalCondition {
     public final String value;
+    public static final String MESSAGE_CONSTRAINTS =
+            "Medical condition should only contain alphanumeric characters and spaces, and it should not be blank";
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     public MedicalCondition(String medicalCondition) {
+        requireNonNull(medicalCondition);
+        checkArgument(isValidMedicalCondition(medicalCondition), MESSAGE_CONSTRAINTS);
         this.value = medicalCondition;
     }
 
     public String getMedicalCondition() {
         return value;
+    }
+
+    /**
+     * Returns true if a given string is a valid name.
+     */
+    public static boolean isValidMedicalCondition(String test) {
+        return test.matches(VALIDATION_REGEX);
     }
 
     @Override
