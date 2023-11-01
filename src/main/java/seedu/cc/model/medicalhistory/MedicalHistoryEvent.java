@@ -1,5 +1,7 @@
 package seedu.cc.model.medicalhistory;
 
+import seedu.cc.model.util.Date;
+
 /**
  * Represents a patient's medical history event.
  */

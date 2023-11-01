@@ -1,16 +1,12 @@
 package seedu.cc.model.appointment;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.commons.util.AppUtil.checkArgument;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 /**
  * Represents a Patient's appointment in the clinic book.
- * Guarantees: immutable; is valid as declared in {@link #isValidDate(String)} and {@link #isValidTime(String)}
  */
 public class AppointmentEvent {
     public static final String DATE_MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
@@ -22,8 +18,8 @@ public class AppointmentEvent {
             + "The date and time should represent a valid future appointment time.";
 
 
-    public final LocalDate date;
-    public final LocalTime time;
+    public final Date date;
+    public final Time time;
 
     /**
      * Constructs an {@code AppointmentEvent} with String.
@@ -31,91 +27,26 @@ public class AppointmentEvent {
      * @param date A valid date String.
      * @param time A valid time String.
      */
-    public AppointmentEvent(String date, String time) {
+    public AppointmentEvent(Date date, Time time) {
         requireNonNull(date);
         requireNonNull(time);
-        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
-        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
-        this.date = LocalDate.parse(date);
-        this.time = LocalTime.parse(time);
-    }
-
-    /**
-     * Constructs an {@code AppointmentEvent} with LocalDate and LocalTime.
-     *
-     * @param date A valid LocalDate.
-     * @param time A valid LocalTime.
-     */
-    public AppointmentEvent(LocalDate date, LocalTime time) {
-        requireNonNull(date);
-        requireNonNull(time);
-        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
-        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
         this.date = date;
         this.time = time;
     }
 
-    /**
-     * Returns true if a given LocalDate is in valid format
-     */
-    public static boolean isValidDate(LocalDate testDate) {
-        try {
-            LocalDate.parse(testDate.toString(), DateTimeFormatter.ISO_LOCAL_DATE);
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if a given string is a valid date.
-     */
-    public static boolean isValidDate(String testDate) {
-        try {
-            LocalDate.parse(testDate, DateTimeFormatter.ISO_LOCAL_DATE);
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if a given string is a valid time.
-     */
-    public static boolean isValidTime(LocalTime testTime) {
-        try {
-            LocalTime.parse(testTime.toString(), DateTimeFormatter.ofPattern("HH:mm"));
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-    }
-
-    /**
-     * Returns true if a given string is a valid time.
-     */
-    public static boolean isValidTime(String testTime) {
-        try {
-            LocalTime.parse(testTime, DateTimeFormatter.ofPattern("HH:mm"));
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-    }
-
-    public LocalDate getLocalDate() {
+    public Date getDate() {
         return date;
     }
 
-    public LocalTime getLocalTime() {
+    public Time getTime() {
         return time;
     }
 
     @Override
     public String toString() {
         return "AppointmentEvent Date: "
-                + date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " "
-                + time.format(DateTimeFormatter.ofPattern("HH:mm"));
+                + date + " "
+                + time;
     }
 
     @Override

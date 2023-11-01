@@ -35,7 +35,7 @@ public class AppointmentEventCard extends UiPart<Region> {
     public AppointmentEventCard(AppointmentEvent appointmentEvent, int displayedIndex) {
         super(FXML);
         this.appointmentEvent = appointmentEvent;
-        appointmentDate.setText(appointmentEvent.getLocalDate().toString());
-        time.setText(appointmentEvent.getLocalTime().toString());
+        appointmentDate.setText(appointmentEvent.getDate().toString());
+        time.setText(appointmentEvent.getTime().toString());
     }
 }

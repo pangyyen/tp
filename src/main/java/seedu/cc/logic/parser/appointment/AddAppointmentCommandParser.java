@@ -5,8 +5,6 @@ import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_DATE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
@@ -20,6 +18,8 @@ import seedu.cc.logic.parser.ParserUtil;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.tag.Tag;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 /**
  * Parses input arguments and creates a new AddAppointmentEventCommand object.
@@ -29,6 +29,7 @@ public class AddAppointmentCommandParser {
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddAppointmentEventCommand parse(String args) throws ParseException {
@@ -52,8 +53,8 @@ public class AddAppointmentCommandParser {
                     AddAppointmentEventCommand.MESSAGE_USAGE));
         }
 
-        LocalDate date = ParserUtil.parseLocalDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
-        LocalTime time = ParserUtil.parseLocalTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
+        Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_APPT_DATE).get());
+        Time time = ParserUtil.parseTime(argMultimap.getValue(PREFIX_APPT_TIME).get());
         AppointmentEvent appointmentEvent = new AppointmentEvent(date, time);
 
         return new AddAppointmentEventCommand(index, appointmentEvent);
