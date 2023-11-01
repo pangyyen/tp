@@ -92,7 +92,10 @@ public class MainWindow extends UiPart<Stage> {
 
         //setAccelerators();
         Scene mainScene = primaryStage.getScene();
-        mainScene.getAccelerators().put(KeyCombination.keyCombination("Alt+Tab"), this::switchTab);
+        mainScene.getAccelerators().put(KeyCombination.keyCombination("Ctrl+T"), this::switchTab);
+        mainScene.getAccelerators().put(KeyCombination.keyCombination("Ctrl+H"), this::handleHelp);
+        mainScene.getAccelerators().put(KeyCombination.keyCombination("Ctrl+Q"), this::handleExit);
+
         mainScene.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.isControlDown() && event.getCode() == KeyCode.TAB) {
                 event.consume();
