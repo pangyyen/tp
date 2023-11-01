@@ -35,10 +35,10 @@ public class AgeTest {
 
     @Test
     public void equals() {
-        Age age = new Age("Valid Age");
+        Age age = new Age("20");
 
         // same values -> returns true
-        assertTrue(age.equals(new Age("Valid Age")));
+        assertTrue(age.equals(new Age("20")));
 
         // same object -> returns true
         assertTrue(age.equals(age));
@@ -50,6 +50,6 @@ public class AgeTest {
         assertFalse(age.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(age.equals(new Age("Other Valid Age")));
+        assertFalse(age.equals(new Age("45")));
     }
 }

@@ -29,46 +29,46 @@ public class TypicalPatients {
 
     public static final Patient ALICE = new PatientBuilder().withName("Alice Pauline")
             .withNric("S1234567A")
-            .withAge("123, Jurong West Ave 6, #08-111").withEmail("alice@example.com")
+            .withAge("32").withEmail("alice@example.com")
             .withPhone("94351253")
             .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory())
             .withTags("friends").build();
     public static final Patient BENSON = new PatientBuilder().withName("Benson Meier")
             .withNric("S1234567B")
-            .withAge("311, Clementi Ave 2, #02-25")
+            .withAge("46")
             .withEmail("johnd@example.com").withPhone("98765432")
             .withTags("owesMoney", "friends").build();
     public static final Patient CARL = new PatientBuilder().withName("Carl Kurz")
             .withNric("S1234567C")
             .withPhone("95352563")
-            .withEmail("heinz@example.com").withAge("wall street").build();
+            .withEmail("heinz@example.com").withAge("77").build();
     public static final Patient DANIEL = new PatientBuilder().withName("Daniel Meier")
             .withNric("S1234567D")
             .withPhone("87652533")
-            .withEmail("cornelia@example.com").withAge("10th street")
+            .withEmail("cornelia@example.com").withAge("50")
             .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory()).withTags("friends").build();
     public static final Patient ELLE = new PatientBuilder().withName("Elle Meyer")
             .withNric("S1234567E")
             .withPhone("9482224")
-            .withEmail("werner@example.com").withAge("michegan ave").build();
+            .withEmail("werner@example.com").withAge("96").build();
     public static final Patient FIONA = new PatientBuilder().withName("Fiona Kunz")
             .withNric("S1234567F")
             .withPhone("9482427")
-            .withEmail("lydia@example.com").withAge("little tokyo").build();
+            .withEmail("lydia@example.com").withAge("69").build();
     public static final Patient GEORGE = new PatientBuilder().withName("George Best")
             .withNric("S1234567G")
             .withPhone("9482442")
-            .withEmail("anna@example.com").withAge("4th street").build();
+            .withEmail("anna@example.com").withAge("52").build();
 
     // Manually added
     public static final Patient HOON = new PatientBuilder().withName("Hoon Meier")
             .withNric("S1234567H")
             .withPhone("8482424")
-            .withEmail("stefan@example.com").withAge("little india").build();
+            .withEmail("stefan@example.com").withAge("13").build();
     public static final Patient IDA = new PatientBuilder().withName("Ida Mueller")
             .withNric("S1234567I")
             .withPhone("8482131")
-            .withEmail("hans@example.com").withAge("chicago ave").build();
+            .withEmail("hans@example.com").withAge("22").build();
 
     // Manually added - Patient's details found in {@code CommandTestUtil}
     public static final Patient AMY = new PatientBuilder().withName(VALID_NAME_AMY)

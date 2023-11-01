@@ -22,7 +22,7 @@ public class PatientBuilder {
     public static final String DEFAULT_NRIC = "S2345678Y";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_AGE = "1";
 
     private Name name;
     private Nric nric;
@@ -40,7 +40,7 @@ public class PatientBuilder {
         nric = new Nric(DEFAULT_NRIC);
         phone = new Phone(DEFAULT_PHONE);
         email = new Email(DEFAULT_EMAIL);
-        age = new Age(DEFAULT_ADDRESS);
+        age = new Age(DEFAULT_AGE);
         patientMedicalHistory = new PatientMedicalHistory();
         tags = new HashSet<>();
     }

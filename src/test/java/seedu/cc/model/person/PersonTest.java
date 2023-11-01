@@ -1,5 +1,7 @@
 package seedu.cc.model.person;
 
+import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -104,9 +106,10 @@ public class PersonTest {
         Name testName = new Name("John Doe");
         Phone testPhone = new Phone("12345678");
         Email testEmail = new Email("john@example.com");
+        Age testAge = new Age("20");
 
         // Creating a Person using constructor
-        Person testPerson = new Person(testName, testPhone, testEmail);
+        Person testPerson = new Person(testName, testPhone, testEmail, testAge, new HashSet<>());
 
         // Check that fields are correctly initialized
         assertEquals(testName, testPerson.getName());
@@ -114,7 +117,6 @@ public class PersonTest {
         assertEquals(testEmail, testPerson.getEmail());
 
         // Check that default/alternative values are set
-        assertEquals("NIL", testPerson.getAge().toString());
         assertEquals(0, testPerson.getTags().size());
     }
 

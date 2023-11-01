@@ -31,7 +31,7 @@ public class PatientTest {
         Nric nric = new Nric("M1234567A");
         Phone phone = new Phone("98765432");
         Email email = new Email("johndoe@example.com");
-        Age age = new Age("123, Jurong West Ave 6, #08-111");
+        Age age = new Age("12");
         Set<Tag> tags = new HashSet<>();
 
         // TODO: Add appointment and medical history

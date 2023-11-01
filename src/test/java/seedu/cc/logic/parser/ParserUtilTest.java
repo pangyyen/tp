@@ -23,13 +23,13 @@ import seedu.cc.model.tag.Tag;
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_ADDRESS = " ";
+    private static final String INVALID_AGE = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "123456";
-    private static final String VALID_ADDRESS = "123 Main Street #0505";
+    private static final String VALID_AGE = "5";
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
@@ -109,19 +109,19 @@ public class ParserUtilTest {
 
     @Test
     public void parseAge_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseAge(INVALID_ADDRESS));
+        assertThrows(ParseException.class, () -> ParserUtil.parseAge(INVALID_AGE));
     }
 
     @Test
     public void parseAge_validValueWithoutWhitespace_returnsAge() throws Exception {
-        Age expectedAge = new Age(VALID_ADDRESS);
-        assertEquals(expectedAge, ParserUtil.parseAge(VALID_ADDRESS));
+        Age expectedAge = new Age(VALID_AGE);
+        assertEquals(expectedAge, ParserUtil.parseAge(VALID_AGE));
     }
 
     @Test
     public void parseAge_validValueWithWhitespace_returnsTrimmedAge() throws Exception {
-        String addressWithWhitespace = WHITESPACE + VALID_ADDRESS + WHITESPACE;
-        Age expectedAge = new Age(VALID_ADDRESS);
+        String addressWithWhitespace = WHITESPACE + VALID_AGE + WHITESPACE;
+        Age expectedAge = new Age(VALID_AGE);
         assertEquals(expectedAge, ParserUtil.parseAge(addressWithWhitespace));
     }
 
