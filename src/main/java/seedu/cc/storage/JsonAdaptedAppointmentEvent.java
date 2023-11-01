@@ -17,7 +17,6 @@ import seedu.cc.model.util.Time;
 
 /**
  * Jackson-friendly version of {@link AppointmentEvent}.
- * Jackson-friendly version of {@link AppointmentEvent}.
  */
 public class JsonAdaptedAppointmentEvent {
 
@@ -25,15 +24,15 @@ public class JsonAdaptedAppointmentEvent {
 
 
     private final List<JsonAdaptedPrescription> prescriptions = new ArrayList<>();
-    private final Date date;
-    private final Time time;
+    private final String date;
+    private final String time;
 
     /**
      * Constructs a {@code JsonAdaptedAppointmentEvent} with the given medical history event details.
      */
     @JsonCreator
-    public JsonAdaptedAppointmentEvent(@JsonProperty("date") Date date,
-                                       @JsonProperty("localTime") Time time,
+    public JsonAdaptedAppointmentEvent(@JsonProperty("date") String date,
+                                       @JsonProperty("localTime") String time,
                                        @JsonProperty("prescription") List<JsonAdaptedPrescription> prescriptions) {
         this.date = date;
         this.time = time;
@@ -47,8 +46,8 @@ public class JsonAdaptedAppointmentEvent {
      * Converts a given {@code AppointmentEvent} into this class for Jackson use.
      */
     public JsonAdaptedAppointmentEvent(AppointmentEvent source) {
-        date = source.getDate();
-        time = source.getTime();
+        date = source.getDate().toString();
+        time = source.getTime().toString();
         this.prescriptions.addAll(source.getPrescriptions().stream()
                 .map(JsonAdaptedPrescription::new)
                 .collect(Collectors.toList()));
@@ -70,9 +69,12 @@ public class JsonAdaptedAppointmentEvent {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Local Time"));
         }
 
+        Date modelDate = new Date(this.date);
+        Time modelTime = new Time(this.time);
+
         if (prescriptions.isEmpty()) {
             System.out.println("No prescriptions");
-            return new AppointmentEvent(date, time);
+            return new AppointmentEvent(modelDate, modelTime);
         }
 
         final List<Prescription> patientPrescriptions = new ArrayList<>();
@@ -80,7 +82,7 @@ public class JsonAdaptedAppointmentEvent {
             patientPrescriptions.add(prescription.toModelType());
         }
         final Set<Prescription> prescriptionSet = new HashSet<>(patientPrescriptions);
-        return new AppointmentEvent(date, time, prescriptionSet);
+        return new AppointmentEvent(modelDate, modelTime, prescriptionSet);
 
     }
 }
