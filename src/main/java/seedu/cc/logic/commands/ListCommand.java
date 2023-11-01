@@ -19,6 +19,7 @@ public class ListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
+        model.setCurrentTab(0);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

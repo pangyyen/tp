@@ -225,8 +225,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void showPatientsTab() {
-        mainTabPane.getSelectionModel().select(0);
-        tabInfoLabel.setText("Patients");
+        changeTabs(0);
     }
 
     /**
@@ -234,8 +233,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void showMedicalHistoryTab() {
-        mainTabPane.getSelectionModel().select(1);
-        tabInfoLabel.setText("Medical History");
+        changeTabs(1);
     }
 
     /**
@@ -243,8 +241,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void showAppointmentsTab() {
-        mainTabPane.getSelectionModel().select(2);
-        tabInfoLabel.setText("Appointments");
+        changeTabs(2);
     }
 
     /**
@@ -255,12 +252,15 @@ public class MainWindow extends UiPart<Stage> {
         mainTabPane.getSelectionModel().select(tabIndex);
         switch (tabIndex) {
         case 0:
+            logic.setCurrentTab(0);
             tabInfoLabel.setText(Tabs.PATIENTS.toString());
             break;
         case 1:
+            logic.setCurrentTab(1);
             tabInfoLabel.setText(Tabs.MEDICAL_HISTORY.toString());
             break;
         case 2:
+            logic.setCurrentTab(2);
             tabInfoLabel.setText(Tabs.APPOINTMENTS.toString());
             break;
         default:

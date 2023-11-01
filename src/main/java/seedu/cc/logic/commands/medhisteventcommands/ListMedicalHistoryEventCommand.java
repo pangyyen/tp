@@ -43,6 +43,7 @@ public class ListMedicalHistoryEventCommand extends Command {
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listMedicalHistoryEvents(patient);
+        model.setCurrentTab(1);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
     }

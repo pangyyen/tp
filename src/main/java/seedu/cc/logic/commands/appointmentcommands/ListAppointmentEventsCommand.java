@@ -8,6 +8,7 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
+import seedu.cc.logic.commands.SwitchCommand;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
@@ -45,6 +46,7 @@ public class ListAppointmentEventsCommand extends Command {
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listAppointmentsEventForPatient(patient);
+        model.setCurrentTab(2);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
     }
