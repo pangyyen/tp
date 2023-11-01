@@ -41,7 +41,6 @@
             </ImageView>
           </StackPane>
 
-
           <!-- Adjustments for each button below -->
           <Button graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
             <graphic>

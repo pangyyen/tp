@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
@@ -81,6 +82,9 @@ public class MainWindow extends UiPart<Stage> {
         setWindowDefaultSize(logic.getGuiSettings());
 
         //setAccelerators();
+        Scene mainScene = primaryStage.getScene();
+        mainScene.getAccelerators().put(KeyCombination.keyCombination("Ctrl+Tab"), this::switchTab);
+
 
         helpWindow = new HelpWindow();
     }
@@ -267,6 +271,16 @@ public class MainWindow extends UiPart<Stage> {
             tabInfoLabel.setText("Unknown Tab");
             break;
         }
+    }
+
+    /**
+     * Switches to the next tab, used for shortcuts.
+     */
+    private void switchTab() {
+        int currentTabIndex = mainTabPane.getSelectionModel().getSelectedIndex();
+        int numberOfTabs = mainTabPane.getTabs().size();
+        int nextTabIndex = (currentTabIndex + 1) % numberOfTabs;  // This wraps around to the first tab when you're at the last tab
+        changeTabs(nextTabIndex);
     }
 
 }
