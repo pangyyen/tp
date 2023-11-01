@@ -11,6 +11,7 @@ import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
+import seedu.cc.logic.commands.SwitchCommand;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
@@ -39,6 +40,7 @@ public class AddAppointmentEventCommand extends Command {
 
     private final Index index;
     private final AppointmentEvent appointmentEvent;
+    private final SwitchCommand switchCommand;
 
     /**
      * Adds an appointment event to the patient at {@code index}.
@@ -50,6 +52,7 @@ public class AddAppointmentEventCommand extends Command {
         requireNonNull(appointmentEvent);
         this.index = index;
         this.appointmentEvent = appointmentEvent;
+        this.switchCommand = new SwitchCommand(Index.fromZeroBased(2));
     }
 
     @Override
@@ -63,7 +66,7 @@ public class AddAppointmentEventCommand extends Command {
 
         Patient patientToAddAppt = lastShownList.get(index.getZeroBased());
         model.addAppointmentEventToPatient(patientToAddAppt, appointmentEvent);
-
+        switchCommand.execute(model);
 
         return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
                 Messages.format(appointmentEvent, patientToAddAppt)));
