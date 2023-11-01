@@ -1,7 +1,5 @@
 package seedu.cc.model.person;
 
-import java.util.HashSet;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,6 +11,8 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.ALICE;
 import static seedu.cc.testutil.TypicalPatients.BOB;
+
+import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
 
