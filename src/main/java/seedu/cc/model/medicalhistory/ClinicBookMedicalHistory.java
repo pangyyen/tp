@@ -55,7 +55,6 @@ public class ClinicBookMedicalHistory implements Iterable<MedicalHistoryEvent> {
      * The medical history event must not be the same as another existing event in the list.
      */
     public void setMedicalHistoryEvent(MedicalHistoryEvent target, MedicalHistoryEvent editedEvent, Patient patient) {
-        listMedicalHistoryEvents(patient);
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new MedicalHistoryEventNotFoundException();
