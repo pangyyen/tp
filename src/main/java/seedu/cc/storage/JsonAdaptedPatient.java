@@ -14,7 +14,7 @@ import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.medicalhistory.PatientMedicalHistory;
 import seedu.cc.model.patient.Nric;
 import seedu.cc.model.patient.Patient;
-import seedu.cc.model.person.Address;
+import seedu.cc.model.person.Age;
 import seedu.cc.model.person.Email;
 import seedu.cc.model.person.Name;
 import seedu.cc.model.person.Person;
@@ -32,7 +32,7 @@ class JsonAdaptedPatient {
     private final String nric;
     private final String phone;
     private final String email;
-    private final String address;
+    private final String age;
     private final List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents = new ArrayList<>();
     private final List<JsonAdaptedAppointmentEvent> appointmentEvents = new ArrayList<>();
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
@@ -43,7 +43,7 @@ class JsonAdaptedPatient {
     @JsonCreator
     public JsonAdaptedPatient(@JsonProperty("name") String name, @JsonProperty("nric") String nric,
                               @JsonProperty("phone") String phone, @JsonProperty("email") String email,
-                              @JsonProperty("address") String address,
+                              @JsonProperty("age") String age,
                               @JsonProperty("medicalHistory") List<JsonAdaptedMedicalHistoryEvent> medicalHistoryEvents,
                               @JsonProperty("appointment") List<JsonAdaptedAppointmentEvent> appointmentEvents,
                               @JsonProperty("tags") List<JsonAdaptedTag> tags) {
@@ -51,7 +51,7 @@ class JsonAdaptedPatient {
         this.nric = nric;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+        this.age = age;
         if (medicalHistoryEvents != null) {
             this.medicalHistoryEvents.addAll(medicalHistoryEvents);
         }
@@ -71,7 +71,7 @@ class JsonAdaptedPatient {
         nric = source.getNric().value;
         phone = source.getPhone().value;
         email = source.getEmail().value;
-        address = source.getAddress().value;
+        age = source.getAge().value;
         medicalHistoryEvents.addAll(source.getMedicalHistory().getMedicalHistoryEvents().stream()
                 .map(JsonAdaptedMedicalHistoryEvent::new)
                 .collect(Collectors.toList()));
@@ -135,17 +135,17 @@ class JsonAdaptedPatient {
         }
         final Email modelEmail = new Email(email);
 
-        if (address == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        if (age == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Age.class.getSimpleName()));
         }
-        if (!Address.isValidAddress(address)) {
-            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        if (!Age.isValidAge(age)) {
+            throw new IllegalValueException(Age.MESSAGE_CONSTRAINTS);
         }
 
-        final Address modelAddress = new Address(address);
+        final Age modelAge = new Age(age);
         final Set<Tag> modelTags = new HashSet<>(patientTags);
         return new Patient(modelName, modelNric, modelPhone, modelEmail,
-                modelAddress, modelPatientAppointmentList, modelPatientMedicalHistory, modelTags);
+                modelAge, modelPatientAppointmentList, modelPatientMedicalHistory, modelTags);
     }
 
 }

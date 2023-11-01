@@ -8,6 +8,7 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
+import seedu.cc.logic.commands.SwitchCommand;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.patient.Patient;
@@ -27,11 +28,14 @@ public class ListAppointmentEventsCommand extends Command {
 
     private final Index patientIndex;
 
+    private final SwitchCommand switchCommand;
+
     /**
      * Creates a ListAppointmentEventsCommand to list the appointments of the specified {@code Patient}.
      */
     public ListAppointmentEventsCommand(Index patientIndex) {
         this.patientIndex = patientIndex;
+        this.switchCommand = new SwitchCommand(Index.fromZeroBased(2));
     }
 
     @Override
@@ -45,6 +49,7 @@ public class ListAppointmentEventsCommand extends Command {
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listAppointmentsEventForPatient(patient);
+        switchCommand.execute(model);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
     }

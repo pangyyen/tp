@@ -48,8 +48,8 @@ public class Messages {
                 .append(patient.getPhone())
                 .append("; Email: ")
                 .append(patient.getEmail())
-                .append("; Address: ")
-                .append(patient.getAddress())
+                .append("; Age: ")
+                .append(patient.getAge())
                 .append("; Tags: ");
         patient.getTags().forEach(builder::append);
         return builder.toString();
