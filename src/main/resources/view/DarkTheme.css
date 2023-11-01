@@ -123,19 +123,16 @@
     -fx-fill: #004080;
 }
 
-.sidebar-button-inner {
-    -fx-font-size: 18px;
-    -fx-background-color: #D0E6FF;
-    -fx-text-fill: #004080;
-    -fx-alignment: CENTER_LEFT;
-    -fx-text-alignment: LEFT;
-}
-
 .sidebar-button:hover {
     -fx-background-color: #BFD8E9;
 }
 
 .sidebar-active-button {
+    -fx-background-color: #4f9fff;
+    -fx-text-fill: #D0E6FF;
+}
+
+.sidebar-active-button:hover {
     -fx-background-color: #4f9fff;
     -fx-text-fill: #D0E6FF;
 }
