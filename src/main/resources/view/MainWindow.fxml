@@ -64,23 +64,35 @@
             </graphic>
           </Button>
           <Separator />
-          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#handleHelp" styleClass="sidebar-button" text="Help">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" maxHeight="70" onAction="#handleExit" styleClass="sidebar-button">
             <graphic>
-              <ImageView fx:id="helpIcon" fitHeight="40" fitWidth="40" />
+              <HBox spacing="10">
+                <ImageView fx:id="helpIcon" fitHeight="40" fitWidth="40" />
+                <VBox alignment="CENTER">
+                  <TextFlow>
+                    <Text text="Help   ("/>
+                    <Text text="Ctrl+H" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold;" />
+                    <Text text=")" />
+                  </TextFlow>
+                </VBox>
+              </HBox>
             </graphic>
           </Button>
           <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" maxHeight="70" onAction="#handleExit" styleClass="sidebar-button">
             <graphic>
               <HBox spacing="10">
                 <ImageView fx:id="exitIcon" fitHeight="40" fitWidth="40" />
-                <TextFlow>
-                  <Text text="Exit (" />
-                  <Text text="Ctrl+Q" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold;" />
-                  <Text text=")" />
-                </TextFlow>
+                <VBox alignment="CENTER">
+                  <TextFlow>
+                    <Text text="Exit   ("/>
+                    <Text text="Ctrl+Q" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold;" />
+                    <Text text=")" />
+                  </TextFlow>
+                </VBox>
               </HBox>
             </graphic>
           </Button>
+
         </VBox>
 
         <VBox>
