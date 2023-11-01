@@ -50,7 +50,7 @@ public class DeleteAppointmentEventCommand extends Command {
         List<Patient> lastPatientShownList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastPatientShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient personToDeleteAppointment = lastPatientShownList.get(patientIndex.getZeroBased());

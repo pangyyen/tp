@@ -52,7 +52,7 @@ public class AddMedicalHistoryEventCommand extends Command {
         List<Patient> lastShownList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient patientToAddMedicalHistoryEvent = lastShownList.get(patientIndex.getZeroBased());
@@ -60,5 +60,22 @@ public class AddMedicalHistoryEventCommand extends Command {
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(eventToAdd, patientToAddMedicalHistoryEvent)));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof AddMedicalHistoryEventCommand)) {
+            return false;
+        }
+
+        // state check
+        AddMedicalHistoryEventCommand e = (AddMedicalHistoryEventCommand) other;
+        return eventToAdd.equals(e.eventToAdd)
+                && patientIndex.equals(e.patientIndex);
     }
 }

@@ -26,7 +26,7 @@ import seedu.cc.model.tag.Tag;
  */
 class JsonAdaptedPatient {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Patient's %s field is missing!";
 
     private final String name;
     private final String nric;
@@ -103,7 +103,6 @@ class JsonAdaptedPatient {
         for (JsonAdaptedAppointmentEvent event : appointmentEvents) {
             modelPatientAppointmentList.addAppointmentList(event.toModelType());
         }
-
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
@@ -146,7 +145,7 @@ class JsonAdaptedPatient {
         final Address modelAddress = new Address(address);
         final Set<Tag> modelTags = new HashSet<>(patientTags);
         return new Patient(modelName, modelNric, modelPhone, modelEmail,
-                modelAddress, modelPatientMedicalHistory, modelTags);
+                modelAddress, modelPatientAppointmentList, modelPatientMedicalHistory, modelTags);
     }
 
 }

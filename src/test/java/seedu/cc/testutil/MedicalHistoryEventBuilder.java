@@ -29,6 +29,15 @@ public class MedicalHistoryEventBuilder {
     }
 
     /**
+     * Initializes the MedicalHistoryEventBuilder with the data of {@code medicalHistoryEventToCopy}.
+     */
+    public MedicalHistoryEventBuilder(MedicalHistoryEvent medicalHistoryEventToCopy) {
+        date = medicalHistoryEventToCopy.getDate();
+        medicalCondition = medicalHistoryEventToCopy.getMedicalCondition();
+        treatment = medicalHistoryEventToCopy.getTreatment();
+    }
+
+    /**
      * Sets the {@code Date} of the {@code MedicalHistoryEvent} that we are building.
      */
     public MedicalHistoryEventBuilder withDate(String date) {

@@ -11,22 +11,22 @@ import seedu.cc.commons.core.LogsCenter;
 import seedu.cc.model.patient.Patient;
 
 /**
- * Panel containing the list of persons.
+ * Panel containing the list of patients.
  */
 public class PatientListPanel extends UiPart<Region> {
     private static final String FXML = "PatientListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PatientListPanel.class);
 
     @FXML
-    private ListView<Patient> personListView;
+    private ListView<Patient> patientListView;
 
     /**
      * Creates a {@code PatientListPanel} with the given {@code ObservableList}.
      */
-    public PatientListPanel(ObservableList<Patient> personList) {
+    public PatientListPanel(ObservableList<Patient> patientList) {
         super(FXML);
-        personListView.setItems(personList);
-        personListView.setCellFactory(listView -> new PatientListViewCell());
+        patientListView.setItems(patientList);
+        patientListView.setCellFactory(listView -> new PatientListViewCell());
     }
 
     /**
@@ -34,14 +34,14 @@ public class PatientListPanel extends UiPart<Region> {
      */
     class PatientListViewCell extends ListCell<Patient> {
         @Override
-        protected void updateItem(Patient person, boolean empty) {
-            super.updateItem(person, empty);
+        protected void updateItem(Patient patient, boolean empty) {
+            super.updateItem(patient, empty);
 
-            if (empty || person == null) {
+            if (empty || patient == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new PatientCard(person, getIndex() + 1).getRoot());
+                setGraphic(new PatientCard(patient, getIndex() + 1).getRoot());
             }
         }
     }

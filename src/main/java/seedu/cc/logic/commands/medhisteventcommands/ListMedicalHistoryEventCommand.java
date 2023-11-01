@@ -38,13 +38,27 @@ public class ListMedicalHistoryEventCommand extends Command {
         List<Patient> lastShownList = model.getFilteredPatientList();
 
         if (patientIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
         Patient patient = lastShownList.get(patientIndex.getZeroBased());
         model.listMedicalHistoryEvents(patient);
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(patient)));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        // short circuit if same object
+        if (other == this) {
+            return true;
+        } else if (!(other instanceof ListMedicalHistoryEventCommand)) {
+            return false;
+        }
+
+        // state check
+        ListMedicalHistoryEventCommand e = (ListMedicalHistoryEventCommand) other;
+        return patientIndex.equals(e.patientIndex);
     }
 
 }

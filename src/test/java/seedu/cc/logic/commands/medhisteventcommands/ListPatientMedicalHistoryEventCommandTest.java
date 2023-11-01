@@ -44,6 +44,6 @@ public class ListPatientMedicalHistoryEventCommandTest {
         ListMedicalHistoryEventCommand listMedicalHistoryEventCommand =
                 new ListMedicalHistoryEventCommand(outOfBoundIndex);
 
-        assertCommandFailure(listMedicalHistoryEventCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(listMedicalHistoryEventCommand, model, Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
     }
 }
