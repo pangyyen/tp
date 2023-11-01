@@ -12,10 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
 
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.Label?>
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="CareCentral" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Text?>
+<fx:root minHeight="675" minWidth="700" onCloseRequest="#handleExit" title="CareCentral" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/HospitalLogo.png" />
   </icons>
@@ -42,7 +45,7 @@
           </StackPane>
 
           <!-- Text box under the logo -->
-          <Label text="Shortcut: Alt + Tab (Windows) / Option + Tab (Mac) to navigate between tabs!" wrapText="true" />
+          <Label text="Shortcut: Ctrl + T to navigate between tabs!" wrapText="true" />
 
           <!-- Adjustments for each button below -->
           <Button fx:id="sidebarButton1" graphicTextGap="15.0" onAction="#showPatientsTab" maxWidth="Infinity" minHeight="70" styleClass="sidebar-button" text="Patients">
@@ -66,9 +69,16 @@
               <ImageView fx:id="helpIcon" fitHeight="40" fitWidth="40" />
             </graphic>
           </Button>
-          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" onAction="#handleExit" styleClass="sidebar-button" text="Exit">
+          <Button graphicTextGap="15.0" maxWidth="Infinity" minHeight="70" maxHeight="70" onAction="#handleExit" styleClass="sidebar-button">
             <graphic>
-              <ImageView fx:id="exitIcon" fitHeight="40" fitWidth="40" />
+              <HBox spacing="10">
+                <ImageView fx:id="exitIcon" fitHeight="40" fitWidth="40" />
+                <TextFlow>
+                  <Text text="Exit (" />
+                  <Text text="Ctrl+Q" style="-fx-font-family: 'Courier New'; -fx-font-weight: bold;" />
+                  <Text text=")" />
+                </TextFlow>
+              </HBox>
             </graphic>
           </Button>
         </VBox>
