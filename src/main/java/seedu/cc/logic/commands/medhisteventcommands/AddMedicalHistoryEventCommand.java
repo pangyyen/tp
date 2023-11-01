@@ -11,6 +11,7 @@ import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
 import seedu.cc.logic.commands.Command;
 import seedu.cc.logic.commands.CommandResult;
+import seedu.cc.logic.commands.SwitchCommand;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
@@ -35,6 +36,7 @@ public class AddMedicalHistoryEventCommand extends Command {
 
     private final MedicalHistoryEvent eventToAdd;
     private final Index patientIndex;
+    private final SwitchCommand switchCommand;
 
     /**
      * Creates an AddMedicalHistoryEventCommand to add the specified {@code MedicalHistoryEvent}.
@@ -44,6 +46,7 @@ public class AddMedicalHistoryEventCommand extends Command {
         requireNonNull(patientIndex);
         this.eventToAdd = eventToAdd;
         this.patientIndex = patientIndex;
+        this.switchCommand = new SwitchCommand(Index.fromZeroBased(1));
     }
 
     @Override
@@ -57,6 +60,7 @@ public class AddMedicalHistoryEventCommand extends Command {
 
         Patient patientToAddMedicalHistoryEvent = lastShownList.get(patientIndex.getZeroBased());
         model.addMedicalHistoryEvent(patientToAddMedicalHistoryEvent, eventToAdd);
+        switchCommand.execute(model);
 
         return new CommandResult(String.format(MESSAGE_SUCCESS,
                 Messages.format(eventToAdd, patientToAddMedicalHistoryEvent)));
