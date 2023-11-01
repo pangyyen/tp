@@ -87,29 +87,24 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+### Model component     
+**API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
 
 The `Model` component,
 
-* stores the address book data i.e., all `Person` objects (which are contained in a `UniquePersonList` object).
-* stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the clinic book data i.e., all `Patient` objects (which are contained in a `UniquePersonList` object).
+* stores the currently 'selected' `Patient` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
 
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -120,7 +115,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.]
+Classes used by multiple components are in the `seedu.cc.commons` package.]
 
 ## Implementation
 
@@ -194,33 +189,6 @@ Given below is the UML diagram for the `Pharmacy` class.
 - As a doctor (Age: 30-60), I can view patient feedback and reviews about their visit, enabling me to continuously improve my service and better meet their needs.
 
 ## Use Cases
-
-### Must Have
-
-1. **Create New Patient Records**
-   - **MSS (Main Success Scenario):**
-      1. Doctor chooses to create a new patient record.
-      2. App prompts for the patient's details.
-      3. Doctor enters the required information.
-      4. App saves the new patient record.
-      5. Doctor views the updated list of patient records.
-
-2. **View All Existing Patient Records**
-   - **MSS:**
-      1. Doctor chooses to view all patient records.
-      2. App displays the list of all patient records.
-3. **View One Patient Record**
-   - **MSS:**
-      1. Doctor searches for a specific patient record.
-      2. App displays the patient's record.
-
-4. **Delete Patient Record**
-   - **MSS:**
-      1. Doctor selects a patient record to delete.
-      2. App deletes the selected record.
-      3. Doctor views the updated list of patient records.
-
-
 
 ### Nice to Have
 
@@ -490,6 +458,8 @@ Given below is the UML diagram for the `Pharmacy` class.
     * 1a1. System shows an error message.
 
       Use case ends.
+
+
 
 ### Non-Functional Requirements
 

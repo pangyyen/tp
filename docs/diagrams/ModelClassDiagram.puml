@@ -20,6 +20,14 @@ Class Name
 Class Phone
 Class Tag
 
+Class ClinicBookMedicalHistory
+Class MedicalHistoryEvent
+Class PatientMedicalHistory
+
+Class ClinicBookAppointmentList
+Class AppointmentEvent
+Class PatientAppointmentList
+
 Class I #FFFFFF
 }
 
@@ -36,12 +44,23 @@ ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 ClinicBook *--> "1" UniquePatientList
+ClinicBook *--> "1" ClinicBookMedicalHistory
+ClinicBook *--> "1" ClinicBookAppointmentList
 UniquePatientList --> "~* all" Patient
+ClinicBookMedicalHistory --> "~* all" MedicalHistoryEvent
+ClinicBookAppointmentList --> "~* all" AppointmentEvent
+
 Patient *--> Name
 Patient *--> Phone
 Patient *--> Email
 Patient *--> Address
 Patient *--> "*" Tag
+Patient *--> "*" PatientAppointmentList
+Patient *--> "*" PatientMedicalHistory
+
+PatientAppointmentList *--> "*" AppointmentEvent
+PatientMedicalHistory *--> "*" MedicalHistoryEvent
+
 
 Patient -[hidden]up--> I
 UniquePatientList -[hidden]right-> I
