@@ -1,4 +1,4 @@
-# CareCentral App README 
+# CareCentral App README
 
 ## 🌟 Overview
 
