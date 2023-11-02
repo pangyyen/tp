@@ -48,7 +48,8 @@ public class AppointmentEventCard extends UiPart<Region> {
         } else {
             ArrayList<String> prescriptions = new ArrayList<>();
             for (Prescription pres : appointmentEvent.getPrescriptions()) {
-                prescriptions.add(pres.toString());
+                String result = pres.toString().replace("[", "").replace("]", "");
+                prescriptions.add(result);
             }
             prescription.setText(String.join(", ", prescriptions));
         }
