@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.logic.commands.medhisteventcommands.ListMedicalHistoryEventCommand;
 
-class ListMedicalHistoryEventsCommandParserTest {
-    private final ListMedicalHistoryEventsCommandParser parser = new ListMedicalHistoryEventsCommandParser();
+class ListMedicalHistoryEventCommandParserTest {
+    private final ListMedicalHistoryEventCommandParser parser = new ListMedicalHistoryEventCommandParser();
 
     @Test
     public void parse_validArgs_returnsDeleteCommand() {
