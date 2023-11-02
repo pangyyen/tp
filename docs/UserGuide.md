@@ -155,7 +155,6 @@ Finds persons whose names contain any of the given keywords.
 
 ---
 
-=======
 ## 6.1.3. Edit Patient Record
 
 
