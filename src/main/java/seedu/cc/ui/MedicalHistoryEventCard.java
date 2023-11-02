@@ -25,6 +25,8 @@ public class MedicalHistoryEventCard extends UiPart<Region> {
     @javafx.fxml.FXML
     private HBox cardPane;
     @FXML
+    private Label id;
+    @FXML
     private Label date;
     @FXML
     private Label medicalCondition;
@@ -38,6 +40,8 @@ public class MedicalHistoryEventCard extends UiPart<Region> {
     public MedicalHistoryEventCard(MedicalHistoryEvent medicalHistoryEvent, int displayedIndex) {
         super(FXML);
         this.medicalHistoryEvent = medicalHistoryEvent;
+        id.setText(displayedIndex + ". ");
+
         date.setText(medicalHistoryEvent.getDate().toString());
         medicalCondition.setText(medicalHistoryEvent.getMedicalCondition().toString());
         treatment.setText(medicalHistoryEvent.getTreatment().toString());
