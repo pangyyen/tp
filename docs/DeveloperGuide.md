@@ -80,7 +80,7 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Patient` object residing in the `Model`.
 
 ### Logic component
 
@@ -100,7 +100,7 @@ call as an example.
 
 How the `Logic` component works:
 
-1. When `Logic` is called upon to execute a command, it is passed to an `AddressBookParser` object which in turn creates
+1. When `Logic` is called upon to execute a command, it is passed to an `ClinicBookParser` object which in turn creates
    a parser that matches the command (e.g., `DeleteCommandParser`) and uses it to parse the command.
 1. This results in a `Command` object (more precisely, an object of one of its subclasses e.g., `DeleteCommand`) which
    is executed by the `LogicManager`.
@@ -113,9 +113,9 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 
 How the parsing works:
 
-* When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a
+* When called upon to parse a user command, the `ClinicBookParser` class creates an `XYZCommandParser` (`XYZ` is a
   placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse
-  the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as
+  the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `ClinicBookParser` returns back as
   a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
@@ -130,9 +130,9 @@ How the parsing works:
 
 The `Model` component,
 
-* stores the clinic book data i.e., all `Patient` objects (which are contained in a `UniquePersonList` object).
+* stores the clinic book data i.e., all `Patient` objects (which are contained in a `UniquePatientList` object).
 * stores the currently 'selected' `Patient` objects (e.g., results of a search query) as a separate _filtered_ list
-  which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be
+  which is exposed to outsiders as an unmodifiable `ObservableList<Patient>` that can be 'observed' e.g. the UI can be
   bound to this list so that the UI automatically updates when the data in the list change.
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as
   a `ReadOnlyUserPref` objects.
@@ -148,9 +148,9 @@ The `Model` component,
 
 The `Storage` component,
 
-* can save both address book data and user preference data in JSON format, and read them back into corresponding
+* can save both clinic book data and user preference data in JSON format, and read them back into corresponding
   objects.
-* inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only
+* inherits from both `ClinicBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only
   the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects
   that belong to the `Model`)
@@ -183,7 +183,7 @@ that `PatientMedicalHistory` is a list of
 `MedicalHistoryEvent` while `ClinicBookMedicalHistory` is a list of `MedicalHistoryEvent` that is currently being
 displayed.
 
-#### An example usage scenario and how the medical history mechanism behaves at each step is shown below.
+**An example usage scenario and how the medical history mechanism behaves at each step is shown below.**
 
 Step 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
 of `MedicalHistoryEvent`.
@@ -206,7 +206,7 @@ Step 5. UI displays the response in the CommandResult. In addition, UI will chan
 of `MedicalHistoryEvent` after model updates `filteredMedicalHistoryEvents`, since `Ui` is constantly listening for the
 change in `Model`.
 
-The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario
+**The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario**
 
 <img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
 
@@ -230,9 +230,9 @@ The proposed undo/redo mechanism is facilitated by the `VersionedClinicBook` cla
 extends `ClinicBook` with an undo/redo history, stored internally as `clinicBookStateList` and `currentStatePointer`.
 Additionally, it implementes the following operations:
 
-* `VersionedClinicBook#commit()` — Saves the current address book state in its history.
-* `VersionedClinicBook#undo()` — Restores the previous address book state from its history.
-* `VersionedClinicBook#redo()` — Restores a previously undone address book state from its history.
+* `VersionedClinicBook#commit()` — Saves the current clinic book state in its history.
+* `VersionedClinicBook#undo()` — Restores the previous clinic book state from its history.
+* `VersionedClinicBook#redo()` — Restores a previously undone clinic book state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitClinicBook()`, `Model#undoClinicBook()`
 and `Model#redoClinicBook()` respectively.
@@ -325,8 +325,6 @@ Additionally, it implementes the following operations:
 
 ### Product scope
 
-## User Stories
-
 **Target user profile**:
 
 - medical administrators who need to oversee the operations of a clinic who has a substantial number of patients
@@ -336,7 +334,7 @@ Additionally, it implementes the following operations:
 
 **Value proposition**: The app helps the user to manage patient records, medical histories and appointments.
 
-## Use Stories
+### User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -722,38 +720,42 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the jar file and copy into an empty folder
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+2. Saving window preferences
 
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
+    2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
 
 ### Deleting a patient
 
 1. Deleting a patient while all patients are being shown
 
-    1. Prerequisites: List all persons using the `list-patients` command. Multiple persons in the list.
+    1. Prerequisites: List all patients using the `list-patients` command. Multiple patients in the list.
 
-    1. Test case: `delete-patient 1`<br>
+    2. Test case: `delete-patient 1`<br>
        Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-    1. Test case: `delete-patient 1`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+    3. Test case: `delete-patient 1`<br>
+       Expected: No patient is deleted. Error details shown in the status message. Status bar remains the same.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
        Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+Dealing with missing/corrupted data files:
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+1. If the application is launched and shut down at least once, there will be one local database in json format, i.e. `clinicbook.json`. Make sure that the generated `clinicbook.json` is not modified to ensure the completeness and accuracy of the data.
 
-1. _{ more test cases …​ }_
+
+2. In the case of `clinicbook.json` being corrupted,
+
+    i. Look up for the corrupted part of the `clinicbook.json`, manually delete the corrupted entry of patient, this method requires more technical skills on handling json file.
+
+    ii. If attempt above is in vain, delete `clinicbook.json`, and launch CareCentral again. All user manipulation on entries and diaries will be cleared. 
+
