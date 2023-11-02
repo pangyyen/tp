@@ -1,11 +1,7 @@
 package seedu.cc.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_AGE;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.cc.logic.parser.CliSyntax.*;
 import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -30,17 +26,18 @@ import seedu.cc.model.person.Phone;
 import seedu.cc.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the clinic book.
+ * Edits the details of an existing patient in the clinic book.
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit-patient";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the patient identified "
+            + "by the index number used in the displayed patient list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_NRIC + "NRIC] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_AGE + "AGE] "
@@ -161,7 +158,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, age, tags);
+            return CollectionUtil.isAnyNonNull(name, nric, phone, email, age, tags);
         }
 
         public void setName(Name name) {
