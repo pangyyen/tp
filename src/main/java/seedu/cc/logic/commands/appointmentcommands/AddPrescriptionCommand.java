@@ -28,14 +28,13 @@ public class AddPrescriptionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds prescriptions to the appointment "
             + "by the index number used in the displayed appointment list.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
-            + PREFIX_MEDICINE_NAME + "MEDICINE NAME\n"
-            + "Example: " + COMMAND_WORD + " 1 "
+            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
+            + "[" + PREFIX_MEDICINE_NAME + "MEDICINE NAME]"
+            + "\nExample: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "1 "
             + PREFIX_MEDICINE_NAME + "Panadol";
 
     public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added a prescription: \n%1$s";
-    public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid medicine.";
     private final Index patientIndex;
     private final Index eventIndex;
     private final EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor;
