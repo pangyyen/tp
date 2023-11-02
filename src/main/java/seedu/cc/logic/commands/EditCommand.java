@@ -1,7 +1,12 @@
 package seedu.cc.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.parser.CliSyntax.*;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_AGE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_NRIC;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.cc.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;

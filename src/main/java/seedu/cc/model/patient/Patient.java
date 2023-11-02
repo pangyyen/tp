@@ -114,6 +114,7 @@ public class Patient extends Person {
         return super.equals(other);
     }
 
+    @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", super.getName())
