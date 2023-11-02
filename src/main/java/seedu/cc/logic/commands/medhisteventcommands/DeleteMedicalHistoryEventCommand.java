@@ -28,7 +28,7 @@ public class DeleteMedicalHistoryEventCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "PATIENT INDEX ";
 
-    public static final String MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS = "Deleted Medical History: %1$s";
+    public static final String MESSAGE_DELETE_MEDICAL_HISTORY_SUCCESS = "Deleted Medical History:\n %1$s";
 
     private final Index eventIndex;
 
