@@ -16,7 +16,7 @@ professionals manage their patients' medical journey.
 
 # 2. Quick Start
 1. Ensure you have Java 11 installed in your Computer.
-2. Download the latest `carecentral.jar` from [here](). 
+2. Download the latest `carecentral.jar` from [here]().
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
@@ -25,7 +25,7 @@ professionals manage their patients' medical journey.
 6. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
-   
+
    * `add-p n/John Doe ic/S1234567A a/45 p/91234567`
    * `list-p`
    * `delete-p 1`
@@ -40,7 +40,7 @@ professionals manage their patients' medical journey.
 ## 3.2 Menu Bar
 The menu bar contains the following tabs:
 * Patients
-* Medical History 
+* Medical History
 * Appointments
 
 Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using Ctrl+T.
