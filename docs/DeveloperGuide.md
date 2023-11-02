@@ -2,6 +2,13 @@
 layout: page
 title: Developer Guide
 ---
+
+* Table of Contents
+{:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+## **Design**
+
 ### Architecture
 
 <img src="images/ArchitectureDiagram.png" width="280" />
@@ -31,8 +38,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-p 1`.
-=======
+#### The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-p 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -78,8 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API
-** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -154,7 +159,9 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.cc.commons` package.]
 
-## Implementation
+--------------------------------------------------------------------------------------------------------------------
+
+## **Implementation**
 
 ### Medical History
 
@@ -203,17 +210,17 @@ The Sequence Diagram below shows how the components interact with each other for
 
 <img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
 
-### Appointment-related features
-
-#### Proposed Implementation
+### Appointment
 
 The appointment-related features are facilitated by the `appointment` package. The `appointment` package
 includes `AppointmentEvent`, `PatientAppointmentList` and `ClinicBookAppointmentList`.
-The `PatientAppointmentList` a an attribute for each `Patient` and stores a list of `AppointmentEvent`.
+
+The `PatientAppointmentList` is an attribute for each `Patient` and stores a list of `AppointmentEvent`; and the attribute will be stored in `clinicbook.json`
 The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for display purposes.
 
-The sequence diagram below shows the interaction between the `Logic` component and the `Model` component when the user
-issues the `add-appointment` command.
+When the user starts an application, there will be an empty `ClinicBookCLinicBookAppointment`. It will be populated when the
+user executes `list-appointments` command.
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -227,8 +234,62 @@ Additionally, it implementes the following operations:
 * `VersionedClinicBook#undo()` — Restores the previous address book state from its history.
 * `VersionedClinicBook#redo()` — Restores a previously undone address book state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()`
-and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitClinicBook()`, `Model#undoClinicBook()`
+and `Model#redoClinicBook()` respectively.
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `VersionedClinicBook` will be initialized with the initial clinic book state, and the `currentStatePointer` pointing to that single clinic book state.
+
+![UndoRedoState0](images/UndoRedoState0.png)
+
+Step 2. The user executes `delete 5` command to delete the 5th patient in the clinic book. The `delete` command calls `Model#commitClinicBook()`, causing the modified state of the clinic book after the `delete 5` command executes to be saved in the `clinicBookStateList`, and the `currentStatePointer` is shifted to the newly inserted clinic book state.
+
+![UndoRedoState1](images/UndoRedoState1.png)
+
+Step 3. The user executes `add n/David …​` to add a new patient. The `add` command also calls `Model#commitClinicBook()`, causing another modified clinic book state to be saved into the `clinicBookStateList`.
+
+![UndoRedoState2](images/UndoRedoState2.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitClinicBook()`, so the clinic book state will not be saved into the `clinicBookStateList`.
+
+</div>
+
+Step 4. The user now decides that adding the patient was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoClinicBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous clinic book state, and restores the clinic book to that state.
+
+![UndoRedoState3](images/UndoRedoState3.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial ClinicBook state, then there are no previous ClinicBook states to restore. The `undo` command uses `Model#canUndoClinicBook()` to check if this is the case. If so, it will return an error to the user rather
+than attempting to perform the undo.
+
+</div>
+
+The following sequence diagram shows how the undo operation works:
+
+![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+The `redo` command does the opposite — it calls `Model#redoClinicBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the clinic book to that state.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `clinicBookStateList.size() - 1`, pointing to the latest clinic book state, then there are no undone ClinicBook states to restore. The `redo` command uses `Model#canRedoClinicBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+
+</div>
+
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the clinic book, such as `list`, will usually not call `Model#commitClinicBook()`, `Model#undoClinicBook()` or `Model#redoClinicBook()`. Thus, the `clinicBookStateList` remains unchanged.
+
+![UndoRedoState4](images/UndoRedoState4.png)
+
+Step 6. The user executes `clear`, which calls `Model#commitClinicBook()`. Since the `currentStatePointer` is not pointing at the end of the `clinicBookStateList`, all clinic book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+
+![UndoRedoState5](images/UndoRedoState5.png)
+
+The following activity diagram summarizes what happens when a user executes a new command:
+
+<img src="images/CommitActivityDiagram.png" width="250" />
+
 
 ### \[Proposed\] Pharmacy Integration
 
@@ -248,7 +309,7 @@ Additionally, it implementes the following operations:
 * `Pharmacy#updateMedicine()` — Updates a `Medicine` from the `medicineList`.
 * `Pharmacy#updatePrescription()` — Updates a `Prescription` from the `prescriptionList`.
 
-Given below is the UML diagram for the `Pharmacy` class.
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
@@ -312,7 +373,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG01 - Create Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -331,7 +392,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG02 - List Patients
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -349,7 +410,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG03 - Edit Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -369,7 +430,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG04 - Delete Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -388,7 +449,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG05 - Add Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -409,7 +470,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG06 - List All Appointments
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -427,7 +488,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG07 - Edit Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -452,7 +513,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG08 - Delete Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -471,7 +532,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG09 - Add Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -492,7 +553,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG10 - List Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -515,7 +576,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG11 - Edit Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -541,7 +602,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Use case: UG12 - Delete Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -557,6 +618,73 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. System shows an error message.
 
       Use case ends.
+
+Certainly! Below are the use cases created from the user stories:
+
+#### Use case: UC13 - Find Patient by Name
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff requests to find a patient using the patient's name.
+2. System searches for the patient and displays the relevant patient records.
+3. Medical Staff views the patient’s information.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No patient record matches the given name.
+    * 2a1. System informs the Medical Staff that no matching record was found.
+
+      Use case ends.
+
+#### Use case: UC14 - Clear All Listed Patients
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the option to clear all listed patients.
+2. System removes all patient records from the current view.
+3. Medical Staff views the cleared list.
+
+   Use case ends.
+
+#### Use case: UC15 - Switch Between Different Tabs
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the tab they wish to view (patient details, medical history, or appointments).
+2. System displays the content of the selected tab.
+
+   Use case ends.
+
+#### Use case: UC16 - Access Help Page
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the option to view the help page.
+2. System displays the help page with guidance on how to use the application.
+3. Medical Staff views and interacts with the help page as needed.
+
+   Use case ends.
+
+#### Use case: UC17 - Exit Application
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff chooses the option to exit the application.
+2. System securely closes the application.
+
+   Use case ends.
 
 ### Non-Functional Requirements
 
