@@ -313,52 +313,61 @@ Additionally, it implementes the following operations:
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## **Appendix: Requirements**
 
-
 ### Product scope
+
+## User Stories
 
 **Target user profile**:
 
-* has a need to manage a significant number of patients' details, appointments and medical histories
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+- medical administrators who need to oversee the operations of a clinic who has a substantial number of patients
+- favor desktop applications over other platforms
+- prefer a CLI-based interface over a GUI-based interface
+- are comfortable typing commands
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: The app helps the user to manage patient records, medical histories and appointments.
 
-### User Stories
+## Use Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​       | I want to …​                          | So that I can…​                                                            |
-|----------|---------------|---------------------------------------|----------------------------------------------------------------------------|
-| `* * *`  | Medical Staff | add a new patient record              | record patient details                                                     |
-| `* * *`  | Medical Staff | delete a specific patient record      | remove obsolete or incorrect patient information                           |
-| `* * *`  | Medical Staff | view a list of all patients           | have a quick overview of all patients                                      |
-| `* * *`  | Medical Staff | add medical history to a patient      | keep a comprehensive record of patient health                              |
-| `* * *`  | Medical Staff | delete a patient's medical history    | remove outdated or incorrect medical information                           |
-| `* * *`  | Medical Staff | view a patient's medical history      | have access to the patient's complete medical records                      |
-| `* * *`  | Medical Staff | add in new appointment                | organize and manage patient visits                                         |
-| `* * *`  | Medical Staff | delete appointments                   | adapt to changes in patient care scheduling                                |
-| `* * *`  | Medical Staff | view all appointments of a patient    | have an overview of all scheduled patient visits                           |
-| `* * *`  | Medical Staff | access a help page                    | find guidance on how to use the application                                |
-| `* * `   | Medical Staff | edit a specific patient record        | update patient information as needed                                       |
-| `* * `   | Medical Staff | edit a patient's medical history      | correct any errors in the medical history                                  |
-| `* * `   | Medical Staff | edit appointment details              | accommodate changes in patient care planning                               |
-| `* * `   | Medical Staff | find a patient by name                | quickly access a patient's information                                     |
-| `* * `   | Medical Staff | exit the application                  | securely close the application when finished                               |
-| `* * `   | Medical Staff | clear all listed patients             |                                                                            |
-| `* `     | Medical Staff | quickly switch between different tabs | easily navigate between patient details, medical history, and appointments |
+| Priority | As a …                | I can …                             | To fulfill …                                        |
+|----------|-----------------------|-------------------------------------|-----------------------------------------------------|
+| `* * *`  | medical administrator | add a patient record                | Efficiently maintain patient records                |
+| `* * *`  | medical administrator | list all patients                   | Easily view the complete patient list               |
+| `* * *`  | medical administrator | edit a patient record               | Keep patients' information up to date               |
+| `* * *`  | medical administrator | delete a patient record             | Remove patients who are no longer under care        |
+| `* *`    | medical administrator | give patients different priorities  | Prioritize patient care effectively                 |
+| `* `     | medical administrator | list patients by priority           | Quickly access patients based on priority           |
+| `* * *`  | medical administrator | add an appointment                  | Schedule appointments for patients                  |
+| `* * *`  | medical administrator | list all appointments of a patient  | Access a patient's complete appointment history     |
+| `* * *`  | medical administrator | edit an appointment                 | Modify appointment details as needed                |
+| `* * *`  | medical administrator | delete an appointment               | Eliminate unnecessary appointments                  |
+| `*`      | medical administrator | cancel an appointment               | Efficiently manage appointment cancellations        |
+| `* *`    | medical administrator | sort appointments by date           | Easily view appointments in chronological order     |
+| `* `     | medical administrator | mark an appointment as missed       | Record the status of missed appointments            |
+| `*`      | medical administrator | mark an appointment as attended     | Record the status of attended appointments          |
+| `* * `   | medical administrator | add prescriptions to an appointment | Easily document prescribed medications for patients |
+| `* * *`  | medical administrator | add a medical history               | Keep comprehensive medical histories for patients   |
+| `* * *`  | medical administrator | list a patient's medical history    | Access and review patient medical histories         |
+| `* * *`  | medical administrator | edit a medical history              | Update patient medical histories as necessary       |
+| `* * *`  | medical administrator | delete a medical history            | Remove outdated or irrelevant medical histories     |
+| `* * *`  | medical administrator | find a patient                      | Quickly locate specific patients                    |
+| `* *`    | medical administrator | find an appointment                 | Easily search for specific appointments             |
+| `* * `   | medical administrator | find a medical history              | Quickly retrieve specific patient medical histories |
+| `*`      | medical administrator | undo previous action                | Correct any inadvertent actions                     |
+| `*`      | medical administrator | redo previous action                | Reapply actions that were previously undone         |
+| `* * *`  | medical administrator | exit the app                        | Close the application with ease                     |
+| `* * *`  | medical administrator | get help                            | Access a list of available commands and assistance  |
 
 ### Use Cases
 
@@ -696,4 +705,55 @@ Certainly! Below are the use cases created from the user stories:
 - medical history, prescriptions, and appointmentEvent records.
 - **User:** Refers to the healthcare professionals using the CareCentral app.
 
---------------------------------------------------------------------------------------------------------------------
+---
+
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+
+1. Saving window preferences
+
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+
+    1. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The most recent window size and location is retained.
+
+1. _{ more test cases …​ }_
+
+### Deleting a patient
+
+1. Deleting a patient while all patients are being shown
+
+    1. Prerequisites: List all persons using the `list-patients` command. Multiple persons in the list.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Saving data
+
+1. Dealing with missing/corrupted data files
+
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+1. _{ more test cases …​ }_

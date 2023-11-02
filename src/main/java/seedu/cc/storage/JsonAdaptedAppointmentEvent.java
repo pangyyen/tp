@@ -33,7 +33,7 @@ public class JsonAdaptedAppointmentEvent {
     @JsonCreator
     public JsonAdaptedAppointmentEvent(@JsonProperty("date") String date,
                                        @JsonProperty("localTime") String time,
-                                       @JsonProperty("prescription") List<JsonAdaptedPrescription> prescriptions) {
+                                       @JsonProperty("prescriptions") List<JsonAdaptedPrescription> prescriptions) {
         this.date = date;
         this.time = time;
         if (prescriptions != null) {
