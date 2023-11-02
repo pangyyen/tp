@@ -156,6 +156,30 @@ Classes used by multiple components are in the `seedu.cc.commons` package.]
 
 ## Implementation
 
+### Patient
+
+A `Patient` has the following fields:
+
+* Each `Patient` has a unique combination of `Name`, `Age`, `Nric`, `Email` and `Phone`
+* Each `Patient` has a `MedicalHistory`.
+* Each `Patient` has a `PatientAppointmentList`.
+* Each class has their respective getter methods
+
+The class diagram below is an overview of the `Patient` class.
+<img src="images/PatientClassDiagram.png" width="550" />
+
+#### Implementation of Patient Commands
+
+Commands related to `Patient`:
+- `AddCommand` - Adds a `Patient` to the `ClinicBook`.
+- `DeleteCommand` - Deletes a `Patient` from the `ClinicBook`.
+- `EditCommand` - Edits a `Patient` in the `ClinicBook`.
+- `FindCommand` - Finds a `Patient` in the `ClinicBook`.
+- `ListCommand` - Lists all `Patient` in the `ClinicBook`.
+
+All the commands above are parsed by the `ClinicBookParser` and then by the corresponding parsers (i.e. `AddCommandParser`,
+`DeleteCommandParser` etc.) After which, the command (i.e. `AddCommand`, `DeleteCommand`) will be executed.
+
 ### Medical History
 
 User can add a `MedicalHistoryEvent` with the `Date` with format YYYY-MM-DD,
