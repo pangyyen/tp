@@ -131,18 +131,6 @@ Adds a new patient record to the system.
 | `e/email`        | email of the patient        | must be a valid email address                                                                                                                               |
 | `[t/TAG]…`       | tags of the patient         | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 
-<!--- TODO: verify all of these --->
-
-**Expected Output (Success):**
-CLI: A new entry appears in the list of patients.
-Message: "Successfully added patient: [Patient Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid name."
-- Message: "Invalid input. Please enter a valid NRIC (8-16 alphanumeric characters)."
-- Message: "Invalid input. Age should be between 0 to 120"
-- Message: "Invalid input. Please enter a valid phone number."
 
 ---
 ### 6.1.2. List Patients
@@ -179,14 +167,7 @@ Edits a patient record at the specified `INDEX` in the system.
 | `[e/email]`        | email of the patient                               | must be a valid email address                                                                                                                               |
 | `[t/TAG]…`         | tags of the patient                                | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 
-<!--- TODO: verify all of these --->
-**Expected Output (Success):**
 
-- Message: "Successfully edited patient: [Patient Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
@@ -207,18 +188,6 @@ Removes a patient record from the system. **This command can only be used after 
 |------------|----------------------------------------------------|-------------------------------------------------|
 | `INDEX`    | index of the patient in the displayed patient list | must be a positive integer                      |
 
-**Acceptable Values:**
-
-- **INDEX:** Positive integer
-
-<!--- TODO: verify all of these --->
-**Expected Output (Success):**
-
-- Message: "Successfully deleted patient."
-
-**Expected Output (Failure):**
-
-- Message: "Invalid index. Please enter a valid index."
 
 ---
 
@@ -262,13 +231,6 @@ Schedules a new appointment for a patient.
 | `t/TIME`    | time of the appointment                            | must be in the format HH:MM (24-hour format)    |
 
 
-**Expected Output (Success):**
-CLI: A new entry appears in the list of appointments.
-Message: "Successfully added appointmentEvent: [Appointment Details]"
-
-**Expected Output (Failure):**
-Message: "Invalid input. Please enter a valid patient index, date, or time."
-
 ---
 
 ## 6.2.2 List All Appointment
@@ -282,12 +244,7 @@ Displays all appointments.
 **Example Commands:**
 `list-appointments 1`
 
-**Expected Output (Success):**
-CLI: The list of appointments is displayed.
-Message: "Displaying X number of appointments."
 
-**Expected Output (Failure):**
-Message: "No appointments found."
 
 ---
 
@@ -312,12 +269,7 @@ Edits **existing** appointment details. **This command can only be used after `l
 | `[t/TIME]`          | time of the appointment                                    | must be in the format HH:MM (24-hour format) |
 
 
-**Expected Output (Success):**
-CLI: The edited appointment entry is updated in the list.
-Message: "Edited Appointment event Patient: [Patient Name], [Appointment Details]"
 
-**Expected Output (Failure):**
-Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
@@ -340,12 +292,7 @@ Removes an appointment from the system. **This command can only be used after `l
 | `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
 
 
-**Expected Output (Success):**
-CLI: The deleted appointmentEvent entry is removed from the list.
-Message: "Successfully deleted appointment event."
 
-**Expected Output (Failure):**
-Message: "Invalid index. Please enter a valid appointmentEvent index."
 
 ---
 
@@ -369,12 +316,6 @@ Adds a prescription to a patient's appointment. **This command can only be used 
 | `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
-**Expected Output (Success):**
-CLI: A new entry appears in the list of appointments.
-Message: "Successfully added appointmentEvent: [Appointment Details]"
-
-**Expected Output (Failure):**
-Message: "Invalid input. Please enter a valid patient index, date, or time."
 
 ---
 
@@ -422,12 +363,6 @@ Adds a medical history to a patient record.
 | `t/TREATMENT`          | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 
-**Expected Output (Success):**
-Message: "Successfully added medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
@@ -506,12 +441,6 @@ Deletes a medical history of a patient. **This command can only be used after `l
 | `pi/PATIENT_INDEX`      | patient index                                                      | must be a positive integer                   |
 
 
-**Expected Output (Success):**
-Message: "Successfully deleted medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
