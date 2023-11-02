@@ -35,6 +35,13 @@
                 <Label fx:id="time" styleClass="cell_small_label" text="\$time" />
             </HBox>
 
+            <HBox spacing="5">
+                <ImageView fx:id="pillIcon" fitHeight="14" fitWidth="14">
+                    <Image url="@../images/AppointmentCardIcons/Pill.png"/>
+                </ImageView>
+                <Label fx:id="prescription" styleClass="cell_small_label" text="No Prescription Yet" />
+            </HBox>
+
         </VBox>
 
         <rowConstraints>
