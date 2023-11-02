@@ -46,7 +46,7 @@ public class AddPrescriptionCommandParser {
                     AddPrescriptionCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX, PREFIX_MEDICINE_NAME);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX);
 
         EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor =
                 new EditAppointmentEventCommand.EditAppointmentEventDescriptor();
