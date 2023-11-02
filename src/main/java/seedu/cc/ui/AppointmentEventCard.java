@@ -27,11 +27,13 @@ public class AppointmentEventCard extends UiPart<Region> {
 
     @javafx.fxml.FXML
     private HBox cardPane;
+
+    @FXML
+    private Label id;
     @FXML
     private Label appointmentDate;
     @FXML
     private Label time;
-
     @FXML
     private Label prescription;
 
@@ -41,6 +43,8 @@ public class AppointmentEventCard extends UiPart<Region> {
     public AppointmentEventCard(AppointmentEvent appointmentEvent, int displayedIndex) {
         super(FXML);
         this.appointmentEvent = appointmentEvent;
+        id.setText(displayedIndex + ". ");
+
         appointmentDate.setText(appointmentEvent.getDate().toString());
         time.setText(appointmentEvent.getTime().toString());
         if (appointmentEvent.getPrescriptions().isEmpty()) {
