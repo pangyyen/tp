@@ -250,46 +250,63 @@ Additionally, it implementes the following operations:
 
 Given below is the UML diagram for the `Pharmacy` class.
 
+## **Documentation, logging, testing, configuration, dev-ops**
+
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
+
+---
+
+## **Appendix: Requirements**
+
+### Product scope
+
 ## User Stories
 
-### Doctor
+**Target user profile**:
 
-- As a doctor (Age: 30-60), I can easily create, access, and edit patient records on my smartphone app to provide
-  accurate and efficient care during patient visits.
-- As a doctor, I can share and edit surgical notes and post-operative care instructions with my patients through the
-  app, ensuring they have all the necessary information.
-- As a doctor, I can securely store patient therapy notes in the app, ensuring confidentiality and continuity of care.
-- As a doctor (Age: 30-60), I want to schedule, reschedule, and cancel appointments on the app to manage my day-to-day
-  practice schedule efficiently and reduce no-shows.
-- As a doctor (Age: 30-60), I can send a patient referral to a specialist using the app so that the referred
-  professional has immediate access to necessary patient data, ensuring smooth continuation of care.
-- As a doctor (Age: 30-60), I want to prescribe medications directly through the app, so that pharmacies can promptly
-  prepare medicines and patients receive timely notifications.
-- As a doctor (Age: 30-60), I can view patient feedback and reviews about their visit, enabling me to continuously
-  improve my service and better meet their needs.
+- medical administrators who need to oversee the operations of a clinic who has a substantial number of patients
+- favor desktop applications over other platforms
+- prefer a CLI-based interface over a GUI-based interface
+- are comfortable typing commands
 
-## Use Cases
+**Value proposition**: The app helps the user to manage patient records, medical histories and appointments.
 
-### Nice to Have
+## Use Stories
 
-1. **Delete Confirmation**
-    - **MSS:**
-        1. Doctor selects a patient record to delete.
-        2. App prompts for confirmation.
-        3. Doctor confirms the deletion.
-        4. App deletes the selected record.
+Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-2. **View All Appointments**
-    - **MSS:**
-        1. Doctor chooses to view all appointments.
-        2. App displays the list of all appointments.
-
-3. **Edit Patient Record/Appointment**
-    - **MSS:**
-        1. Doctor selects a patient record or appointmentEvent to edit.
-        2. App prompts for the new information.
-        3. Doctor enters the updated information.
-        4. App saves the changes.
+| Priority | As a …                | I can …                             | To fulfill …                                        |
+|----------|-----------------------|-------------------------------------|-----------------------------------------------------|
+| `* * *`  | medical administrator | add a patient record                | Efficiently maintain patient records                |
+| `* * *`  | medical administrator | list all patients                   | Easily view the complete patient list               |
+| `* * *`  | medical administrator | edit a patient record               | Keep patients' information up to date               |
+| `* * *`  | medical administrator | delete a patient record             | Remove patients who are no longer under care        |
+| `* *`    | medical administrator | give patients different priorities  | Prioritize patient care effectively                 |
+| `* `     | medical administrator | list patients by priority           | Quickly access patients based on priority           |
+| `* * *`  | medical administrator | add an appointment                  | Schedule appointments for patients                  |
+| `* * *`  | medical administrator | list all appointments of a patient  | Access a patient's complete appointment history     |
+| `* * *`  | medical administrator | edit an appointment                 | Modify appointment details as needed                |
+| `* * *`  | medical administrator | delete an appointment               | Eliminate unnecessary appointments                  |
+| `*`      | medical administrator | cancel an appointment               | Efficiently manage appointment cancellations        |
+| `* *`    | medical administrator | sort appointments by date           | Easily view appointments in chronological order     |
+| `* `     | medical administrator | mark an appointment as missed       | Record the status of missed appointments            |
+| `*`      | medical administrator | mark an appointment as attended     | Record the status of attended appointments          |
+| `* * `   | medical administrator | add prescriptions to an appointment | Easily document prescribed medications for patients |
+| `* * *`  | medical administrator | add a medical history               | Keep comprehensive medical histories for patients   |
+| `* * *`  | medical administrator | list a patient's medical history    | Access and review patient medical histories         |
+| `* * *`  | medical administrator | edit a medical history              | Update patient medical histories as necessary       |
+| `* * *`  | medical administrator | delete a medical history            | Remove outdated or irrelevant medical histories     |
+| `* * *`  | medical administrator | find a patient                      | Quickly locate specific patients                    |
+| `* *`    | medical administrator | find an appointment                 | Easily search for specific appointments             |
+| `* * `   | medical administrator | find a medical history              | Quickly retrieve specific patient medical histories |
+| `*`      | medical administrator | undo previous action                | Correct any inadvertent actions                     |
+| `*`      | medical administrator | redo previous action                | Reapply actions that were previously undone         |
+| `* * *`  | medical administrator | exit the app                        | Close the application with ease                     |
+| `* * *`  | medical administrator | get help                            | Access a list of available commands and assistance  |
 
 ### Use Cases
 
@@ -559,3 +576,56 @@ Given below is the UML diagram for the `Pharmacy` class.
 - **Patient Record:** A digital file within the app containing all relevant information about a patient, including
 - medical history, prescriptions, and appointmentEvent records.
 - **User:** Refers to the healthcare professionals using the CareCentral app.
+
+---
+
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+
+1. Saving window preferences
+
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+
+    1. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The most recent window size and location is retained.
+
+1. _{ more test cases …​ }_
+
+### Deleting a patient
+
+1. Deleting a patient while all patients are being shown
+
+    1. Prerequisites: List all persons using the `list-patients` command. Multiple persons in the list.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Saving data
+
+1. Dealing with missing/corrupted data files
+
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+1. _{ more test cases …​ }_
