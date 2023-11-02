@@ -78,10 +78,12 @@ The command box is where the user can type in commands to be executed.
 | `mn/MEDICATION_NAME`   | medication name             | must only contain alphanumeric characters, and it should not be blank                                                                                       |
 
 # 5. Glossary
-| Abbreviation | Meaning                                                                 |
-|--------------|-------------------------------------------------------------------------|
-| `CLI`        | Command Line Interface                                                  |
-| `GUI`        | Graphical User Interface                                                |
+| Word           | Meaning                                                                                                                                                 |
+|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `CLI`          | Command Line Interface                                                                                                                                  |
+| `GUI`          | Graphical User Interface                                                                                                                                |
+| `NRIC`         | National Registration Identity Card number, a unique identifier used by the government to track individuals for various purposes, including healthcare. |
+| `Prescription` | Medicine prescribed by a medical professional to a patient.                                                                                             |
 
 # 6. Features
 
@@ -147,10 +149,10 @@ List all the patients in the system.
 ### 6.1.3. Edit Patient Record
 
 **What it does:**
-Edits a patient record at the specified `INDEX` in the system.
+Edits a patient record at the specified `PATIENT_INDEX` in the system.
 
 **Command Format:**
-`edit-patient INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`
+`edit-patient PATIENT_INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`
 
 **Example Commands:**
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
@@ -159,14 +161,13 @@ Edits a patient record at the specified `INDEX` in the system.
 
 | Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
 |--------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `INDEX`            | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
+| `PATIENT_INDEX`    | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
 | `[n/NAME]`         | full name of the patient                           | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 | `[p/PHONE_NUMBER]` | phone number of the patient                        | must be **entirely numeric** and exactly 8 digits long                                                                                                      |
 | `[ic/NRIC]`        | NRIC of the patient                                | must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
 | `[a/AGE]`          | age of the patient                                 | must be a positive integer                                                                                                                                  |
 | `[e/email]`        | email of the patient                               | must be a valid email address                                                                                                                               |
 | `[t/TAG]…`         | tags of the patient                                | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-
 
 
 ---
@@ -177,16 +178,16 @@ Edits a patient record at the specified `INDEX` in the system.
 Removes a patient record from the system. **This command can only be used after `list-patient`**. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
 
 **Command Format:**
-`delete-patient INDEX`
+`delete-patient PATIENT_INDEX`
 
 **Example Commands:**
 `delete-patient 2`
 
 **Parameters:**
 
-| Parameters | Explanation                                        | Constraints                                     |
-|------------|----------------------------------------------------|-------------------------------------------------|
-| `INDEX`    | index of the patient in the displayed patient list | must be a positive integer                      |
+| Parameters          | Explanation                                        | Constraints                                     |
+|---------------------|----------------------------------------------------|-------------------------------------------------|
+| `PATIENT_INDEX`     | index of the patient in the displayed patient list | must be a positive integer                      |
 
 
 ---
@@ -217,18 +218,18 @@ Finds a patient record from the system. Partial words will be matched as well e.
 Schedules a new appointment for a patient.
 
 **Command Format:**
-`add-appt INDEX d/DATE t/TIME`
+`add-appt PATIENT_INDEX d/DATE t/TIME`
 
 **Example Commands:**
 `add-appt 1 d/2023-10-01 t/14:00`
 
 **Parameters:**
 
-| Parameters  | Explanation                                        | Constraints                                     |
-|-------------|----------------------------------------------------|-------------------------------------------------|
-| `INDEX`     | index of the patient in the displayed patient list | must be a positive integer                      |
-| `d/DATE`    | date of the appointment                            | must be in the format YYYY-MM-DD                |
-| `t/TIME`    | time of the appointment                            | must be in the format HH:MM (24-hour format)    |
+| Parameters           | Explanation                                        | Constraints                                     |
+|----------------------|----------------------------------------------------|-------------------------------------------------|
+| `PATIENT_INDEX`      | index of the patient in the displayed patient list | must be a positive integer                      |
+| `d/DATE`             | date of the appointment                            | must be in the format YYYY-MM-DD                |
+| `t/TIME`             | time of the appointment                            | must be in the format HH:MM (24-hour format)    |
 
 
 ---
@@ -236,14 +237,19 @@ Schedules a new appointment for a patient.
 ## 6.2.2 List All Appointment
 
 **What it does:**
-Displays all appointments.
+Displays all appointments of the patient.
 
 **Command Format:**
-`list-appointments INDEX`
+`list-appointments PATIENT_INDEX`
 
 **Example Commands:**
 `list-appointments 1`
 
+**Parameters:**
+
+| Parameters           | Explanation                                        | Constraints                                     |
+|----------------------|----------------------------------------------------|-------------------------------------------------|
+| `PATIENT_INDEX`      | index of the patient in the displayed patient list | must be a positive integer                      |
 
 
 ---
@@ -347,7 +353,7 @@ Removes a prescription from the system. **This command can only be used after `l
 Adds a medical history to a patient record.
 
 **Command Format:**
-`add-medical-history INDEX d/DATE [c/MEDICAL_CONDITION t/TREATMENT`
+`add-medical-history PATIENT_INDEX d/DATE [c/MEDICAL_CONDITION t/TREATMENT`
 
 **Example Commands:**
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
@@ -355,12 +361,12 @@ Adds a medical history to a patient record.
 
 **Parameter**
 
-| Parameters             | Explanation                                             | Constraints                                                                      |
-|------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------|
-| `INDEX`                | index of the patient in the displayed patient list      | must be a positive integer                                                       |
-| `d/DATE`               | date of the medical history                             | must be in the format YYYY-MM-DD                                                 |
-| `mc/MEDICAL_CONDITION` | medical condition                                       | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `t/TREATMENT`          | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters               | Explanation                                             | Constraints                                                                      |
+|--------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------|
+| `PATIENT_INDEX`          | index of the patient in the displayed patient list      | must be a positive integer                                                       |
+| `d/DATE`                 | date of the medical history                             | must be in the format YYYY-MM-DD                                                 |
+| `mc/MEDICAL_CONDITION`   | medical condition                                       | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `t/TREATMENT`            | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 
 
@@ -372,7 +378,7 @@ Adds a medical history to a patient record.
 Lists the medical history of a patient.
 
 **Command Format:**
-`list-medical-history INDEX`
+`list-medical-history PATIENT_INDEX`
 
 **Example Commands:**
 `list-medical-history 1`
@@ -381,7 +387,7 @@ Lists the medical history of a patient.
 
 | Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
 |--------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `INDEX`            | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
+| `PATIENT_INDEX`            | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
 
 **Expected Output (Success):**
 Message: "Successfully listed medical history for patient: [Medical History Details]"
@@ -446,19 +452,20 @@ Deletes a medical history of a patient. **This command can only be used after `l
 
 # 7. Command Summary
 
-| Action                     | Format, Examples                                                                                                                                      |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add Patient**            | `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`<br> e.g., `add-patient n/John Doe ic/S0123456A a/45 p/12341234                     |
-| **List Patients**          | `list-patients`                                                                                                                                       |
-| **Edit Patient**           | `edit-patient INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`<br> e.g., `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 |
-| **Delete Patient**         | `delete-patient INDEX`<br> e.g., `delete-patient 2`                                                                                                   |
-| **Add Appointment**        | `add-appt INDEX d/DATE t/TIME`<br> e.g., `add-appt 1 d/2023-10-01 t/14:00`                                                                            |
-| **List Appointments**      | `list-appointments INDEX`<br> e.g., `list-appointments 1`                                                                                             |
-| **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`<br> e.g., `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                    |
-| **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`<br> e.g., `delete-appt 3 pi/2`                                                                       |
-| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`<br> e.g., `add-prescription 1 pi/1 mn/Panadol`                            |  
-| **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`<br> e.g., `delete-prescription 1 pi/1`                                                       |
-| **Add Medical History**    | `add-medical-history INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`<br> e.g., `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`              |
-| **List Medical History**   | `list-medical-history INDEX`<br> e.g., `list-medical-history 1`                                                                                       |
-| **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX] [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`<br> e.g., `edit-medical-history 1 pi/1` |
-| **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`<br> e.g., `delete-medical-history 1 pi/1`                                           |
+| Action                     | Format, Examples                                                                                                                                              |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Patient**            | `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`<br> e.g., `add-patient n/John Doe ic/S0123456A a/45 p/12341234                             |
+| **List Patients**          | `list-patients`                                                                                                                                               |
+| **Edit Patient**           | `edit-patient PATIENT_INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`<br> e.g., `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 |
+| **Delete Patient**         | `delete-patient PATIENT_INDEX`<br> e.g., `delete-patient 2`                                                                                                   |
+| **Find Patient**           | `find KEYWORD`<br> e.g., `find John Doe`                                                                                                                      |
+| **Add Appointment**        | `add-appt PATIENT_INDEX d/DATE t/TIME`<br> e.g., `add-appt 1 d/2023-10-01 t/14:00`                                                                            |
+| **List Appointments**      | `list-appointments PATIENT_INDEX`<br> e.g., `list-appointments 1`                                                                                             |
+| **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`<br> e.g., `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                            |
+| **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`<br> e.g., `delete-appt 3 pi/2`                                                                               |
+| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`<br> e.g., `add-prescription 1 pi/1 mn/Panadol`                                    |  
+| **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`<br> e.g., `delete-prescription 1 pi/1`                                                               |
+| **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`<br> e.g., `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`              |
+| **List Medical History**   | `list-medical-history PATIENT_INDEX`<br> e.g., `list-medical-history 1`                                                                                       |
+| **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX] [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`<br> e.g., `edit-medical-history 1 pi/1`         |
+| **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`<br> e.g., `delete-medical-history 1 pi/1`                                                   |
