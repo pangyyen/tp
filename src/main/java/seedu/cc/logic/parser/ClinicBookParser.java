@@ -18,22 +18,12 @@ import seedu.cc.logic.commands.FindCommand;
 import seedu.cc.logic.commands.HelpCommand;
 import seedu.cc.logic.commands.ListCommand;
 import seedu.cc.logic.commands.SwitchCommand;
-import seedu.cc.logic.commands.appointmentcommands.AddAppointmentEventCommand;
-import seedu.cc.logic.commands.appointmentcommands.AddPrescriptionCommand;
-import seedu.cc.logic.commands.appointmentcommands.DeleteAppointmentEventCommand;
-import seedu.cc.logic.commands.appointmentcommands.DeletePrescriptionCommand;
-import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
-import seedu.cc.logic.commands.appointmentcommands.ListAppointmentEventsCommand;
+import seedu.cc.logic.commands.appointmentcommands.*;
 import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.EditMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.ListMedicalHistoryEventCommand;
-import seedu.cc.logic.parser.appointment.AddAppointmentCommandParser;
-import seedu.cc.logic.parser.appointment.AddPrescriptionCommandParser;
-import seedu.cc.logic.parser.appointment.DeleteAppointmentEventCommandParser;
-import seedu.cc.logic.parser.appointment.DeletePrescriptionCommandParser;
-import seedu.cc.logic.parser.appointment.EditAppointmentEventCommandParser;
-import seedu.cc.logic.parser.appointment.ListAppointmentEventsCommandParser;
+import seedu.cc.logic.parser.appointment.*;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.logic.parser.medicalhistory.AddMedicalHistoryEventCommandParser;
 import seedu.cc.logic.parser.medicalhistory.DeleteMedicalHistoryEventCommandParser;
@@ -114,6 +104,9 @@ public class ClinicBookParser {
         // Prescription commands
         case AddPrescriptionCommand.COMMAND_WORD:
             return new AddPrescriptionCommandParser().parse(arguments);
+
+        case EditPrescriptionCommand.COMMAND_WORD:
+            return new EditPrescriptionCommandParser().parse(arguments);
 
         case DeletePrescriptionCommand.COMMAND_WORD:
             return new DeletePrescriptionCommandParser().parse(arguments);
