@@ -2,6 +2,13 @@
 layout: page
 title: Developer Guide
 ---
+
+* Table of Contents
+{:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+## **Design**
+
 ### Architecture
 
 <img src="images/ArchitectureDiagram.png" width="280" />
@@ -31,8 +38,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-p 1`.
-=======
+#### The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-p 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -78,8 +84,7 @@ The `UI` component,
 
 ### Logic component
 
-**API
-** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -154,7 +159,9 @@ The `Storage` component,
 
 Classes used by multiple components are in the `seedu.cc.commons` package.]
 
-## Implementation
+--------------------------------------------------------------------------------------------------------------------
+
+## **Implementation**
 
 ### Patient
 
@@ -227,17 +234,17 @@ The Sequence Diagram below shows how the components interact with each other for
 
 <img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
 
-### Appointment-related features
-
-#### Proposed Implementation
+### Appointment
 
 The appointment-related features are facilitated by the `appointment` package. The `appointment` package
 includes `AppointmentEvent`, `PatientAppointmentList` and `ClinicBookAppointmentList`.
-The `PatientAppointmentList` a an attribute for each `Patient` and stores a list of `AppointmentEvent`.
+
+The `PatientAppointmentList` is an attribute for each `Patient` and stores a list of `AppointmentEvent`; and the attribute will be stored in `clinicbook.json`
 The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for display purposes.
 
-The sequence diagram below shows the interaction between the `Logic` component and the `Model` component when the user
-issues the `add-appointment` command.
+When the user starts an application, there will be an empty `ClinicBookCLinicBookAppointment`. It will be populated when the
+user executes `list-appointments` command.
+
 
 ### \[Proposed\] Undo/redo feature
 
@@ -251,8 +258,62 @@ Additionally, it implementes the following operations:
 * `VersionedClinicBook#undo()` — Restores the previous address book state from its history.
 * `VersionedClinicBook#redo()` — Restores a previously undone address book state from its history.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()`
-and `Model#redoAddressBook()` respectively.
+These operations are exposed in the `Model` interface as `Model#commitClinicBook()`, `Model#undoClinicBook()`
+and `Model#redoClinicBook()` respectively.
+
+Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `VersionedClinicBook` will be initialized with the initial clinic book state, and the `currentStatePointer` pointing to that single clinic book state.
+
+![UndoRedoState0](images/UndoRedoState0.png)
+
+Step 2. The user executes `delete 5` command to delete the 5th patient in the clinic book. The `delete` command calls `Model#commitClinicBook()`, causing the modified state of the clinic book after the `delete 5` command executes to be saved in the `clinicBookStateList`, and the `currentStatePointer` is shifted to the newly inserted clinic book state.
+
+![UndoRedoState1](images/UndoRedoState1.png)
+
+Step 3. The user executes `add n/David …​` to add a new patient. The `add` command also calls `Model#commitClinicBook()`, causing another modified clinic book state to be saved into the `clinicBookStateList`.
+
+![UndoRedoState2](images/UndoRedoState2.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitClinicBook()`, so the clinic book state will not be saved into the `clinicBookStateList`.
+
+</div>
+
+Step 4. The user now decides that adding the patient was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoClinicBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous clinic book state, and restores the clinic book to that state.
+
+![UndoRedoState3](images/UndoRedoState3.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial ClinicBook state, then there are no previous ClinicBook states to restore. The `undo` command uses `Model#canUndoClinicBook()` to check if this is the case. If so, it will return an error to the user rather
+than attempting to perform the undo.
+
+</div>
+
+The following sequence diagram shows how the undo operation works:
+
+![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</div>
+
+The `redo` command does the opposite — it calls `Model#redoClinicBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the clinic book to that state.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `clinicBookStateList.size() - 1`, pointing to the latest clinic book state, then there are no undone ClinicBook states to restore. The `redo` command uses `Model#canRedoClinicBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+
+</div>
+
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the clinic book, such as `list`, will usually not call `Model#commitClinicBook()`, `Model#undoClinicBook()` or `Model#redoClinicBook()`. Thus, the `clinicBookStateList` remains unchanged.
+
+![UndoRedoState4](images/UndoRedoState4.png)
+
+Step 6. The user executes `clear`, which calls `Model#commitClinicBook()`. Since the `currentStatePointer` is not pointing at the end of the `clinicBookStateList`, all clinic book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
+
+![UndoRedoState5](images/UndoRedoState5.png)
+
+The following activity diagram summarizes what happens when a user executes a new command:
+
+<img src="images/CommitActivityDiagram.png" width="250" />
+
 
 ### \[Proposed\] Pharmacy Integration
 
@@ -272,54 +333,71 @@ Additionally, it implementes the following operations:
 * `Pharmacy#updateMedicine()` — Updates a `Medicine` from the `medicineList`.
 * `Pharmacy#updatePrescription()` — Updates a `Prescription` from the `prescriptionList`.
 
-Given below is the UML diagram for the `Pharmacy` class.
+--------------------------------------------------------------------------------------------------------------------
+
+## **Documentation, logging, testing, configuration, dev-ops**
+
+- [Documentation guide](Documentation.md)
+- [Testing guide](Testing.md)
+- [Logging guide](Logging.md)
+- [Configuration guide](Configuration.md)
+- [DevOps guide](DevOps.md)
+
+---
+
+## **Appendix: Requirements**
+
+### Product scope
 
 ## User Stories
 
-### Doctor
+**Target user profile**:
 
-- As a doctor (Age: 30-60), I can easily create, access, and edit patient records on my smartphone app to provide
-  accurate and efficient care during patient visits.
-- As a doctor, I can share and edit surgical notes and post-operative care instructions with my patients through the
-  app, ensuring they have all the necessary information.
-- As a doctor, I can securely store patient therapy notes in the app, ensuring confidentiality and continuity of care.
-- As a doctor (Age: 30-60), I want to schedule, reschedule, and cancel appointments on the app to manage my day-to-day
-  practice schedule efficiently and reduce no-shows.
-- As a doctor (Age: 30-60), I can send a patient referral to a specialist using the app so that the referred
-  professional has immediate access to necessary patient data, ensuring smooth continuation of care.
-- As a doctor (Age: 30-60), I want to prescribe medications directly through the app, so that pharmacies can promptly
-  prepare medicines and patients receive timely notifications.
-- As a doctor (Age: 30-60), I can view patient feedback and reviews about their visit, enabling me to continuously
-  improve my service and better meet their needs.
+- medical administrators who need to oversee the operations of a clinic who has a substantial number of patients
+- favor desktop applications over other platforms
+- prefer a CLI-based interface over a GUI-based interface
+- are comfortable typing commands
 
-## Use Cases
+**Value proposition**: The app helps the user to manage patient records, medical histories and appointments.
 
-### Nice to Have
+## Use Stories
 
-1. **Delete Confirmation**
-    - **MSS:**
-        1. Doctor selects a patient record to delete.
-        2. App prompts for confirmation.
-        3. Doctor confirms the deletion.
-        4. App deletes the selected record.
+Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-2. **View All Appointments**
-    - **MSS:**
-        1. Doctor chooses to view all appointments.
-        2. App displays the list of all appointments.
-
-3. **Edit Patient Record/Appointment**
-    - **MSS:**
-        1. Doctor selects a patient record or appointmentEvent to edit.
-        2. App prompts for the new information.
-        3. Doctor enters the updated information.
-        4. App saves the changes.
+| Priority | As a …                | I can …                             | To fulfill …                                        |
+|----------|-----------------------|-------------------------------------|-----------------------------------------------------|
+| `* * *`  | medical administrator | add a patient record                | Efficiently maintain patient records                |
+| `* * *`  | medical administrator | list all patients                   | Easily view the complete patient list               |
+| `* * *`  | medical administrator | edit a patient record               | Keep patients' information up to date               |
+| `* * *`  | medical administrator | delete a patient record             | Remove patients who are no longer under care        |
+| `* *`    | medical administrator | give patients different priorities  | Prioritize patient care effectively                 |
+| `* `     | medical administrator | list patients by priority           | Quickly access patients based on priority           |
+| `* * *`  | medical administrator | add an appointment                  | Schedule appointments for patients                  |
+| `* * *`  | medical administrator | list all appointments of a patient  | Access a patient's complete appointment history     |
+| `* * *`  | medical administrator | edit an appointment                 | Modify appointment details as needed                |
+| `* * *`  | medical administrator | delete an appointment               | Eliminate unnecessary appointments                  |
+| `*`      | medical administrator | cancel an appointment               | Efficiently manage appointment cancellations        |
+| `* *`    | medical administrator | sort appointments by date           | Easily view appointments in chronological order     |
+| `* `     | medical administrator | mark an appointment as missed       | Record the status of missed appointments            |
+| `*`      | medical administrator | mark an appointment as attended     | Record the status of attended appointments          |
+| `* * `   | medical administrator | add prescriptions to an appointment | Easily document prescribed medications for patients |
+| `* * *`  | medical administrator | add a medical history               | Keep comprehensive medical histories for patients   |
+| `* * *`  | medical administrator | list a patient's medical history    | Access and review patient medical histories         |
+| `* * *`  | medical administrator | edit a medical history              | Update patient medical histories as necessary       |
+| `* * *`  | medical administrator | delete a medical history            | Remove outdated or irrelevant medical histories     |
+| `* * *`  | medical administrator | find a patient                      | Quickly locate specific patients                    |
+| `* *`    | medical administrator | find an appointment                 | Easily search for specific appointments             |
+| `* * `   | medical administrator | find a medical history              | Quickly retrieve specific patient medical histories |
+| `*`      | medical administrator | undo previous action                | Correct any inadvertent actions                     |
+| `*`      | medical administrator | redo previous action                | Reapply actions that were previously undone         |
+| `* * *`  | medical administrator | exit the app                        | Close the application with ease                     |
+| `* * *`  | medical administrator | get help                            | Access a list of available commands and assistance  |
 
 ### Use Cases
 
 #### Use case: UG01 - Create Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -338,7 +416,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG02 - List Patients
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -356,7 +434,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG03 - Edit Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -376,7 +454,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG04 - Delete Patient Record
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -395,7 +473,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG05 - Add Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -416,7 +494,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG06 - List All Appointments
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -434,7 +512,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG07 - Edit Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -459,7 +537,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG08 - Delete Appointment
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -478,7 +556,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG09 - Add Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -499,7 +577,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG10 - List Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -522,7 +600,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG11 - Edit Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -548,7 +626,7 @@ Given below is the UML diagram for the `Pharmacy` class.
 
 #### Use case: UG12 - Delete Medical History
 
-**Actor:** Doctor, Receptionist, Nurse
+**Actor:** Medical Staff
 
 **MSS**
 
@@ -564,6 +642,73 @@ Given below is the UML diagram for the `Pharmacy` class.
     * 1a1. System shows an error message.
 
       Use case ends.
+
+Certainly! Below are the use cases created from the user stories:
+
+#### Use case: UC13 - Find Patient by Name
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff requests to find a patient using the patient's name.
+2. System searches for the patient and displays the relevant patient records.
+3. Medical Staff views the patient’s information.
+
+   Use case ends.
+
+**Extensions**
+
+* 2a. No patient record matches the given name.
+    * 2a1. System informs the Medical Staff that no matching record was found.
+
+      Use case ends.
+
+#### Use case: UC14 - Clear All Listed Patients
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the option to clear all listed patients.
+2. System removes all patient records from the current view.
+3. Medical Staff views the cleared list.
+
+   Use case ends.
+
+#### Use case: UC15 - Switch Between Different Tabs
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the tab they wish to view (patient details, medical history, or appointments).
+2. System displays the content of the selected tab.
+
+   Use case ends.
+
+#### Use case: UC16 - Access Help Page
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff selects the option to view the help page.
+2. System displays the help page with guidance on how to use the application.
+3. Medical Staff views and interacts with the help page as needed.
+
+   Use case ends.
+
+#### Use case: UC17 - Exit Application
+
+**Actor:** Medical Staff
+
+**MSS**
+
+1. Medical Staff chooses the option to exit the application.
+2. System securely closes the application.
+
+   Use case ends.
 
 ### Non-Functional Requirements
 
@@ -583,3 +728,56 @@ Given below is the UML diagram for the `Pharmacy` class.
 - **Patient Record:** A digital file within the app containing all relevant information about a patient, including
 - medical history, prescriptions, and appointmentEvent records.
 - **User:** Refers to the healthcare professionals using the CareCentral app.
+
+---
+
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+
+1. Saving window preferences
+
+    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+
+    1. Re-launch the app by double-clicking the jar file.<br>
+       Expected: The most recent window size and location is retained.
+
+1. _{ more test cases …​ }_
+
+### Deleting a patient
+
+1. Deleting a patient while all patients are being shown
+
+    1. Prerequisites: List all persons using the `list-patients` command. Multiple persons in the list.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+
+    1. Test case: `delete-patient 1`<br>
+       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+
+    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+       Expected: Similar to previous.
+
+1. _{ more test cases …​ }_
+
+### Saving data
+
+1. Dealing with missing/corrupted data files
+
+    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+
+1. _{ more test cases …​ }_
