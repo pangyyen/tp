@@ -3,7 +3,8 @@ layout: page
 title: User Guide
 ---
 * Table of Contents
-  {:toc}
+{:toc}
+--------------------------------------------------------------------------------------------------------------------
 
 # 1. Introduction
 
@@ -81,7 +82,7 @@ The command box is where the user can type in commands to be executed.
 | `CLI`        | Command Line Interface                                                  |
 | `GUI`        | Graphical User Interface                                                |
 
-# 3. Features
+# 6. Features
 
 <div markdown="block" class="alert alert-info">
 
@@ -105,9 +106,9 @@ The command box is where the user can type in commands to be executed.
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
-## 3.1. Patients Related Features
+## 6.1. Patients Related Features
 
-### 3.1.1. Create Patient Record
+### 6.1.1. Create Patient Record
 
 **What it does:**
 Adds a new patient record to the system.
@@ -143,7 +144,7 @@ Message: "Successfully added patient: [Patient Details]"
 - Message: "Invalid input. Please enter a valid phone number."
 
 ---
-### 3.1.2. List Patients
+### 6.1.2. List Patients
 
 
 **What it does:**
@@ -155,7 +156,7 @@ Finds persons whose names contain any of the given keywords.
 ---
 
 =======
-## 3.1.3. Edit Patient Record
+## 6.1.3. Edit Patient Record
 
 
 **What it does:**
@@ -190,7 +191,7 @@ Edits a patient record at the specified `INDEX` in the system.
 
 ---
 
-## 3.1.4. Delete Patient Record
+## 6.1.4. Delete Patient Record
 
 **What it does:**
 Removes a patient record from the system.
