@@ -24,14 +24,14 @@ public class DeletePrescriptionCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-prescription";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a prescription to the appointment "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the prescription to the appointment "
             + "by the index number used in the displayed appointment list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + PREFIX_PATIENT_INDEX + "PATIENT INDEX \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "1 ";
 
-    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added a prescription: \n%1$s";
+    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully deleted a prescription: \n%1$s";
     public static final String MESSAGE_INVALID_INPUT = "Invalid input. Please enter a valid medicine.";
     private final Index patientIndex;
     private final Index eventIndex;
