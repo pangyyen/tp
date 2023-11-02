@@ -95,7 +95,7 @@ public class PersonTest {
 
     @Test
     public void toStringMethod() {
-        String expected = Patient.class.getCanonicalName() + "{name=" + ALICE.getName() + ", phone=" + ALICE.getPhone()
+        String expected = Patient.class.getCanonicalName() + "{name=" + ALICE.getName() + ", nric=" + ALICE.getNric() + ", phone=" + ALICE.getPhone()
                 + ", email=" + ALICE.getEmail() + ", age=" + ALICE.getAge() + ", tags=" + ALICE.getTags() + "}";
         assertEquals(expected, ALICE.toString());
     }
