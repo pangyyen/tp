@@ -204,6 +204,7 @@ Finds a patient record from the system. Partial words will be matched as well e.
 `find John Doe`
 
 **Parameters:**
+
 | Parameters | Explanation                                        | Constraints                                     |
 |------------|----------------------------------------------------|-------------------------------------------------|
 | `KEYWORD`  | keyword to be searched                             | must be a string                                |
@@ -463,7 +464,7 @@ Deletes a medical history of a patient. **This command can only be used after `l
 | **List Appointments**      | `list-appointments PATIENT_INDEX`<br> e.g., `list-appointments 1`                                                                                             |
 | **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`<br> e.g., `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                            |
 | **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`<br> e.g., `delete-appt 3 pi/2`                                                                               |
-| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`<br> e.g., `add-prescription 1 pi/1 mn/Panadol`                                    |  
+| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`<br> e.g., `add-prescription 1 pi/1 mn/Panadol`                                    | 
 | **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`<br> e.g., `delete-prescription 1 pi/1`                                                               |
 | **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`<br> e.g., `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`              |
 | **List Medical History**   | `list-medical-history PATIENT_INDEX`<br> e.g., `list-medical-history 1`                                                                                       |
