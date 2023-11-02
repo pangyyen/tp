@@ -34,11 +34,15 @@ public class EditMedicalHistoryEventCommand extends Command {
             + "identified by the index number used in the displayed medical history event list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "Example: " + COMMAND_WORD + " 1"
-            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
-            + PREFIX_DATE + "DATE "
-            + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION "
-            + PREFIX_TREATMENT + "TREATMENT ";
+            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
+            + "[" + PREFIX_DATE + "YYYY-MM-DD] "
+            + "[" + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION] "
+            + "[" + PREFIX_TREATMENT + "TREATMENT] "
+            + "\nExample: " + COMMAND_WORD + " 1 "
+            + PREFIX_PATIENT_INDEX + "1 "
+            + PREFIX_DATE + "2023-01-01 "
+            + PREFIX_MEDICAL_CONDITION + "Diabetes "
+            + PREFIX_TREATMENT + "Insulin ";
 
     public static final String MESSAGE_EDIT_EVENT_SUCCESS = "Edited Medical History Event: %1$s";
 

@@ -27,10 +27,13 @@ public class AddMedicalHistoryEventCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a medical history event to the patient's "
             + "medical history.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + PREFIX_DATE + "DATE "
+            + PREFIX_DATE + "YYYY-MM-DD "
             + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION "
-            + PREFIX_TREATMENT + "TREATMENT ";
-
+            + PREFIX_TREATMENT + "TREATMENT "
+            + "\nExample: " + COMMAND_WORD + " 1 "
+            + PREFIX_DATE + "2023-10-01 "
+            + PREFIX_MEDICAL_CONDITION + "Diabetes "
+            + PREFIX_TREATMENT + "Insulin";
 
     public static final String MESSAGE_SUCCESS = "New medical history event added: \n%1$s";
 

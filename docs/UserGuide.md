@@ -21,15 +21,15 @@ professionals manage their patients' medical journey.
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
-5. For Mac users encountering this issue, follow this[guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu).
+5. For Mac users encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu).
    <img width="275" height="280" src="images/mac_issue.png">
 6. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
-
-   * `add-p n/John Doe ic/S1234567A a/45 p/91234567`
-   * `list-p`
-   * `delete-p 1`
+   
+   * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
+   * `list-pateints`
+   * `delete-patient 1`
    * `exit`
 
 

@@ -3,6 +3,7 @@ package seedu.cc.model.patient;
 import java.util.ArrayList;
 import java.util.Set;
 
+import seedu.cc.commons.util.ToStringBuilder;
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.appointment.Prescription;
@@ -113,8 +114,16 @@ public class Patient extends Person {
         return super.equals(other);
     }
 
+    @Override
     public String toString() {
-        return super.toString();
+        return new ToStringBuilder(this)
+                .add("name", super.getName())
+                .add("nric", this.nric)
+                .add("phone", super.getPhone())
+                .add("email", super.getEmail())
+                .add("age", super.getAge())
+                .add("tags", super.getTags())
+                .toString();
     }
 
     /**

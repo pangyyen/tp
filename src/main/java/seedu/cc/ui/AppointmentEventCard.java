@@ -1,10 +1,13 @@
 package seedu.cc.ui;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 
 /**
  * An UI component that displays information of a {@code Appointment Event}.
@@ -24,10 +27,15 @@ public class AppointmentEventCard extends UiPart<Region> {
 
     @javafx.fxml.FXML
     private HBox cardPane;
+
+    @FXML
+    private Label id;
     @FXML
     private Label appointmentDate;
     @FXML
     private Label time;
+    @FXML
+    private Label prescription;
 
     /**
      * Creates a {@code PatientCode} with the given {@code Patient} and index to display.
@@ -35,7 +43,19 @@ public class AppointmentEventCard extends UiPart<Region> {
     public AppointmentEventCard(AppointmentEvent appointmentEvent, int displayedIndex) {
         super(FXML);
         this.appointmentEvent = appointmentEvent;
+        id.setText(displayedIndex + ". ");
+
         appointmentDate.setText(appointmentEvent.getDate().toString());
         time.setText(appointmentEvent.getTime().toString());
+        if (appointmentEvent.getPrescriptions().isEmpty()) {
+            prescription.setText("No prescriptions");
+        } else {
+            ArrayList<String> prescriptions = new ArrayList<>();
+            for (Prescription pres : appointmentEvent.getPrescriptions()) {
+                String result = pres.toString().replace("[", "").replace("]", "");
+                prescriptions.add(result);
+            }
+            prescription.setText(String.join(", ", prescriptions));
+        }
     }
 }

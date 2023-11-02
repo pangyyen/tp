@@ -23,6 +23,7 @@ import seedu.cc.logic.commands.appointmentcommands.AddPrescriptionCommand;
 import seedu.cc.logic.commands.appointmentcommands.DeleteAppointmentEventCommand;
 import seedu.cc.logic.commands.appointmentcommands.DeletePrescriptionCommand;
 import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.EditPrescriptionCommand;
 import seedu.cc.logic.commands.appointmentcommands.ListAppointmentEventsCommand;
 import seedu.cc.logic.commands.medhisteventcommands.AddMedicalHistoryEventCommand;
 import seedu.cc.logic.commands.medhisteventcommands.DeleteMedicalHistoryEventCommand;
@@ -33,6 +34,7 @@ import seedu.cc.logic.parser.appointment.AddPrescriptionCommandParser;
 import seedu.cc.logic.parser.appointment.DeleteAppointmentEventCommandParser;
 import seedu.cc.logic.parser.appointment.DeletePrescriptionCommandParser;
 import seedu.cc.logic.parser.appointment.EditAppointmentEventCommandParser;
+import seedu.cc.logic.parser.appointment.EditPrescriptionCommandParser;
 import seedu.cc.logic.parser.appointment.ListAppointmentEventsCommandParser;
 import seedu.cc.logic.parser.exceptions.ParseException;
 import seedu.cc.logic.parser.medicalhistory.AddMedicalHistoryEventCommandParser;
@@ -114,6 +116,9 @@ public class ClinicBookParser {
         // Prescription commands
         case AddPrescriptionCommand.COMMAND_WORD:
             return new AddPrescriptionCommandParser().parse(arguments);
+
+        case EditPrescriptionCommand.COMMAND_WORD:
+            return new EditPrescriptionCommandParser().parse(arguments);
 
         case DeletePrescriptionCommand.COMMAND_WORD:
             return new DeletePrescriptionCommandParser().parse(arguments);
