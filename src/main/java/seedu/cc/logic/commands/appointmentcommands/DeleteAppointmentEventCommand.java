@@ -28,7 +28,7 @@ public class DeleteAppointmentEventCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "PATIENT INDEX ";
 
-    public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
+    public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment:\n %1$s";
 
     private final Index eventIndex;
 

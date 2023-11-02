@@ -11,8 +11,8 @@ import java.util.Optional;
 import java.util.Set;
 
 import seedu.cc.commons.core.index.Index;
-import seedu.cc.logic.commands.appointmentcommands.AddPrescriptionCommand;
 import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.EditPrescriptionCommand;
 import seedu.cc.logic.parser.ArgumentMultimap;
 import seedu.cc.logic.parser.ArgumentTokenizer;
 import seedu.cc.logic.parser.ParserUtil;
@@ -24,14 +24,14 @@ import seedu.cc.model.tag.Tag;
 /**
  * Parses input arguments and creates a new AddAppointmentEventCommand object.
  */
-public class AddPrescriptionCommandParser {
+public class EditPrescriptionCommandParser {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditCommand
      * and returns an EditCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public AddPrescriptionCommand parse(String args) throws ParseException {
+    public EditPrescriptionCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_PATIENT_INDEX, PREFIX_MEDICINE_NAME);
@@ -43,30 +43,30 @@ public class AddPrescriptionCommandParser {
             eventIndex = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddPrescriptionCommand.MESSAGE_USAGE), pe);
+                    EditPrescriptionCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PATIENT_INDEX, PREFIX_MEDICINE_NAME);
 
         EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor =
                 new EditAppointmentEventCommand.EditAppointmentEventDescriptor();
         if (argMultimap.getValue(PREFIX_PATIENT_INDEX).isEmpty()
                 || argMultimap.getValue(PREFIX_MEDICINE_NAME).isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddPrescriptionCommand.MESSAGE_USAGE));
+                    EditPrescriptionCommand.MESSAGE_USAGE));
         }
 
         try {
             patientIndex = ParserUtil.parseIndex(argMultimap.getValue(PREFIX_PATIENT_INDEX).get());
         } catch (ParseException pe) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddPrescriptionCommand.MESSAGE_USAGE), pe);
+                    EditPrescriptionCommand.MESSAGE_USAGE), pe);
         }
 
         Prescription prescription = new Prescription(argMultimap.getValue(PREFIX_MEDICINE_NAME).get());
         Set<Prescription> prescriptions = ParserUtil.parsePrescriptions(argMultimap.getAllValues(PREFIX_MEDICINE_NAME));
         editAppointmentEventDescriptor.setPrescriptions(prescriptions);
-        return new AddPrescriptionCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
+        return new EditPrescriptionCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
     }
 
     /**

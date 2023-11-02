@@ -32,12 +32,15 @@ public class EditAppointmentEventCommand extends Command {
     public static final String COMMAND_WORD = "edit-appt";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the appointment "
             + "identified by the index number used in the displayed appointment list. "
-            + "Existing values will be overwritten by the input values.\n"
+            + "\nExisting values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "Example: " + COMMAND_WORD + " 1"
-            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
-            + PREFIX_APPT_DATE + "DATE"
-            + PREFIX_APPT_TIME + "TIME ";
+            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
+            + "[" + PREFIX_APPT_DATE + "YYYY-MM-DD] "
+            + "[" + PREFIX_APPT_TIME + "HH:MM] "
+            + "\nExample: " + COMMAND_WORD + " 1 "
+            + PREFIX_PATIENT_INDEX + "1 "
+            + PREFIX_APPT_DATE + "2024-01-01 "
+            + PREFIX_APPT_TIME + "15:00 ";
 
     public static final String MESSAGE_EDIT_EVENT_SUCCESS = "Edited Appointment event: %1$s";
 

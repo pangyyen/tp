@@ -23,7 +23,7 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add-patient";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a patient to the clinic book. "
-            + "Parameters: "
+            + "\nParameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_NRIC + "NRIC "
             + PREFIX_PHONE + "PHONE "
@@ -32,10 +32,11 @@ public class AddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
+            + PREFIX_NRIC + "S1234567A "
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_AGE + "25 "
-            + PREFIX_TAG + "friends "
+            + PREFIX_TAG + "Bad Breath "
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New patient added: %1$s";

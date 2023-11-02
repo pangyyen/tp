@@ -25,8 +25,6 @@ import seedu.cc.model.patient.Patient;
  * A utility class containing a list of {@code Patient} objects to be used in tests.
  */
 public class TypicalPatients {
-
-
     public static final Patient ALICE = new PatientBuilder().withName("Alice Pauline")
             .withNric("S1234567A")
             .withAge("32").withEmail("alice@example.com")

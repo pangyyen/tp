@@ -19,13 +19,13 @@ import seedu.cc.model.patient.Patient;
 
 
 /**
- * Adds a prescription to an appointment event in the clinic book.
+ * Edit the prescription of an appointment event in the clinic book.
  */
-public class AddPrescriptionCommand extends Command {
+public class EditPrescriptionCommand extends Command {
 
-    public static final String COMMAND_WORD = "add-prescription";
+    public static final String COMMAND_WORD = "edit-prescription";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds prescriptions to the appointment "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit a prescription in the appointment "
             + "by the index number used in the displayed appointment list.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
@@ -34,18 +34,18 @@ public class AddPrescriptionCommand extends Command {
             + PREFIX_PATIENT_INDEX + "1 "
             + PREFIX_MEDICINE_NAME + "Panadol";
 
-    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully added a prescription: \n%1$s";
+    public static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "Successfully edited a prescription: \n%1$s";
     private final Index patientIndex;
     private final Index eventIndex;
     private final EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor;
 
     /**
-     * Adds an appointment event to the patient at {@code index}.
+     * Edits an appointment event to the patient at {@code index}.
      * @param eventIndex of the appointment event in the filtered appointment event list to edit
      * @param patientIndex of the patient in the filtered patient list to edit
      * @param editAppointmentEventDescriptor details to edit the appointment with
      */
-    public AddPrescriptionCommand(Index eventIndex, Index patientIndex,
+    public EditPrescriptionCommand(Index eventIndex, Index patientIndex,
                                   EditAppointmentEventCommand
                                           .EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
         requireNonNull(eventIndex);
@@ -69,14 +69,14 @@ public class AddPrescriptionCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
 
-        Patient patientToAddPrescription = lastShownList.get(patientIndex.getZeroBased());
-        AppointmentEvent appointmentEvent = patientToAddPrescription.getClinicBookAppointmentList()
+        Patient patientToEditPrescription = lastShownList.get(patientIndex.getZeroBased());
+        AppointmentEvent appointmentEvent = patientToEditPrescription.getClinicBookAppointmentList()
                 .get(eventIndex.getZeroBased());
 
         AppointmentEvent editedEvent = createEditedAppointmentEvent(appointmentEvent, editAppointmentEventDescriptor);
-        model.setAppointmentEventForPatient(patientToAddPrescription, appointmentEvent, editedEvent);
+        model.setAppointmentEventForPatient(patientToEditPrescription, appointmentEvent, editedEvent);
         return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
-                Messages.format(appointmentEvent, patientToAddPrescription)));
+                Messages.format(appointmentEvent, patientToEditPrescription)));
     }
 
     @Override
@@ -86,13 +86,13 @@ public class AddPrescriptionCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof AddPrescriptionCommand)) {
+        if (!(other instanceof EditPrescriptionCommand)) {
             return false;
         }
 
-        AddPrescriptionCommand otherAddPrescriptionCommand = (AddPrescriptionCommand) other;
-        return this.patientIndex.equals(otherAddPrescriptionCommand.patientIndex)
-                && this.eventIndex.equals(otherAddPrescriptionCommand.eventIndex);
+        EditPrescriptionCommand otherEditPrescriptionCommand = (EditPrescriptionCommand) other;
+        return this.patientIndex.equals(otherEditPrescriptionCommand.patientIndex)
+                && this.eventIndex.equals(otherEditPrescriptionCommand.eventIndex);
     }
 
     @Override
