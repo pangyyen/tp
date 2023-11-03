@@ -78,6 +78,7 @@ The command box is where the user can type in commands to be executed.
 | `mn/MEDICATION_NAME`   | medication name             | must only contain alphanumeric characters, and it should not be blank                                                                                       |
 
 # 5. Glossary
+
 | Word           | Meaning                                                                                                                                                 |
 |----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CLI`          | Command Line Interface                                                                                                                                  |
