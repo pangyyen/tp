@@ -241,7 +241,7 @@ Schedules a new appointment for a patient.
 
 ---
 
-## 6.2.2 List All Appointment
+### 6.2.2 List All Appointment
 
 **What it does:**
 Displays all appointments of the patient.
@@ -261,7 +261,7 @@ Displays all appointments of the patient.
 
 ---
 
-## 6.2.3 Edit Appointment
+### 6.2.3 Edit Appointment
 
 **What it does:**
 Edits **existing** appointment details. **This command can only be used after `list-appointments` of the patient.** The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
@@ -286,7 +286,7 @@ Edits **existing** appointment details. **This command can only be used after `l
 
 ---
 
-## 6.2.4 Delete Appointment
+### 6.2.4 Delete Appointment
 
 **What it does:**
 Removes an appointment from the system. **This command can only be used after `list-appointments` of the patient.** The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
@@ -405,7 +405,7 @@ Message: "Successfully listed medical history for patient: [Medical History Deta
 
 ---
 
-## 6.3.3 Edit Medical History
+### 6.3.3 Edit Medical History
 
 **What it does:**
 Edits a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
@@ -435,7 +435,7 @@ Message: "Successfully edited medical history for patient: [Medical History Deta
 
 ---
 
-## 6.3.4 Delete Medical History
+### 6.3.4 Delete Medical History
 
 **What it does:**
 Deletes a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
