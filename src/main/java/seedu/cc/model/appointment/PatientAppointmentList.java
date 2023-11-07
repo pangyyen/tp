@@ -55,8 +55,6 @@ public class PatientAppointmentList {
      * Returns true if the Appointments contains the specified AppointmentEvent.
      */
     public boolean hasAppointment(AppointmentEvent event) {
-        int s = 1;
-        boolean as = appointmentEventList.get(0).equals(event);
         return appointmentEventList.contains(event);
     }
 }
