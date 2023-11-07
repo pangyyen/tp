@@ -33,24 +33,24 @@ public class SampleDataUtil {
 
     public static Patient[] getSamplePatients() {
         return new Patient[]{
-            new Patient(new Name("Alex Yeoh"), new Nric("S5323891B"), new Phone("87438807"),
-                new Email("alexyeoh@example.com"), new Age("40"),
-                getTagSet("friends")),
-            new Patient(new Name("Bernice Yu"), new Nric("S5323891B"), new Phone("99272758"),
-                new Email("berniceyu@example.com"), new Age("18"),
-                getTagSet("colleagues", "friends")),
-            new Patient(new Name("Charlotte Oliveiro"), new Nric("S5323891B"), new Phone("93210283"),
-                new Email("charlotte@example.com"), new Age("4"),
-                getTagSet("neighbours")),
-            new Patient(new Name("David Li"), new Nric("S5323891B"), new Phone("91031282"),
+            new Patient(new Name("Alex Yeoh"), new Nric("S1333666A"), new Phone("87438807"),
+                new Email("alexyeoh@example.com"), new Age("21"),
+                getTagSet("Diabetes")),
+            new Patient(new Name("Bernice Yu"), new Nric("S4564567B"), new Phone("99272758"),
+                new Email("berniceyu@example.com"), new Age("55"),
+                getTagSet("Hypertension")),
+            new Patient(new Name("Charlotte Oliveiro"), new Nric("S1234512A"), new Phone("93210283"),
+                new Email("charlotte@example.com"), new Age("69"),
+                getTagSet("Alzheimer")),
+            new Patient(new Name("David Li"), new Nric("S8934567G"), new Phone("91031282"),
                 new Email("lidavid@example.com"), new Age("43"),
-                getTagSet("family")),
+                getTagSet("Asthma")),
             new Patient(new Name("Irfan Ibrahim"), new Nric("S5323891B"), new Phone("92492021"),
-                new Email("irfan@example.com"), new Age("35"),
-                getTagSet("classmates")),
+                new Email("irfan@example.com"), new Age("30"),
+                getTagSet("Malaria")),
             new Patient(new Name("Roy Balakrishnan"), new Nric("S5323891B"), new Phone("92624417"),
                 new Email("royb@example.com"), new Age("31"),
-                getTagSet("colleagues"))
+                getTagSet("Cough"))
         };
     }
 
