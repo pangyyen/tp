@@ -27,7 +27,7 @@ public class Treatment {
         this.value = treatment;
     }
 
-    private Boolean isValidTreatment(String test) {
+    public static boolean isValidTreatment(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
