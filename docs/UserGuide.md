@@ -164,6 +164,13 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 **Example Commands:**
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
 
+<div style="background-color: #ffffcc; padding: 10px; margin-bottom: 10px; border-left: 5px solid #ffeb3b;">
+  <strong>:warning: Note:</strong>
+  Editing patient tags will override all the patient's existing tags. <br>
+e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
+</div>
+
+
 **Parameters:**
 
 | Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
