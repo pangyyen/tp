@@ -33,7 +33,7 @@ professionals manage their patients' medical journey.
    Some example commands you can try:
    
    * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
-   * `list-pateints`
+   * `list-patients`
    * `delete-patient 1`
    * `exit`
 
