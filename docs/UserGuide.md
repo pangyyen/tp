@@ -470,9 +470,9 @@ Switches between the different tabs in the sidebar.
 
 **Parameters:**
 
-| Parameters   | Explanation                                                                                        | Constraints                                                                      |
-|--------------|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patient Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters   | Explanation                                                                                         | Constraints                                                                      |
+|--------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 
 ---
