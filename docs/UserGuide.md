@@ -412,13 +412,6 @@ Lists the medical history of a patient.
 |-----------------|----------------------------------------------------|----------------------------|
 | `PATIENT_INDEX` | index of the patient in the displayed patient list | must be a positive integer |
 
-**Expected Output (Success):**
-Message: "Successfully listed medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
-
 ---
 
 ### 6.3.3 Edit Medical History
@@ -441,13 +434,6 @@ Edits a medical history of a patient. **This command can only be used after `lis
 | `[d/DATE]`               | date of the medical history                                        | must be in the format YYYY-MM-DD                                                                                                                            |
 | `[mc/MEDICAL_CONDITION]` | medical condition                                                  | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 | `[t/TREATMENT]`          | treatment                                                          | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-
-**Expected Output (Success):**
-Message: "Successfully edited medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
