@@ -34,7 +34,7 @@ public class EditMedicalHistoryEventCommand extends Command {
             + "identified by the index number used in the displayed medical history event list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
+            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
             + "[" + PREFIX_DATE + "YYYY-MM-DD] "
             + "[" + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION] "
             + "[" + PREFIX_TREATMENT + "TREATMENT] "
