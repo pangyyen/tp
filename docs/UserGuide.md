@@ -290,7 +290,7 @@ Edits **existing** appointment details. The appointment to be edited is identifi
 `edit-appt 2 pi/7 d/2023-10-05 t/16:00`
 
 <div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
-  <strong>:scroll: Additional Tips<br></strong>
+  <strong>:scroll: Additional Info<br></strong>
 1. You can only edit the appointments of the patient that is currently being displayed. <br>
 2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
 3. <code>edit-appt 2 pi/1 d/2023-10-05 t/16:00</code> will edit the <strong>second</strong> appointment of the patient with index 1. <br>
@@ -342,7 +342,7 @@ Removes an appointment from the system. The appointment to be deleted is identif
 </div>
 
 **What it does:**
-Adds a prescription to a patient's appointment. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. Calling this command multiple times will replace prescriptions to the appointment.
+Adds a prescription to a patient's appointment. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
@@ -376,7 +376,7 @@ Edits a prescription of a patient. The prescription to be edited is identified b
 `edit-prescription 1 pi/1 mn/Panadol mn/Paracetamol mn/Albuterol`
 
 <div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
-  <strong>:scroll: Additional Tips<br></strong>
+  <strong>:scroll: Additional Info<br></strong>
 1. You can only edit the prescription of the appointments that are currently being displayed. <br>
 2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
 3. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will edit the <strong>second</strong> appointment's prescription of the patient with index 1. <br>
@@ -485,7 +485,7 @@ Edits a medical history of a patient. The medical history to be edited is identi
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
 
 <div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
-  <strong>:scroll: Additional Tips<br></strong>
+  <strong>:scroll: Additional Info<br></strong>
 1. You can only edit the medical history of the patient that is currently being displayed. <br>
 2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
 3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the <strong>second</strong> medical history of the patient with index 1. <br>
