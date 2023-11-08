@@ -21,7 +21,8 @@ professionals manage their patients' medical journey.
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
-5. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
+5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
+6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html). 
 
 <p align="center">
   <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
