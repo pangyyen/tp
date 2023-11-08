@@ -191,7 +191,7 @@ e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existi
 **What it does:**
 Removes a patient record from the system. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>Note:</strong>
+  <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-patient</code>
 </div>
 
@@ -299,8 +299,6 @@ Edits **existing** appointment details. **This command can only be used after `l
 | `[t/TIME]`          | time of the appointment                                    | must be in the format HH:MM (24-hour format) |
 
 
-
-
 ---
 
 ### 6.2.4 Delete Appointment
@@ -320,8 +318,6 @@ Removes an appointment from the system. **This command can only be used after `l
 |---------------------|------------------------------------------------------------|----------------------------------------------|
 | `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
 | `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
-
-
 
 
 ---
@@ -345,7 +341,6 @@ Adds a prescription to a patient's appointment. **This command can only be used 
 | `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
 | `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
-
 
 ---
 
@@ -383,7 +378,7 @@ Adds a medical history to a patient record.
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
 <div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things to Note<br></strong>
+  <strong>:warning: Things To Note<br></strong>
   If there is no treatment available for the medical condition, you can put None for the treatment.
 <br>
   e.g. <code>add-medical-history 1 d/2023-10-01 mc/Cancer t/None</code>
@@ -434,6 +429,15 @@ Edits a medical history of a patient. **This command can only be used after `lis
 
 **Example Commands:**
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
+
+<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note<br></strong>
+1. You can only edit the medical history of the patient that is currently being displayed. <br>
+2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
+3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the second medical history of the patient with index 1. <br>
+4. If you want to edit the medical history of another patient, you will have to use <code>list-medical-history PATIENT_INDEX</code> to display the medical history of the patient you want to edit. <br>
+5. You can refer to the patient index in the patients tab.
+</div>
 
 **Parameters:**
 
