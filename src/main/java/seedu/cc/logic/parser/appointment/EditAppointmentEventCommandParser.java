@@ -8,6 +8,7 @@ import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand;
+import seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand.EditAppointmentEventDescriptor;
 import seedu.cc.logic.parser.ArgumentMultimap;
 import seedu.cc.logic.parser.ArgumentTokenizer;
 import seedu.cc.logic.parser.Parser;
@@ -55,8 +56,8 @@ public class EditAppointmentEventCommandParser implements Parser<EditAppointment
                     EditAppointmentEventCommand.MESSAGE_USAGE), pe);
         }
 
-        EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor =
-                new EditAppointmentEventCommand.EditAppointmentEventDescriptor();
+        EditAppointmentEventDescriptor editAppointmentEventDescriptor =
+                new EditAppointmentEventDescriptor();
 
 
         if (argMultimap.getValue(PREFIX_APPT_DATE).isPresent()) {
@@ -68,6 +69,7 @@ public class EditAppointmentEventCommandParser implements Parser<EditAppointment
             editAppointmentEventDescriptor.setTime(ParserUtil.parseTime(argMultimap
                     .getValue(PREFIX_APPT_TIME).get()));
         }
+
 
         return new EditAppointmentEventCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
     }

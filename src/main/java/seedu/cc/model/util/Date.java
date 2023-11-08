@@ -38,6 +38,14 @@ public class Date {
         }
     }
 
+    /**
+     * Checks if the date represented by this object is in the past relative to the current system date.
+     *
+     * @return true if this date is before the current system date.
+     */
+    public boolean isFutureDate() {
+        return date.isAfter(LocalDate.now());
+    }
 
     public LocalDate getDate() {
         return date;

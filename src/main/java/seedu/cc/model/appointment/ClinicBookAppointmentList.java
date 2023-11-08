@@ -38,9 +38,6 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
      * The event must not already exist in the list.
      */
     public void add(AppointmentEvent toAdd, Patient patient) {
-        if (contains(toAdd)) {
-            throw new DuplicateAppointmentException();
-        }
 
         if (!patient.equals(currentPatient)) {
             return;

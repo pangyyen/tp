@@ -65,6 +65,7 @@ public class AddPrescriptionCommandParser {
 
         Prescription prescription = new Prescription(argMultimap.getValue(PREFIX_MEDICINE_NAME).get());
         Set<Prescription> prescriptions = ParserUtil.parsePrescriptions(argMultimap.getAllValues(PREFIX_MEDICINE_NAME));
+
         editAppointmentEventDescriptor.setPrescriptions(prescriptions);
         return new AddPrescriptionCommand(eventIndex, patientIndex, editAppointmentEventDescriptor);
     }
