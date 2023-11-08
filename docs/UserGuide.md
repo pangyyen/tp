@@ -275,9 +275,13 @@ Displays all appointments of the patient.
 ---
 
 ### 6.2.3 Edit Appointment
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Edits **existing** appointment details. **This command can only be used after `list-appointments` of the patient.** The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
+Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
 
 **Command Format:**
 `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`
@@ -298,9 +302,13 @@ Edits **existing** appointment details. **This command can only be used after `l
 ---
 
 ### 6.2.4 Delete Appointment
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Removes an appointment from the system. **This command can only be used after `list-appointments` of the patient.** The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+Removes an appointment from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `delete-appt APPOINTMENT_INDEX pi/patient-index`
@@ -319,9 +327,13 @@ Removes an appointment from the system. **This command can only be used after `l
 ---
 
 ### 6.2.5 Add Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Adds a prescription to a patient's appointment. **This command can only be used after `list-appointments` of the patient.** The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. Calling this command multiple times will replace prescriptions to the appointment.
+Adds a prescription to a patient's appointment. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. Calling this command multiple times will replace prescriptions to the appointment.
 
 **Command Format:**
 `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
@@ -341,9 +353,13 @@ Adds a prescription to a patient's appointment. **This command can only be used 
 ---
 
 ### 6.2.6 Delete Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Removes a prescription from the system. **This command can only be used after `list-appointments` of the patient.** The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+Removes a prescription from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`
@@ -452,9 +468,13 @@ Edits a medical history of a patient. The medical history to be edited is identi
 ---
 
 ### 6.3.4 Delete Medical History
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Deletes a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
+Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
 **Command Format:**
 `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`
