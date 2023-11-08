@@ -9,7 +9,7 @@ title: User Guide
 # 1. Introduction
 
 CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital
-staff aged between 25-60 years. It is a desktop app optimised for fast-typers and is designed to help healthcare
+staff aged between 25-60 years. It is a desktop app optimised for people who type fast and is designed to help healthcare
 professionals manage their patients' medical journey.
 
 
@@ -24,7 +24,6 @@ professionals manage their patients' medical journey.
 5. For Mac users unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
 
 <p align="center">
-  <img width="275" height="280" src="images/mac_issue.png">
 </p>
  
 
