@@ -24,6 +24,7 @@ professionals manage their patients' medical journey.
 5. For Mac users unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
 
 <p align="center">
+  <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
 </p>
  
 
@@ -40,7 +41,7 @@ professionals manage their patients' medical journey.
 # 3. GUI components
 
 ## 3.1. Main screen
-<img width="600" height="400" src="images/UiWithDescriptions.png">
+<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
 
 ## 3.2 Sidebar
 The sidebar contains the following tabs:
@@ -100,7 +101,7 @@ The command box is where the user can type in commands to be executed.
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/malaria`, `t/asthma t/malaria` etc.
@@ -456,7 +457,7 @@ Deletes a medical history of a patient. **This command can only be used after `l
 ---
 
 ## 6.3 System Related Features
-### 6.3.1 Swtching Tabs
+### 6.3.1 Switch Tabs
 
 **What it does:**
 Switches between the different tabs in the sidebar.
