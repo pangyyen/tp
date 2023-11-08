@@ -36,6 +36,7 @@ public class AddMedicalHistoryEventCommand extends Command {
             + PREFIX_TREATMENT + "Insulin";
 
     public static final String MESSAGE_SUCCESS = "New medical history event added: \n%1$s";
+    public static final String MESSAGE_DATE_IN_FUTURE = "Medical History Date should not be in the future";
 
     private final MedicalHistoryEvent eventToAdd;
     private final Index patientIndex;
