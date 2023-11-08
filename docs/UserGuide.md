@@ -383,10 +383,13 @@ Adds a medical history to a patient record.
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
 <div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>Note:</strong>
+  <strong>:warning: Things to Note<br></strong>
   If there is no treatment available for the medical condition, you can put None for the treatment.
 <br>
   e.g. <code>add-medical-history 1 d/2023-10-01 mc/Cancer t/None</code>
+<br>
+<br>
+For the date, we allow it to be in the past, up until today's date, but not future dates.
 </div>
 
 **Parameter**
