@@ -114,39 +114,38 @@ The following terms are used throughout the CareCentral user guide:
 
 
 ## 6.1. Patients Related Features 🚑
-
 ### 6.1.1. Create Patient Record 📝
 
-**What it does:**  
-This feature lets you add a brand-new patient record into the CareCentral system, keeping track of all the essential details for each patient.
+**What it does**  <br>
+This feature lets you add a new patient record into the CareCentral system, keeping track of all the essential details for each patient.
 
-**Command Format:**  
+**Command Format**  <br>
 Type the command below to create a new patient entry: <br>
 `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`
 
-**Example Commands:**
+**Example Commands** <br>
 Here's an example to add a patient named John Doe: <br>
 `add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com`
 
 **Parameters:** <br>
 Let's break down what each part of the command means:
 
-| Parameters       | Explanation                      | Constraints                                                                                                                                                  |
-|------------------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | Patient's full name.             | Names must be clear and simple—only the good old ABCs and 123s and spaces, please. No fancy symbols!                                                         |
-| `ic/NRIC`        | Unique identity card number.     | The NRIC must be alphanumeric, and following the Singapore's standard. [Learn more here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`          | How many candles on their cake?  | Only whole numbers here—we can't have half an age, can we?                                                                                                   |
-| `p/PHONE_NUMBER` | Ring, ring! What's their number? | Make sure it's a number we can actually call: 8 digits, nothing more, nothing less.                                                                          |
-| `e/email`        | Got mail? Their email address.   | No typos allowed here—let's keep emails professional and valid.                                                                                              |
-| `[t/TAG]...`     | What's their story? Any tags?    | Tags should be simple and to the point. Add as many as you like to paint the full picture.                                                                   |
+| Parameters       | Explanation                                          | Constraints                                                                                                                         |
+|------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | The patient's full name.                             | Use only letters, numbers, and spaces. It can't be left empty.                                                                      |
+| `ic/NRIC`        | The patient's NRIC number.                           | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
+| `a/AGE`          | The patient's age in years.                          | Only whole numbers accepted to reflect the patient's completed years.                                                               |
+| `p/PHONE_NUMBER` | The patient's telephone number.                      | An 8-digit numeric string that you can reach out to.                                                                                |
+| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
+| `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                  |
 
 ---
 ### 6.1.2. List Patients 📋
 
-**What it does:**  
+**What it does**  
 Ready to see your whole roster of patients? This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
 
-**Command Format:**  
+**Command Format**  
 Just type this simple command to get the full list: <br>
 `list-patients`
 
@@ -203,7 +202,6 @@ Let's break down what each part of the command means:
 | Parameters      | Explanation                                                      | Constraints                                                      |
 |-----------------|------------------------------------------------------------------|------------------------------------------------------------------|
 | `PATIENT_INDEX` | The position number of the patient in the displayed patient list | Must be a positive integer corresponding to a patient's listing. |
-
 
 ---
 
