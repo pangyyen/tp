@@ -392,9 +392,9 @@ Lists the medical history of a patient.
 
 **Parameters:**
 
-| Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
-|--------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `PATIENT_INDEX`            | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
+| Parameters      | Explanation                                        | Constraints                |
+|-----------------|----------------------------------------------------|----------------------------|
+| `PATIENT_INDEX` | index of the patient in the displayed patient list | must be a positive integer |
 
 **Expected Output (Success):**
 Message: "Successfully listed medical history for patient: [Medical History Details]"
