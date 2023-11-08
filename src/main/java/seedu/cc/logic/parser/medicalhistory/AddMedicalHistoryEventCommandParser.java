@@ -1,9 +1,8 @@
 package seedu.cc.logic.parser.medicalhistory;
 
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
+import static seedu.cc.logic.parser.CliSyntax.*;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
 
 import java.util.stream.Stream;
 
@@ -56,6 +55,10 @@ public class AddMedicalHistoryEventCommandParser implements Parser<AddMedicalHis
         if (!arePrefixesPresent(argMultimap, PREFIX_MEDICAL_CONDITION, PREFIX_TREATMENT, PREFIX_DATE)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     AddMedicalHistoryEventCommand.MESSAGE_USAGE));
+        }
+
+        if (ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()).isFutureDate()) {
+            throw new ParseException(String.format("Medical History Date should not be in the future"));
         }
 
         MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap

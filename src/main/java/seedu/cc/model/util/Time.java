@@ -35,6 +35,15 @@ public class Time {
         }
     }
 
+    /**
+     * Checks if the time represented by this object is in the past relative to the current system time today.
+     *
+     * @return true if this time is before the current system time.
+     */
+    public boolean isPastTime() {
+        return time.isBefore(LocalTime.now());
+    }
+
     public LocalTime getTime() {
         return time;
     }
