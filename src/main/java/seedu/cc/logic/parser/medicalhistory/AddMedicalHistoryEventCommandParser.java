@@ -58,6 +58,10 @@ public class AddMedicalHistoryEventCommandParser implements Parser<AddMedicalHis
                     AddMedicalHistoryEventCommand.MESSAGE_USAGE));
         }
 
+        if (ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()).isFutureDate()) {
+            throw new ParseException(String.format("Medical History Date should not be in the future"));
+        }
+
         MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap
                 .getValue(PREFIX_MEDICAL_CONDITION).get());
         Treatment treatment = ParserUtil.parseTreatment(argMultimap.getValue(PREFIX_TREATMENT).get());
