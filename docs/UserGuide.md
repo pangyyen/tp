@@ -17,6 +17,7 @@ professionals manage their patients' medical journey.
 
 # 2. Quick Start
 1. Ensure you have Java 11 installed in your Computer.
+2. Download and install the Azul build of OpenJDK 11 version found [here](https://www.azul.com/downloads/?version=java-11-lts&os=macos&architecture=arm-64-bit&package=jdk-fx).
 2. Download the latest `carecentral.jar` from [here](https://github.com/AY2324S1-CS2103T-F08-1/tp/releases/tag/v1.3.1).
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
