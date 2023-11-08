@@ -47,25 +47,25 @@ public class TypicalPatients {
             .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory()).withTags("friends").build();
     public static final Patient ELLE = new PatientBuilder().withName("Elle Meyer")
             .withNric("S1234567E")
-            .withPhone("9482224")
+            .withPhone("94822240")
             .withEmail("werner@example.com").withAge("96").build();
     public static final Patient FIONA = new PatientBuilder().withName("Fiona Kunz")
             .withNric("S1234567F")
-            .withPhone("9482427")
+            .withPhone("94824270")
             .withEmail("lydia@example.com").withAge("69").build();
     public static final Patient GEORGE = new PatientBuilder().withName("George Best")
             .withNric("S1234567G")
-            .withPhone("9482442")
+            .withPhone("94824420")
             .withEmail("anna@example.com").withAge("52").build();
 
     // Manually added
     public static final Patient HOON = new PatientBuilder().withName("Hoon Meier")
             .withNric("S1234567H")
-            .withPhone("8482424")
+            .withPhone("84824240")
             .withEmail("stefan@example.com").withAge("13").build();
     public static final Patient IDA = new PatientBuilder().withName("Ida Mueller")
             .withNric("S1234567I")
-            .withPhone("8482131")
+            .withPhone("84821310")
             .withEmail("hans@example.com").withAge("22").build();
 
     // Manually added - Patient's details found in {@code CommandTestUtil}

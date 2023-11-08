@@ -31,21 +31,21 @@
   }, {
     "name" : "Elle Meyer",
     "nric" : "S1234567E",
-    "phone" : "9482224",
+    "phone" : "94822240",
     "email" : "werner@example.com",
     "age" : "96",
     "tags" : [ ]
   }, {
     "name" : "Fiona Kunz",
     "nric" : "S1234567F",
-    "phone" : "9482427",
+    "phone" : "94824270",
     "email" : "lydia@example.com",
     "age" : "69",
     "tags" : [ ]
   }, {
     "name" : "George Best",
     "nric" : "S1234567G",
-    "phone" : "9482442",
+    "phone" : "94824420",
     "email" : "anna@example.com",
     "age" : "52",
     "tags" : [ ]
