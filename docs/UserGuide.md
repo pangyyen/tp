@@ -211,9 +211,9 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 **Parameters:**
 
-| Parameters | Explanation                                        | Constraints                                     |
-|------------|----------------------------------------------------|-------------------------------------------------|
-| `KEYWORD`  | keyword to be searched                             | must be a string                                |
+| Parameters | Explanation                                                | Constraints      |
+|------------|------------------------------------------------------------|------------------|
+| `KEYWORD`  | Keyword to be searched. Keyword refers to the patient name | Must be a string |
 
 ---
 

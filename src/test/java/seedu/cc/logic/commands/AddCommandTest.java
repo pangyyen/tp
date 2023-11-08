@@ -1,7 +1,9 @@
 package seedu.cc.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.ALICE;
 
