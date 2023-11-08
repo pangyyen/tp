@@ -155,11 +155,6 @@ List all the patients in the system.
 
 ### 6.1.3. Edit Patient Record
 
-<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note <br></strong>
-  This command should only be used after <code>list-patient</code>
-</div>
-
 **What it does:**
 Edits a patient record at the specified `PATIENT_INDEX` in the system.
 
@@ -195,10 +190,6 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 
 **What it does:**
 Removes a patient record from the system. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
-<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note <br></strong>
-  This command should only be used after <code>list-patient</code>
-</div>
 
 **Command Format:**
 `delete-patient PATIENT_INDEX`
@@ -425,9 +416,13 @@ Lists the medical history of a patient.
 ---
 
 ### 6.3.3 Edit Medical History
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Edits a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
+Edits a medical history of a patient. The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
 **Command Format:**
 `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
@@ -435,11 +430,11 @@ Edits a medical history of a patient. **This command can only be used after `lis
 **Example Commands:**
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
 
-<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note<br></strong>
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Tips<br></strong>
 1. You can only edit the medical history of the patient that is currently being displayed. <br>
 2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
-3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the second medical history of the patient with index 1. <br>
+3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the <strong>second</strong> medical history of the patient with index 1. <br>
 4. If you want to edit the medical history of another patient, you will have to use <code>list-medical-history PATIENT_INDEX</code> to display the medical history of the patient you want to edit. <br>
 5. You can refer to the patient index in the patients tab.
 </div>
