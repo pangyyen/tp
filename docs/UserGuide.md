@@ -227,10 +227,10 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 ## 6.2 Appointments Related Features
 
-<div style="background-color: #ffffcc; padding: 5px; border-left: 5px solid #ffeb3b;">
-  <strong>Note:</strong>
-  We allow appointment dates to be of past and future dates. This is to allow users to add/reschedule appointments that have already been scheduled in the past.
-  The purpose of appointment dates is to allow clinics to keep track of when did the patient visited their clinic.
+<div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
+  <strong>📝 Notes from the Developers<br></strong>
+  We allow appointment dates to be of past and future dates. This allows medical staff to add/reschedule appointments that have already been scheduled in the past.
+  The purpose of appointment dates is to keep track of when the patient visited the clinic and to manage the patient's future appointments with them.
 </div>
 
 ### 6.2.1 Add Appointment
@@ -416,8 +416,6 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 | `d/DATE`                 | date of the medical history                             | must be in the format YYYY-MM-DD                                                 |
 | `mc/MEDICAL_CONDITION`   | medical condition                                       | must only contain alphanumeric characters and spaces, and it should not be blank |
 | `t/TREATMENT`            | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
-
-
 
 ---
 
