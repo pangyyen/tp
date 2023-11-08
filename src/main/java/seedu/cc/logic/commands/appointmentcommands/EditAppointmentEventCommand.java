@@ -101,10 +101,11 @@ public class EditAppointmentEventCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
         // Retrieve the appointment event from the model based on the index
-        // TODO: fix the violation of Talk to Stranger principle
+        // TODO: fix code standard: talk to stranger
         AppointmentEvent eventToEdit = model.getFilteredAppointmentList().get(eventIndex.getZeroBased());
 
         // Create a new appointment event with the updated details
+        editAppointmentEventDescriptor.setPrescriptions(patientToEditAppointmentEvent.getPrescriptions(eventToEdit));
         AppointmentEvent editedEvent = createEditedAppointmentEvent(eventToEdit, editAppointmentEventDescriptor);
 
         if (!patientToEditAppointmentEvent.hasAppointmentEvent(eventToEdit)) {
@@ -114,9 +115,9 @@ public class EditAppointmentEventCommand extends Command {
         // Update the model with the edited event
         model.setAppointmentEventForPatient(patientToEditAppointmentEvent, eventToEdit, editedEvent);
 
+
         return new CommandResult(String.format(MESSAGE_EDIT_EVENT_SUCCESS,
                 Messages.format(editedEvent, patientToEditAppointmentEvent)));
-
     }
 
     /**

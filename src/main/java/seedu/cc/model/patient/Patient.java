@@ -196,5 +196,9 @@ public class Patient extends Person {
         appointmentEvent.addPrescriptions(prescriptions);
     }
 
+    public Set<Prescription> getPrescriptions(AppointmentEvent appointmentEvent) {
+        return appointmentEvent.getPrescriptions();
+    }
+
 
 }
