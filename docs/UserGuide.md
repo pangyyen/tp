@@ -300,12 +300,12 @@ Edits **existing** appointment details. The appointment to be edited is identifi
 
 **Parameters:**
 
-| Parameters          | Explanation                                                | Constraints                                  |
-|---------------------|------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
-| `[d/DATE]`          | date of the appointment                                    | must be in the format YYYY-MM-DD             |
-| `[t/TIME]`          | time of the appointment                                    | must be in the format HH:MM (24-hour format) |
+| Parameters          | Explanation                                                                                           | Constraints                                  |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer                   |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                   |
+| `[d/DATE]`          | date of the appointment                                                                               | must be in the format YYYY-MM-DD             |
+| `[t/TIME]`          | time of the appointment                                                                               | must be in the format HH:MM (24-hour format) |
 
 
 ---
@@ -327,10 +327,10 @@ Removes an appointment from the system. The appointment to be deleted is identif
 
 **Parameters:**
 
-| Parameters          | Explanation                                                | Constraints                                  |
-|---------------------|------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
+| Parameters          | Explanation                                                                                           | Constraints                |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 
 ---
@@ -352,11 +352,11 @@ Adds a prescription to a patient's appointment. The appointment to be edited is 
 
 **Parameters:**
 
-| Parameters            | Explanation                                                 | Constraints                                                                                         |
-|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
-| `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
+|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
+| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
+| `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
 ---
 
@@ -388,11 +388,11 @@ Edits a prescription of a patient. The prescription to be edited is identified b
 
 **Parameters:**
 
-| Parameters            | Explanation                                                 | Constraints                                                                                         |
-|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
-| `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
+|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
+| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
+| `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
 ### 6.2.7 Delete Prescription
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
@@ -411,10 +411,10 @@ Removes a prescription from the system. The appointment to be deleted is identif
 
 **Parameters:**
 
-| Parameters            | Explanation                                                 | Constraints                                                                                         |
-|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
+| Parameters          | Explanation                                                                                           | Constraints                |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 ---
 
@@ -443,12 +443,12 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 
 **Parameter**
 
-| Parameters               | Explanation                                             | Constraints                                                                      |
-|--------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------|
-| `PATIENT_INDEX`          | index of the patient in the displayed patient list      | must be a positive integer                                                       |
-| `d/DATE`                 | date of the medical history                             | must be in the format YYYY-MM-DD                                                 |
-| `mc/MEDICAL_CONDITION`   | medical condition                                       | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `t/TREATMENT`            | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters             | Explanation                                                                                           | Constraints                                                                      |
+|------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
+| `d/DATE`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
+| `mc/MEDICAL_CONDITION` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `t/TREATMENT`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
 
@@ -465,9 +465,9 @@ Lists the medical history of a patient.
 
 **Parameters:**
 
-| Parameters      | Explanation                                        | Constraints                |
-|-----------------|----------------------------------------------------|----------------------------|
-| `PATIENT_INDEX` | index of the patient in the displayed patient list | must be a positive integer |
+| Parameters      | Explanation                                                                                           | Constraints                |
+|-----------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `PATIENT_INDEX` | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 ---
 
@@ -497,13 +497,13 @@ Edits a medical history of a patient. The medical history to be edited is identi
 
 **Parameters:**
 
-| Parameters               | Explanation                                                        | Constraints                                                                                                                                                 |
-|--------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list | must be a positive integer                                                                                                                                  |
-| `[pi/PATIENT_INDEX]`     | index of the patient in the displayed patient list                 | must be a positive integer                                                                                                                                  |
-| `[d/DATE]`               | date of the medical history                                        | must be in the format YYYY-MM-DD                                                                                                                            |
-| `[mc/MEDICAL_CONDITION]` | medical condition                                                  | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `[t/TREATMENT]`          | treatment                                                          | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| Parameters               | Explanation                                                                                           | Constraints                                                                      |
+|--------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list                                    | must be a positive integer                                                       |
+| `[pi/PATIENT_INDEX]`     | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
+| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
+| `[mc/MEDICAL_CONDITION]` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `[t/TREATMENT]`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
 
@@ -524,10 +524,10 @@ Deletes a medical history of a patient. The medical history to be deleted is ide
 
 **Parameters:**
 
-| Parameters              | Explanation                                                        | Constraints                                  |
-|-------------------------|--------------------------------------------------------------------|----------------------------------------------|
-| `MEDICAL_HISTORY_INDEX` | index of the medical history in the displayed medical history list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`      | patient index                                                      | must be a positive integer                   |
+| Parameters              | Explanation                                                                                           | Constraints                |
+|-------------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `MEDICAL_HISTORY_INDEX` | index of the medical history in the displayed medical history list                                    | must be a positive integer |
+| `pi/PATIENT_INDEX`      | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 
 ---
