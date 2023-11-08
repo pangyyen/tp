@@ -155,6 +155,11 @@ List all the patients in the system.
 
 ### 6.1.3. Edit Patient Record
 
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-patient</code>
+</div>
+
 **What it does:**
 Edits a patient record at the specified `PATIENT_INDEX` in the system.
 
@@ -164,10 +169,10 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 **Example Commands:**
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
 
-<div style="background-color: #ffffcc; padding: 10px; margin-bottom: 10px; border-left: 5px solid #ffeb3b;">
-  <strong>:warning: Note:</strong>
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Info<br></strong>
   Editing patient tags will override all the patient's existing tags. <br>
-e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
+  e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
 </div>
 
 
