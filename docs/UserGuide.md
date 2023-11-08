@@ -381,7 +381,9 @@ Edits a prescription of a patient. The prescription to be edited is identified b
 2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
 3. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will edit the <strong>second</strong> appointment's prescription of the patient with index 1. <br>
 4. If you want to edit the prescription of another patient, you will have to use <code>list-appointments PATIENT_INDEX</code> to display the appointments of the patient you want to edit. <br>
-5. You can refer to the patients tab for the patient index.
+5. You can refer to the patients tab for the patient index. <br>
+6. Editing prescription will override all the appointment's existing prescription. <br>
+  e.g. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will remove all the appointment's existing prescription and replace it with <code>Paracetamol</code> and <code>Albuterol</code>.
 </div>
 
 **Parameters:**
