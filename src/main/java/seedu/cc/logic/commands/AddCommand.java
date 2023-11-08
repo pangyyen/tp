@@ -36,8 +36,8 @@ public class AddCommand extends Command {
             + PREFIX_PHONE + "98765432 "
             + PREFIX_EMAIL + "johnd@example.com "
             + PREFIX_AGE + "25 "
-            + PREFIX_TAG + "Bad Breath "
-            + PREFIX_TAG + "owesMoney";
+            + PREFIX_TAG + "BadBreath "
+            + PREFIX_TAG + "OwesMoney";
 
     public static final String MESSAGE_SUCCESS = "New patient added: %1$s";
     public static final String MESSAGE_DUPLICATE_PATIENT = "This patient already exists in the clinic book";
