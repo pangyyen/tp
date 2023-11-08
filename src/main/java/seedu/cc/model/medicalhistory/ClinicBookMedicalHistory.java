@@ -38,9 +38,6 @@ public class ClinicBookMedicalHistory implements Iterable<MedicalHistoryEvent> {
      * The event must not already exist in the list.
      */
     public void add(MedicalHistoryEvent toAdd, Patient patient) {
-        if (contains(toAdd)) {
-            throw new DuplicateMedicalHistoryEventException();
-        }
 
         if (!patient.equals(currentPatient)) {
             return;

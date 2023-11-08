@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
  */
 public class Date {
 
-    public static final String DATE_MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
+    public static final String MESSAGE_CONSTRAINTS = "Dates should be in the format YYYY-MM-DD.";
     private final LocalDate date;
 
     /**
@@ -20,7 +20,7 @@ public class Date {
      * @param date A valid date.
      */
     public Date(String date) {
-        checkArgument(isValidDate(date), DATE_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidDate(date), MESSAGE_CONSTRAINTS);
         this.date = LocalDate.parse(date);
     }
 

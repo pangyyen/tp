@@ -9,7 +9,7 @@ title: User Guide
 # 1. Introduction
 
 CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital
-staff aged between 25-60 years. It is a desktop app optimised for fast-typers and is designed to help healthcare
+staff aged between 25-60 years. It is a desktop app optimised for people who type fast and is designed to help healthcare
 professionals manage their patients' medical journey.
 
 
@@ -21,10 +21,10 @@ professionals manage their patients' medical journey.
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
-5. For Mac users unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
+5. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
 
 <p align="center">
-  <img width="275" height="280" src="images/mac_issue.png">
+  <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
 </p>
  
 
@@ -33,7 +33,7 @@ professionals manage their patients' medical journey.
    Some example commands you can try:
    
    * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
-   * `list-pateints`
+   * `list-patients`
    * `delete-patient 1`
    * `exit`
 
@@ -41,10 +41,10 @@ professionals manage their patients' medical journey.
 # 3. GUI components
 
 ## 3.1. Main screen
-<img width="600" height="400" src="images/UiWithDescriptions.png">
+<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
 
-## 3.2 Menu Bar
-The menu bar contains the following tabs:
+## 3.2 Sidebar
+The sidebar contains the following tabs:
 * Patients
 * Medical History
 * Appointments
@@ -101,7 +101,7 @@ The command box is where the user can type in commands to be executed.
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/malaria`, `t/asthma t/malaria` etc.
@@ -110,7 +110,8 @@ The command box is where the user can type in commands to be executed.
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
+  e.g. if the command specifies `help 123`, it will be interpreted as `help`. <br>
+:warning: <strong>Clear command will clear the entire json file and cannot be undone. Please use with caution. </strong>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
@@ -163,6 +164,13 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 **Example Commands:**
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
 
+<div style="background-color: #ffffcc; padding: 10px; margin-bottom: 10px; border-left: 5px solid #ffeb3b;">
+  <strong>:warning: Note:</strong>
+  Editing patient tags will override all the patient's existing tags. <br>
+e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
+</div>
+
+
 **Parameters:**
 
 | Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
@@ -181,7 +189,11 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 ### 6.1.4. Delete Patient Record
 
 **What it does:**
-Removes a patient record from the system. **This command can only be used after `list-patient`**. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
+Removes a patient record from the system. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-patient</code>
+</div>
 
 **Command Format:**
 `delete-patient PATIENT_INDEX`
@@ -211,16 +223,21 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 **Parameters:**
 
-| Parameters | Explanation                                        | Constraints                                     |
-|------------|----------------------------------------------------|-------------------------------------------------|
-| `KEYWORD`  | keyword to be searched                             | must be a string                                |
+| Parameters | Explanation                                                | Constraints      |
+|------------|------------------------------------------------------------|------------------|
+| `KEYWORD`  | Keyword to be searched. Keyword refers to the patient name | Must be a string |
 
 ---
 
 ## 6.2 Appointments Related Features
 
-### 6.2.1 Add Appointment
+<div style="background-color: #ffffcc; padding: 5px; border-left: 5px solid #ffeb3b;">
+  <strong>Note:</strong>
+  We allow appointment dates to be of past and future dates. This is to allow users to add/reschedule appointments that have already been scheduled in the past.
+  The purpose of appointment dates is to allow clinics to keep track of when did the patient visited their clinic.
+</div>
 
+### 6.2.1 Add Appointment
 **What it does:**
 Schedules a new appointment for a patient.
 
@@ -282,8 +299,6 @@ Edits **existing** appointment details. **This command can only be used after `l
 | `[t/TIME]`          | time of the appointment                                    | must be in the format HH:MM (24-hour format) |
 
 
-
-
 ---
 
 ### 6.2.4 Delete Appointment
@@ -303,8 +318,6 @@ Removes an appointment from the system. **This command can only be used after `l
 |---------------------|------------------------------------------------------------|----------------------------------------------|
 | `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
 | `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
-
-
 
 
 ---
@@ -328,7 +341,6 @@ Adds a prescription to a patient's appointment. **This command can only be used 
 | `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
 | `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
-
 
 ---
 
@@ -360,11 +372,20 @@ Removes a prescription from the system. **This command can only be used after `l
 Adds a medical history to a patient record.
 
 **Command Format:**
-`add-medical-history PATIENT_INDEX d/DATE [c/MEDICAL_CONDITION t/TREATMENT`
+`add-medical-history PATIENT_INDEX d/DATE mc/MEDICAL_CONDITION t/TREATMENT`
 
 **Example Commands:**
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
+<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note<br></strong>
+  If there is no treatment available for the medical condition, you can put None for the treatment.
+<br>
+  e.g. <code>add-medical-history 1 d/2023-10-01 mc/Cancer t/None</code>
+<br>
+<br>
+For the date, we allow it to be in the past, up until today's date, but not future dates.
+</div>
 
 **Parameter**
 
@@ -392,16 +413,9 @@ Lists the medical history of a patient.
 
 **Parameters:**
 
-| Parameters         | Explanation                                        | Constraints                                                                                                                                                 |
-|--------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `PATIENT_INDEX`            | index of the patient in the displayed patient list | must be a positive integer                                                                                                                                  |
-
-**Expected Output (Success):**
-Message: "Successfully listed medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
+| Parameters      | Explanation                                        | Constraints                |
+|-----------------|----------------------------------------------------|----------------------------|
+| `PATIENT_INDEX` | index of the patient in the displayed patient list | must be a positive integer |
 
 ---
 
@@ -416,6 +430,15 @@ Edits a medical history of a patient. **This command can only be used after `lis
 **Example Commands:**
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
 
+<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note<br></strong>
+1. You can only edit the medical history of the patient that is currently being displayed. <br>
+2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
+3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the second medical history of the patient with index 1. <br>
+4. If you want to edit the medical history of another patient, you will have to use <code>list-medical-history PATIENT_INDEX</code> to display the medical history of the patient you want to edit. <br>
+5. You can refer to the patient index in the patients tab.
+</div>
+
 **Parameters:**
 
 | Parameters               | Explanation                                                        | Constraints                                                                                                                                                 |
@@ -425,13 +448,6 @@ Edits a medical history of a patient. **This command can only be used after `lis
 | `[d/DATE]`               | date of the medical history                                        | must be in the format YYYY-MM-DD                                                                                                                            |
 | `[mc/MEDICAL_CONDITION]` | medical condition                                                  | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 | `[t/TREATMENT]`          | treatment                                                          | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-
-**Expected Output (Success):**
-Message: "Successfully edited medical history for patient: [Medical History Details]"
-
-**Expected Output (Failure):**
-
-- Message: "Invalid input. Please enter a valid index or details."
 
 ---
 
@@ -454,8 +470,29 @@ Deletes a medical history of a patient. **This command can only be used after `l
 | `pi/PATIENT_INDEX`      | patient index                                                      | must be a positive integer                   |
 
 
+---
+
+## 6.3 System Related Features
+### 6.3.1 Switch Tabs
+
+**What it does:**
+Switches between the different tabs in the sidebar.
+
+**Command Format:**
+`switch TAB_NUMBER`
+
+**Example Command:**
+`switch 1`
+
+**Parameters:**
+
+| Parameters   | Explanation                                                                                         | Constraints                                                                      |
+|--------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | must only contain alphanumeric characters and spaces, and it should not be blank |
+
 
 ---
+
 
 # 7. Command Summary
 

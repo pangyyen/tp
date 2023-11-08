@@ -180,7 +180,9 @@ public class ParserUtil {
     public static MedicalCondition parseMedicalCondition(String medicalCondition) throws ParseException {
         requireNonNull(medicalCondition);
         String trimmedMedicalCondition = medicalCondition.trim();
-
+        if (!MedicalCondition.isValidMedicalCondition(trimmedMedicalCondition)) {
+            throw new ParseException(MedicalCondition.MESSAGE_CONSTRAINTS);
+        }
         return new MedicalCondition(trimmedMedicalCondition);
     }
 
@@ -193,6 +195,9 @@ public class ParserUtil {
     public static Treatment parseTreatment(String treatment) throws ParseException {
         requireNonNull(treatment);
         String trimmedTreatment = treatment.trim();
+        if (!Treatment.isValidTreatment(trimmedTreatment)) {
+            throw new ParseException(Treatment.MESSAGE_CONSTRAINTS);
+        }
 
         return new Treatment(trimmedTreatment);
     }
@@ -206,7 +211,9 @@ public class ParserUtil {
     public static Date parseDate(String date) throws ParseException {
         requireNonNull(date);
         String trimmedDate = date.trim();
-
+        if (!Date.isValidDate(trimmedDate)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        }
         return new Date(trimmedDate);
     }
 
@@ -219,7 +226,9 @@ public class ParserUtil {
     public static Time parseTime(String time) throws ParseException {
         requireNonNull(time);
         String trimmedTime = time.trim();
-
+        if (!Time.isValidTime(trimmedTime)) {
+            throw new ParseException(Time.MESSAGE_CONSTRAINTS);
+        }
         return new Time(trimmedTime);
     }
 }

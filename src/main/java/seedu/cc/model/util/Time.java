@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Time {
 
-    public static final String TIME_MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
+    public static final String MESSAGE_CONSTRAINTS = "Times should be in the format HH:MM (24-hour-format).";
     private final LocalTime time;
 
     /**
@@ -19,7 +19,7 @@ public class Time {
      * @param time A valid time.
      */
     public Time(String time) {
-        checkArgument(isValidTime(time), TIME_MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTime(time), MESSAGE_CONSTRAINTS);
         this.time = LocalTime.parse(time);
     }
 

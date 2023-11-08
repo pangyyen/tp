@@ -1,11 +1,11 @@
 package seedu.cc.logic.commands.appointmentcommands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.cc.logic.commands.appointmentcommands.EditAppointmentEventCommand.createEditedAppointmentEvent;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICINE_NAME;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PATIENT_INDEX;
 
 import java.util.List;
+import java.util.Set;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.commons.util.ToStringBuilder;
@@ -15,7 +15,10 @@ import seedu.cc.logic.commands.CommandResult;
 import seedu.cc.logic.commands.exceptions.CommandException;
 import seedu.cc.model.Model;
 import seedu.cc.model.appointment.AppointmentEvent;
+import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.patient.Patient;
+import seedu.cc.model.util.Date;
+import seedu.cc.model.util.Time;
 
 
 /**
@@ -28,8 +31,8 @@ public class AddPrescriptionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds prescriptions to the appointment "
             + "by the index number used in the displayed appointment list.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
-            + "[" + PREFIX_MEDICINE_NAME + "MEDICINE NAME]"
+            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
+            + PREFIX_MEDICINE_NAME + "MEDICINE NAME"
             + "\nExample: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "1 "
             + PREFIX_MEDICINE_NAME + "Panadol";
@@ -73,10 +76,36 @@ public class AddPrescriptionCommand extends Command {
         AppointmentEvent appointmentEvent = patientToAddPrescription.getClinicBookAppointmentList()
                 .get(eventIndex.getZeroBased());
 
-        AppointmentEvent editedEvent = createEditedAppointmentEvent(appointmentEvent, editAppointmentEventDescriptor);
+        AppointmentEvent editedEvent = createEditedAppointmentEventWithAddedPrescription(appointmentEvent,
+                editAppointmentEventDescriptor);
         model.setAppointmentEventForPatient(patientToAddPrescription, appointmentEvent, editedEvent);
         return new CommandResult(String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS,
                 Messages.format(appointmentEvent, patientToAddPrescription)));
+    }
+
+    /**
+     * Creates and returns a {@code AppointmentEvent} with the details of {@code eventToEdit}
+     * edited with {@code editAppointmentEventDescriptor}.
+     */
+    public static AppointmentEvent createEditedAppointmentEventWithAddedPrescription(
+            AppointmentEvent eventToEdit,
+            EditAppointmentEventCommand.EditAppointmentEventDescriptor editAppointmentEventDescriptor) {
+
+        Date updatedDate = editAppointmentEventDescriptor.getDate()
+                .orElse(eventToEdit.getDate());
+
+        Time updatedTime = editAppointmentEventDescriptor.getTime()
+                .orElse(eventToEdit.getTime());
+
+
+        Set<Prescription> prescriptions = editAppointmentEventDescriptor.getPrescriptions()
+                .map(prescription -> {
+                    prescription.addAll(eventToEdit.getPrescriptions());
+                    return prescription;
+                }).orElse(eventToEdit.getPrescriptions());
+
+        return new AppointmentEvent(updatedDate, updatedTime, prescriptions);
+
     }
 
     @Override
