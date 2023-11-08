@@ -219,7 +219,7 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 ## 6.2 Appointments Related Features
 
-<div style="background-color: #ffffcc; border-left: 5px solid #ffeb3b;">
+<div style="background-color: #ffffcc; padding: 5px; border-left: 5px solid #ffeb3b;">
   <strong>Note:</strong>
   We allow appointment dates to be of past and future dates. This is to allow users to add/reschedule appointments that have already been scheduled in the past.
   The purpose of appointment dates is to allow clinics to keep track of when did the patient visited their clinic.
@@ -365,11 +365,17 @@ Removes a prescription from the system. **This command can only be used after `l
 Adds a medical history to a patient record.
 
 **Command Format:**
-`add-medical-history PATIENT_INDEX d/DATE [c/MEDICAL_CONDITION t/TREATMENT`
+`add-medical-history PATIENT_INDEX d/DATE c/MEDICAL_CONDITION t/TREATMENT`
 
 **Example Commands:**
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
+<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>Note:</strong>
+  If there is no treatment available for the medical condition, you can put None for the treatment.
+<br>
+  e.g. <code>add-medical-history 1 d/2023-10-01 mc/Cancer t/None</code>
+</div>
 
 **Parameter**
 
