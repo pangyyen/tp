@@ -454,8 +454,29 @@ Deletes a medical history of a patient. **This command can only be used after `l
 | `pi/PATIENT_INDEX`      | patient index                                                      | must be a positive integer                   |
 
 
+---
+
+## 6.3 System Related Features
+### 6.3.1 Swtching Tabs
+
+**What it does:**
+Switches between the different tabs in the sidebar.
+
+**Command Format:**
+`switch TAB_NUMBER`
+
+**Example Command:**
+`switch 1`
+
+**Parameters:**
+
+| Parameters   | Explanation                                                                                        | Constraints                                                                      |
+|--------------|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patient Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | must only contain alphanumeric characters and spaces, and it should not be blank |
+
 
 ---
+
 
 # 7. Command Summary
 
