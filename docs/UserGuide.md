@@ -514,7 +514,7 @@ Edits a medical history of a patient. The medical history to be edited is identi
 |--------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list                                    | must be a positive integer                                                       |
 | `[pi/PATIENT_INDEX]`     | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
-| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
+| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
 | `[mc/MEDICAL_CONDITION]` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
 | `[t/TREATMENT]`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
