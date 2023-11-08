@@ -43,8 +43,8 @@ professionals manage their patients' medical journey.
 ## 3.1. Main screen
 <img width="600" height="400" src="images/UiWithDescriptions.png">
 
-## 3.2 Menu Bar
-The menu bar contains the following tabs:
+## 3.2 Sidebar
+The sidebar contains the following tabs:
 * Patients
 * Medical History
 * Appointments
