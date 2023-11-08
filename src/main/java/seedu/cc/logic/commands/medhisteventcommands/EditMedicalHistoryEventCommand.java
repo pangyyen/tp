@@ -34,7 +34,7 @@ public class EditMedicalHistoryEventCommand extends Command {
             + "identified by the index number used in the displayed medical history event list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
+            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
             + "[" + PREFIX_DATE + "YYYY-MM-DD] "
             + "[" + PREFIX_MEDICAL_CONDITION + "MEDICAL CONDITION] "
             + "[" + PREFIX_TREATMENT + "TREATMENT] "
@@ -100,7 +100,6 @@ public class EditMedicalHistoryEventCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_MEDICAL_HISTORY_EVENT_DISPLAYED_INDEX);
         }
         // Retrieve the medical history event from the model based on the index
-        // TODO: fix the violation of Talk to Stranger principle
         MedicalHistoryEvent eventToEdit = model.getFilteredMedicalHistoryEventList().get(eventIndex.getZeroBased());
 
         MedicalHistoryEvent editedEvent = createEditedMedicalHistoryEvent(eventToEdit, editMedHistEventDescriptor);

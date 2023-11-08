@@ -101,7 +101,6 @@ public class EditAppointmentEventCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
         // Retrieve the appointment event from the model based on the index
-        // TODO: fix code standard: talk to stranger
         AppointmentEvent eventToEdit = model.getFilteredAppointmentList().get(eventIndex.getZeroBased());
 
         // Create a new appointment event with the updated details

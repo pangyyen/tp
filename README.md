@@ -18,6 +18,16 @@ Elevate your medical practice with CareCentral, your all-in-one digital assistan
 2. **List Patients** 👥
 3. **Edit Patient Record** ✏️
 4. **Delete Patient Record** 🗑️
+5. **Find Patient Record** 🔍
+6. **Create Appointment** 📅
+7. **List Appointments** 📋
+8. **Edit Appointment** ✏️
+9. **Delete Appointment** 🗑️
+10. **Add Prescription to Appointments** 💊
+11. **Create Medical History** 📝
+12. **List Medical History** 👥
+13. **Edit Medical History** ✏️
+14. **Delete Medical History** 🗑️
 
 ## 🙏 Acknowledgements
 
