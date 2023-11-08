@@ -348,7 +348,6 @@ Adds a prescription to a patient's appointment. The appointment to be edited is 
 `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
 
 **Example Commands:**
-`add-prescription 1 pi/1 mn/Panadol`
 `add-prescription 1 pi/1 mn/Paracetamol mn/Albuterol`
 
 **Parameters:**
@@ -361,7 +360,39 @@ Adds a prescription to a patient's appointment. The appointment to be edited is 
 
 ---
 
-### 6.2.6 Delete Prescription
+### 6.2.6 Edit Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
+
+**What it does:**
+Edits a prescription of a patient. The prescription to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+
+**Command Format:**
+`edit-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
+
+**Example Commands:**
+`edit-prescription 1 pi/1 mn/Panadol mn/Paracetamol mn/Albuterol`
+
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Tips<br></strong>
+1. You can only edit the prescription of the appointments that are currently being displayed. <br>
+2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
+3. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will edit the <strong>second</strong> appointment's prescription of the patient with index 1. <br>
+4. If you want to edit the prescription of another patient, you will have to use <code>list-appointments PATIENT_INDEX</code> to display the appointments of the patient you want to edit. <br>
+5. You can refer to the patients tab for the patient index.
+</div>
+
+**Parameters:**
+
+| Parameters            | Explanation                                                 | Constraints                                                                                         |
+|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
+| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
+| `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+
+### 6.2.7 Delete Prescription
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
