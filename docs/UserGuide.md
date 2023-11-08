@@ -21,7 +21,8 @@ professionals manage their patients' medical journey.
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
-5. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Run-JAR-file-example-windows-linux-ubuntu). 
+5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
+6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html). 
 
 <p align="center">
   <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
@@ -164,10 +165,10 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 **Example Commands:**
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`
 
-<div style="background-color: #ffffcc; padding: 10px; margin-bottom: 10px; border-left: 5px solid #ffeb3b;">
-  <strong>:warning: Note:</strong>
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Info<br></strong>
   Editing patient tags will override all the patient's existing tags. <br>
-e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
+  e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
 </div>
 
 
@@ -190,10 +191,6 @@ e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existi
 
 **What it does:**
 Removes a patient record from the system. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
-<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note <br></strong>
-  This command should only be used after <code>list-patient</code>
-</div>
 
 **Command Format:**
 `delete-patient PATIENT_INDEX`
@@ -231,10 +228,10 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 ## 6.2 Appointments Related Features
 
-<div style="background-color: #ffffcc; padding: 5px; border-left: 5px solid #ffeb3b;">
-  <strong>Note:</strong>
-  We allow appointment dates to be of past and future dates. This is to allow users to add/reschedule appointments that have already been scheduled in the past.
-  The purpose of appointment dates is to allow clinics to keep track of when did the patient visited their clinic.
+<div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
+  <strong>📝 Notes from the Developers<br></strong>
+  We allow appointment dates to be of past and future dates. This allows medical staff to add/reschedule appointments that have already been scheduled in the past.
+  The purpose of appointment dates is to keep track of when the patient visited the clinic and to manage the patient's future appointments with them.
 </div>
 
 ### 6.2.1 Add Appointment
@@ -258,7 +255,13 @@ Schedules a new appointment for a patient.
 
 ---
 
-### 6.2.2 List All Appointment
+### 6.2.2 List All Appointments
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+This command should only be used when there is patient(s) in the patient list. <br>
+    e.g. <code>list-appointments 1</code> will display the appointments(s) of the patient with index 1. <br>
+    If there is no patient in the patient list, you will have to add a patient first before using this command.
+</div>
 
 **What it does:**
 Displays all appointments of the patient.
@@ -279,9 +282,13 @@ Displays all appointments of the patient.
 ---
 
 ### 6.2.3 Edit Appointment
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Edits **existing** appointment details. **This command can only be used after `list-appointments` of the patient.** The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
+Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
 
 **Command Format:**
 `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`
@@ -289,22 +296,35 @@ Edits **existing** appointment details. **This command can only be used after `l
 **Example Commands:**
 `edit-appt 2 pi/7 d/2023-10-05 t/16:00`
 
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Info<br></strong>
+1. You can only edit the appointments of the patient that is currently being displayed. <br>
+2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
+3. <code>edit-appt 2 pi/1 d/2023-10-05 t/16:00</code> will edit the <strong>second</strong> appointment of the patient with index 1. <br>
+4. If you want to edit the appointments of another patient, you will have to use <code>list-appointments PATIENT_INDEX</code> to display the appointments of the patient you want to edit. <br>
+5. You can refer to the patients tab for the patient index.
+</div>
+
 **Parameters:**
 
-| Parameters          | Explanation                                                | Constraints                                  |
-|---------------------|------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
-| `[d/DATE]`          | date of the appointment                                    | must be in the format YYYY-MM-DD             |
-| `[t/TIME]`          | time of the appointment                                    | must be in the format HH:MM (24-hour format) |
+| Parameters          | Explanation                                                                                           | Constraints                                  |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer                   |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                   |
+| `[d/DATE]`          | date of the appointment                                                                               | must be in the format YYYY-MM-DD             |
+| `[t/TIME]`          | time of the appointment                                                                               | must be in the format HH:MM (24-hour format) |
 
 
 ---
 
 ### 6.2.4 Delete Appointment
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Removes an appointment from the system. **This command can only be used after `list-appointments` of the patient.** The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+Removes an appointment from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `delete-appt APPOINTMENT_INDEX pi/patient-index`
@@ -314,40 +334,81 @@ Removes an appointment from the system. **This command can only be used after `l
 
 **Parameters:**
 
-| Parameters          | Explanation                                                | Constraints                                  |
-|---------------------|------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`  | patient index                                              | must be a positive integer                   |
+| Parameters          | Explanation                                                                                           | Constraints                |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 
 ---
 
 ### 6.2.5 Add Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Adds a prescription to a patient's appointment. **This command can only be used after `list-appointments` of the patient.** The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. Calling this command multiple times will replace prescriptions to the appointment.
+Adds a prescription to a patient's appointment. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
 
 **Example Commands:**
-`add-prescription 1 pi/1 mn/Panadol`
 `add-prescription 1 pi/1 mn/Paracetamol mn/Albuterol`
 
 **Parameters:**
 
-| Parameters            | Explanation                                                 | Constraints                                                                                         |
-|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
-| `mn/MEDICATION_NAME`  | name of the medication                                      | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
+|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
+| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
+| `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
 ---
 
-### 6.2.6 Delete Prescription
+### 6.2.6 Edit Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Removes a prescription from the system. **This command can only be used after `list-appointments` of the patient.** The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+Edits a prescription of a patient. The prescription to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+
+**Command Format:**
+`edit-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
+
+**Example Commands:**
+`edit-prescription 1 pi/1 mn/Panadol mn/Paracetamol mn/Albuterol`
+
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Info<br></strong>
+1. You can only edit the prescription of the appointments that are currently being displayed. <br>
+2. e.g. <code>list-appointments 1</code> will display the appointments of the patient with index 1. <br>
+3. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will edit the <strong>second</strong> appointment's prescription of the patient with index 1. <br>
+4. If you want to edit the prescription of another patient, you will have to use <code>list-appointments PATIENT_INDEX</code> to display the appointments of the patient you want to edit. <br>
+5. You can refer to the patients tab for the patient index. <br>
+6. Editing prescription will override all the appointment's existing prescription. <br>
+  e.g. <code>edit-prescription 2 pi/1 mn/Paracetamol mn/Albuterol</code> will remove all the appointment's existing prescription and replace it with <code>Paracetamol</code> and <code>Albuterol</code>.
+</div>
+
+**Parameters:**
+
+| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
+|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
+| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
+| `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+
+### 6.2.7 Delete Prescription
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+</div>
+
+**What it does:**
+Removes a prescription from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`
@@ -357,10 +418,10 @@ Removes a prescription from the system. **This command can only be used after `l
 
 **Parameters:**
 
-| Parameters            | Explanation                                                 | Constraints                                                                                         |
-|-----------------------|-------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`   | index of the appointment in the displayed appointment list  | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`    | index of the patient in the displayed patient list          | must be a positive integer                                                                          |
+| Parameters          | Explanation                                                                                           | Constraints                |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 ---
 
@@ -389,18 +450,22 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 
 **Parameter**
 
-| Parameters               | Explanation                                             | Constraints                                                                      |
-|--------------------------|---------------------------------------------------------|----------------------------------------------------------------------------------|
-| `PATIENT_INDEX`          | index of the patient in the displayed patient list      | must be a positive integer                                                       |
-| `d/DATE`                 | date of the medical history                             | must be in the format YYYY-MM-DD                                                 |
-| `mc/MEDICAL_CONDITION`   | medical condition                                       | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `t/TREATMENT`            | treatment                                               | must only contain alphanumeric characters and spaces, and it should not be blank |
-
-
+| Parameters             | Explanation                                                                                           | Constraints                                                                      |
+|------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
+| `d/DATE`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
+| `mc/MEDICAL_CONDITION` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `t/TREATMENT`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
 
 ### 6.3.2 List Medical History
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+This command should only be used when there is patient(s) in the patient list. <br>
+    e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
+    If there is no patient in the patient list, you will have to add a patient first before using this command.
+</div>
 
 **What it does:**
 Lists the medical history of a patient.
@@ -413,48 +478,56 @@ Lists the medical history of a patient.
 
 **Parameters:**
 
-| Parameters      | Explanation                                        | Constraints                |
-|-----------------|----------------------------------------------------|----------------------------|
-| `PATIENT_INDEX` | index of the patient in the displayed patient list | must be a positive integer |
+| Parameters      | Explanation                                                                                           | Constraints                |
+|-----------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `PATIENT_INDEX` | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 ---
 
 ### 6.3.3 Edit Medical History
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Edits a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
+Edits a medical history of a patient. The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
 **Command Format:**
-`edit-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX] [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
+`edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
 
 **Example Commands:**
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
 
-<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note<br></strong>
+<div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
+  <strong>:scroll: Additional Info<br></strong>
 1. You can only edit the medical history of the patient that is currently being displayed. <br>
 2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
-3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the second medical history of the patient with index 1. <br>
+3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the <strong>second</strong> medical history of the patient with index 1. <br>
 4. If you want to edit the medical history of another patient, you will have to use <code>list-medical-history PATIENT_INDEX</code> to display the medical history of the patient you want to edit. <br>
-5. You can refer to the patient index in the patients tab.
+5. You can refer to the patients tab for the patient index.
 </div>
 
 **Parameters:**
 
-| Parameters               | Explanation                                                        | Constraints                                                                                                                                                 |
-|--------------------------|--------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list | must be a positive integer                                                                                                                                  |
-| `[pi/PATIENT_INDEX]`     | index of the patient in the displayed patient list                 | must be a positive integer                                                                                                                                  |
-| `[d/DATE]`               | date of the medical history                                        | must be in the format YYYY-MM-DD                                                                                                                            |
-| `[mc/MEDICAL_CONDITION]` | medical condition                                                  | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `[t/TREATMENT]`          | treatment                                                          | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| Parameters               | Explanation                                                                                           | Constraints                                                                      |
+|--------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list                                    | must be a positive integer                                                       |
+| `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
+| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
+| `[mc/MEDICAL_CONDITION]` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `[t/TREATMENT]`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
 
 ### 6.3.4 Delete Medical History
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+  This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
+</div>
 
 **What it does:**
-Deletes a medical history of a patient. **This command can only be used after `list-medical-history` of the patient.** The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
+Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
 **Command Format:**
 `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`
@@ -464,10 +537,10 @@ Deletes a medical history of a patient. **This command can only be used after `l
 
 **Parameters:**
 
-| Parameters              | Explanation                                                        | Constraints                                  |
-|-------------------------|--------------------------------------------------------------------|----------------------------------------------|
-| `MEDICAL_HISTORY_INDEX` | index of the medical history in the displayed medical history list | must be a positive integer                   |
-| `pi/PATIENT_INDEX`      | patient index                                                      | must be a positive integer                   |
+| Parameters              | Explanation                                                                                           | Constraints                |
+|-------------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
+| `MEDICAL_HISTORY_INDEX` | index of the medical history in the displayed medical history list                                    | must be a positive integer |
+| `pi/PATIENT_INDEX`      | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
 
 
 ---
@@ -496,20 +569,20 @@ Switches between the different tabs in the sidebar.
 
 # 7. Command Summary
 
-| Action                     | Format                                                                                                        | Examples                                                                          |
-|----------------------------|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| **Add Patient**            | `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`                                            | e.g., `add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com` |
-| **List Patients**          | `list-patients`                                                                                               | e.g., `list-patients`                                                             |
-| **Edit Patient**           | `edit-patient PATIENT_INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`                   | e.g., `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234`                    |
-| **Delete Patient**         | `delete-patient PATIENT_INDEX`                                                                                | e.g., `delete-patient 2`                                                          |
-| **Find Patient**           | `find KEYWORD`                                                                                                | e.g., `find John Doe`                                                             |
-| **Add Appointment**        | `add-appt PATIENT_INDEX d/DATE t/TIME`                                                                        | e.g., `add-appt 1 d/2023-10-01 t/14:00`                                           |
-| **List Appointments**      | `list-appointments PATIENT_INDEX`                                                                             | e.g., `list-appointments 1`                                                       |
-| **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`                                              | e.g., `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                     |
-| **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`                                                              | e.g., `delete-appt 3 pi/2`                                                        |
-| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                   | e.g., `add-prescription 1 pi/1 mn/Panadol`                                        | 
-| **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`                                                      | e.g., `delete-prescription 1 pi/1`                                                |
-| **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`                                  | e.g., `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`                   |
-| **List Medical History**   | `list-medical-history PATIENT_INDEX`                                                                          | e.g., `list-medical-history 1`                                                    |
-| **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX] [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | e.g., `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
-| **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                             | e.g., `delete-medical-history 1 pi/1`                                             |
+| Action                     | Format                                                                                                      | Examples                                                                    |
+|----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **Add Patient**            | `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`                                          | `add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com` |
+| **List Patients**          | `list-patients`                                                                                             | `list-patients`                                                             |
+| **Edit Patient**           | `edit-patient PATIENT_INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`                 | `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234`                    |
+| **Delete Patient**         | `delete-patient PATIENT_INDEX`                                                                              | `delete-patient 2`                                                          |
+| **Find Patient**           | `find KEYWORD`                                                                                              | `find John Doe`                                                             |
+| **Add Appointment**        | `add-appt PATIENT_INDEX d/DATE t/TIME`                                                                      | `add-appt 1 d/2023-10-01 t/14:00`                                           |
+| **List Appointments**      | `list-appointments PATIENT_INDEX`                                                                           | `list-appointments 1`                                                       |
+| **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`                                            | `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                     |
+| **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`                                                            | `delete-appt 3 pi/2`                                                        |
+| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                 | `add-prescription 1 pi/1 mn/Panadol`                                        | 
+| **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`                                                    | `delete-prescription 1 pi/1`                                                |
+| **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`                                | `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`                   |
+| **List Medical History**   | `list-medical-history PATIENT_INDEX`                                                                        | `list-medical-history 1`                                                    |
+| **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
+| **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                           | `delete-medical-history 1 pi/1`                                             |
