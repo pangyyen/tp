@@ -255,6 +255,12 @@ Schedules a new appointment for a patient.
 ---
 
 ### 6.2.2 List All Appointments
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+This command should only be used when there is patient(s) in the patient list. <br>
+    e.g. <code>list-appointments 1</code> will display the appointments(s) of the patient with index 1. <br>
+    If there is no patient in the patient list, you will have to add a patient first before using this command.
+</div>
 
 **What it does:**
 Displays all appointments of the patient.
