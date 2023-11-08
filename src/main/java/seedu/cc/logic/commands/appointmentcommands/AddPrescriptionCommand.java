@@ -28,8 +28,8 @@ public class AddPrescriptionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds prescriptions to the appointment "
             + "by the index number used in the displayed appointment list.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_PATIENT_INDEX + "PATIENT INDEX] "
-            + "[" + PREFIX_MEDICINE_NAME + "MEDICINE NAME]"
+            + PREFIX_PATIENT_INDEX + "PATIENT INDEX "
+            + PREFIX_MEDICINE_NAME + "MEDICINE NAME"
             + "\nExample: " + COMMAND_WORD + " 1 "
             + PREFIX_PATIENT_INDEX + "1 "
             + PREFIX_MEDICINE_NAME + "Panadol";
