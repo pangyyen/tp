@@ -219,8 +219,13 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 ## 6.2 Appointments Related Features
 
-### 6.2.1 Add Appointment
+<div style="background-color: #ffffcc; border-left: 5px solid #ffeb3b;">
+  <strong>Note:</strong>
+  We allow appointment dates to be of past and future dates. This is to allow users to add/reschedule appointments that have already been scheduled in the past.
+  The purpose of appointment dates is to allow clinics to keep track of when did the patient visited their clinic.
+</div>
 
+### 6.2.1 Add Appointment
 **What it does:**
 Schedules a new appointment for a patient.
 
