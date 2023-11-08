@@ -181,7 +181,11 @@ Edits a patient record at the specified `PATIENT_INDEX` in the system.
 ### 6.1.4. Delete Patient Record
 
 **What it does:**
-Removes a patient record from the system. **This command can only be used after `list-patient`**. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
+Removes a patient record from the system. The patient to be deleted is identified by the index number shown in the displayed list of patients by `list-patients`. **This command will also delete all appointments and medical history associated with the patient.**
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>Note:</strong>
+  This command should only be used after <code>list-patient</code>
+</div>
 
 **Command Format:**
 `delete-patient PATIENT_INDEX`
