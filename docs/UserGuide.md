@@ -365,7 +365,7 @@ Removes a prescription from the system. **This command can only be used after `l
 Adds a medical history to a patient record.
 
 **Command Format:**
-`add-medical-history PATIENT_INDEX d/DATE c/MEDICAL_CONDITION t/TREATMENT`
+`add-medical-history PATIENT_INDEX d/DATE mc/MEDICAL_CONDITION t/TREATMENT`
 
 **Example Commands:**
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
