@@ -1,8 +1,9 @@
 package seedu.cc.logic.parser.medicalhistory;
 
 import static seedu.cc.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.cc.logic.parser.CliSyntax.*;
-import static seedu.cc.logic.parser.CliSyntax.PREFIX_APPT_TIME;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_DATE;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_MEDICAL_CONDITION;
+import static seedu.cc.logic.parser.CliSyntax.PREFIX_TREATMENT;
 
 import java.util.stream.Stream;
 
