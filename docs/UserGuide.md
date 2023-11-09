@@ -214,8 +214,8 @@ Helps you to locate a patient's record in the system by searching for a keyword.
 `find KEYWORD`
 
 **Example Commands** <br>
-`find John Doe` <br>
-In this example, typing `find John Doe` in the command box will fetch the record for any patient named `John Doe`.
+This example means that it will fetch the record for any patient named `John Doe`: <br>
+`find John Doe`
 
 **Parameters** <br>
 Let's break down what each part of the command means:
@@ -257,26 +257,24 @@ This example schedules an appointment for the patient at **index 1 for October 1
 ### 6.2.2 List All Appointments 📋
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
-This command should only be used when there is patient(s) in the patient list. <br>
-    e.g. <code>list-appointments 1</code> will display the appointments(s) of the patient with index 1. <br>
-    If there is no patient in the patient list, you will have to add a patient first before using this command.
+   This feature is dependent on having existing patient records. For example, using <code>list-appointments 1</code> will show all appointments for the patient with index 1. If no patients are recorded, please add a patient to the system first.<br>
 </div>
 
-**What it does:**
-Displays all appointments of the patient.
+**What it does**
+Displays a list of all appointments for a specific patient.
 
-**Command Format:**
+**Command Format**
 `list-appointments PATIENT_INDEX`
 
-**Example Commands:**
+**Example Commands**
+To view all appointments for the patient at index 1, use:<br>
 `list-appointments 1`
 
 **Parameters:**
 
-| Parameters           | Explanation                                        | Constraints                                     |
-|----------------------|----------------------------------------------------|-------------------------------------------------|
-| `PATIENT_INDEX`      | index of the patient in the displayed patient list | must be a positive integer                      |
-
+| Parameters      | Explanation                                                          | Constraints                |
+|-----------------|----------------------------------------------------------------------|----------------------------|
+| `PATIENT_INDEX` | The number that identifies the patient in the displayed patient list | Must be a positive integer |
 
 ---
 
