@@ -422,7 +422,10 @@ To revise the prescription details for the **first appointment of patient index 
 ### 6.2.7 Delete Prescription 🗑️💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
-  This command should only be used after <code>list-appointments PATIENT_INDEX</code>
+   <ol>
+      <li>This command should only be used after <code>list-appointments PATIENT_INDEX</code></li>
+      <li>This feature is dependent on having existing patient records & appointments. For example, using <code>list-appointments 1</code> will show all appointments for the patient with index 1. If no patients are recorded, please add a patient to the system first. Similarly, if there is no appointments associated with the patient, please add an appointment to the selected patient first.<br></li>
+   </ol>
 </div>
 
 **What it does** <br>
@@ -432,18 +435,18 @@ Removes a prescription from the system. The appointment to be deleted is identif
 `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`
 
 **Example Commands** <br>
-To revise the prescription details for the first appointment of patient index 1 to include Panadol, Paracetamol, and Albuterol:<br>
+For example, to delete the prescription linked to the **first appointment for patient index 1**, you would use: <br>
 `delete-prescription 1 pi/1`
 
 **Parameters** 
 
 | Parameters          | Explanation                                                                                           | Constraints                |
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `APPOINTMENT_INDEX` | index of the appointment in the displayed appointment list                                            | must be a positive integer |
-| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer |
+| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
 
 **Final Reminder** <br>
-When editing prescriptions, make sure to verify the appointment and patient indices to ensure accuracy and prevent any mix-ups in the patient's medical records.
+Ensure correct usage of appointment and patient indices to avoid accidental deletion of the wrong prescription.
 
 ---
 
@@ -451,94 +454,113 @@ When editing prescriptions, make sure to verify the appointment and patient indi
 
 ### 6.3.1 Add Medical History 📝📜
 
-**What it does:**
+<div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
+  <strong>:warning: Things To Note <br></strong>
+   <ol>
+      <li>This command should only be used when there is patient(s) in the patient list.</li>
+      <li>For instance, <code>add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin</code> adds the medical history asthma with ventolin as the treatment for the patient with index 1. Make sure to register patients into CareCentral prior to adding their medical records.</li>
+   </ol>
+</div>
+
+**What it does** <br>
 Adds a medical history to a patient record.
 
-**Command Format:**
+**Command Format** <br>
 `add-medical-history PATIENT_INDEX d/DATE mc/MEDICAL_CONDITION t/TREATMENT`
 
-**Example Commands:**
+**Example Commands** <br>
+To add an asthma condition treated with Ventolin on October 1st, 2023, for patient index 1: <br>
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
 <div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note<br></strong>
-  If there is no treatment available for the medical condition, you can put None for the treatment.
-<br>
-  e.g. <code>add-medical-history 1 d/2023-10-01 mc/Cancer t/None</code>
-<br>
-<br>
 For the date, we allow it to be in the past, up until today's date, but not future dates.
 </div>
 
 **Parameter**
 
-| Parameters             | Explanation                                                                                           | Constraints                                                                      |
-|------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
-| `d/DATE`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
-| `mc/MEDICAL_CONDITION` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `t/TREATMENT`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters             | Explanation                                                                                               | Constraints                                                                      |
+|------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | Must be a positive integer                                                       |
+| `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format YYYY-MM-DD                                                 |
+| `mc/MEDICAL_CONDITION` | The specific medical condition of the patient                                                             | Must only contain alphanumeric characters and spaces, and it should not be blank |
+| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
 
 ### 6.3.2 List Medical History 📋📜
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
-This command should only be used when there is patient(s) in the patient list. <br>
-    e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
-    If there is no patient in the patient list, you will have to add a patient first before using this command.
+   <ol>
+      <li>This command should only be used when there is patient(s) in the patient list.</li>
+      <li>For instance, <code>list-medical-history 1</code> retrieves the medical history for the patient with index 1. Make sure to register patients into CareCentral prior to accessing their medical records.</li>
+   </ol>
 </div>
 
-**What it does:**
-Lists the medical history of a patient.
+**What it does** <br>
+Lists the medical history of a patient, including past diagnoses and treatments.
 
-**Command Format:**
+**Command Format** <br>
 `list-medical-history PATIENT_INDEX`
 
-**Example Commands:**
+**Example Commands** <br>
+To view the complete medical history for the patient at index 1: <br>
 `list-medical-history 1`
 
-**Parameters:**
+**Parameters**
 
 | Parameters      | Explanation                                                                                           | Constraints                |
 |-----------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `PATIENT_INDEX` | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
+| `PATIENT_INDEX` | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
+
+**Final Reminder** <br>
+Ensure the patient index corresponds to a valid entry in your patient registry to retrieve accurate medical history information.
 
 ---
 
 ### 6.3.3 Edit Medical History 📝📜
+
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
-  This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
+   <ol>
+      <li>This command should only be used when there is patient(s) in the patient list.</li>
+      <li>For instance, <code>edit-medical-history 1 d/2022-10-01</code> will override the current medical history with the date diagnosed to 1st October 2022 for the patient with index 1. Make sure to register patients into CareCentral prior to adding their medical records.</li>
+   </ol>
 </div>
 
-**What it does:**
+**What it does** <br>
 Edits a medical history of a patient. The medical history to be edited is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
-**Command Format:**
+**Command Format** <br>
 `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]`
 
-**Example Commands:**
+**Example Commands** <br>
+To edit an existing medical history entry for **patient index 1, changing the condition to asthma and the treatment to Levabuterol on October 1st, 2023**: <br>
 `edit-medical-history 1 pi/1 d/2023-10-01 mc/asthma t/Levabuterol`
-
 <div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 3px solid #3385ff;">
-  <strong>:scroll: Additional Info<br></strong>
-1. You can only edit the medical history of the patient that is currently being displayed. <br>
-2. e.g. <code>list-medical-history 1</code> will display the medical history of the patient with index 1. <br>
-3. <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will edit the <strong>second</strong> medical history of the patient with index 1. <br>
-4. If you want to edit the medical history of another patient, you will have to use <code>list-medical-history PATIENT_INDEX</code> to display the medical history of the patient you want to edit. <br>
-5. You can refer to the patients tab for the patient index.
+  <strong>:scroll: Additional Information</strong><br>
+  The medical history of the patient that you plan to edit must be currently displayed:
+  <ol>
+    <li>Use <code>list-medical-history PATIENT_INDEX</code> to find the medical history entry you need to edit.</li>
+    <li>The command <code>edit-medical-history 2 pi/1 d/2023-10-01 mc/asthma t/Levabuterol</code> will modify the second medical history for the patient at index 1.</li>
+    <li>To edit records for a different patient, use their specific patient index to list their medical history first.</li>
+    <li>Patient indices are available in the patients tab.</li>
+    <li>Edited medical history details will replace the previous entries, so verify the information before editing.</li>
+  </ol>
 </div>
 
 **Parameters:**
 
-| Parameters               | Explanation                                                                                           | Constraints                                                                      |
-|--------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list                                    | must be a positive integer                                                       |
-| `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
-| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
-| `[mc/MEDICAL_CONDITION]` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `[t/TREATMENT]`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters               | Explanation                                                                                               | Constraints                                                                      |
+|--------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| `MEDICAL_HISTOY_INDEX`   | Index of the medical history in the displayed medical history list                                        | must be a positive integer                                                       |
+| `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | must be a positive integer                                                       |
+| `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
+| `[mc/MEDICAL_CONDITION]` | The specific medical condition of the patient                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | must only contain alphanumeric characters and spaces, and it should not be blank |
+
+**Final Reminder** <br>
+Make sure to verify all information for accuracy before updating a patient's medical history record.
 
 ---
 
@@ -548,46 +570,49 @@ Edits a medical history of a patient. The medical history to be edited is identi
   This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
 </div>
 
-**What it does:**
-Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
+**What it does** <br>
+Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`. 
 
-**Command Format:**
+**Command Format** <br>
 `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`
 
-**Example Commands:**
+**Example Commands** <br>
+To delete the **first medical history entry for the patient at index 1**: <br>
 `delete-medical-history 1 pi/1`
 
-**Parameters:**
+**Parameters**
 
 | Parameters              | Explanation                                                                                           | Constraints                |
 |-------------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `MEDICAL_HISTORY_INDEX` | index of the medical history in the displayed medical history list                                    | must be a positive integer |
-| `pi/PATIENT_INDEX`      | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer |
+| `MEDICAL_HISTORY_INDEX` | Index of the medical history in the displayed medical history list                                    | Must be a positive integer |
+| `pi/PATIENT_INDEX`      | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
 
+
+**Final Reminder** <br>
+Be cautious and verify the indexes accurately before deleting to avoid unintended data loss.
 
 ---
 
 ## 6.3 System Related Features ⚙️
 ### 6.3.1 Switch Tabs ⚙️⏩
 
-**What it does**
+**What it does** <br>
 Switches between the different tabs in the sidebar.
 
-**Command Format**
+**Command Format** <br>
 `switch TAB_NUMBER`
 
-**Example Command**
+**Example Command** <br>
+To jump to the **Patients tab**: <br>
 `switch 1`
 
 **Parameters:**
 
-| Parameters   | Explanation                                                                                         | Constraints                                                                      |
-|--------------|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | must only contain alphanumeric characters and spaces, and it should not be blank |
-
+| Parameters   | Explanation                                                                                         | Constraints          |
+|--------------|-----------------------------------------------------------------------------------------------------|----------------------|
+| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | Must only be integer |
 
 ---
-
 
 # 7. Command Summary
 
