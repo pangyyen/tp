@@ -606,7 +606,7 @@ Switches between the different tabs in the sidebar.
 To jump to the **Patients tab**: <br>
 `switch 1`
 
-**Parameters:**
+**Parameters**
 
 | Parameters   | Explanation                                                                                         | Constraints          |
 |--------------|-----------------------------------------------------------------------------------------------------|----------------------|
@@ -628,8 +628,10 @@ To jump to the **Patients tab**: <br>
 | **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`                                            | `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                     |
 | **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`                                                            | `delete-appt 3 pi/2`                                                        |
 | **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                 | `add-prescription 1 pi/1 mn/Panadol`                                        | 
+| **Edit Prescription**      | `edit-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                | `edit-prescription 1 pi/1 mn/Panadol mn/Paracetamol mn/Albuterol`           |
 | **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`                                                    | `delete-prescription 1 pi/1`                                                |
 | **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`                                | `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`                   |
 | **List Medical History**   | `list-medical-history PATIENT_INDEX`                                                                        | `list-medical-history 1`                                                    |
 | **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
 | **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                           | `delete-medical-history 1 pi/1`                                             |
+| **Switch Tabs**            | `switch TAB_NUMBER`                                                                                         | `switch 1`                                                                  |
