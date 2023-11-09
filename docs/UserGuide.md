@@ -230,28 +230,27 @@ Let's break down what each part of the command means:
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
   <strong>📝 Notes from the Developers<br></strong>
-  We allow appointment dates to be of past and future dates. This allows medical staff to add/reschedule appointments that have already been scheduled in the past.
-  The purpose of appointment dates is to keep track of when the patient visited the clinic and to manage the patient's future appointments with the clinic.
+  Our system supports recording of both past and future appointments to facilitate comprehensive schedule management. This functionality is crucial for maintaining accurate records of patient visits and planning ahead for future appointments.
 </div>
 
 ### 6.2.1 Add Appointment 📝
-**What it does:**
-Schedules a new appointment for a patient.
+**What it does** <br>
+Enables the scheduling of new appointments for patients.
 
-**Command Format:**
+**Command Format** <br>
 `add-appt PATIENT_INDEX d/DATE t/TIME`
 
-**Example Commands:**
+**Example Commands** <br>
+This example schedules an appointment for the patient at **index 1 for October 1st, 2023, at 2:00 PM**:<br>
 `add-appt 1 d/2023-10-01 t/14:00`
 
-**Parameters:**
+**Parameters**
 
-| Parameters           | Explanation                                        | Constraints                                     |
-|----------------------|----------------------------------------------------|-------------------------------------------------|
-| `PATIENT_INDEX`      | index of the patient in the displayed patient list | must be a positive integer                      |
-| `d/DATE`             | date of the appointment                            | must be in the format YYYY-MM-DD                |
-| `t/TIME`             | time of the appointment                            | must be in the format HH:MM (24-hour format)    |
-
+| Parameters      | Explanation                                                          | Constraints                                  |
+|-----------------|----------------------------------------------------------------------|----------------------------------------------|
+| `PATIENT_INDEX` | The number that identifies the patient in the displayed patient list | Must be a positive integer                   |
+| `d/DATE`        | The date when the appointment is scheduled.                          | Must be formatted as YYYY-MM-DD.             |
+| `t/TIME`        | The time at which the appointment is scheduled.                      | Must be in the format HH:MM (24-hour format) |
 
 ---
 
