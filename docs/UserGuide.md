@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 * Table of Contents
-{:toc}
+  {:toc}
 --------------------------------------------------------------------------------------------------------------------
 
 # 1. Introduction
@@ -22,21 +22,21 @@ professionals manage their patients' medical journey.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
 5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
-6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html). 
+6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html).
 
 <p align="center">
   <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
 </p>
- 
+
 
 6. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
-   
-   * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
-   * `list-patients`
-   * `delete-patient 1`
-   * `exit`
+
+    * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
+    * `list-patients`
+    * `delete-patient 1`
+    * `exit`
 
 
 # 3. GUI components
@@ -112,7 +112,7 @@ The command box is where the user can type in commands to be executed.
 
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`. <br>
-:warning: <strong>Clear command will clear the entire json file and cannot be undone. Please use with caution. </strong>
+  :warning: <strong>Clear command will clear the entire json file and cannot be undone. Please use with caution. </strong>
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
@@ -288,7 +288,7 @@ Displays all appointments of the patient.
 </div>
 
 **What it does:**
-Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
+Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format:**
 `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`
@@ -580,7 +580,7 @@ Switches between the different tabs in the sidebar.
 | **List Appointments**      | `list-appointments PATIENT_INDEX`                                                                           | `list-appointments 1`                                                       |
 | **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`                                            | `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                     |
 | **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`                                                            | `delete-appt 3 pi/2`                                                        |
-| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                 | `add-prescription 1 pi/1 mn/Panadol`                                        | 
+| **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                 | `add-prescription 1 pi/1 mn/Panadol`                                        |
 | **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`                                                    | `delete-prescription 1 pi/1`                                                |
 | **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`                                | `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`                   |
 | **List Medical History**   | `list-medical-history PATIENT_INDEX`                                                                        | `list-medical-history 1`                                                    |
