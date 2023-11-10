@@ -4,7 +4,7 @@ title: Developer Guide
 ---
 
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 ## **Design**
@@ -779,7 +779,7 @@ Dealing with missing/corrupted data files:
 
 2. In the case of `clinicbook.json` being corrupted,
 
-    i. Look up for the corrupted part of the `clinicbook.json`, manually delete the corrupted entry of patient, this method requires more technical skills on handling json file.
+   i. Look up for the corrupted part of the `clinicbook.json`, manually delete the corrupted entry of patient, this method requires more technical skills on handling json file.
 
-    ii. If attempt above is in vain, delete `clinicbook.json`, and launch CareCentral again. All user manipulation on entries and diaries will be cleared. 
+   ii. If attempt above is in vain, delete `clinicbook.json`, and launch CareCentral again. All user manipulation on entries and diaries will be cleared.
 
