@@ -637,5 +637,3 @@ To jump to the **Patients tab**: <br>
 | **Switch Tabs**            | `switch TAB_NUMBER`                                                                                         | `switch 1`                                                                  |
 
 ---
-
-# 8. FAQ ❓
