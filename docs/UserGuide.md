@@ -132,14 +132,14 @@ Adds a new patient record to the system.
 
 **Parameters:**
 
-| Parameters       | Explanation                 | Constraints                                                                                                                                                 |
-|------------------|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | full name of the patient    | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `p/PHONE_NUMBER` | phone number of the patient | must be **entirely numeric** and exactly 8 digits long                                                                                                      |
-| `ic/NRIC`        | NRIC of the patient         | must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`          | age of the patient          | must be a positive integer                                                                                                                                  |
-| `e/email`        | email of the patient        | must be a valid email address                                                                                                                               |
-| `[t/TAG]…`       | tags of the patient         | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| Parameters       | Explanation                                                                                                     | Constraints                                                                                                                                                 |
+|------------------|-----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | full name of the patient                                                                                        | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
+| `p/PHONE_NUMBER` | phone number of the patient                                                                                     | must be **entirely numeric** and exactly 8 digits long                                                                                                      |
+| `ic/NRIC`        | NRIC of the patient                                                                                             | must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
+| `a/AGE`          | age of the patient                                                                                              | must be a positive integer                                                                                                                                  |
+| `e/email`        | email of the patient                                                                                            | must be a valid email address                                                                                                                               |
+| `[t/TAG]…`       | tags of the patient, the usage of tags is determined by the user, it's to serve as a quick reminder to the user | must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
 
 
 ---
@@ -453,7 +453,7 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 | Parameters             | Explanation                                                                                           | Constraints                                                                      |
 |------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
-| `d/DATE`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD                                                 |
+| `d/DATE`               | Diagnosed date of the medical condition                                                               | must be in the format YYYY-MM-DD                                                 |
 | `mc/MEDICAL_CONDITION` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
 | `t/TREATMENT`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
@@ -514,7 +514,7 @@ Edits a medical history of a patient. The medical history to be edited is identi
 |--------------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `MEDICAL_HISTOY_INDEX`   | index of the medical history in the displayed medical history list                                    | must be a positive integer                                                       |
 | `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                       |
-| `[d/DATE]`               | date of the medical history                                                                           | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
+| `[d/DATE]`               | Diagnosed date of the medical condition                                                               | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
 | `[mc/MEDICAL_CONDITION]` | medical condition                                                                                     | must only contain alphanumeric characters and spaces, and it should not be blank |
 | `[t/TREATMENT]`          | treatment                                                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 
