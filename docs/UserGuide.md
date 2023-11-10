@@ -128,7 +128,6 @@ Here's an example to add a patient named John Doe: <br>
 `add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com`
 
 **Parameters:** <br>
-Let's break down what each part of the command means:
 
 | Parameters       | Explanation                                          | Constraints                                                                                                                         |
 |------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
