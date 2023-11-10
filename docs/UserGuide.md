@@ -142,10 +142,10 @@ Let's break down what each part of the command means:
 ---
 ### 6.1.2. List Patients 📋
 
-**What it does**  
+**What it does** <br>
 Ready to see your whole roster of patients? This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
 
-**Command Format**  
+**Command Format** <br>
 Just type this simple command to get the full list: <br>
 `list-patients`
 
@@ -291,7 +291,7 @@ When using this command, ensure that the patient index corresponds to a valid pa
   </div>
 
 **What it does** <br>
-Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`. 
+Edits **existing** appointment details. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format** <br>
 `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`
@@ -438,7 +438,7 @@ Removes a prescription from the system. The appointment to be deleted is identif
 For example, to delete the prescription linked to the **first appointment for patient index 1**, you would use: <br>
 `delete-prescription 1 pi/1`
 
-**Parameters** 
+**Parameters**
 
 | Parameters          | Explanation                                                                                           | Constraints                |
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
@@ -571,7 +571,7 @@ Make sure to verify all information for accuracy before updating a patient's med
 </div>
 
 **What it does** <br>
-Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`. 
+Deletes a medical history of a patient. The medical history to be deleted is identified by the index number shown in the displayed list of medical history by `list-medical-history`.
 
 **Command Format** <br>
 `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`
