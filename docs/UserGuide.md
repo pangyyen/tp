@@ -635,3 +635,7 @@ To jump to the **Patients tab**: <br>
 | **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
 | **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                           | `delete-medical-history 1 pi/1`                                             |
 | **Switch Tabs**            | `switch TAB_NUMBER`                                                                                         | `switch 1`                                                                  |
+
+---
+
+# 8. FAQ ❓
