@@ -15,8 +15,8 @@ import seedu.cc.model.patient.Patient;
 
 
 /**
- * A list of medical history events that enforces uniqueness between its elements and does not allow nulls.
- * A medical history event is considered unique by comparing using {@code AppointmentEvent#equals(Object)}.
+ * A list of appointment events that enforces uniqueness between its elements and does not allow nulls.
+ * A appointment event is considered unique by comparing using {@code AppointmentEvent#equals(Object)}.
  */
 public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
 
@@ -27,14 +27,14 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
     private Patient currentPatient = null;
 
     /**
-     * Returns true if the list contains an equivalent medical history event as the given argument.
+     * Returns true if the list contains an equivalent appointment event as the given argument.
      */
     public boolean contains(AppointmentEvent toCheck) {
         return internalList.contains(toCheck);
     }
 
     /**
-     * Adds a medical history event to the list.
+     * Adds a appointment event to the list.
      * The event must not already exist in the list.
      */
     public void add(AppointmentEvent toAdd, Patient patient) {
@@ -47,9 +47,9 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
     }
 
     /**
-     * Replaces the given medical history event {@code target} in the list with {@code editedEvent}.
+     * Replaces the given appointment event {@code target} in the list with {@code editedEvent}.
      * {@code target} must exist in the list.
-     * The medical history event must not be the same as another existing event in the list.
+     * The appointment event must not be the same as another existing event in the list.
      */
     public void setAppointment(AppointmentEvent target, AppointmentEvent editedEvent, Patient patient) {
         int index = internalList.indexOf(target);
@@ -69,7 +69,7 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
     }
 
     /**
-     * Deletes the given medical history event.
+     * Deletes the given appointment event.
      * The event must exist in the list.
      */
     public void delete(AppointmentEvent toDelete, Patient patient) {
@@ -85,9 +85,9 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
     }
 
     /**
-     * Lists all medical history events associated with a specific patient.
+     * Lists all appointment events associated with a specific patient.
      *
-     * @param patient The patient for whom to list the medical history events.
+     * @param patient The patient for whom to list the appointment events.
      */
     public void listAppointments(Patient patient) {
         requireNonNull(patient);
@@ -96,7 +96,7 @@ public class ClinicBookAppointmentList implements Iterable<AppointmentEvent> {
     }
 
     /**
-     * Returns a list of all medical history events in this list.
+     * Returns a list of all appointment events in this list.
      */
     public List<AppointmentEvent> getAllAppointments() {
         return new ArrayList<>(internalList);
