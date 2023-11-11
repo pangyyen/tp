@@ -245,6 +245,15 @@ The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for
 When the user starts an application, there will be an empty `ClinicBookCLinicBookAppointment`. It will be populated when the
 user executes `list-appointments` command.
 
+### Prescription 
+
+The prescription-related features are facilitated by the `Prescription` class. The `Prescription` class is included in the `appointment` package.
+
+The set of `Prescription` class is an attribute for each `AppointmentEvent`, each `Prescription` contains one Medicine name and the attribute will be stored in `clinicbook.json`. 
+
+Each `Prescription` is associated with a `AppointmentEvent` and the `Prescription` will be shown as a list of `Prescription` in the `AppointmentEvent`.
+
+
 
 ### \[Proposed\] Undo/redo feature
 
