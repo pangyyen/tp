@@ -23,13 +23,11 @@ professionals manage their patients' medical journey.
    ![Ui](images/Ui.png)
 5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
 6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html).
+    <p align="center">
+      <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
+    </p>
 
-<p align="center">
-  <img width="275" height="280" src="images/mac_issue.png" alt="Image of Java Application launch failed.">
-</p>
-
-
-6. Type the command in the command box and press Enter to execute it.
+7. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
 
