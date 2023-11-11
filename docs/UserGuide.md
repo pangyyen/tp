@@ -4,16 +4,13 @@ title: User Guide
 ---
 * Table of Contents
   {:toc}
---------------------------------------------------------------------------------------------------------------------
+---
 
 # 1. Introduction
 
 CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital
 staff aged between 25-60 years. It is a desktop app optimised for people who type fast and is designed to help healthcare
 professionals manage their patients' medical journey.
-
-
-<!--- TODO: add release link --->
 
 # 2. Quick Start
 1. Ensure you have Java 11 installed in your Computer.
@@ -22,11 +19,11 @@ professionals manage their patients' medical journey.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
 5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
-6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html). ![Mac Error](images/mac_issue.png)
+6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html). 
+   ![Mac Error](images/mac_issue.png)
 7. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
-
     * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
     * `list-patients`
     * `delete-patient 1`
@@ -38,7 +35,7 @@ professionals manage their patients' medical journey.
 ## 3.1. Main screen
 <img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
 
-## 3.2 Sidebar
+## 3.2. Sidebar
 The sidebar contains the following tabs:
 * Patients
 * Medical History
@@ -46,7 +43,7 @@ The sidebar contains the following tabs:
 
 Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using Ctrl+T.
 
-## 3.3 Panel
+## 3.3. Panel
 There are 3 panels in the main screen:
 * Patient List Panel
 * Medical History Panel
@@ -54,10 +51,10 @@ There are 3 panels in the main screen:
 
 Users can switch between the panels by switching between the respective tabs.
 
-## 3.4 Result Display Box
+## 3.4. Result Display Box
 The result display box displays the result of the command executed.
 
-## 3.5 Command Box
+## 3.5. Command Box
 The command box is where the user can type in commands to be executed.
 
 # 4. Common Parameters
@@ -220,7 +217,7 @@ Finds a patient record from the system. Partial words will be matched as well e.
 
 ---
 
-## 6.2 Appointments Related Features
+## 6.2. Appointments Related Features
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
   <strong>📝 Notes from the Developers<br></strong>
@@ -228,7 +225,7 @@ Finds a patient record from the system. Partial words will be matched as well e.
   The purpose of appointment dates is to keep track of when the patient visited the clinic and to manage the patient's future appointments with them.
 </div>
 
-### 6.2.1 Add Appointment
+### 6.2.1. Add Appointment
 **What it does:**
 Schedules a new appointment for a patient.
 
@@ -249,7 +246,7 @@ Schedules a new appointment for a patient.
 
 ---
 
-### 6.2.2 List All Appointments
+### 6.2.2. List All Appointments
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
 This command should only be used when there is patient(s) in the patient list. <br>
@@ -275,7 +272,7 @@ Displays all appointments of the patient.
 
 ---
 
-### 6.2.3 Edit Appointment
+### 6.2.3. Edit Appointment
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
@@ -311,7 +308,7 @@ Edits **existing** appointment details. The appointment to be edited is identifi
 
 ---
 
-### 6.2.4 Delete Appointment
+### 6.2.4. Delete Appointment
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
@@ -336,7 +333,7 @@ Removes an appointment from the system. The appointment to be deleted is identif
 
 ---
 
-### 6.2.5 Add Prescription
+### 6.2.5. Add Prescription
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
@@ -361,7 +358,7 @@ Adds a prescription to a patient's appointment. The appointment to be edited is 
 
 ---
 
-### 6.2.6 Edit Prescription
+### 6.2.6. Edit Prescription
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
@@ -395,7 +392,7 @@ Edits a prescription of a patient. The prescription to be edited is identified b
 | `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
-### 6.2.7 Delete Prescription
+### 6.2.7. Delete Prescription
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-appointments PATIENT_INDEX</code>
@@ -419,9 +416,9 @@ Removes a prescription from the system. The appointment to be deleted is identif
 
 ---
 
-## 6.3 Medical History Related Features
+## 6.3. Medical History Related Features
 
-### 6.3.1 Add Medical History
+### 6.3.1. Add Medical History
 
 **What it does:**
 Adds a medical history to a patient record.
@@ -453,7 +450,7 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 
 ---
 
-### 6.3.2 List Medical History
+### 6.3.2. List Medical History
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
 This command should only be used when there is patient(s) in the patient list. <br>
@@ -478,7 +475,7 @@ Lists the medical history of a patient.
 
 ---
 
-### 6.3.3 Edit Medical History
+### 6.3.3. Edit Medical History
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
@@ -514,7 +511,7 @@ Edits a medical history of a patient. The medical history to be edited is identi
 
 ---
 
-### 6.3.4 Delete Medical History
+### 6.3.4. Delete Medical History
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
@@ -539,8 +536,8 @@ Deletes a medical history of a patient. The medical history to be deleted is ide
 
 ---
 
-## 6.3 System Related Features
-### 6.3.1 Switch Tabs
+## 6.3. System Related Features
+### 6.3.1. Switch Tabs
 
 **What it does:**
 Switches between the different tabs in the sidebar.
@@ -575,6 +572,7 @@ Switches between the different tabs in the sidebar.
 | **Edit Appointment**       | `edit-appt APPOINTMENT_INDEX pi/patient-index [d/DATE] [t/TIME]`                                            | `edit-appt 2 pi/7 d/2023-10-05 t/16:00`                                     |
 | **Delete Appointment**     | `delete-appt APPOINTMENT_INDEX pi/patient-index`                                                            | `delete-appt 3 pi/2`                                                        |
 | **Add Prescription**       | `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                 | `add-prescription 1 pi/1 mn/Panadol`                                        |
+| **Edit Prescription**      | `edit-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`                                | `edit-prescription 1 pi/1 mn/Panadol mn/Paracetamol`                        |
 | **Delete Prescription**    | `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`                                                    | `delete-prescription 1 pi/1`                                                |
 | **Add Medical History**    | `add-medical-history PATIENT_INDEX d/DATE [mc/MEDICAL_CONDITION t/TREATMENT`                                | `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`                   |
 | **List Medical History**   | `list-medical-history PATIENT_INDEX`                                                                        | `list-medical-history 1`                                                    |
