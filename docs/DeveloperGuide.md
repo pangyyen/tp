@@ -783,3 +783,66 @@ Dealing with missing/corrupted data files:
 
    ii. If attempt above is in vain, delete `clinicbook.json`, and launch CareCentral again. All user manipulation on entries and diaries will be cleared.
 
+---
+
+## **Appendix: Planned Enhancements**
+
+### Consistent Naming of Commands
+#### Current State
+The current system exhibits inconsistency in command naming. For example, `add-appt` is used for adding an appointment, while `list-appointments` is used for listing appointments.
+
+#### Planned Enhancement
+We aim to standardize command naming for better consistency and user experience. The proposed changes include renaming commands like `add-appt` to `add-appointment` and similarly, aligning other command names to this format. This change will bring uniformity and predictability to the command structure, making it more intuitive for users.
+
+#### Implementation Details
+- **Command Mapping**: A mapping will be created between old and new command names to assist in the transition.
+- **Documentation Update**: All references in the documentation will be updated to reflect the new command names.
+
+### Unique NRIC Validation
+#### Current State
+The system does not currently validate the uniqueness of the National Registration Identity Card (NRIC) of a patient, leading to potential data integrity issues.
+
+#### Planned Enhancement
+We will implement a validation mechanism to ensure that each patient's NRIC is unique within the system.
+
+#### Implementation Details
+- **Database Constraint**: Introduce a unique constraint on the NRIC field in the patient database.
+- **Error Handling**: Implement error handling to provide a clear message if a user attempts to enter a duplicate NRIC.
+- **Data Migration**: Review current data for duplicates and provide a strategy for resolving them.
+
+### Warning for Clear Command
+#### Current State
+The `clear` command executes without any prior warning, risking accidental deletion of all patient records.
+
+#### Planned Enhancement
+We plan to introduce a confirmation step before the execution of the `clear` command.
+
+#### Implementation Details
+- **Confirmation Prompt**: Introduce an interactive prompt requiring explicit user confirmation before proceeding with the clear operation.
+- **Command-Line Argument**: Optionally, provide a command-line argument to bypass the confirmation for automated scripts.
+
+### Validation for Appointment Date
+#### Current State
+Appointment dates are not validated to be in the future, allowing for potential scheduling errors.
+
+#### Planned Enhancement
+We plan to enforce a validation rule ensuring that all appointment dates are set in the future.
+
+#### Implementation Details
+- **Date Validation Logic**: Introduce logic to check the appointment date against the current date.
+- **User Feedback**: Provide immediate feedback to the user if an entered date is not in the future.
+- **Adjustable Threshold**: Allow a configurable threshold for how far in the future an appointment must be.
+
+
+### Enhanced Find Function
+#### Current State
+The current `find` function is limited to searching only by full names of patients.
+
+#### Planned Enhancement
+We plan to enhance the `find` function to allow searching for patients using other fields, not just full names, and to enable partial name matching.
+
+#### Implementation Details
+- **Extended Search Capabilities**: Modify the `find` function to search within fields like phone number, NRIC, address, etc., in addition to names.
+- **Partial Name Matching**: Implement an algorithm that allows for partial matching of names, making the search more flexible and user-friendly.
+- **Updated User Interface**: Adjust the user interface to accommodate these new search capabilities and provide clear instructions on how to use them.
+- **Performance Considerations**: Ensure that the enhanced search function remains efficient, even with the expanded search capabilities.
