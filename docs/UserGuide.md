@@ -459,6 +459,7 @@ Ensure correct usage of appointment and patient indices to avoid accidental dele
    <ol>
       <li>This command should only be used when there is patient(s) in the patient list.</li>
       <li>For instance, <code>add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin</code> adds the medical history asthma with ventolin as the treatment for the patient with index 1. Make sure to register patients into CareCentral prior to adding their medical records.</li>
+      <li>For dates, we allow it to be in the past, up until today's date, but not future dates.</li>
    </ol>
 </div>
 
@@ -471,11 +472,6 @@ Adds a medical history to a patient record.
 **Example Commands** <br>
 To add an asthma condition treated with Ventolin on October 1st, 2023, for patient index 1: <br>
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
-
-<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note<br></strong>
-For the date, we allow it to be in the past, up until today's date, but not future dates.
-</div>
 
 **Parameter**
 
