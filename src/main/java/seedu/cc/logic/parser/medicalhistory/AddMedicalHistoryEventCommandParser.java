@@ -59,7 +59,7 @@ public class AddMedicalHistoryEventCommandParser implements Parser<AddMedicalHis
         }
 
         if (ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()).isFutureDate()) {
-            throw new ParseException(String.format("Medical History Date should not be in the future"));
+            throw new ParseException(String.format(AddMedicalHistoryEventCommand.MESSAGE_DATE_IN_FUTURE));
         }
 
         MedicalCondition medicalCondition = ParserUtil.parseMedicalCondition(argMultimap

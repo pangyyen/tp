@@ -28,7 +28,7 @@ public class JsonAdaptedAppointmentEvent {
     private final String time;
 
     /**
-     * Constructs a {@code JsonAdaptedAppointmentEvent} with the given medical history event details.
+     * Constructs a {@code JsonAdaptedAppointmentEvent} with the given appointment event details.
      */
     @JsonCreator
     public JsonAdaptedAppointmentEvent(@JsonProperty("date") String date,
@@ -57,7 +57,7 @@ public class JsonAdaptedAppointmentEvent {
      * Converts this Jackson-friendly adapted appointment event object into the model's {@code AppointmentEvent}
      * object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted medical history event.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted appointment event.
      */
     public AppointmentEvent toModelType() throws IllegalValueException {
 

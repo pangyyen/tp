@@ -2,9 +2,11 @@
 layout: page
 title: User Guide
 ---
-* Table of Contents
-  {:toc}
---------------------------------------------------------------------------------------------------------------------
+
+* Table of Contents 
+{:toc}
+
+---
 
 # 1. Introduction 🎯
 
@@ -28,7 +30,6 @@ Here's how to get started with CareCentral quickly:
 7. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
    Some example commands you can try:
-
     * `add-patient n/John Doe ic/S1234567A p/98765432 e/johnd@example.com a/25 t/Diabetic`
     * `list-patients`
     * `delete-patient 1`
