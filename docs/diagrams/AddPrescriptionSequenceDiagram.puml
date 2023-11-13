@@ -43,7 +43,7 @@ activate AddPrescriptionCommandParser
 AddPrescriptionCommandParser --> ClinicBookParser
 deactivate AddPrescriptionCommandParser
 
-ClinicBookParser -> AddPrescriptionCommandParser : parse("list-mh 1")
+ClinicBookParser -> AddPrescriptionCommandParser : parse("add-prescription 1 pi/1 mn/Panadol")
 activate AddPrescriptionCommandParser
 
 create AddPrescriptionCommand
