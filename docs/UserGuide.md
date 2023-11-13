@@ -50,7 +50,7 @@ The sidebar contains the following tabs:
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](641-switch-tabs-%EF%B8%8F)) or using Ctrl+T.
+Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](#641-switch-tabs-%EF%B8%8F)) or using Ctrl+T.
 
 ## 3.3. Panel 📋
 There are 3 panels in the main screen:
