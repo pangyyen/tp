@@ -69,20 +69,21 @@ The command box is where the user can type in commands to be executed.
 # 4. Common Parameters 🔍
 Below is a table of parameters you'll commonly use in CareCentral, along with their explanations and constraints:
 
-| Parameters             | Explanation                       | Constraints                                                                                                                                                 |
-|------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`               | Full name of the patient          | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `p/PHONE_NUMBER`       | Phone number of the patient       | Must be **entirely numeric** and exactly 8 digits long                                                                                                      |
-| `ic/NRIC`              | NRIC of the patient               | Must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`                | Age of the patient                | Must be a positive integer                                                                                                                                  |
-| `e/EMAIL`              | Email of the patient              | Must be a valid email address                                                                                                                               |
-| `[t/TAG]…`             | Tags for patient categorization   | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `d/DATE`               | Date of appointment or event      | Must be in the format YYYY-MM-DD                                                                                                                            |
-| `t/TIME`               | Time of appointment or event      | Must be in the format HH:MM (24-hour format)                                                                                                                |
-| `pi/PATIENT_INDEX`     | Index for referencing a patient   | Must be a positive integer                                                                                                                                  |
-| `mc/MEDICAL_CONDITION` | Medical condition of the patient  | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `t/TREATMENT`          | Treatment for a medical condition | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `mn/MEDICATION_NAME`   | Name of the medication prescribed | Must only contain alphanumeric characters, and it should not be blank                                                                                       |
+| Parameters             | Explanation                                                                                                         | Constraints                                                                                                                            |
+|------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`               | Full name of the patient                                                                                            | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `p/PHONE_NUMBER`       | Phone number of the patient                                                                                         | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `ic/NRIC`              | NRIC of the patient                                                                                                 | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `a/AGE`                | Age of the patient                                                                                                  | Must be a **positive integer**                                                                                                         |
+| `e/EMAIL`              | Email address of the patient                                                                                        | Must be a **valid email** address                                                                                                      |
+| `[t/TAG]…`             | Tags for patient categorization                                                                                     | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
+| `APPOINTMENT_INDEX`    | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                                                         |
+| `d/DATE`               | Date of appointment or event                                                                                        | Must be in the format **YYYY-MM-DD**                                                                                                   |
+| `t/TIME`               | Time of appointment or event                                                                                        | Must be in the format **HH:MM (24-hour format)**                                                                                       |
+| `pi/PATIENT_INDEX`     | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                                                         |
+| `mc/MEDICAL_CONDITION` | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `t/TREATMENT`          | Treatment for a medical condition                                                                                   | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `mn/MEDICATION_NAME`   | Name of the medication prescribed                                                                                   | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
 
 # 5. Glossary 📚
 The following terms are used throughout the CareCentral user guide:
@@ -91,14 +92,14 @@ The following terms are used throughout the CareCentral user guide:
 |----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CLI`          | **Command Line Interface** - A text-based interface used for entering commands. In CareCentral, you'll use the CLI to input your actions quickly.        |
 | `GUI`          | **Graphical User Interface** - A visual interface with graphical elements. CareCentral's GUI is designed for ease of navigation and information display. |
-| `NRIC`         | **National Registration Identity Card** number - A unique identifier for Singaporean residents. CareCentral uses the NRIC to ensure patient uniqueness.  |
+| `NRIC`         | **National Registration Identity Card** number - A unique identifier for Singaporean residents.                                                          |
 | `Prescription` | **Medicine prescribed by a medical professional** - CareCentral allows you to manage and track prescriptions for each patient.                           |
 
 # 6. Features ⭐️
 <div style="background-color: #f9f9f9; border-left: 5px solid #009688; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 <p style="color: #009688; font-size: 20px;">:information_source: Notes about the command format:</p>
     <ul>
-        <li>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+        <li><strong>Words in <code>UPPER_CASE</code></strong> are the parameters to be supplied by the user.<br>
             For example, in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</li>
         <li><strong>Optional items</strong> are in square brackets.<br>
             For example, <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</li>
@@ -110,12 +111,12 @@ The following terms are used throughout the CareCentral user guide:
             For instance, <code>help 123</code> will be interpreted as <code>help</code>.</li>
     </ul>
     <p style="color: #d9534f;"><strong>:warning: Important:</strong> The <code>clear</code> command will remove all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
-    <p><strong>Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
+    <p><strong>💡Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
 </div>
 
 
 ## 6.1. Patients Related Features 🚑
-### 6.1.1. Create Patient Record 📝
+### 6.1.1. Create Patient Record 📝🚑
 
 **What it does**  <br>
 This feature lets you add a new patient record into the CareCentral system, keeping track of all the essential details for each patient.
@@ -132,15 +133,15 @@ Here's an example to add a patient named John Doe: <br>
 
 | Parameters       | Explanation                                          | Constraints                                                                                                                         |
 |------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | The patient's full name.                             | Use only letters, numbers, and spaces. It can't be left empty.                                                                      |
+| `n/NAME`         | Full name of the patient                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                                    |
 | `ic/NRIC`        | The patient's NRIC number.                           | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
 | `a/AGE`          | The patient's age in years.                          | Only whole numbers accepted to reflect the patient's completed years.                                                               |
-| `p/PHONE_NUMBER` | The patient's telephone number.                      | An 8-digit numeric string that you can reach out to.                                                                                |
+| `p/PHONE_NUMBER` | Phone number of the patient                        | Must be **entirely numeric** and exactly 8 digits long                                                                                |
 | `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
 | `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                  |
 
 ---
-### 6.1.2. List Patients 📋
+### 6.1.2. List Patients 📋🚑
 
 **What it does** <br>
 Ready to see your whole roster of patients? This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
@@ -151,7 +152,7 @@ Just type this simple command to get the full list: <br>
 
 ---
 
-### 6.1.3. Edit Patient Record 📝
+### 6.1.3. Edit Patient Record 📝🚑
 
 **What it does:** <br>
 Edits existing patient information at the specified `PATIENT_INDEX` in the system.
@@ -172,19 +173,19 @@ Edits existing patient information at the specified `PATIENT_INDEX` in the syste
 **Parameters:** <br>
 Let's break down what each part of the command means:
 
-| Parameters         | Explanation                                                    | Constraints                                                               |
-|--------------------|----------------------------------------------------------------|---------------------------------------------------------------------------|
-| `PATIENT_INDEX`    | The index number of the displayed patient in the patients tab. | Must be a positive integer.                                               |
-| `[n/NAME]`         | The patient's full name.                                       | Should contain only alphanumeric characters and spaces, and not be blank. |
-| `[p/PHONE_NUMBER]` | The patient's contact number.                                  | Must be numeric and exactly 8 digits long.                                |
-| `[ic/NRIC]`        | The patient's National Registration Identity Card number.      | Must be alphanumeric following the Singapore NRIC format.                 |
-| `[a/AGE]`          | The patient's age.                                             | Must be a positive integer.                                               |
-| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                           |
-| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank. |
+| Parameters         | Explanation                                                    | Constraints                                                                                                                         |
+|--------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `PATIENT_INDEX`    | The index number of the displayed patient in the patients tab. | Must be a positive integer.                                                                                                         |
+| `[n/NAME]`         | Full name of the patient                                       | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                           |
+| `[p/PHONE_NUMBER]` | Phone number of the patient                                  | Must be **entirely numeric** and exactly 8 digits long                                                                                          |
+| `[ic/NRIC]`        | The patient's National Registration Identity Card number.      | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
+| `[a/AGE]`          | The patient's age.                                             | Must be a positive integer.                                                                                                         |
+| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                                                                                     |
+| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank.                                                           |
 
 ---
 
-### 6.1.4. Delete Patient Record 🗑️
+### 6.1.4. Delete Patient Record 🗑️🚑
 
 **What it does** <br>
 Removes a patient's record from the system. The specific patient is found by the `PATIENT_INDEX` as shown in the list from `list-patients`. **Be aware: This action will permanently erase the patient's record, including all related appointments and medical history.**
@@ -205,7 +206,7 @@ Let's break down what each part of the command means:
 
 ---
 
-### 6.1.5. Find Patient Record 🔎
+### 6.1.5. Find Patient Record 🔎🚑
 
 **What it does** <br>
 Helps you to locate a patient's record in the system by searching for a keyword. The search functionality is designed to match complete or starting fragments of the name. For instance, searching for `John` will show `John Doe` but not `Johnny`.
