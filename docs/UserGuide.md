@@ -44,26 +44,26 @@ Here's how to get started with CareCentral quickly:
 ## 3.1. Main screen 🌟
 <img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
 
-## 3.2 Sidebar 🗂️
+## 3.2. Sidebar 🗂️
 The sidebar contains the following tabs:
 * Patients
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using Ctrl+T.
+Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](###-6.4.1-Switch Tabs-⚙️⏩)) or using Ctrl+T.
 
-## 3.3 Panel 📋
+## 3.3. Panel 📋
 There are 3 panels in the main screen:
 * Patient List Panel
 * Medical History Panel
 * Appointment Panel
 
-Users can switch between the panels by switching between the respective tabs by using CTRL + T.
+Users can switch between the panels by switching between the respective tabs by using Ctrl+T.
 
-## 3.4 Result Display Box 📬
+## 3.4. Result Display Box 📬
 The result display box displays the result of the command executed.
 
-## 3.5 Command Box ⌨️
+## 3.5. Command Box ⌨️
 The command box is where the user can type in commands to be executed.
 
 # 4. Common Parameters 🔍
@@ -122,7 +122,7 @@ This feature lets you add a new patient record into the CareCentral system, keep
 
 **Command Format**  <br>
 Type the command below to create a new patient entry: <br>
-`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`
+`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/EMAIL [t/TAG]…`
 
 **Example Commands** <br>
 Here's an example to add a patient named John Doe: <br>
@@ -136,7 +136,7 @@ Here's an example to add a patient named John Doe: <br>
 | `ic/NRIC`        | The patient's NRIC number.                           | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
 | `a/AGE`          | The patient's age in years.                          | Only whole numbers accepted to reflect the patient's completed years.                                                               |
 | `p/PHONE_NUMBER` | The patient's telephone number.                      | An 8-digit numeric string that you can reach out to.                                                                                |
-| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
+| `e/EMAIL`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
 | `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                  |
 
 ---
@@ -226,14 +226,14 @@ Let's break down what each part of the command means:
 
 ---
 
-## 6.2 Appointments Related Features 📅
+## 6.2. Appointments Related Features 📅
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
   <strong>📝 Notes from the Developers<br></strong>
   Our system supports recording of both past and future appointments to facilitate comprehensive schedule management. This functionality is crucial for maintaining accurate records of patient visits and planning ahead for future appointments.
 </div>
 
-### 6.2.1 Add Appointment 📝📅
+### 6.2.1. Add Appointment 📝📅
 **What it does** <br>
 Enables the scheduling of new appointments for patients.
 
@@ -254,7 +254,7 @@ This example schedules an appointment for the patient at **index 1 for October 1
 
 ---
 
-### 6.2.2 List All Appointments 📋📅
+### 6.2.2. List All Appointments 📋📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    This feature is dependent on having existing patient records. For example, using <code>list-appointments 1</code> will show all appointments for the patient with index 1. If no patients are recorded, please add a patient to the system first.<br>
@@ -281,7 +281,7 @@ When using this command, ensure that the patient index corresponds to a valid pa
 
 ---
 
-### 6.2.3 Edit Appointment 📝📅
+### 6.2.3. Edit Appointment 📝📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -325,7 +325,7 @@ Remember to verify the appointment index and patient index before making changes
 
 ---
 
-### 6.2.4 Delete Appointment 🗑️📅
+### 6.2.4. Delete Appointment 🗑️📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   Make sure to select the correct patient's appointments with <code>list-appointments PATIENT_INDEX</code> before attempting a deletion.
@@ -353,7 +353,7 @@ Please double-check the appointment and patient indexes before executing this co
 
 ---
 
-### 6.2.5 Add Prescription 📝💊
+### 6.2.5. Add Prescription 📝💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -382,7 +382,7 @@ To add **Paracetamol and Albuterol to the first appointment for the patient at i
 
 ---
 
-### 6.2.6 Edit Prescription 📝💊
+### 6.2.6. Edit Prescription 📝💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -419,7 +419,7 @@ To revise the prescription details for the **first appointment of patient index 
 
 ---
 
-### 6.2.7 Delete Prescription 🗑️💊
+### 6.2.7. Delete Prescription 🗑️💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -450,9 +450,9 @@ Ensure correct usage of appointment and patient indices to avoid accidental dele
 
 ---
 
-## 6.3 Medical History Related Features 📜
+## 6.3. Medical History Related Features 📜
 
-### 6.3.1 Add Medical History 📝📜
+### 6.3.1. Add Medical History 📝📜
 
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
@@ -488,7 +488,7 @@ For the date, we allow it to be in the past, up until today's date, but not futu
 
 ---
 
-### 6.3.2 List Medical History 📋📜
+### 6.3.2. List Medical History 📋📜
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -518,7 +518,7 @@ Ensure the patient index corresponds to a valid entry in your patient registry t
 
 ---
 
-### 6.3.3 Edit Medical History 📝📜
+### 6.3.3. Edit Medical History 📝📜
 
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
@@ -564,7 +564,7 @@ Make sure to verify all information for accuracy before updating a patient's med
 
 ---
 
-### 6.3.4 Delete Medical History 🗑️📜
+### 6.3.4. Delete Medical History 🗑️📜
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
@@ -593,8 +593,8 @@ Be cautious and verify the indexes accurately before deleting to avoid unintende
 
 ---
 
-## 6.3 System Related Features ⚙️
-### 6.3.1 Switch Tabs ⚙️⏩
+## 6.4. System Related Features ⚙️
+### 6.4.1. Switch Tabs ⚙️⏩
 
 **What it does** <br>
 Switches between the different tabs in the sidebar.
