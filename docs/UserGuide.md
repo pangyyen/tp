@@ -76,7 +76,7 @@ Below is a table of parameters you'll commonly use in CareCentral, along with th
 | `ic/NRIC`              | NRIC of the patient                                                                                                 | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
 | `a/AGE`                | Age of the patient                                                                                                  | Must be a **positive integer**                                                                                                         |
 | `e/EMAIL`              | Email address of the patient                                                                                        | Must be a **valid email** address                                                                                                      |
-| `[t/TAG]…`             | Tags for patient categorization                                                                                     | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
+| `[t/TAG]…`             | Information that is related to the patient                                                                          | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
 | `APPOINTMENT_INDEX`    | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                                                         |
 | `d/DATE`               | Date of appointment or event                                                                                        | Must be in the format **YYYY-MM-DD**                                                                                                   |
 | `t/TIME`               | Time of appointment or event                                                                                        | Must be in the format **HH:MM (24-hour format)**                                                                                       |
@@ -131,14 +131,14 @@ Here's an example to add a patient named John Doe: <br>
 
 **Parameters:** <br>
 
-| Parameters       | Explanation                                          | Constraints                                                                                                                            |
-|------------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | Full name of the patient                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
-| `ic/NRIC`        | NRIC of the patient                                  | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
-| `a/AGE`          | Age of the patient                          | Must be a **positive integer**                                                                  |
-| `p/PHONE_NUMBER` | Phone number of the patient                          | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
-| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                    |
-| `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                     |
+| Parameters       | Explanation                                | Constraints                                                                                                                           |
+|------------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | Full name of the patient                   | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                  |
+| `ic/NRIC`        | NRIC of the patient                        | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `a/AGE`          | Age of the patient                         | Must be a **positive integer**                                                                                                        |
+| `p/PHONE_NUMBER` | Phone number of the patient                | Must be **entirely numeric** and exactly 8 digits long                                                                                |
+| `e/email`        | Email address of the patient               | Must be a **valid email** address                                                                                                     |
+| `[t/TAG]...`     | Information that is related to the patient | **Alphanumeric characters** only and no spaces                                                                                        |
 
 ---
 ### 6.1.2. List Patients 📋🚑
@@ -179,9 +179,9 @@ Let's break down what each part of the command means:
 | `[n/NAME]`         | Full name of the patient                                       | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `[p/PHONE_NUMBER]` | Phone number of the patient                                    | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
 | `[ic/NRIC]`        | NRIC of the patient                                            | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
-| `[a/AGE]`          | Age of the patient                                             | Must be a **positive integer**                                                                                                            |
-| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                                                                                        |
-| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank.                                                              |
+| `[a/AGE]`          | Age of the patient                                             | Must be a **positive integer**                                                                                                         |
+| `[e/EMAIL]`        | Email address of the patient                                   | Must be a **valid email** address                                                                                                      |
+| `[t/TAG]...`       | Information that is related to the patient                     | **Alphanumeric characters** only and no spaces                                                                                         |
 
 ---
 
@@ -247,11 +247,11 @@ This example schedules an appointment for the patient at **index 1 for October 1
 
 **Parameters**
 
-| Parameters      | Explanation                                                          | Constraints                                  |
-|-----------------|----------------------------------------------------------------------|----------------------------------------------|
+| Parameters      | Explanation                                                         | Constraints                                  |
+|-----------------|---------------------------------------------------------------------|----------------------------------------------|
 | `PATIENT_INDEX` | The number that identifies the patient in the displayed patient list | Must be a positive integer                   |
-| `d/DATE`        | The date when the appointment is scheduled.                          | Must be formatted as YYYY-MM-DD.             |
-| `t/TIME`        | The time at which the appointment is scheduled.                      | Must be in the format HH:MM (24-hour format) |
+| `d/DATE`        | Date of the appointment                             | Must be in the format **YYYY-MM-DD**             |
+| `t/TIME`        | Time of the appointment                     | Must be in the format HH:MM (24-hour format) |
 
 ---
 
@@ -318,7 +318,7 @@ To change the details of the <strong>second appointment for the patient at index
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------|
 | `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer                   |
 | `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer                   |
-| `[d/DATE]`          | Date of the appointment                                                                               | Must be in the format YYYY-MM-DD             |
+| `[d/DATE]`          | Date of the appointment                                                                               | Must be in the format **YYYY-MM-DD**            |
 | `[t/TIME]`          | Time of the appointment                                                                               | Must be in the format HH:MM (24-hour format) |
 
 **Final Reminder** <br>
@@ -479,7 +479,7 @@ To add an asthma condition treated with Ventolin on October 1st, 2023, for patie
 | Parameters             | Explanation                                                                                               | Constraints                                                                      |
 |------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | Must be a positive integer                                                       |
-| `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format YYYY-MM-DD                                                 |
+| `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today                                                 |
 | `mc/MEDICAL_CONDITION` | The specific medical condition of the patient                                                             | Must only contain alphanumeric characters and spaces, and it should not be blank |
 | `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain alphanumeric characters and spaces, and it should not be blank |
 
@@ -552,7 +552,7 @@ To edit an existing medical history entry for **patient index 1, changing the co
 |--------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `MEDICAL_HISTOY_INDEX`   | Index of the medical history in the displayed medical history list                                        | must be a positive integer                                                       |
 | `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | must be a positive integer                                                       |
-| `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
+| `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
 | `[mc/MEDICAL_CONDITION]` | The specific medical condition of the patient                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
 | `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | must only contain alphanumeric characters and spaces, and it should not be blank |
 
