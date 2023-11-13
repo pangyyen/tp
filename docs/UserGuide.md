@@ -82,7 +82,7 @@ Below is a table of parameters you'll commonly use in CareCentral, along with th
 | `t/TIME`               | Time of appointment or event                                                                                        | Must be in the format **HH:MM (24-hour format)**                                                                                       |
 | `pi/PATIENT_INDEX`     | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                                                         |
 | `mc/MEDICAL_CONDITION` | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
-| `t/TREATMENT`          | Treatment for a medical condition                                                                                   | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `mn/MEDICATION_NAME`   | Name of the medication prescribed                                                                                   | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
 
 # 5. Glossary 📚
@@ -481,7 +481,7 @@ To add an asthma condition treated with Ventolin on October 1st, 2023, for patie
 | `PATIENT_INDEX`        | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index     | Must be a **positive** integer                                                       |
 | `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today                                                 |
 | `mc/MEDICAL_CONDITION` | Medical condition of the patient                                                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
-| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain alphanumeric characters and spaces, and it should not be blank |
+| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 
 ---
 
@@ -554,7 +554,7 @@ To edit an existing medical history entry for **patient index 1, changing the co
 | `pi/PATIENT_INDEX`       | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index     | Must be a **positive** integer                                                       |
 | `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
 | `[mc/MEDICAL_CONDITION]` | Medical condition of the patient                                                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
-| `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 
 **Final Reminder** <br>
 Make sure to verify all information for accuracy before updating a patient's medical history record.
