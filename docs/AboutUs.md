@@ -14,7 +14,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/pangyyen.png" width="200px">
 
 [[GitHub](https://github.com/pangyyen)]
-[[LinkIn](https://www.linkedin.com/in/gan-pang-yen-222333227/)]
+[[LinkedIn](https://www.linkedin.com/in/gan-pang-yen-222333227/)]
 
 * Role: Developer
 * Responsibilities: UI, Storage, Logic, Documentation, Testing

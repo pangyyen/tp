@@ -42,47 +42,51 @@ Here's how to get started with CareCentral quickly:
 # 3. GUI components 🖥️
 
 ## 3.1. Main screen 🌟
-<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
+<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen">
 
-## 3.2 Sidebar 🗂️
+## 3.2. Sidebar 🗂️
 The sidebar contains the following tabs:
 * Patients
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using Ctrl+T.
+Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](#641-switch-tabs-%EF%B8%8F)) or using Ctrl+T.
 
-## 3.3 Panel 📋
+## 3.3. Panel 📋
 There are 3 panels in the main screen:
 * Patient List Panel
 * Medical History Panel
 * Appointment Panel
 
-Users can switch between the panels by switching between the respective tabs by using CTRL + T.
+Users can switch between the panels by switching between the respective tabs by using `Ctrl + T`.
 
-## 3.4 Result Display Box 📬
+## 3.4. Result Display Box 📬
 The result display box displays the result of the command executed.
 
-## 3.5 Command Box ⌨️
+## 3.5. Command Box ⌨️
 The command box is where the user can type in commands to be executed.
 
 # 4. Common Parameters 🔍
 Below is a table of parameters you'll commonly use in CareCentral, along with their explanations and constraints:
 
-| Parameters             | Explanation                       | Constraints                                                                                                                                                 |
-|------------------------|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`               | Full name of the patient          | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `p/PHONE_NUMBER`       | Phone number of the patient       | Must be **entirely numeric** and exactly 8 digits long                                                                                                      |
-| `ic/NRIC`              | NRIC of the patient               | Must be **entirely alphanumeric** and follow Singapore NRIC format. More details [here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`                | Age of the patient                | Must be a positive integer                                                                                                                                  |
-| `e/EMAIL`              | Email of the patient              | Must be a valid email address                                                                                                                               |
-| `[t/TAG]…`             | Tags for patient categorization   | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `d/DATE`               | Date of appointment or event      | Must be in the format YYYY-MM-DD                                                                                                                            |
-| `t/TIME`               | Time of appointment or event      | Must be in the format HH:MM (24-hour format)                                                                                                                |
-| `pi/PATIENT_INDEX`     | Index for referencing a patient   | Must be a positive integer                                                                                                                                  |
-| `mc/MEDICAL_CONDITION` | Medical condition of the patient  | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `t/TREATMENT`          | Treatment for a medical condition | Must only contain alphanumeric characters and spaces, and it should not be blank                                                                            |
-| `mn/MEDICATION_NAME`   | Name of the medication prescribed | Must only contain alphanumeric characters, and it should not be blank                                                                                       |
+| Parameters              | Explanation                                                                                                         | Constraints                                                                                                                            |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`                | Full name of the patient                                                                                            | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `p/PHONE_NUMBER`        | Phone number of the patient                                                                                         | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `ic/NRIC`               | NRIC of the patient                                                                                                 | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `a/AGE`                 | Age of the patient                                                                                                  | Must be a **positive integer**                                                                                                         |
+| `e/EMAIL`               | Email address of the patient                                                                                        | Must be a **valid email** address                                                                                                      |
+| `[t/TAG]…`              | Information that is related to the patient                                                                          | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
+| `APPOINTMENT_INDEX`     | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                                                         |
+| `d/DATE`                | Date of appointment or event                                                                                        | Must be in the format **YYYY-MM-DD**                                                                                                   |
+| `t/TIME`                | Time of appointment or event                                                                                        | Must be in the format **HH:MM (24-hour format)**                                                                                       |
+| `pi/PATIENT_INDEX`      | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                                                         |
+| `MEDICAL_HISTORY_INDEX` | Index of the medical history in the displayed medical history list                                                  | Must be a **positive** integer                                                                                                         |
+| `mc/MEDICAL_CONDITION`  | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `t/TREATMENT`           | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `mn/MEDICATION_NAME`    | Name of the medication prescribed                                                                                   | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
+| `KEYWORD`               | The name or part of the name you're using to search for a patient.                                                  | Must be a string                                                                                                                       |
+| `TAB_NUMBER`            | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab                 | Must only be integer                                                                                                                   |
 
 # 5. Glossary 📚
 The following terms are used throughout the CareCentral user guide:
@@ -91,14 +95,14 @@ The following terms are used throughout the CareCentral user guide:
 |----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `CLI`          | **Command Line Interface** - A text-based interface used for entering commands. In CareCentral, you'll use the CLI to input your actions quickly.        |
 | `GUI`          | **Graphical User Interface** - A visual interface with graphical elements. CareCentral's GUI is designed for ease of navigation and information display. |
-| `NRIC`         | **National Registration Identity Card** number - A unique identifier for Singaporean residents. CareCentral uses the NRIC to ensure patient uniqueness.  |
+| `NRIC`         | **National Registration Identity Card** number - A unique identifier for Singaporean residents.                                                          |
 | `Prescription` | **Medicine prescribed by a medical professional** - CareCentral allows you to manage and track prescriptions for each patient.                           |
 
 # 6. Features ⭐️
 <div style="background-color: #f9f9f9; border-left: 5px solid #009688; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
 <p style="color: #009688; font-size: 20px;">:information_source: Notes about the command format:</p>
     <ul>
-        <li>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+        <li><strong>Words in <code>UPPER_CASE</code></strong> are the parameters to be supplied by the user.<br>
             For example, in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</li>
         <li><strong>Optional items</strong> are in square brackets.<br>
             For example, <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</li>
@@ -109,20 +113,20 @@ The following terms are used throughout the CareCentral user guide:
         <li><strong>Extraneous parameters</strong> for commands that do not require them such as <code>help</code> <code>exit</code> and <code>clear</code> will be ignored.<br>
             For instance, <code>help 123</code> will be interpreted as <code>help</code>.</li>
     </ul>
-    <p style="color: #d9534f;"><strong>:warning: Important:</strong> The <code>clear</code> command will remove all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
-    <p><strong>Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
+    <p style="color: #d9534f;"><strong>❗Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+    <p><strong>💡Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
 </div>
 
 
 ## 6.1. Patients Related Features 🚑
-### 6.1.1. Create Patient Record 📝
+### 6.1.1. Create Patient Record 📝🚑
 
 **What it does**  <br>
 This feature lets you add a new patient record into the CareCentral system, keeping track of all the essential details for each patient.
 
 **Command Format**  <br>
 Type the command below to create a new patient entry: <br>
-`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/email [t/TAG]…`
+`add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/EMAIL [t/TAG]…`
 
 **Example Commands** <br>
 Here's an example to add a patient named John Doe: <br>
@@ -130,17 +134,17 @@ Here's an example to add a patient named John Doe: <br>
 
 **Parameters:** <br>
 
-| Parameters       | Explanation                                          | Constraints                                                                                                                         |
-|------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | The patient's full name.                             | Use only letters, numbers, and spaces. It can't be left empty.                                                                      |
-| `ic/NRIC`        | The patient's NRIC number.                           | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`          | The patient's age in years.                          | Only whole numbers accepted to reflect the patient's completed years.                                                               |
-| `p/PHONE_NUMBER` | The patient's telephone number.                      | An 8-digit numeric string that you can reach out to.                                                                                |
-| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
-| `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                  |
+| Parameters       | Explanation                                | Constraints                                                                                                                            |
+|------------------|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | Full name of the patient                   | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `ic/NRIC`        | NRIC of the patient                        | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `a/AGE`          | Age of the patient                         | Must be a **positive integer**                                                                                                         |
+| `p/PHONE_NUMBER` | Phone number of the patient                | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `e/email`        | Email address of the patient               | Must be a **valid email** address                                                                                                      |
+| `[t/TAG]...`     | Information that is related to the patient | **Alphanumeric characters** only and no spaces                                                                                         |
 
 ---
-### 6.1.2. List Patients 📋
+### 6.1.2. List Patients 📋🚑
 
 **What it does** <br>
 Ready to see your whole roster of patients? This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
@@ -151,7 +155,7 @@ Just type this simple command to get the full list: <br>
 
 ---
 
-### 6.1.3. Edit Patient Record 📝
+### 6.1.3. Edit Patient Record ✏️🚑
 
 **What it does:** <br>
 Edits existing patient information at the specified `PATIENT_INDEX` in the system.
@@ -172,19 +176,19 @@ Edits existing patient information at the specified `PATIENT_INDEX` in the syste
 **Parameters:** <br>
 Let's break down what each part of the command means:
 
-| Parameters         | Explanation                                                    | Constraints                                                               |
-|--------------------|----------------------------------------------------------------|---------------------------------------------------------------------------|
-| `PATIENT_INDEX`    | The index number of the displayed patient in the patients tab. | Must be a positive integer.                                               |
-| `[n/NAME]`         | The patient's full name.                                       | Should contain only alphanumeric characters and spaces, and not be blank. |
-| `[p/PHONE_NUMBER]` | The patient's contact number.                                  | Must be numeric and exactly 8 digits long.                                |
-| `[ic/NRIC]`        | The patient's National Registration Identity Card number.      | Must be alphanumeric following the Singapore NRIC format.                 |
-| `[a/AGE]`          | The patient's age.                                             | Must be a positive integer.                                               |
-| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                           |
-| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank. |
+| Parameters         | Explanation                                                                                                         | Constraints                                                                                                                            |
+|--------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `PATIENT_INDEX`    | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                                                         |
+| `[n/NAME]`         | Full name of the patient                                                                                            | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `[p/PHONE_NUMBER]` | Phone number of the patient                                                                                         | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `[ic/NRIC]`        | NRIC of the patient                                                                                                 | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `[a/AGE]`          | Age of the patient                                                                                                  | Must be a **positive integer**                                                                                                         |
+| `[e/EMAIL]`        | Email address of the patient                                                                                        | Must be a **valid email** address                                                                                                      |
+| `[t/TAG]...`       | Information that is related to the patient                                                                          | **Alphanumeric characters** only and no spaces                                                                                         |
 
 ---
 
-### 6.1.4. Delete Patient Record 🗑️
+### 6.1.4. Delete Patient Record 🗑️🚑
 
 **What it does** <br>
 Removes a patient's record from the system. The specific patient is found by the `PATIENT_INDEX` as shown in the list from `list-patients`. **Be aware: This action will permanently erase the patient's record, including all related appointments and medical history.**
@@ -199,13 +203,13 @@ Removes a patient's record from the system. The specific patient is found by the
 **Parameters** <br>
 Let's break down what each part of the command means:
 
-| Parameters      | Explanation                                                      | Constraints                                                      |
-|-----------------|------------------------------------------------------------------|------------------------------------------------------------------|
-| `PATIENT_INDEX` | The position number of the patient in the displayed patient list | Must be a positive integer corresponding to a patient's listing. |
+| Parameters      | Explanation                                                                                                         | Constraints                    |
+|-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 ---
 
-### 6.1.5. Find Patient Record 🔎
+### 6.1.5. Find Patient Record 🔎🚑
 
 **What it does** <br>
 Helps you to locate a patient's record in the system by searching for a keyword. The search functionality is designed to match complete or starting fragments of the name. For instance, searching for `John` will show `John Doe` but not `Johnny`.
@@ -226,14 +230,14 @@ Let's break down what each part of the command means:
 
 ---
 
-## 6.2 Appointments Related Features 📅
+## 6.2. Appointments Related Features 📅
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
   <strong>📝 Notes from the Developers<br></strong>
   Our system supports recording of both past and future appointments to facilitate comprehensive schedule management. This functionality is crucial for maintaining accurate records of patient visits and planning ahead for future appointments.
 </div>
 
-### 6.2.1 Add Appointment 📝📅
+### 6.2.1. Add Appointment 📝📅
 **What it does** <br>
 Enables the scheduling of new appointments for patients.
 
@@ -246,15 +250,15 @@ This example schedules an appointment for the patient at **index 1 for October 1
 
 **Parameters**
 
-| Parameters      | Explanation                                                          | Constraints                                  |
-|-----------------|----------------------------------------------------------------------|----------------------------------------------|
-| `PATIENT_INDEX` | The number that identifies the patient in the displayed patient list | Must be a positive integer                   |
-| `d/DATE`        | The date when the appointment is scheduled.                          | Must be formatted as YYYY-MM-DD.             |
-| `t/TIME`        | The time at which the appointment is scheduled.                      | Must be in the format HH:MM (24-hour format) |
+| Parameters      | Explanation                                                                                                         | Constraints                                      |
+|-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                   |
+| `d/DATE`        | Date of the appointment                                                                                             | Must be in the format **YYYY-MM-DD**             |
+| `t/TIME`        | Time of the appointment                                                                                             | Must be in the format **HH:MM (24-hour format)** |
 
 ---
 
-### 6.2.2 List All Appointments 📋📅
+### 6.2.2. List All Appointments 📋📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    This feature is dependent on having existing patient records. For example, using <code>list-appointments 1</code> will show all appointments for the patient with index 1. If no patients are recorded, please add a patient to the system first.<br>
@@ -272,16 +276,16 @@ To view all appointments for the patient at index 1, use:<br>
 
 **Parameters:**
 
-| Parameters      | Explanation                                                          | Constraints                |
-|-----------------|----------------------------------------------------------------------|----------------------------|
-| `PATIENT_INDEX` | The number that identifies the patient in the displayed patient list | Must be a positive integer |
+| Parameters      | Explanation                                                                                                         | Constraints                    |
+|-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 **Final Reminder** <br>
 When using this command, ensure that the patient index corresponds to a valid patient in your system to view their appointment details.
 
 ---
 
-### 6.2.3 Edit Appointment 📝📅
+### 6.2.3. Edit Appointment ✏️📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -313,19 +317,19 @@ To change the details of the <strong>second appointment for the patient at index
 
 **Parameters:**
 
-| Parameters          | Explanation                                                                                           | Constraints                                  |
-|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer                   |
-| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer                   |
-| `[d/DATE]`          | Date of the appointment                                                                               | Must be in the format YYYY-MM-DD             |
-| `[t/TIME]`          | Time of the appointment                                                                               | Must be in the format HH:MM (24-hour format) |
+| Parameters          | Explanation                                                                                                         | Constraints                                      |
+|---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                   |
+| `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                   |
+| `[d/DATE]`          | Date of the appointment                                                                                             | Must be in the format **YYYY-MM-DD**             |
+| `[t/TIME]`          | Time of the appointment                                                                                             | Must be in the format **HH:MM (24-hour format)** |
 
 **Final Reminder** <br>
 Remember to verify the appointment index and patient index before making changes to prevent any unintended schedule updates.
 
 ---
 
-### 6.2.4 Delete Appointment 🗑️📅
+### 6.2.4. Delete Appointment 🗑️📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   Make sure to select the correct patient's appointments with <code>list-appointments PATIENT_INDEX</code> before attempting a deletion.
@@ -343,17 +347,17 @@ To delete the **third appointment for the patient at index 2**:<br>
 
 **Parameters:**
 
-| Parameters          | Explanation                                                                                           | Constraints                |
-|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer |
-| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
+| Parameters          | Explanation                                                                                                         | Constraints                    |
+|---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer** |
+| `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 **Final Reminder** <br>
 Please double-check the appointment and patient indexes before executing this command to avoid removing the wrong appointment.
 
 ---
 
-### 6.2.5 Add Prescription 📝💊
+### 6.2.5. Add Prescription 📝💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -374,15 +378,15 @@ To add **Paracetamol and Albuterol to the first appointment for the patient at i
 
 **Parameters:**
 
-| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
-|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
-| `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+| Parameters           | Explanation                                                                                                         | Constraints                                                                                         |
+|----------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                      |
+| `pi/PATIENT_INDEX`   | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                      |
+| `mn/MEDICATION_NAME` | Name of the medication prescribed                                                                                   | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
 ---
 
-### 6.2.6 Edit Prescription 📝💊
+### 6.2.6. Edit Prescription ✏️💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -411,15 +415,15 @@ To revise the prescription details for the **first appointment of patient index 
 
 **Parameters**
 
-| Parameters           | Explanation                                                                                           | Constraints                                                                                         |
-|----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                            | Must be a positive integer                                                                          |
-| `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer                                                                          |
-| `mn/MEDICATION_NAME` | name of the medication                                                                                | Must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
+| Parameters           | Explanation                                                                                                         | Constraints                                                                                         |
+|----------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                      |
+| `pi/PATIENT_INDEX`   | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                      |
+| `mn/MEDICATION_NAME` | Name of the medication prescribed                                                                                   | Must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
 ---
 
-### 6.2.7 Delete Prescription 🗑️💊
+### 6.2.7. Delete Prescription 🗑️💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -440,25 +444,26 @@ For example, to delete the prescription linked to the **first appointment for pa
 
 **Parameters**
 
-| Parameters          | Explanation                                                                                           | Constraints                |
-|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer |
-| `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
+| Parameters          | Explanation                                                                                                         | Constraints                    |
+|---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer** |
+| `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 **Final Reminder** <br>
 Ensure correct usage of appointment and patient indices to avoid accidental deletion of the wrong prescription.
 
 ---
 
-## 6.3 Medical History Related Features 📜
+## 6.3. Medical History Related Features 📜
 
-### 6.3.1 Add Medical History 📝📜
+### 6.3.1. Add Medical History 📝📜
 
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
       <li>This command should only be used when there is patient(s) in the patient list.</li>
       <li>For instance, <code>add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin</code> adds the medical history asthma with ventolin as the treatment for the patient with index 1. Make sure to register patients into CareCentral prior to adding their medical records.</li>
+      <li>For dates, we allow it to be in the past, up until today's date, but not future dates.</li>
    </ol>
 </div>
 
@@ -472,23 +477,18 @@ Adds a medical history to a patient record.
 To add an asthma condition treated with Ventolin on October 1st, 2023, for patient index 1: <br>
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
-<div style="background-color: #ffffcc; padding: 3px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
-  <strong>:warning: Things To Note<br></strong>
-For the date, we allow it to be in the past, up until today's date, but not future dates.
-</div>
-
 **Parameter**
 
-| Parameters             | Explanation                                                                                               | Constraints                                                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `PATIENT_INDEX`        | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | Must be a positive integer                                                       |
-| `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format YYYY-MM-DD                                                 |
-| `mc/MEDICAL_CONDITION` | The specific medical condition of the patient                                                             | Must only contain alphanumeric characters and spaces, and it should not be blank |
-| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters             | Explanation                                                                                                         | Constraints                                                                          |
+|------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| `PATIENT_INDEX`        | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                       |
+| `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                                 | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
+| `mc/MEDICAL_CONDITION` | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
+| `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 
 ---
 
-### 6.3.2 List Medical History 📋📜
+### 6.3.2. List Medical History 📋📜
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -509,16 +509,16 @@ To view the complete medical history for the patient at index 1: <br>
 
 **Parameters**
 
-| Parameters      | Explanation                                                                                           | Constraints                |
-|-----------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `PATIENT_INDEX` | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
+| Parameters      | Explanation                                                                                                         | Constraints                    |
+|-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 **Final Reminder** <br>
 Ensure the patient index corresponds to a valid entry in your patient registry to retrieve accurate medical history information.
 
 ---
 
-### 6.3.3 Edit Medical History 📝📜
+### 6.3.3. Edit Medical History ✏️📜
 
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
@@ -551,20 +551,20 @@ To edit an existing medical history entry for **patient index 1, changing the co
 
 **Parameters:**
 
-| Parameters               | Explanation                                                                                               | Constraints                                                                      |
-|--------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| `MEDICAL_HISTOY_INDEX`   | Index of the medical history in the displayed medical history list                                        | must be a positive integer                                                       |
-| `pi/PATIENT_INDEX`       | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index     | must be a positive integer                                                       |
-| `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | must be in the format YYYY-MM-DD. Can only be dates earlier than today or today  |
-| `[mc/MEDICAL_CONDITION]` | The specific medical condition of the patient                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
-| `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | must only contain alphanumeric characters and spaces, and it should not be blank |
+| Parameters               | Explanation                                                                                                         | Constraints                                                                          |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| `MEDICAL_HISTORY_INDEX`  | Index of the medical history in the displayed medical history list                                                  | Must be a **positive** integer                                                       |
+| `pi/PATIENT_INDEX`       | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                       |
+| `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                                 | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
+| `[mc/MEDICAL_CONDITION]` | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
+| `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 
 **Final Reminder** <br>
 Make sure to verify all information for accuracy before updating a patient's medical history record.
 
 ---
 
-### 6.3.4 Delete Medical History 🗑️📜
+### 6.3.4. Delete Medical History 🗑️📜
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
   This command should only be used after <code>list-medical-history PATIENT_INDEX</code>
@@ -582,10 +582,10 @@ To delete the **first medical history entry for the patient at index 1**: <br>
 
 **Parameters**
 
-| Parameters              | Explanation                                                                                           | Constraints                |
-|-------------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `MEDICAL_HISTORY_INDEX` | Index of the medical history in the displayed medical history list                                    | Must be a positive integer |
-| `pi/PATIENT_INDEX`      | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
+| Parameters              | Explanation                                                                                                         | Constraints                    |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
+| `MEDICAL_HISTORY_INDEX` | Index of the medical history in the displayed medical history list                                                  | Must be a **positive** integer |
+| `pi/PATIENT_INDEX`      | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
 
 **Final Reminder** <br>
@@ -593,8 +593,8 @@ Be cautious and verify the indexes accurately before deleting to avoid unintende
 
 ---
 
-## 6.3 System Related Features ⚙️
-### 6.3.1 Switch Tabs ⚙️⏩
+## 6.4. System Related Features ⚙️
+### 6.4.1. Switch Tabs ⏩⚙️
 
 **What it does** <br>
 Switches between the different tabs in the sidebar.
@@ -611,6 +611,49 @@ To jump to the **Patients tab**: <br>
 | Parameters   | Explanation                                                                                         | Constraints          |
 |--------------|-----------------------------------------------------------------------------------------------------|----------------------|
 | `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | Must only be integer |
+
+---
+
+### 6.3.2. Help❓⚙️
+
+**What it does** <br>
+Displays the help page.
+
+**Command Format** <br>
+`help`
+
+**Example Command** <br>
+`help`
+
+---
+
+### 6.3.3. Clear Data 🗑️⚙️
+
+<div style="background-color: #f9f9f9; border-left: 5px solid #d9534f; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+   <p style="color: #d9534f;"><strong>❗Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+</div>
+
+**What it does** <br>
+Clears all data from the system. **This action will permanently erase all data, including all patient records, appointments, and medical history.**
+
+**Command Format** <br>
+`clear`
+
+**Example Command** <br>
+`clear`
+
+---
+
+### 6.3.4. Exit 🚪⚙️
+
+**What it does** <br>
+Exits the program.
+
+**Command Format** <br>
+`exit`
+
+**Example Command** <br>
+`exit`
 
 ---
 
@@ -635,5 +678,8 @@ To jump to the **Patients tab**: <br>
 | **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
 | **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                           | `delete-medical-history 1 pi/1`                                             |
 | **Switch Tabs**            | `switch TAB_NUMBER`                                                                                         | `switch 1`                                                                  |
+| **Help**                   | `help`                                                                                                      | `help`                                                                      |
+| **Clear Data**             | `clear`                                                                                                     | `clear`                                                                     |
+| **Exit**                   | `exit`                                                                                                      | `exit`                                                                      |
 
 ---
