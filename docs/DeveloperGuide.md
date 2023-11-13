@@ -234,7 +234,7 @@ change in `Model`.
 
 **The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario**
 
-<img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
+<img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="933"/>
 
 ### Appointment
 
@@ -268,7 +268,7 @@ Commands related to `AppointmentEvent`:
 
 **The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `list-appointments`**
 
-<img src="images/ListAppointmentEventsSequenceDiagram.png" width="550">
+<img src="images/ListAppointmentEventsSequenceDiagram.png" width="933">
 
 ### Prescription 
 
@@ -298,7 +298,7 @@ then returns the `CommandResult` object to the `MainWindow` for display to the u
 
 **The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `add-prescription`**
 
-<img src="images/AddPrescriptionSequenceDiagram.png" width="550" />
+<img src="images/AddPrescriptionSequenceDiagram.png" width="933" />
 
 ### \[Proposed\] Undo/redo feature
 
