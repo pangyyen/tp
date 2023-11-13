@@ -10,8 +10,8 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_NRIC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NRIC_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HYPERTENSION;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,12 +30,13 @@ public class TypicalPatients {
             .withAge("32").withEmail("alice@example.com")
             .withPhone("94351253")
             .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory())
-            .withTags("friends").build();
+            .withAppointment(new AppointmentEventBuilder().buildAppointmentList())
+            .withTags("Hypertension").build();
     public static final Patient BENSON = new PatientBuilder().withName("Benson Meier")
             .withNric("S1234567B")
             .withAge("46")
             .withEmail("johnd@example.com").withPhone("98765432")
-            .withTags("owesMoney", "friends").build();
+            .withTags("Asthma", "Hypertension").build();
     public static final Patient CARL = new PatientBuilder().withName("Carl Kurz")
             .withNric("S1234567C")
             .withPhone("95352563")
@@ -44,7 +45,9 @@ public class TypicalPatients {
             .withNric("S1234567D")
             .withPhone("87652533")
             .withEmail("cornelia@example.com").withAge("50")
-            .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory()).withTags("friends").build();
+            .withMedicalHistory(new MedicalHistoryEventBuilder().buildMedicalHistory())
+            .withAppointment(new AppointmentEventBuilder().buildAppointmentList())
+            .withTags("Hypertension").build();
     public static final Patient ELLE = new PatientBuilder().withName("Elle Meyer")
             .withNric("S1234567E")
             .withPhone("94822240")
@@ -72,11 +75,11 @@ public class TypicalPatients {
     public static final Patient AMY = new PatientBuilder().withName(VALID_NAME_AMY)
             .withNric(VALID_NRIC_AMY)
             .withPhone(VALID_PHONE_AMY)
-            .withEmail(VALID_EMAIL_AMY).withAge(VALID_AGE_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_AMY).withAge(VALID_AGE_AMY).withTags(VALID_TAG_HYPERTENSION).build();
     public static final Patient BOB = new PatientBuilder().withName(VALID_NAME_BOB)
             .withNric(VALID_NRIC_BOB)
             .withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB).withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
+            .withEmail(VALID_EMAIL_BOB).withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA, VALID_TAG_HYPERTENSION)
             .build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
