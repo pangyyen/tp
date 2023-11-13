@@ -73,7 +73,6 @@ public class JsonAdaptedAppointmentEvent {
         Time modelTime = new Time(this.time);
 
         if (prescriptions.isEmpty()) {
-            System.out.println("No prescriptions");
             return new AppointmentEvent(modelDate, modelTime);
         }
 
