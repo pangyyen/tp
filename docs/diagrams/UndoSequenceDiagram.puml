@@ -12,10 +12,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 participant ":VersionedClinicBook" as VersionedClinicBook MODEL_COLOR
 end box
-[-> LogicManager : execute(undo)
+[-> LogicManager : execute("undo")
 activate LogicManager
 
-LogicManager -> ClinicBookParser : parseCommand(undo)
+LogicManager -> ClinicBookParser : parseCommand("undo")
 activate ClinicBookParser
 
 create UndoCommand

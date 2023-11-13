@@ -38,7 +38,7 @@ The bulk of the app's work is done by the following four components:
 
 **How the architecture components interact with each other**
 
-**The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-p 1`.**
+**The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-patient 1`.**
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -90,10 +90,10 @@ Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete-patient 1")` API
 call as an example.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete-patient 1` Command](images/DeleteSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -156,7 +156,7 @@ The `Storage` component,
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.cc.commons` package.]
+Classes used by multiple components are in the `seedu.cc.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -167,7 +167,7 @@ Classes used by multiple components are in the `seedu.cc.commons` package.]
 A `Patient` has the following fields:
 
 * Each `Patient` has a unique combination of `Name`, `Age`, `Nric`, `Email` and `Phone`
-* Each `Patient` has a `MedicalHistory`.
+* Each `Patient` has a `PatientCMedicalHistory`.
 * Each `Patient` has a `PatientAppointmentList`.
 * Each class has their respective getter methods
 
@@ -320,11 +320,11 @@ Step 1. The user launches the application for the first time. The `VersionedClin
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th patient in the clinic book. The `delete` command calls `Model#commitClinicBook()`, causing the modified state of the clinic book after the `delete 5` command executes to be saved in the `clinicBookStateList`, and the `currentStatePointer` is shifted to the newly inserted clinic book state.
+Step 2. The user executes `delete-patient 5` command to delete the 5th patient in the clinic book. The `delete-patient` command calls `Model#commitClinicBook()`, causing the modified state of the clinic book after the `delete 5` command executes to be saved in the `clinicBookStateList`, and the `currentStatePointer` is shifted to the newly inserted clinic book state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new patient. The `add` command also calls `Model#commitClinicBook()`, causing another modified clinic book state to be saved into the `clinicBookStateList`.
+Step 3. The user executes `add-patient n/David …​` to add a new patient. The `add-patient` command also calls `Model#commitClinicBook()`, causing another modified clinic book state to be saved into the `clinicBookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
@@ -355,7 +355,7 @@ The `redo` command does the opposite — it calls `Model#redoClinicBook()`, 
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the clinic book, such as `list`, will usually not call `Model#commitClinicBook()`, `Model#undoClinicBook()` or `Model#redoClinicBook()`. Thus, the `clinicBookStateList` remains unchanged.
+Step 5. The user then decides to execute the command `list-patients`. Commands that do not modify the clinic book, such as `list-patients`, will usually not call `Model#commitClinicBook()`, `Model#undoClinicBook()` or `Model#redoClinicBook()`. Thus, the `clinicBookStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
