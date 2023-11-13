@@ -14,7 +14,7 @@ it is designed to be used via a Command Line Interface (CLI) for users who prefe
 Code contributed: [Reposense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=tanboonkhong&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&since=2023-09-22)
 
 - **New Features**:
-    - Added the ability to add and delete prescriptions for each appointment events (Pull Request [#106](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/106))
+    - **Prescription Management:** Implemented a feature for adding and deleting prescriptions linked to appointments. (Pull Request [#106](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/106))
       - What it does: Allows users to add and delete prescriptions for each appointment events
       - Justification: This feature improves the product significantly because it allows users to keep track of their patients' prescriptions,
         which is important for healthcare professionals to make informed decisions about their patients' health.
@@ -23,14 +23,14 @@ Code contributed: [Reposense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
         it using the logic behind edit command logic.
       
 - **Enhancements**:
-    - Rewrote the `address` attribute from the original code to `age`, and added relevant classes and validation (Pull Request [#108](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/108))
-    - Refactored the code base to match our project requirements (Pull Request [#70](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/70))
-    - Modified the Storage model from the original code to store the data of ClinicBook (Pull Request [#51](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/51))
-    - Added the `Nric` class and its associated modifications (Pull Request [#43](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/43/files))
-    - Added an alternative constructor for the `Person` class (Pull Request [#43](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/43/files))
+    - **Attribute Overhaul:** Transformed the `address` attribute to `age`, including new validations and classes, aligning it with healthcare requirements (Pull Request [#108](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/108))
+    - **Code Refactoring:** Streamlined the code base to better suit project objectives (Pull Request [#70](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/70))
+    - **Storage Model Update:** Adapted the Storage model to handle ClinicBook data (Pull Request [#51](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/51))
+    - **NRIC Integration:** Introduced the `Nric` class and its associated modifications (Pull Request [#43](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/43/files))
+    - **Person Class Extension:** Added an alternative constructor for the `Person` class, enhancing flexibility (Pull Request [#43](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/43/files))
 
 - **Testing**:
-    - Added tests for `UniquePatientList` to handle the non-trivial cases (Pull Request [#71](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/71))
+    - Added comprehensive tests for `UniquePatientListTest`, `UserPrefsTest`, `JsonAdaptedPatientTest`, and `JsonUserPrefsStorageTest` to ensure robustness in handling complex scenarios (Pull Request [#71](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/71))
     - Modified tests from original code for our project (Pull Request [#60](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/60))
   
 - **Documentation**:
