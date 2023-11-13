@@ -42,7 +42,7 @@ activate ListAppointmentEventsCommandParser
 ListAppointmentEventsCommandParser --> ClinicBookParser
 deactivate ListAppointmentEventsCommandParser
 
-ClinicBookParser -> ListAppointmentEventsCommandParser : parse("list-appointments 1")
+ClinicBookParser -> ListAppointmentEventsCommandParser : parse("1")
 activate ListAppointmentEventsCommandParser
 
 create ListAppointmentEventsCommand

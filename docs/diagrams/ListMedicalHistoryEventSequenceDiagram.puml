@@ -42,7 +42,7 @@ activate ListMedicalHistoryEventCommandParser
 ListMedicalHistoryEventCommandParser --> ClinicBookParser
 deactivate ListMedicalHistoryEventCommandParser
 
-ClinicBookParser -> ListMedicalHistoryEventCommandParser : parse("list-medical-history 1")
+ClinicBookParser -> ListMedicalHistoryEventCommandParser : parse("1")
 activate ListMedicalHistoryEventCommandParser
 
 create ListMedicalHistoryEventCommand
