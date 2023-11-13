@@ -5,7 +5,7 @@ title: Lim Jian Hong's Project Portfolio Page
 
 ## Project: CareCentral
 
-CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital staff aged between 25-60 years.
+CareCentral is an app designed specifically for healthcare professionals, including doctors, nurses, and hospital staffs between 25-60 years old.
 It is focused on helping healthcare professionals to manage their patients' information and appointments. While it has a GUI,
 it is designed to be used via a Command Line Interface (CLI) for users who prefer typing.
 
@@ -31,7 +31,7 @@ Code contributed: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
 
 - **Documentation:**
     - User Guide:
-        - Modify the style of the user guide
+        - Modify the styling of the user guide
         - Rephrase our user guide to make it more user-centric and easier to understand
         - Add side notes in our user guides to help users understand the sequence of our commands better
         - Add explanation to examples in our user guide to help users understand the sequence of our commands better
