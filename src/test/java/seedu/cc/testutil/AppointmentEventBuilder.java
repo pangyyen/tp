@@ -1,12 +1,12 @@
 package seedu.cc.testutil;
 
+import java.util.Set;
+
 import seedu.cc.model.appointment.AppointmentEvent;
 import seedu.cc.model.appointment.PatientAppointmentList;
 import seedu.cc.model.appointment.Prescription;
 import seedu.cc.model.util.Date;
 import seedu.cc.model.util.Time;
-
-import java.util.Set;
 
 /**
  * A utility class to help with building AppointmentEvent objects.
@@ -52,7 +52,7 @@ public class AppointmentEventBuilder {
     }
 
     /**
-     * Sets the {@code MedicalCondition} of the {@code AppointmentEvent} that we are building.
+     * Sets the {@code Prescription} of the {@code AppointmentEvent} that we are building.
      */
     public AppointmentEventBuilder withPrescriptions(String prescription) {
         this.prescriptions = Set.of(new Prescription(prescription));
@@ -66,7 +66,7 @@ public class AppointmentEventBuilder {
     /**
      * Builds a {@code PatientAppointment} with the {@code AppointmentEvent} that we are building.
      */
-    public PatientAppointmentList buildAppointment() {
+    public PatientAppointmentList buildAppointmentList() {
         PatientAppointmentList patientAppointmentList = new PatientAppointmentList();
         patientAppointmentList.addAppointmentList(new AppointmentEvent(date, time, prescriptions));
         return patientAppointmentList;
