@@ -122,8 +122,7 @@ How the parsing works:
 
 ### Model component
 
-**API
-** : [`Model.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
@@ -207,32 +206,34 @@ that `PatientMedicalHistory` is a list of
 `MedicalHistoryEvent` while `ClinicBookMedicalHistory` is a list of `MedicalHistoryEvent` that is currently being
 displayed.
 
+Commands related to `MedicalHistoryEvent`:
+- `AddMedicalHistoryEventCommand` - Adds a `MedicalHistoryEvent` to a `Patient`.
+- `DeleteMedicalHistoryEventCommand` - Deletes a `MedicalHistoryEvent` of a `Patient`.
+- `EditMedicalHistoryEventCommand` - Edits a `MedicalHistoryEvent` of a `Patient`.
+- `ListMedicalHistoryEventCommand` - Lists all `MedicalHistoryEvent` of a `Patient`.
+
 **An example usage scenario and how the medical history mechanism behaves at each step is shown below.**
 
-Step 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
-of `MedicalHistoryEvent`.
-
-Step 2. The user inputs `list-md` to list all diaries. `Ui` passes the input to `Logic`. `Logic` then uses a
+1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
+of `MedicalHistoryEvent`. 
+2. The user inputs `list-medical-history` to list all medical history. `Ui` passes the input to `Logic`. `Logic` then uses a
 few `Parser` classes to extract layers of information out as seen from steps 3 to 5.
-
-Step 3. `Logic` passes the user input to `ClinicBookParser`. `ClinicBookParser` identifies that this is
+3. `Logic` passes the user input to `ClinicBookParser`. `ClinicBookParser` identifies that this is
 a `ListMedicalHistoryEventCommand` through the word "list-md". It then creates a `ListMedicalHistoryEventCommandParser`
-to parse it into a `ListMedicalHistoryEventCommand` and return.
-
-Step 4. Logic finally gets the `ListMedicalHistoryEventCommand` and execute it. The execution firstly
+to parse it into a `ListMedicalHistoryEventCommand` and return. 
+4. Logic finally gets the `ListMedicalHistoryEventCommand` and execute it. The execution firstly
 calls `Model#getFilteredPatientList()` to get the patients that are currently being displayed. It then gets
 the `Patient` from the list using the index provided by the user.
 It then calls `Model#listMedicalHistoryEvents(Patient patient)` to set `ClinicBookMedicalHistory` as the list
 of `MedicalHistoryEvent` that belongs to the patient.
-This execution then returns a `CommandResult` to `Ui`, containing the response to the user.
-
-Step 5. UI displays the response in the CommandResult. In addition, UI will change to display the list
+This execution then returns a `CommandResult` to `Ui`, containing the response to the user. 
+5. UI displays the response in the CommandResult. In addition, UI will change to display the list
 of `MedicalHistoryEvent` after model updates `filteredMedicalHistoryEvents`, since `Ui` is constantly listening for the
 change in `Model`.
 
 **The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario**
 
-<img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="550"/>
+<img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="933"/>
 
 ### Appointment
 
@@ -245,6 +246,29 @@ The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for
 When the user starts an application, there will be an empty `ClinicBookCLinicBookAppointment`. It will be populated when the
 user executes `list-appointments` command.
 
+Commands related to `AppointmentEvent`:
+- `AddAppointmentEventCommand` - Adds a `AppointmentEvent` to a `Patient`.
+- `DeleteAppointmentEventCommand` - Deletes a `AppointmentEvent` of a `Patient`.
+- `EditAppointmentEventCommand` - Edits a `AppointmentEvent` of a `Patient`.
+- `ListAppointmentEventsCommand` - Lists all `AppointmentEvent` of a `Patient`.
+
+**An example usage scenario and how the appointment event mechanism behaves at each step is shown below.**
+1. The sequence starts with a user inputting the command "list-appointments 1" into the application's main user interface (UI), specifically in the `MainWindow`.
+2. This input is then passed from the `MainWindow` to the `LogicManager`.
+3. The LogicManager forwards the command string to the ClinicBookParser for parsing. The ClinicBookParser identifies the
+   command as an ListAppointmentEventsCommand and creates an ListAppointmentEventsCommandParser, which parses the details of the command
+   and creates an `ListAppointmentEventsCommand` object.
+4. The `LogicManager` then calls the `execute` method on the `ListAppointmentEventsCommand` object.
+5. The `ListAppointmentEventsCommand` then interacts with the `Model` to retrieve the list of `AppointmentEvent` of the `Patient`.
+   The `Model` then returns the list of `AppointmentEvent` to the `ListAppointmentEventsCommand`.
+6. After retrieving the list of `AppointmentEvent`, the `ListAppointmentEventsCommand` returns a `CommandResult` object to the `LogicManager`, which
+   then returns the `CommandResult` object to the `MainWindow` for display to the user.
+
+
+**The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `list-appointments`**
+
+<img src="images/ListAppointmentEventsSequenceDiagram.png" width="933">
+
 ### Prescription 
 
 The prescription-related features are facilitated by the `Prescription` class. The `Prescription` class is included in the `appointment` package.
@@ -253,7 +277,27 @@ The set of `Prescription` class is an attribute for each `AppointmentEvent`, eac
 
 Each `Prescription` is associated with a `AppointmentEvent` and the `Prescription` will be shown as a list of `Prescription` in the `AppointmentEvent`.
 
+Commands related to `Prescription`:
+- `AddPrescriptionCommand` - Adds `Prescription` of an `AppointmentEvent` of a `Patient`.
+- `DeletePrescriptionCommand` - Deletes `Prescription` of an `AppointmentEvent` of a `Patient`.
+- `EditPrescriptionCommand` - Edits the `Prescription` of an `AppointmentEvent` of a `Patient`.
 
+
+**An example usage scenario and how the prescription mechanism behaves at each step is shown below.**
+1. The process begins with the user inputting a command to add a prescription ("add-prescription 1 pi/1 mn/Panadol") into the system main window.
+2. This input is then passed from the `MainWindow` to the `LogicManager`.
+3. The LogicManager forwards the command string to the ClinicBookParser for parsing. The ClinicBookParser identifies the
+command as an AddPrescriptionCommand and creates an AddPrescriptionCommandParser, which parses the details of the command
+and creates an `AddPrescriptionCommand` object.
+4. The `LogicManager` then calls the `execute` method on the `AddPrescriptionCommand` object, which interacts with an 
+`AppointmentEvent` object, and encapsulates the details of the patient's appointment and prescription to be added.
+5. The `AddPrescriptionCommand` then interacts with the `Model` to update the patient's appointment with the new prescription.
+6. After updating the model, the `AddPrescriptionCommand` returns a `CommandResult` object to the `LogicManager`, which
+then returns the `CommandResult` object to the `MainWindow` for display to the user.
+
+**The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `add-prescription`**
+
+<img src="images/AddPrescriptionSequenceDiagram.png" width="933" />
 
 ### \[Proposed\] Undo/redo feature
 
