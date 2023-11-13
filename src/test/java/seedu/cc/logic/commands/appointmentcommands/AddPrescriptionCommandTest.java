@@ -79,8 +79,4 @@ public class AddPrescriptionCommandTest {
 
         assertCommandFailure(addPrescriptionCommand, model, Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
     }
-
-
-    
-
 }
