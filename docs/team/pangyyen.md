@@ -30,6 +30,7 @@ Code contributed: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
 
 - **Testing**:
   - Added tests for the `Appointment` feature (Pull Requests [#80](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/80/files#diff-5dcbf874cc5f555b7a6d37b2ac9c38f319e55520a89260b2bdb2ce63a0b47607))
+  - Added tests for the `Appointment Commands` (Pull Request [#220](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/220))
 
 - **Documentation:**
   - Developer Guide:
@@ -41,5 +42,5 @@ Code contributed: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
     - Added the Non-Functional Requirements (Pull Request [#19](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/19))
     - Added the saving data instructions for manual testing (Pull Request [#123](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/123/files))
   - User Guide:
-    - Crafted the initial version of UserGuide (Pull Request [#18](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/18/files)) 
+    - Crafted the initial version of UserGuide (Pull Request [#18](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/18/files))
     - Added documentation for the appointment-related commands (Pull Request [#80](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/80/files))
