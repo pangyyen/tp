@@ -131,14 +131,14 @@ Here's an example to add a patient named John Doe: <br>
 
 **Parameters:** <br>
 
-| Parameters       | Explanation                                          | Constraints                                                                                                                         |
-|------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `n/NAME`         | Full name of the patient                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                                    |
-| `ic/NRIC`        | The patient's NRIC number.                           | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `a/AGE`          | The patient's age in years.                          | Only whole numbers accepted to reflect the patient's completed years.                                                               |
-| `p/PHONE_NUMBER` | Phone number of the patient                        | Must be **entirely numeric** and exactly 8 digits long                                                                                |
-| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                 |
-| `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                  |
+| Parameters       | Explanation                                          | Constraints                                                                                                                            |
+|------------------|------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `n/NAME`         | Full name of the patient                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `ic/NRIC`        | NRIC of the patient                                  | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `a/AGE`          | Age of the patient                          | Must be a **positive integer**                                                                  |
+| `p/PHONE_NUMBER` | Phone number of the patient                          | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `e/email`        | The patient's email address.                         | A valid email format to ensure that you can contact them via email.                                                                    |
+| `[t/TAG]...`     | Tags to describe the patient's status or conditions. | Alphanumeric characters only; no spaces; use tags to note important information about the patient.                                     |
 
 ---
 ### 6.1.2. List Patients 📋🚑
@@ -173,15 +173,15 @@ Edits existing patient information at the specified `PATIENT_INDEX` in the syste
 **Parameters:** <br>
 Let's break down what each part of the command means:
 
-| Parameters         | Explanation                                                    | Constraints                                                                                                                         |
-|--------------------|----------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `PATIENT_INDEX`    | The index number of the displayed patient in the patients tab. | Must be a positive integer.                                                                                                         |
-| `[n/NAME]`         | Full name of the patient                                       | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                           |
-| `[p/PHONE_NUMBER]` | Phone number of the patient                                  | Must be **entirely numeric** and exactly 8 digits long                                                                                          |
-| `[ic/NRIC]`        | The patient's National Registration Identity Card number.      | Must be alphanumeric as per Singapore standards. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card). |
-| `[a/AGE]`          | The patient's age.                                             | Must be a positive integer.                                                                                                         |
-| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                                                                                     |
-| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank.                                                           |
+| Parameters         | Explanation                                                    | Constraints                                                                                                                            |
+|--------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| `PATIENT_INDEX`    | The index number of the displayed patient in the patients tab. | Must be a positive integer.                                                                                                            |
+| `[n/NAME]`         | Full name of the patient                                       | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
+| `[p/PHONE_NUMBER]` | Phone number of the patient                                    | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
+| `[ic/NRIC]`        | NRIC of the patient                                            | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
+| `[a/AGE]`          | Age of the patient                                             | Must be a **positive integer**                                                                                                            |
+| `[e/EMAIL]`        | The patient's email address.                                   | Should be a valid email format.                                                                                                        |
+| `[t/TAG]...`       | Tags related to the patient.                                   | Should contain only alphanumeric characters and spaces, and not be blank.                                                              |
 
 ---
 
