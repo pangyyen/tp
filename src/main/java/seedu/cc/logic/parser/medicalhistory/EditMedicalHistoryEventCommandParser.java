@@ -73,12 +73,11 @@ public class EditMedicalHistoryEventCommandParser implements Parser<EditMedicalH
         }
 
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            if (ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()).isFutureDate()) {
+                throw new ParseException(String.format(EditMedicalHistoryEventCommand.MESSAGE_DATE_IN_FUTURE));
+            }
             editMedicalHistoryEventDescriptor.setDate(ParserUtil.parseDate(argMultimap
                     .getValue(PREFIX_DATE).get()));
-        }
-
-        if (ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()).isFutureDate()) {
-            throw new ParseException(String.format(EditMedicalHistoryEventCommand.MESSAGE_DATE_IN_FUTURE));
         }
 
         return new EditMedicalHistoryEventCommand(eventIndex, patientIndex, editMedicalHistoryEventDescriptor);
