@@ -209,24 +209,20 @@ displayed.
 
 **An example usage scenario and how the medical history mechanism behaves at each step is shown below.**
 
-Step 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
-of `MedicalHistoryEvent`.
-
-Step 2. The user inputs `list-md` to list all diaries. `Ui` passes the input to `Logic`. `Logic` then uses a
+1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
+of `MedicalHistoryEvent`. 
+2. The user inputs `list-medical-history` to list all medical history. `Ui` passes the input to `Logic`. `Logic` then uses a
 few `Parser` classes to extract layers of information out as seen from steps 3 to 5.
-
-Step 3. `Logic` passes the user input to `ClinicBookParser`. `ClinicBookParser` identifies that this is
+3. `Logic` passes the user input to `ClinicBookParser`. `ClinicBookParser` identifies that this is
 a `ListMedicalHistoryEventCommand` through the word "list-md". It then creates a `ListMedicalHistoryEventCommandParser`
-to parse it into a `ListMedicalHistoryEventCommand` and return.
-
-Step 4. Logic finally gets the `ListMedicalHistoryEventCommand` and execute it. The execution firstly
+to parse it into a `ListMedicalHistoryEventCommand` and return. 
+4. Logic finally gets the `ListMedicalHistoryEventCommand` and execute it. The execution firstly
 calls `Model#getFilteredPatientList()` to get the patients that are currently being displayed. It then gets
 the `Patient` from the list using the index provided by the user.
 It then calls `Model#listMedicalHistoryEvents(Patient patient)` to set `ClinicBookMedicalHistory` as the list
 of `MedicalHistoryEvent` that belongs to the patient.
-This execution then returns a `CommandResult` to `Ui`, containing the response to the user.
-
-Step 5. UI displays the response in the CommandResult. In addition, UI will change to display the list
+This execution then returns a `CommandResult` to `Ui`, containing the response to the user. 
+5. UI displays the response in the CommandResult. In addition, UI will change to display the list
 of `MedicalHistoryEvent` after model updates `filteredMedicalHistoryEvents`, since `Ui` is constantly listening for the
 change in `Model`.
 
@@ -253,7 +249,27 @@ The set of `Prescription` class is an attribute for each `AppointmentEvent`, eac
 
 Each `Prescription` is associated with a `AppointmentEvent` and the `Prescription` will be shown as a list of `Prescription` in the `AppointmentEvent`.
 
+Commands related to `Prescription`:
+- `AddPrescriptionCommand` - Adds `Prescription` of an `AppointmentEvent` of a `Patient`.
+- `DeletePrescriptionCommand` - Deletes `Prescription` of an `AppointmentEvent` of a `Patient`.
+- `EditPrescriptionCommand` - Edits a the `Prescription` of an `AppointmentEvent` of a `Patient`.
 
+
+**An example usage scenario and how the prescription mechanism behaves at each step is shown below.**
+1. The process begins with the user inputting a command to add a prescription ("add-prescription 1 pi/1 mn/Panadol") into the system main window.
+2. This input is then passed from the `MainWindow` to the `LogicManager`.
+3. The LogicManager forwards the command string to the ClinicBookParser for parsing. The ClinicBookParser identifies the
+command as an AddPrescriptionCommand and creates an AddPrescriptionCommandParser, which parses the details of the command
+and creates an `AddPrescriptionCommand` object.
+4. The `LogicManager` then calls the `execute` method on the `AddPrescriptionCommand` object, which interacts with an 
+`AppointmentEvent` object, and encapsulates the details of the patient's appointment and prescription to be added.
+5. The `AddPrescriptionCommand` then interacts with the `Model` to update the patient's appointment with the new prescription.
+6. After updating the model, the `AddPrescriptionCommand` returns a `CommandResult` object to the `LogicManager`, which
+then returns the `CommandResult` object to the `MainWindow` for display to the user.
+
+**The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `add-prescription`**
+
+<img src="images/AddPrescriptionSequenceDiagram.png" width="550" />
 
 ### \[Proposed\] Undo/redo feature
 
