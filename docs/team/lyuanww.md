@@ -11,12 +11,10 @@ it is designed to be used via a Command Line Interface (CLI) for users who prefe
 
 ### My Contributions to the Project:
 
-Code contributed: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=lyuanww&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
-
 - **New Model:**
- - Added the `Medical History` model and its associated classes (Pull Request [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77))
-   - What it does: Stores the details of a patient's medical history, including the date, the medical condition and the treatment the patient received.
-   - Justification: This model is important because it is one of the core features of CareCentral.
+  - Added the `Medical History` model and its associated classes (Pull Request [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77))
+    - What it does: Stores the details of a patient's medical history, including the date, the medical condition and the treatment the patient received.
+    - Justification: This model is important because it is one of the core features of CareCentral.
 
 - **New Features:**
   - Added the ability to add, delete, edit and view medical histories (Pull Request [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77))
@@ -26,6 +24,7 @@ Code contributed: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
     - Highlights: The implementation was challenging in terms of the presentation of data to the user, as we had to consider
       various ways of presenting the data in a way that is easy to understand and use. To fit the design of several tabs in the GUI,
       I had to modify the existing codebase so that it allows several displayed lists.
+- **Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=lyuanww&breakdown=false&sort=groupTitle%20dsc&sortWithin=title&since=2023-09-22&timeframe=commit&mergegroup=&groupSelect=groupByRepos)
 
 - **Enhancements**:
   - Refactored the Date and Time to Util Classes to reduce code duplication. (Pull Request [#107](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/107))
