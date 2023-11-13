@@ -50,7 +50,7 @@ The sidebar contains the following tabs:
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](641-switch-tabs-%EF%B8%8F)) or using `Ctrl + T`.
+Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](#641-switch-tabs-%EF%B8%8F)) or using Ctrl+T.
 
 ## 3.3. Panel 📋
 There are 3 panels in the main screen:
@@ -614,7 +614,7 @@ To jump to the **Patients tab**: <br>
 
 ---
 
-### 6.3.2 Help❓⚙️
+### 6.3.2. Help❓⚙️
 
 **What it does** <br>
 Displays the help page.
@@ -627,7 +627,7 @@ Displays the help page.
 
 ---
 
-### 6.3.3 Clear Data 🗑️⚙️
+### 6.3.3. Clear Data 🗑️⚙️
 
 <div style="background-color: #f9f9f9; border-left: 5px solid #d9534f; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
    <p style="color: #d9534f;"><strong>❗Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
@@ -641,6 +641,19 @@ Clears all data from the system. **This action will permanently erase all data, 
 
 **Example Command** <br>
 `clear`
+
+---
+
+### 6.3.4. Exit 🚪⚙️
+
+**What it does** <br>
+Exits the program.
+
+**Command Format** <br>
+`exit`
+
+**Example Command** <br>
+`exit`
 
 ---
 
@@ -665,5 +678,8 @@ Clears all data from the system. **This action will permanently erase all data, 
 | **Edit Medical History**   | `edit-medical-history MEDICAL_HISTORY_INDEX pi/PATIENT_INDEX [d/DATE] [mc/MEDICAL_CONDITION] [t/TREATMENT]` | `edit-medical-history 1 pi/1 mc/asthma t/ventolin`                          |
 | **Delete Medical History** | `delete-medical-history MEDICAL_HISTORY_INDEX [pi/PATIENT_INDEX]`                                           | `delete-medical-history 1 pi/1`                                             |
 | **Switch Tabs**            | `switch TAB_NUMBER`                                                                                         | `switch 1`                                                                  |
+| **Help**                   | `help`                                                                                                      | `help`                                                                      |
+| **Clear Data**             | `clear`                                                                                                     | `clear`                                                                     |
+| **Exit**                   | `exit`                                                                                                      | `exit`                                                                      |
 
 ---
