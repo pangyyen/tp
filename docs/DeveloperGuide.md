@@ -207,6 +207,12 @@ that `PatientMedicalHistory` is a list of
 `MedicalHistoryEvent` while `ClinicBookMedicalHistory` is a list of `MedicalHistoryEvent` that is currently being
 displayed.
 
+Commands related to `MedicalHistoryEvent`:
+- `AddMedicalHistoryEventCommand` - Adds a `MedicalHistoryEvent` to a `Patient`.
+- `DeleteMedicalHistoryEventCommand` - Deletes a `MedicalHistoryEvent` of a `Patient`.
+- `EditMedicalHistoryEventCommand` - Edits a `MedicalHistoryEvent` of a `Patient`.
+- `ListMedicalHistoryEventCommand` - Lists all `MedicalHistoryEvent` of a `Patient`.
+
 **An example usage scenario and how the medical history mechanism behaves at each step is shown below.**
 
 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
@@ -241,6 +247,12 @@ The `ClinicBookAppointmentList` is a list of `AppointmentEvent` that is used for
 When the user starts an application, there will be an empty `ClinicBookCLinicBookAppointment`. It will be populated when the
 user executes `list-appointments` command.
 
+Commands related to `AppointmentEvent`:
+- `AddAppointmentEventCommand` - Adds a `AppointmentEvent` to a `Patient`.
+- `DeleteAppointmentEventCommand` - Deletes a `AppointmentEvent` of a `Patient`.
+- `EditAppointmentEventCommand` - Edits a `AppointmentEvent` of a `Patient`.
+- `ListAppointmentEventCommand` - Lists all `AppointmentEvent` of a `Patient`.
+
 ### Prescription 
 
 The prescription-related features are facilitated by the `Prescription` class. The `Prescription` class is included in the `appointment` package.
@@ -252,7 +264,7 @@ Each `Prescription` is associated with a `AppointmentEvent` and the `Prescriptio
 Commands related to `Prescription`:
 - `AddPrescriptionCommand` - Adds `Prescription` of an `AppointmentEvent` of a `Patient`.
 - `DeletePrescriptionCommand` - Deletes `Prescription` of an `AppointmentEvent` of a `Patient`.
-- `EditPrescriptionCommand` - Edits a the `Prescription` of an `AppointmentEvent` of a `Patient`.
+- `EditPrescriptionCommand` - Edits the `Prescription` of an `AppointmentEvent` of a `Patient`.
 
 
 **An example usage scenario and how the prescription mechanism behaves at each step is shown below.**
