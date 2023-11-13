@@ -19,13 +19,13 @@ title: User Guide
 # 2. Quick Start Guide ⚡️
 Here's how to get started with CareCentral quickly:
 
-1. Ensure you have Java 11 installed in your Computer.
+1. Ensure you have [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) installed in your Computer.
 2. Download the latest `carecentral.jar` from [here](https://github.com/AY2324S1-CS2103T-F08-1/tp/releases/tag/v1.3.1) if you have not downloaded it yet.
 3. Copy the file to the folder you want to use as the home folder for CareCentral.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds.
    ![Ui](images/Ui.png)
 5. Alternatively, you can also go to the folder where the `carecentral.jar` is located and type `java -jar carecentral.jar` in the command box to start the app.
-6. For Mac users who are unable to open the file or encountering this issue, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html).
+6. For Mac users who are unable to open the file or encountering the issue below, follow this [guide](https://nus-cs2103-ay2223s2.github.io/website/admin/programmingLanguages.html).
 ![Error](images/mac_issue.png)
 7. Type the command in the command box and press Enter to execute it.
    e.g. typing `help` and pressing Enter will open the help window.
@@ -50,26 +50,26 @@ The sidebar contains the following tabs:
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see [here](#641-switch-tabs-%EF%B8%8F)) or using Ctrl+T.
+Users can switch between tabs by clicking on the respective tabs, using the switch command (see [here](#641-switch-tabs-%EF%B8%8F)) or using the `Ctrl + T` shortcut.
 
 ## 3.3. Panel 📋
-There are 3 panels in the main screen:
+There are 3 panels in the main screen depending on which tab is selected:
 * Patient List Panel
 * Medical History Panel
 * Appointment Panel
 
-Users can switch between the panels by switching between the respective tabs by using `Ctrl + T`.
+Users can switch between the panels by switching between the respective tabs by using the `Ctrl + T` shortcut.
 
 ## 3.4. Result Display Box 📬
 The result display box displays the result of the command executed.
 
 ## 3.5. Command Box ⌨️
-The command box is where the user can type in commands to be executed.
+The command box is where the user can type in the commands to be executed.
 
 # 4. Common Parameters 🔍
 Below is a table of parameters you'll commonly use in CareCentral, along with their explanations and constraints:
 
-| Parameters              | Explanation                                                                                                         | Constraints                                                                                                                            |
+| Parameters              | Explanations                                                                                                        | Constraints                                                                                                                            |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `n/NAME`                | Full name of the patient                                                                                            | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `p/PHONE_NUMBER`        | Phone number of the patient                                                                                         | Must be **entirely numeric** and exactly 8 digits long                                                                                 |
@@ -85,8 +85,8 @@ Below is a table of parameters you'll commonly use in CareCentral, along with th
 | `mc/MEDICAL_CONDITION`  | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `t/TREATMENT`           | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `mn/MEDICATION_NAME`    | Name of the medication prescribed                                                                                   | Must only contain **alphanumeric characters**, and it should not be blank                                                              |
-| `KEYWORD`               | The name or part of the name you're using to search for a patient.                                                  | Must be a string                                                                                                                       |
-| `TAB_NUMBER`            | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab                 | Must only be integer                                                                                                                   |
+| `KEYWORD`               | The name or part of the name you're using to search for a patient.                                                  | Must be a **string**                                                                                                                   |
+| `TAB_NUMBER`            | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab                 | Must only be an **integer**                                                                                                            |
 
 # 5. Glossary 📚
 The following terms are used throughout the CareCentral user guide:
@@ -125,16 +125,16 @@ The following terms are used throughout the CareCentral user guide:
 This feature lets you add a new patient record into the CareCentral system, keeping track of all the essential details for each patient.
 
 **Command Format**  <br>
-Type the command below to create a new patient entry: <br>
 `add-patient n/NAME ic/NRIC a/AGE p/PHONE_NUMBER e/EMAIL [t/TAG]…`
 
 **Example Commands** <br>
-Here's an example to add a patient named John Doe: <br>
+Here's an example to **add a patient named John Doe**: <br>
 `add-patient n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com`
 
-**Parameters:** <br>
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters       | Explanation                                | Constraints                                                                                                                            |
+| Parameters       | Explanations                               | Constraints                                                                                                                            |
 |------------------|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `n/NAME`         | Full name of the patient                   | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
 | `ic/NRIC`        | NRIC of the patient                        | Must be alphanumeric as per **Singapore standards**. [Details here](https://en.wikipedia.org/wiki/National_Registration_Identity_Card) |
@@ -147,25 +147,25 @@ Here's an example to add a patient named John Doe: <br>
 ### 6.1.2. List Patients 📋🚑
 
 **What it does** <br>
-Ready to see your whole roster of patients? This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
+This command gives you the big picture, listing out all patients currently saved in the CareCentral system.
 
 **Command Format** <br>
-Just type this simple command to get the full list: <br>
+Just type this simple command to get the **full list of patients**: <br>
 `list-patients`
 
 ---
 
 ### 6.1.3. Edit Patient Record ✏️🚑
 
-**What it does:** <br>
+**What it does** <br>
 Edits existing patient information at the specified `PATIENT_INDEX` in the system.
 
-**Command Format:** <br>
+**Command Format** <br>
 `edit-patient PATIENT_INDEX [n/NAME] [ic/NRIC] [a/AGE] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]…`
 
-**Example Commands:** <br>
+**Example Commands** <br>
+Here's an example to **edit the patient record at index 5**:<br>
 `edit-patient 5 n/John Doe ic/S0123456A a/45 p/12341234 e/johndoe@example.com t/critical`<br>
-*This example edits the patient record at **index 5** and update the name to **John Doe**, NRIC to **S0123456A**, age to **45**, phone number to **12341234**, and email to **johndoe@example.com**. It also sets the patient tag to **critical**.*
 
 <div style="background-color: #cce7ff; padding: 10px; margin-bottom: 10px; border-left: 5px solid #3385ff;">
   <strong>:scroll: Additional Info<br></strong>
@@ -173,10 +173,10 @@ Edits existing patient information at the specified `PATIENT_INDEX` in the syste
   e.g. <code>edit-patient 5 t/critical</code> will remove all the patient's existing tags and replace it with <code>critical</code>.
 </div>
 
-**Parameters:** <br>
+**Parameters** <br>
 Let's break down what each part of the command means:
 
-| Parameters         | Explanation                                                                                                         | Constraints                                                                                                                            |
+| Parameters         | Explanations                                                                                                        | Constraints                                                                                                                            |
 |--------------------|---------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `PATIENT_INDEX`    | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                                                         |
 | `[n/NAME]`         | Full name of the patient                                                                                            | Must only contain **alphanumeric characters and spaces**, and it should not be blank                                                   |
@@ -191,21 +191,25 @@ Let's break down what each part of the command means:
 ### 6.1.4. Delete Patient Record 🗑️🚑
 
 **What it does** <br>
-Removes a patient's record from the system. The specific patient is found by the `PATIENT_INDEX` as shown in the list from `list-patients`. **Be aware: This action will permanently erase the patient's record, including all related appointments and medical history.**
+Removes a patient's record from the system. The specific patient is found by the `PATIENT_INDEX` as shown in the list from `list-patients`.
+**Be aware: This action will permanently erase the patient's record, including all related appointments and medical history.**
 
 **Command Format** <br>
 `delete-patient PATIENT_INDEX`
 
 **Example Commands** <br>
+Here's an example to **delete the patient record at index 2**: <br>
 `delete-patient 2`<br>
-*In this example, `delete-patient 2` will delete the patient record at index 2 from the list of patients. <strong>Make sure to confirm the index number before proceeding to prevent accidental deletion.</strong>*
 
 **Parameters** <br>
 Let's break down what each part of the command means:
 
-| Parameters      | Explanation                                                                                                         | Constraints                    |
+| Parameters      | Explanations                                                                                                        | Constraints                    |
 |-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
+
+**Final Reminder** <br>
+When using this command, ensure that the patient index corresponds to a valid patient in your system to prevent accidental deletion.
 
 ---
 
@@ -218,22 +222,22 @@ Helps you to locate a patient's record in the system by searching for a keyword.
 `find KEYWORD`
 
 **Example Commands** <br>
-This example means that it will fetch the record for any patient named `John Doe`: <br>
+This example means that it will fetch the record for **any patient named `John Doe`**: <br>
 `find John Doe`
 
 **Parameters** <br>
 Let's break down what each part of the command means:
 
-| Parameters | Explanation                                                        | Constraints      |
-|------------|--------------------------------------------------------------------|------------------|
-| `KEYWORD`  | The name or part of the name you're using to search for a patient. | Must be a string |
+| Parameters | Explanations                                                       | Constraints          |
+|------------|--------------------------------------------------------------------|----------------------|
+| `KEYWORD`  | The name or part of the name you're using to search for a patient. | Must be a **string** |
 
 ---
 
 ## 6.2. Appointments Related Features 📅
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
-  <strong>📝 Notes from the Developers<br></strong>
+  <strong>📝 Notes from developers<br></strong>
   Our system supports recording of both past and future appointments to facilitate comprehensive schedule management. This functionality is crucial for maintaining accurate records of patient visits and planning ahead for future appointments.
 </div>
 
@@ -248,9 +252,10 @@ Enables the scheduling of new appointments for patients.
 This example schedules an appointment for the patient at **index 1 for October 1st, 2023, at 2:00 PM**:<br>
 `add-appt 1 d/2023-10-01 t/14:00`
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters      | Explanation                                                                                                         | Constraints                                      |
+| Parameters      | Explanations                                                                                                        | Constraints                                      |
 |-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 | `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                   |
 | `d/DATE`        | Date of the appointment                                                                                             | Must be in the format **YYYY-MM-DD**             |
@@ -264,19 +269,20 @@ This example schedules an appointment for the patient at **index 1 for October 1
    This feature is dependent on having existing patient records. For example, using <code>list-appointments 1</code> will show all appointments for the patient with index 1. If no patients are recorded, please add a patient to the system first.<br>
 </div>
 
-**What it does**
+**What it does** <br>
 Displays a list of all appointments for a specific patient.
 
-**Command Format**
+**Command Format** <br>
 `list-appointments PATIENT_INDEX`
 
-**Example Commands**
-To view all appointments for the patient at index 1, use:<br>
+**Example Commands** <br>
+To view all appointments for the **patient at index 1**:<br>
 `list-appointments 1`
 
-**Parameters:**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters      | Explanation                                                                                                         | Constraints                    |
+| Parameters      | Explanations                                                                                                        | Constraints                    |
 |-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
@@ -315,9 +321,10 @@ To change the details of the <strong>second appointment for the patient at index
   </ol>
 </div>
 
-**Parameters:**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters          | Explanation                                                                                                         | Constraints                                      |
+| Parameters          | Explanations                                                                                                        | Constraints                                      |
 |---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
 | `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                   |
 | `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                   |
@@ -335,19 +342,20 @@ Remember to verify the appointment index and patient index before making changes
   Make sure to select the correct patient's appointments with <code>list-appointments PATIENT_INDEX</code> before attempting a deletion.
 </div>
 
-**What it does**
+**What it does** <br>
 Removes an appointment from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
-**Command Format**
+**Command Format** <br>
 `delete-appt APPOINTMENT_INDEX pi/patient-index`
 
-**Example Commands**
+**Example Commands** <br>
 To delete the **third appointment for the patient at index 2**:<br>
 `delete-appt 3 pi/2`
 
-**Parameters:**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters          | Explanation                                                                                                         | Constraints                    |
+| Parameters          | Explanations                                                                                                        | Constraints                    |
 |---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer** |
 | `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
@@ -366,19 +374,20 @@ Please double-check the appointment and patient indexes before executing this co
    </ol>
 </div>
 
-**What it does:**
+**What it does** <br>
 Allows you to add one or multiple medications to a patient's appointment record. The appointment to be edited is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
-**Command Format:**
+**Command Format** <br>
 `add-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX mn/MEDICATION_NAME...`
 
-**Example Commands:**
+**Example Commands** <br>
 To add **Paracetamol and Albuterol to the first appointment for the patient at index 1**:<br>
 `add-prescription 1 pi/1 mn/Paracetamol mn/Albuterol`
 
-**Parameters:**
+**Parameters**
+Let's break down what each part of the command means:
 
-| Parameters           | Explanation                                                                                                         | Constraints                                                                                         |
+| Parameters           | Explanations                                                                                                        | Constraints                                                                                         |
 |----------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                      |
 | `pi/PATIENT_INDEX`   | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                      |
@@ -413,9 +422,10 @@ To revise the prescription details for the **first appointment of patient index 
   </ol>
 </div>
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters           | Explanation                                                                                                         | Constraints                                                                                         |
+| Parameters           | Explanations                                                                                                        | Constraints                                                                                         |
 |----------------------|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
 | `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer**                                                                      |
 | `pi/PATIENT_INDEX`   | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                                      |
@@ -433,18 +443,19 @@ To revise the prescription details for the **first appointment of patient index 
 </div>
 
 **What it does** <br>
-Removes a prescription from the system. The appointment to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
+Removes an appointment's prescription from the system. The prescription to be deleted is identified by the index number shown in the displayed list of appointments by `list-appointments`.
 
 **Command Format** <br>
 `delete-prescription APPOINTMENT_INDEX pi/PATIENT_INDEX`
 
 **Example Commands** <br>
-For example, to delete the prescription linked to the **first appointment for patient index 1**, you would use: <br>
+To delete the prescription linked to the **first appointment for patient index 1**: <br>
 `delete-prescription 1 pi/1`
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters          | Explanation                                                                                                         | Constraints                    |
+| Parameters          | Explanations                                                                                                        | Constraints                    |
 |---------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                                          | Must be a **positive integer** |
 | `pi/PATIENT_INDEX`  | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
@@ -474,12 +485,13 @@ Adds a medical history to a patient record.
 `add-medical-history PATIENT_INDEX d/DATE mc/MEDICAL_CONDITION t/TREATMENT`
 
 **Example Commands** <br>
-To add an asthma condition treated with Ventolin on October 1st, 2023, for patient index 1: <br>
+To add **an asthma condition treated with Ventolin on 1st October 2023 for patient index 1**: <br>
 `add-medical-history 1 d/2023-10-01 mc/asthma t/ventolin`
 
-**Parameter**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters             | Explanation                                                                                                         | Constraints                                                                          |
+| Parameters             | Explanations                                                                                                        | Constraints                                                                          |
 |------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | `PATIENT_INDEX`        | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                       |
 | `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                                 | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
@@ -507,9 +519,10 @@ Lists the medical history of a patient, including past diagnoses and treatments.
 To view the complete medical history for the patient at index 1: <br>
 `list-medical-history 1`
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters      | Explanation                                                                                                         | Constraints                    |
+| Parameters      | Explanations                                                                                                        | Constraints                    |
 |-----------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `PATIENT_INDEX` | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
 
@@ -549,18 +562,16 @@ To edit an existing medical history entry for **patient index 1, changing the co
   </ol>
 </div>
 
-**Parameters:**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters               | Explanation                                                                                                         | Constraints                                                                          |
+| Parameters               | Explanations                                                                                                        | Constraints                                                                          |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | `MEDICAL_HISTORY_INDEX`  | Index of the medical history in the displayed medical history list                                                  | Must be a **positive** integer                                                       |
 | `pi/PATIENT_INDEX`       | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer                                                       |
 | `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                                 | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
 | `[mc/MEDICAL_CONDITION]` | Medical condition of the patient                                                                                    | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 | `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None'           | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
-
-**Final Reminder** <br>
-Make sure to verify all information for accuracy before updating a patient's medical history record.
 
 ---
 
@@ -580,9 +591,10 @@ Deletes a medical history of a patient. The medical history to be deleted is ide
 To delete the **first medical history entry for the patient at index 1**: <br>
 `delete-medical-history 1 pi/1`
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters              | Explanation                                                                                                         | Constraints                    |
+| Parameters              | Explanations                                                                                                        | Constraints                    |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------|
 | `MEDICAL_HISTORY_INDEX` | Index of the medical history in the displayed medical history list                                                  | Must be a **positive** integer |
 | `pi/PATIENT_INDEX`      | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index | Must be a **positive** integer |
@@ -603,14 +615,15 @@ Switches between the different tabs in the sidebar.
 `switch TAB_NUMBER`
 
 **Example Command** <br>
-To jump to the **Patients tab**: <br>
-`switch 1`
+To jump to the **Medical History Tab**: <br>
+`switch 2`
 
-**Parameters**
+**Parameters** <br>
+Let's break down what each part of the command means:
 
-| Parameters   | Explanation                                                                                         | Constraints          |
-|--------------|-----------------------------------------------------------------------------------------------------|----------------------|
-| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | Must only be integer |
+| Parameters   | Explanations                                                                                        | Constraints                 |
+|--------------|-----------------------------------------------------------------------------------------------------|-----------------------------|
+| `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | Must only be an **integer** |
 
 ---
 
