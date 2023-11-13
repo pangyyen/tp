@@ -1,6 +1,5 @@
 package seedu.cc.logic.commands.medhisteventcommands;
 
-//import static seedu.cc.logic.commands.CommandTestUtil.VALID_DATE;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_MEDICAL_CONDITION_CANCER;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -21,7 +20,6 @@ import seedu.cc.model.medicalhistory.MedicalHistoryEvent;
 import seedu.cc.model.patient.Patient;
 import seedu.cc.testutil.EditMedicalHistoryEventDescriptorBuilder;
 import seedu.cc.testutil.MedicalHistoryEventBuilder;
-//import seedu.cc.testutil.PatientBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for EditCommand.

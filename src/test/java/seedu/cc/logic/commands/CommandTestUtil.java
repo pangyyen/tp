@@ -44,8 +44,8 @@ public class CommandTestUtil {
     public static final String VALID_EMAIL_BOB = "bob@example.com";
     public static final String VALID_AGE_AMY = "33";
     public static final String VALID_AGE_BOB = "44";
-    public static final String VALID_TAG_HUSBAND = "husband";
-    public static final String VALID_TAG_FRIEND = "friend";
+    public static final String VALID_TAG_ASTHMA = "asthma";
+    public static final String VALID_TAG_HYPERTENSION = "hypertension";
 
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
@@ -57,8 +57,8 @@ public class CommandTestUtil {
     public static final String EMAIL_DESC_BOB = " " + PREFIX_EMAIL + VALID_EMAIL_BOB;
     public static final String AGE_DESC_AMY = " " + PREFIX_AGE + VALID_AGE_AMY;
     public static final String AGE_DESC_BOB = " " + PREFIX_AGE + VALID_AGE_BOB;
-    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
-    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
+    public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_HYPERTENSION;
+    public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_ASTHMA;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
@@ -74,16 +74,21 @@ public class CommandTestUtil {
     public static final String VALID_MEDICAL_CONDITION_DIABETES = "Diabetes";
     public static final String VALID_TREATMENT_DIABETES = "Insulin";
     public static final String VALID_DATE_DIABETES = "2020-10-11";
+    public static final String VALID_PRESCRIPTIONS = "Paracetamol";
     public static final String VALID_PATIENT_INDEX = "1";
+
     public static final String MEDICAL_CONDITION_DESC_CANCER = " " + PREFIX_MEDICAL_CONDITION
             + VALID_MEDICAL_CONDITION_CANCER;
     public static final String TREATMENT_DESC_CANCER = " " + PREFIX_TREATMENT + VALID_TREATMENT_CANCER;
     public static final String DATE_DESC_CANCER = " " + PREFIX_DATE + VALID_DATE_CANCER;
+
     public static final String MEDICAL_CONDITION_DESC_DIABETES = " " + PREFIX_MEDICAL_CONDITION
             + VALID_MEDICAL_CONDITION_DIABETES;
     public static final String TREATMENT_DESC_DIABETES = " " + PREFIX_TREATMENT + VALID_TREATMENT_DIABETES;
     public static final String DATE_DESC_DIABETES = " " + PREFIX_DATE + VALID_DATE_DIABETES;
+
     public static final String PATIENT_INDEX_DESC = " " + PREFIX_PATIENT_INDEX + VALID_PATIENT_INDEX;
+
 
 
 
@@ -94,10 +99,10 @@ public class CommandTestUtil {
     static {
         DESC_AMY = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY).withNric(VALID_NRIC_AMY)
                 .withPhone(VALID_PHONE_AMY).withEmail(VALID_EMAIL_AMY).withAge(VALID_AGE_AMY)
-                .withTags(VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_HYPERTENSION).build();
         DESC_BOB = new EditPatientDescriptorBuilder().withName(VALID_NAME_BOB).withNric(VALID_NRIC_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAge(VALID_AGE_BOB)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_ASTHMA, VALID_TAG_HYPERTENSION).build();
         MEDICAL_CONDITION_DESC = new EditMedicalHistoryEventDescriptorBuilder()
                 .withMedicalCondition(VALID_MEDICAL_CONDITION_CANCER)
                 .withTreatment(VALID_TREATMENT_CANCER).withDate(VALID_DATE_CANCER).build();

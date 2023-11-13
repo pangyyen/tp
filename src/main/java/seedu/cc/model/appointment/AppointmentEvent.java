@@ -83,6 +83,9 @@ public class AppointmentEvent {
     public Time getTime() {
         return time;
     }
+    public boolean isDone() {
+        return isDone;
+    }
 
     @Override
     public String toString() {
