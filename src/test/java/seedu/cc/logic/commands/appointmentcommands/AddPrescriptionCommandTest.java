@@ -2,7 +2,6 @@ package seedu.cc.logic.commands.appointmentcommands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.cc.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_APPOINTMENT_EVENT;
 import static seedu.cc.testutil.TypicalIndexes.INDEX_FIRST_PATIENT;
 import static seedu.cc.testutil.TypicalPatients.getTypicalClinicBook;
@@ -14,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 import seedu.cc.commons.core.index.Index;
 import seedu.cc.logic.Messages;
-import seedu.cc.model.ClinicBook;
 import seedu.cc.model.Model;
 import seedu.cc.model.ModelManager;
 import seedu.cc.model.UserPrefs;
