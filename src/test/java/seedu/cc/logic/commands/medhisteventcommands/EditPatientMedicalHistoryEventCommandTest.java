@@ -50,6 +50,8 @@ public class EditPatientMedicalHistoryEventCommandTest {
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
+
+
     @Test
     public void execute_invalidMedicalHistoryEventIndexUnfilteredList_failure() {
         Patient patient = model.getFilteredPatientList().get(INDEX_FIRST_PATIENT.getZeroBased());
