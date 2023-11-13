@@ -251,7 +251,24 @@ Commands related to `AppointmentEvent`:
 - `AddAppointmentEventCommand` - Adds a `AppointmentEvent` to a `Patient`.
 - `DeleteAppointmentEventCommand` - Deletes a `AppointmentEvent` of a `Patient`.
 - `EditAppointmentEventCommand` - Edits a `AppointmentEvent` of a `Patient`.
-- `ListAppointmentEventCommand` - Lists all `AppointmentEvent` of a `Patient`.
+- `ListAppointmentEventsCommand` - Lists all `AppointmentEvent` of a `Patient`.
+
+**An example usage scenario and how the appointment event mechanism behaves at each step is shown below.**
+1. The sequence starts with a user inputting the command "list-appointments 1" into the application's main user interface (UI), specifically in the `MainWindow`.
+2. This input is then passed from the `MainWindow` to the `LogicManager`.
+3. The LogicManager forwards the command string to the ClinicBookParser for parsing. The ClinicBookParser identifies the
+   command as an ListAppointmentEventsCommand and creates an ListAppointmentEventsCommandParser, which parses the details of the command
+   and creates an `ListAppointmentEventsCommand` object.
+4. The `LogicManager` then calls the `execute` method on the `ListAppointmentEventsCommand` object.
+5. The `ListAppointmentEventsCommand` then interacts with the `Model` to retrieve the list of `AppointmentEvent` of the `Patient`.
+   The `Model` then returns the list of `AppointmentEvent` to the `ListAppointmentEventsCommand`.
+6. After retrieving the list of `AppointmentEvent`, the `ListAppointmentEventsCommand` returns a `CommandResult` object to the `LogicManager`, which
+   then returns the `CommandResult` object to the `MainWindow` for display to the user.
+
+
+**The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `list-appointments`**
+
+<img src="images/ListAppointmentEventsSequenceDiagram.png" width="550">
 
 ### Prescription 
 
