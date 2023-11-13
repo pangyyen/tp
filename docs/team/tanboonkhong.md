@@ -41,6 +41,10 @@ Code contributed: [Reposense link](https://nus-cs2103-ay2324s1.github.io/tp-dash
         - Added command summary to aid users in using the product (Pull Request [#128](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/128))
     - Developer Guide:
         - Added the Planned Enhancement section to the Developer Guide (Pull Request [#198](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/198))
+        - Added implementation details of AppointmentEvent (Pull Request [#204](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/204))
+        - Added implementation details of Prescription (Pull Request [#204](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/204))
+        - Created the UML sequence diagram for the `add-prescription` command (Pull Request [#204](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/204))
+        - Created the UML sequence diagram for the `list-appointments` command (Pull Request [#204](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/204))
       
 - **Team Tasks**:
     - Morphing the product into a healthcare management system 
