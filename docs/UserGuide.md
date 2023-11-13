@@ -113,7 +113,7 @@ The following terms are used throughout the CareCentral user guide:
         <li><strong>Extraneous parameters</strong> for commands that do not require them such as <code>help</code> <code>exit</code> and <code>clear</code> will be ignored.<br>
             For instance, <code>help 123</code> will be interpreted as <code>help</code>.</li>
     </ul>
-    <p style="color: #d9534f;"><strong>:warning: Important:</strong> The <code>clear</code> command will remove all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+    <p style="color: #d9534f;"><strong>❗️ Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
     <p><strong>💡Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
 </div>
 
@@ -155,7 +155,7 @@ Just type this simple command to get the full list: <br>
 
 ---
 
-### 6.1.3. Edit Patient Record 📝🚑
+### 6.1.3. Edit Patient Record ✏️🚑
 
 **What it does:** <br>
 Edits existing patient information at the specified `PATIENT_INDEX` in the system.
@@ -285,7 +285,7 @@ When using this command, ensure that the patient index corresponds to a valid pa
 
 ---
 
-### 6.2.3 Edit Appointment 📝📅
+### 6.2.3 Edit Appointment ✏️📅
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -386,7 +386,7 @@ To add **Paracetamol and Albuterol to the first appointment for the patient at i
 
 ---
 
-### 6.2.6 Edit Prescription 📝💊
+### 6.2.6 Edit Prescription ✏️💊
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
    <ol>
@@ -518,7 +518,7 @@ Ensure the patient index corresponds to a valid entry in your patient registry t
 
 ---
 
-### 6.3.3 Edit Medical History 📝📜
+### 6.3.3 Edit Medical History ✏️📜
 
 <div style="background-color: #ffffcc; padding: 10px; border-left: 3px solid #ffeb3b; margin-bottom: 10px;">
   <strong>:warning: Things To Note <br></strong>
@@ -594,7 +594,7 @@ Be cautious and verify the indexes accurately before deleting to avoid unintende
 ---
 
 ## 6.3 System Related Features ⚙️
-### 6.3.1 Switch Tabs ⚙️⏩
+### 6.3.1 Switch Tabs ⏩⚙️
 
 **What it does** <br>
 Switches between the different tabs in the sidebar.
@@ -611,6 +611,36 @@ To jump to the **Patients tab**: <br>
 | Parameters   | Explanation                                                                                         | Constraints          |
 |--------------|-----------------------------------------------------------------------------------------------------|----------------------|
 | `TAB_NUMBER` | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab | Must only be integer |
+
+---
+
+### 6.3.2 Help ❓⚙️
+
+**What it does** <br>
+Displays the help page.
+
+**Command Format** <br>
+`help`
+
+**Example Command** <br>
+`help`
+
+---
+
+### 6.3.3 Clear Data 🗑️⚙️
+
+<div style="background-color: #f9f9f9; border-left: 5px solid #d9534f; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+   <p style="color: #d9534f;"><strong>❗️ Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+</div>
+
+**What it does** <br>
+Clears all data from the system. **This action will permanently erase all data, including all patient records, appointments, and medical history.**
+
+**Command Format** <br>
+`clear`
+
+**Example Command** <br>
+`clear`
 
 ---
 
