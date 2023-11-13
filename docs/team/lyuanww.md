@@ -12,7 +12,7 @@ it is designed to be used via a Command Line Interface (CLI) for users who prefe
 ### My Contributions to the Project:
 
 - **New Model:**
-  - Added the `Medical History` model and its associated classes (Pull Request [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77))
+  - Added the `Patient Medical History` model and its associated classes (Pull Request [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77))
     - What it does: Stores the details of a patient's medical history, including the date, the medical condition and the treatment the patient received.
     - Justification: This model is important because it is one of the core features of CareCentral.
 
@@ -31,11 +31,11 @@ it is designed to be used via a Command Line Interface (CLI) for users who prefe
   - Rewrote the `add-prescription` command from overwriting the existing prescription to appending to the existing prescription. (Pull Request [#189](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/189))
 
 - **Testing**:
-  - Added tests for the `Medical History` feature (Pull Requests [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77), [#104](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/104))
+  - Added tests for the `Patient Medical History` feature (Pull Requests [#77](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/77), [#104](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/104))
 
 - **Documentation:**
   - Developer Guide:
-    - Added implementation details of the `Medical History` model (Pull Request [#112](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/112/files))
+    - Added implementation details of the `Patient Medical History` model (Pull Request [#112](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/112/files))
     - Added implementation details of the `Patient` model (Pull Request [#122](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/122))
   - User Guide:
     - Added documentation for the patient-related commands (Pull Request [#94](https://github.com/AY2324S1-CS2103T-F08-1/tp/pull/94))
