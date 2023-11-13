@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_AGE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.ALICE;
 import static seedu.cc.testutil.TypicalPatients.BOB;
@@ -42,7 +42,7 @@ public class UniquePersonListTest {
     @Test
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniquePersonList.add(ALICE);
-        Person editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA)
                 .build();
         assertTrue(uniquePersonList.contains(editedAlice));
     }
@@ -85,7 +85,7 @@ public class UniquePersonListTest {
     @Test
     public void setPerson_editedPersonHasSameIdentity_success() {
         uniquePersonList.add(ALICE);
-        Person editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND)
+        Person editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA)
                 .build();
         uniquePersonList.setPerson(ALICE, editedAlice);
         UniquePersonList expectedUniquePersonList = new UniquePersonList();

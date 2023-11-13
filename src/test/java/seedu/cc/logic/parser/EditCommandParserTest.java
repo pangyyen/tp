@@ -20,8 +20,8 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HYPERTENSION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -111,7 +111,7 @@ public class EditCommandParserTest {
 
         EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAge(VALID_AGE_AMY)
-                .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+                .withTags(VALID_TAG_ASTHMA, VALID_TAG_HYPERTENSION).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -158,7 +158,7 @@ public class EditCommandParserTest {
 
         // tags
         userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPatientDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
+        descriptor = new EditPatientDescriptorBuilder().withTags(VALID_TAG_HYPERTENSION).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }

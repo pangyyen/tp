@@ -24,8 +24,8 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_AGE_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HYPERTENSION;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_AGE;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.cc.logic.parser.CliSyntax.PREFIX_NAME;
@@ -52,7 +52,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Patient expectedPatient = new PatientBuilder(BOB).withTags(VALID_TAG_FRIEND).build();
+        Patient expectedPatient = new PatientBuilder(BOB).withTags(VALID_TAG_HYPERTENSION).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + NRIC_DESC_BOB + PHONE_DESC_BOB
@@ -60,7 +60,7 @@ public class AddCommandParserTest {
 
 
         // multiple tags - all accepted
-        Patient expectedPatientMultipleTags = new PatientBuilder(BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
+        Patient expectedPatientMultipleTags = new PatientBuilder(BOB).withTags(VALID_TAG_HYPERTENSION, VALID_TAG_ASTHMA)
                 .build();
         assertParseSuccess(parser,
                 NAME_DESC_BOB + NRIC_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + AGE_DESC_BOB
@@ -185,7 +185,7 @@ public class AddCommandParserTest {
 
         // invalid tag`
         assertParseFailure(parser, NAME_DESC_BOB + NRIC_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-                + AGE_DESC_BOB + INVALID_TAG_DESC + VALID_TAG_FRIEND, Tag.MESSAGE_CONSTRAINTS);
+                + AGE_DESC_BOB + INVALID_TAG_DESC + VALID_TAG_HYPERTENSION, Tag.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + NRIC_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB

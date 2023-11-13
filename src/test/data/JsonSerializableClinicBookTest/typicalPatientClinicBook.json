@@ -6,14 +6,14 @@
     "phone" : "94351253",
     "email" : "alice@example.com",
     "age" : "32",
-    "tags" : [ "friends" ]
+    "tags" : [ "Hypertension" ]
   }, {
     "name" : "Benson Meier",
     "nric" : "S1234567B",
     "phone" : "98765432",
     "email" : "johnd@example.com",
     "age" : "46",
-    "tags" : [ "owesMoney", "friends" ]
+    "tags" : [ "Asthma", "Hypertension" ]
   }, {
     "name" : "Carl Kurz",
     "nric" : "S1234567C",
@@ -27,7 +27,7 @@
     "phone" : "87652533",
     "email" : "cornelia@example.com",
     "age" : "50",
-    "tags" : [ "friends" ]
+    "tags" : [ "Hypertension" ]
   }, {
     "name" : "Elle Meyer",
     "nric" : "S1234567E",

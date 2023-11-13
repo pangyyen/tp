@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_AGE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.ALICE;
 import static seedu.cc.testutil.TypicalPatients.getTypicalClinicBook;
@@ -48,7 +48,7 @@ public class ClinicBookTest {
     @Test
     public void resetData_withDuplicatePatients_throwsDuplicatePatientException() {
         // Two persons with the same identity fields
-        Patient editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND)
+        Patient editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA)
                 .build();
         List<Patient> newPatients = Arrays.asList(ALICE, editedAlice);
         ClinicBookStub newData = new ClinicBookStub(newPatients);
@@ -75,7 +75,7 @@ public class ClinicBookTest {
     @Test
     public void hasPatient_personWithSameIdentityFieldsInClinicBook_returnsTrue() {
         clinicBook.addPatient(ALICE);
-        Patient editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND)
+        Patient editedAlice = new PatientBuilder(ALICE).withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA)
                 .build();
         assertTrue(clinicBook.hasPatient(editedAlice));
     }

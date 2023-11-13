@@ -7,7 +7,7 @@ import static seedu.cc.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.cc.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.cc.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.cc.logic.commands.CommandTestUtil.showPatientAtIndex;
@@ -56,10 +56,10 @@ public class EditCommandTest {
 
         PatientBuilder personInList = new PatientBuilder(lastPatient);
         Patient editedPatient = personInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withTags(VALID_TAG_HUSBAND).build();
+                .withTags(VALID_TAG_ASTHMA).build();
 
         EditPatientDescriptor descriptor = new EditPatientDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB).withTags(VALID_TAG_ASTHMA).build();
         EditCommand editCommand = new EditCommand(indexLastPatient, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPatient));

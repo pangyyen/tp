@@ -8,7 +8,7 @@ import static seedu.cc.logic.commands.CommandTestUtil.VALID_AGE_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.cc.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.cc.logic.commands.CommandTestUtil.VALID_TAG_ASTHMA;
 import static seedu.cc.testutil.Assert.assertThrows;
 import static seedu.cc.testutil.TypicalPatients.ALICE;
 import static seedu.cc.testutil.TypicalPatients.BOB;
@@ -38,7 +38,7 @@ public class PersonTest {
 
         // same name, all other attributes different -> returns true
         Person editedAlice = new PatientBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAge(VALID_AGE_BOB).withTags(VALID_TAG_HUSBAND).build();
+                .withAge(VALID_AGE_BOB).withTags(VALID_TAG_ASTHMA).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
         // different name, all other attributes same -> returns false
@@ -90,7 +90,7 @@ public class PersonTest {
         assertNotEquals(ALICE, editedAlice);
 
         // different tags -> returns false
-        editedAlice = new PatientBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
+        editedAlice = new PatientBuilder(ALICE).withTags(VALID_TAG_ASTHMA).build();
         assertNotEquals(ALICE, editedAlice);
     }
 
