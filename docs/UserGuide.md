@@ -480,7 +480,7 @@ To add an asthma condition treated with Ventolin on October 1st, 2023, for patie
 |------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 | `PATIENT_INDEX`        | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index     | Must be a **positive** integer                                                       |
 | `d/DATE`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today                                                 |
-| `mc/MEDICAL_CONDITION` | The specific medical condition of the patient                                                             | Must only contain alphanumeric characters and spaces, and it should not be blank |
+| `mc/MEDICAL_CONDITION` | Medical condition of the patient                                                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 | `t/TREATMENT`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | Must only contain alphanumeric characters and spaces, and it should not be blank |
 
 ---
@@ -553,7 +553,7 @@ To edit an existing medical history entry for **patient index 1, changing the co
 | `MEDICAL_HISTOY_INDEX`   | Index of the medical history in the displayed medical history list                                        | must be a positive integer                                                       |
 | `pi/PATIENT_INDEX`       | Index of the patient in the displayed patient list. Can refer to patients tab to find out about the patient’s index     | Must be a **positive** integer                                                       |
 | `[d/DATE]`               | The recorded date when the medical condition was diagnosed or noted                                       | Must be in the format **YYYY-MM-DD**. Can only be dates earlier than today or today  |
-| `[mc/MEDICAL_CONDITION]` | The specific medical condition of the patient                                                             | must only contain alphanumeric characters and spaces, and it should not be blank |
+| `[mc/MEDICAL_CONDITION]` | Medical condition of the patient                                                             | Must only contain **alphanumeric characters and spaces**, and it should not be blank |
 | `[t/TREATMENT]`          | The treatment prescribed or administered for the medical condition. If no treatment, you can write 'None' | must only contain alphanumeric characters and spaces, and it should not be blank |
 
 **Final Reminder** <br>
