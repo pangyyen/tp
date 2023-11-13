@@ -57,19 +57,22 @@ public class DeletePrescriptionCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Patient> lastShownList = model.getFilteredPatientList();
+        List<AppointmentEvent> lastShownAppointmentList = model.getFilteredAppointmentList();
 
         if (patientIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PATIENT_DISPLAYED_INDEX);
         }
 
-        if (eventIndex.getZeroBased() >= lastShownList.get(patientIndex.getZeroBased()).getClinicBookAppointmentList()
-                .size()) {
+        if (eventIndex.getZeroBased() >= lastShownAppointmentList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_EVENT_DISPLAYED_INDEX);
         }
 
+        if (patientIndex.getZeroBased() >= lastShownAppointmentList.size()) {
+            throw new CommandException(Messages.MESSAGE_PATIENT_NOT_DISPLAYED_INDEX_ERROR);
+        }
+
         Patient patientToAddPrescription = lastShownList.get(patientIndex.getZeroBased());
-        AppointmentEvent appointmentEvent = patientToAddPrescription.getClinicBookAppointmentList()
-                .get(eventIndex.getZeroBased());
+        AppointmentEvent appointmentEvent = lastShownAppointmentList.get(eventIndex.getZeroBased());
 
         AppointmentEvent editedEvent = createEditedAppointmentEvent(appointmentEvent, editAppointmentEventDescriptor);
 
