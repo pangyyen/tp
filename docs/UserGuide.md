@@ -42,7 +42,7 @@ Here's how to get started with CareCentral quickly:
 # 3. GUI components 🖥️
 
 ## 3.1. Main screen 🌟
-<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen.">
+<img width="600" height="400" src="images/UiWithDescriptions.png" alt="Main Screen">
 
 ## 3.2 Sidebar 🗂️
 The sidebar contains the following tabs:
@@ -50,7 +50,7 @@ The sidebar contains the following tabs:
 * Medical History
 * Appointments
 
-Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using Ctrl+T.
+Users can switch between the tabs by clicking on the respective tabs, using the switch command (see here) or using `CTRL + T`.
 
 ## 3.3 Panel 📋
 There are 3 panels in the main screen:
@@ -58,7 +58,7 @@ There are 3 panels in the main screen:
 * Medical History Panel
 * Appointment Panel
 
-Users can switch between the panels by switching between the respective tabs by using CTRL + T.
+Users can switch between the panels by switching between the respective tabs by using `CTRL + T`.
 
 ## 3.4 Result Display Box 📬
 The result display box displays the result of the command executed.
@@ -113,7 +113,7 @@ The following terms are used throughout the CareCentral user guide:
         <li><strong>Extraneous parameters</strong> for commands that do not require them such as <code>help</code> <code>exit</code> and <code>clear</code> will be ignored.<br>
             For instance, <code>help 123</code> will be interpreted as <code>help</code>.</li>
     </ul>
-    <p style="color: #d9534f;"><strong>❗️ Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+    <p style="color: #d9534f;"><strong>❗Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
     <p><strong>💡Tip for PDF users:</strong> Be mindful when copying and pasting commands from the PDF as spaces around line breaks may be lost.</p>
 </div>
 
@@ -614,7 +614,7 @@ To jump to the **Patients tab**: <br>
 
 ---
 
-### 6.3.2 Help ❓⚙️
+### 6.3.2 Help❓⚙️
 
 **What it does** <br>
 Displays the help page.
@@ -630,7 +630,7 @@ Displays the help page.
 ### 6.3.3 Clear Data 🗑️⚙️
 
 <div style="background-color: #f9f9f9; border-left: 5px solid #d9534f; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-   <p style="color: #d9534f;"><strong>❗️ Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
+   <p style="color: #d9534f;"><strong>❗Warning:</strong> The <code>clear</code> command will erase all data from the .json file and the action <strong>cannot be undone</strong>. Please use with caution.</p>
 </div>
 
 **What it does** <br>
