@@ -74,16 +74,21 @@ public class CommandTestUtil {
     public static final String VALID_MEDICAL_CONDITION_DIABETES = "Diabetes";
     public static final String VALID_TREATMENT_DIABETES = "Insulin";
     public static final String VALID_DATE_DIABETES = "2020-10-11";
+    public static final String VALID_PRESCRIPTIONS = "Paracetamol";
     public static final String VALID_PATIENT_INDEX = "1";
+
     public static final String MEDICAL_CONDITION_DESC_CANCER = " " + PREFIX_MEDICAL_CONDITION
             + VALID_MEDICAL_CONDITION_CANCER;
     public static final String TREATMENT_DESC_CANCER = " " + PREFIX_TREATMENT + VALID_TREATMENT_CANCER;
     public static final String DATE_DESC_CANCER = " " + PREFIX_DATE + VALID_DATE_CANCER;
+
     public static final String MEDICAL_CONDITION_DESC_DIABETES = " " + PREFIX_MEDICAL_CONDITION
             + VALID_MEDICAL_CONDITION_DIABETES;
     public static final String TREATMENT_DESC_DIABETES = " " + PREFIX_TREATMENT + VALID_TREATMENT_DIABETES;
     public static final String DATE_DESC_DIABETES = " " + PREFIX_DATE + VALID_DATE_DIABETES;
+
     public static final String PATIENT_INDEX_DESC = " " + PREFIX_PATIENT_INDEX + VALID_PATIENT_INDEX;
+
 
 
 
