@@ -316,7 +316,7 @@ To change the details of the <strong>second appointment for the patient at index
 
 | Parameters          | Explanation                                                                                           | Constraints                                  |
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer                   |
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a **positive integer**                   |
 | `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer                   |
 | `[d/DATE]`          | Date of the appointment                                                                               | Must be in the format **YYYY-MM-DD**            |
 | `[t/TIME]`          | Time of the appointment                                                                               | Must be in the format HH:MM (24-hour format) |
@@ -346,7 +346,7 @@ To delete the **third appointment for the patient at index 2**:<br>
 
 | Parameters          | Explanation                                                                                           | Constraints                |
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer |
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a **positive integer**   |
 | `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
 
 **Final Reminder** <br>
@@ -377,7 +377,7 @@ To add **Paracetamol and Albuterol to the first appointment for the patient at i
 
 | Parameters           | Explanation                                                                                           | Constraints                                                                                         |
 |----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`  | index of the appointment in the displayed appointment list                                            | must be a positive integer                                                                          |
+| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                            | Must be a **positive integer**                                                                            |
 | `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME` | name of the medication                                                                                | must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
@@ -414,7 +414,7 @@ To revise the prescription details for the **first appointment of patient index 
 
 | Parameters           | Explanation                                                                                           | Constraints                                                                                         |
 |----------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                            | Must be a positive integer                                                                          |
+| `APPOINTMENT_INDEX`  | Index of the appointment in the displayed appointment list                                            | Must be a **positive integer**                                                                          |
 | `pi/PATIENT_INDEX`   | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer                                                                          |
 | `mn/MEDICATION_NAME` | name of the medication                                                                                | Must only contain alphanumeric characters, and it should not be blank, can have multiple medication |
 
@@ -443,7 +443,7 @@ For example, to delete the prescription linked to the **first appointment for pa
 
 | Parameters          | Explanation                                                                                           | Constraints                |
 |---------------------|-------------------------------------------------------------------------------------------------------|----------------------------|
-| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a positive integer |
+| `APPOINTMENT_INDEX` | Index of the appointment in the displayed appointment list                                            | Must be a **positive integer** |
 | `pi/PATIENT_INDEX`  | Index of patient in the patient list. Can refer to patients tab to find out about the patient's index | Must be a positive integer |
 
 **Final Reminder** <br>
