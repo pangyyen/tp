@@ -7,9 +7,9 @@ title: Developer Guide
 {:toc}
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **Design**
-
 ### Architecture
 
 <img src="images/ArchitectureDiagram.png" width="280" />
@@ -28,6 +28,7 @@ charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
+<div style="page-break-after: always;"></div>
 The bulk of the app's work is done by the following four components:
 
 * [**`UI`**](#ui-component): The UI of the App.
@@ -58,6 +59,8 @@ implementation of a component), as illustrated in the (partial) class diagram be
 
 The sections below give more details of each component.
 
+<div style="page-break-after: always;"></div>
+
 ### UI component
 
 The **API** of this component is specified
@@ -66,11 +69,11 @@ in [`Ui.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
 The UI consists of a `MainWindow` that is made up of parts
-e.g.`CommandBox`, `ResultDisplay`, `PatientListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`,
+e.g.`CommandBox`, `ResultDisplay`, `PatientListPanel`, `AppointmentListPanel`, `MedicalHistoryPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`,
 inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the
 visible GUI.
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that
+The `UI` component uses the JavaFX UI framework. The layout of these UI parts are defined in matching `.fxml` files that
 are in the `src/main/resources/view` folder. For example, the layout of
 the [`MainWindow`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/ui/MainWindow.java)
 is specified
@@ -83,6 +86,8 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Patient` object residing in the `Model`.
 
+<div style="page-break-after: always;"></div>
+
 ### Logic component
 
 **API** : [`Logic.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/logic/Logic.java)
@@ -90,6 +95,7 @@ The `UI` component,
 Here's a (partial) class diagram of the `Logic` component:
 
 <img src="images/LogicClassDiagram.png" width="550"/>
+<div style="page-break-after: always;"></div>
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete-patient 1")` API
 call as an example.
@@ -108,6 +114,8 @@ How the `Logic` component works:
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
 
+<div style="page-break-after: always;"></div>
+
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
 <img src="images/ParserClasses.png" width="600"/>
@@ -120,6 +128,8 @@ How the parsing works:
   a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser`
   interface so that they can be treated similarly where possible e.g, during testing.
+
+<div style="page-break-after: always;"></div>
 
 ### Model component
 
@@ -139,12 +149,12 @@ The `Model` component,
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
 
+<div style="page-break-after: always;"></div>
+
 ### Storage component
 
-**API
-** : [`Storage.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/storage/Storage.java)
-
-<img src="images/StorageClassDiagram.png" width="550" />
+**API**: [`Storage.java`](https://github.com/AY2324S1-CS2103T-F08-1/tp/blob/master/src/main/java/seedu/cc/storage/Storage.java)
+<br><img src="images/StorageClassDiagram.png" width="550" />
 
 The `Storage` component,
 
@@ -154,6 +164,7 @@ The `Storage` component,
   the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects
   that belong to the `Model`)
+<div style="page-break-after: always;"></div>
 
 ### Common classes
 
@@ -162,7 +173,6 @@ Classes used by multiple components are in the `seedu.cc.commons` package.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Implementation**
-
 ### Patient
 
 A `Patient` has the following fields:
@@ -213,6 +223,8 @@ Commands related to `MedicalHistoryEvent`:
 - `EditMedicalHistoryEventCommand` - Edits a `MedicalHistoryEvent` of a `Patient`.
 - `ListMedicalHistoryEventCommand` - Lists all `MedicalHistoryEvent` of a `Patient`.
 
+<div style="page-break-after: always;"></div>
+
 **An example usage scenario and how the medical history mechanism behaves at each step is shown below.**
 
 1. The user launches the application for the first time. `ClinicBookMedicalHistory` contains no default list
@@ -235,6 +247,8 @@ change in `Model`.
 **The Sequence Diagram below shows how the components interact with each other for the above mentioned scenario**
 
 <img src="images/ListMedicalHistoryEventSequenceDiagram.png" width="933"/>
+
+<div style="page-break-after: always;"></div>
 
 ### Appointment
 
@@ -270,6 +284,8 @@ Commands related to `AppointmentEvent`:
 
 <img src="images/ListAppointmentEventsSequenceDiagram.png" width="933">
 
+<div style="page-break-after: always;"></div>
+
 ### Prescription 
 
 The prescription-related features are facilitated by the `Prescription` class. The `Prescription` class is included in the `appointment` package.
@@ -299,6 +315,8 @@ then returns the `CommandResult` object to the `MainWindow` for display to the u
 **The sequence diagram below illustrates the interactions of the components for the scenario where the user issues the command `add-prescription`**
 
 <img src="images/AddPrescriptionSequenceDiagram.png" width="933" />
+
+<div style="page-break-after: always;"></div>
 
 ### \[Proposed\] Undo/redo feature
 
@@ -363,11 +381,13 @@ Step 5. The user then decides to execute the command `list-patients`. Commands t
 Step 6. The user executes `clear`, which calls `Model#commitClinicBook()`. Since the `currentStatePointer` is not pointing at the end of the `clinicBookStateList`, all clinic book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
 
 ![UndoRedoState5](images/UndoRedoState5.png)
+<div style="page-break-after: always;"></div>
 
 The following activity diagram summarizes what happens when a user executes a new command:
 
 <img src="images/CommitActivityDiagram.png" width="250" />
 
+<div style="page-break-after: always;"></div>
 
 ### \[Proposed\] Pharmacy Integration
 
@@ -389,6 +409,8 @@ Additionally, it implementes the following operations:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Documentation, logging, testing, configuration, dev-ops**
 
 - [Documentation guide](Documentation.md)
@@ -398,6 +420,7 @@ Additionally, it implementes the following operations:
 - [DevOps guide](DevOps.md)
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Requirements**
 
@@ -476,6 +499,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. System retrieves and shows a list of patients.
 
    Use case ends.
+
+<div style="page-break-after: always;"></div>
 
 **Extensions**
 
@@ -783,6 +808,8 @@ Certainly! Below are the use cases created from the user stories:
 
 ---
 
+<div style="page-break-after: always;"></div>
+
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
@@ -838,6 +865,7 @@ Dealing with missing/corrupted data files:
    ii. If attempt above is in vain, delete `clinicbook.json`, and launch CareCentral again. All user manipulation on entries and diaries will be cleared.
 
 ---
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Planned Enhancements**
 
@@ -855,6 +883,8 @@ We aim to standardize command naming for better consistency and user experience.
 ### Unique NRIC Validation
 #### Current State
 The system does not currently validate the uniqueness of the National Registration Identity Card (NRIC) of a patient, leading to potential data integrity issues.
+
+<div style="page-break-after: always;"></div>
 
 #### Planned Enhancement
 We will implement a validation mechanism to ensure that each patient's NRIC is unique within the system.
@@ -874,6 +904,8 @@ We plan to introduce a confirmation step before the execution of the `clear` com
 #### Implementation Details
 - **Confirmation Prompt**: Introduce an interactive prompt requiring explicit user confirmation before proceeding with the clear operation.
 - **Command-Line Argument**: Optionally, provide a command-line argument to bypass the confirmation for automated scripts.
+
+<div style="page-break-after: always;"></div>
 
 ### Validation for Appointment Date
 #### Current State
