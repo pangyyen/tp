@@ -664,7 +664,6 @@ Clears all data from the system. **This action will permanently erase all data, 
 `clear`
 
 ---
-<div style="page-break-after: always;"></div>
 
 ### 6.3.4. Exit 🚪⚙️
 
@@ -678,6 +677,8 @@ Exits the program.
 `exit`
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 # 7. Command Summary 📚
 
