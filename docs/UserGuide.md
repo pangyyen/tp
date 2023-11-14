@@ -36,7 +36,7 @@ Here's how to get started with CareCentral quickly:
     * `exit`
 
 <div style="background-color: #E3F2FD; padding: 10px; margin-top: 10px; border-left: 5px solid #64B5F6;">
-  <strong>🌟 Congratulations on starting with CareCentral!</strong> The next sections will guide you through more features to fully utilize the app.
+  🌟<strong> Congratulations on starting with CareCentral!</strong> The next sections will guide you through more features to fully utilize the app.
 </div>
 
 <div style="page-break-after: always;"></div>
@@ -245,7 +245,7 @@ Let's break down what each part of the command means:
 ## 6.2. Appointments Related Features 📅
 
 <div style="background-color: #fff3e0; padding: 5px; border-left: 5px solid #ffa726;">
-  <strong>📝 Notes from developers<br></strong>
+  📝<strong> Notes from developers<br></strong>
   Our system supports recording of both past and future appointments to facilitate comprehensive schedule management. This functionality is crucial for maintaining accurate records of patient visits and planning ahead for future appointments.
 </div>
 
