@@ -50,6 +50,14 @@ public class EditAppointmentEventDescriptorBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Prescription} of the {@code EditAppointmentEventDescriptor} that we are building.
+     */
+    public EditAppointmentEventDescriptorBuilder withPrescriptions(Set<Prescription> prescriptions) {
+        descriptor.setPrescriptions(prescriptions);
+        return this;
+    }
+
     public EditAppointmentEventDescriptor build() {
         return descriptor;
     }
