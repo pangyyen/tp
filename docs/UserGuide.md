@@ -39,6 +39,8 @@ Here's how to get started with CareCentral quickly:
   <strong>🌟 Congratulations on starting with CareCentral!</strong> The next sections will guide you through more features to fully utilize the app.
 </div>
 
+<div style="page-break-after: always;"></div>
+
 # 3. GUI components 🖥️
 
 ## 3.1. Main screen 🌟
@@ -66,6 +68,8 @@ The result display box displays the result of the command executed.
 ## 3.5. Command Box ⌨️
 The command box is where the user can type in the commands to be executed.
 
+<div style="page-break-after: always;"></div>
+
 # 4. Common Parameters 🔍
 Below is a table of parameters you'll commonly use in CareCentral, along with their explanations and constraints:
 
@@ -88,6 +92,8 @@ Below is a table of parameters you'll commonly use in CareCentral, along with th
 | `KEYWORD`               | The name or part of the name you're using to search for a patient.                                                  | Must be a **string**                                                                                                                   |
 | `TAB_NUMBER`            | The target tab to switch to.<br/>1: Patients Tab<br/>2: Medical History Tab<br/>3: Appointments Tab                 | Must only be an **integer**                                                                                                            |
 
+<div style="page-break-after: always;"></div>
+
 # 5. Glossary 📚
 The following terms are used throughout the CareCentral user guide:
 
@@ -97,6 +103,8 @@ The following terms are used throughout the CareCentral user guide:
 | `GUI`          | **Graphical User Interface** - A visual interface with graphical elements. CareCentral's GUI is designed for ease of navigation and information display. |
 | `NRIC`         | **National Registration Identity Card** number - A unique identifier for Singaporean residents.                                                          |
 | `Prescription` | **Medicine prescribed by a medical professional** - CareCentral allows you to manage and track prescriptions for each patient.                           |
+
+<div style="page-break-after: always;"></div>
 
 # 6. Features ⭐️
 <div style="background-color: #f9f9f9; border-left: 5px solid #009688; padding: 5px; margin-bottom: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -656,6 +664,7 @@ Clears all data from the system. **This action will permanently erase all data, 
 `clear`
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### 6.3.4. Exit 🚪⚙️
 
